@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>MeowCAD Picture Server</title>
+    <link href="css/cleanlooks.css" rel="stylesheet" type="text/css" />
+
+    
+   
+    <script type='text/javascript' src='/socket.io/socket.io.js' ></script>
+    <script type='text/javascript' src='js/jquery.js'></script>
+    <script type='text/javascript' src='js/jquery.cookie.js'></script>
+
+    <link href="css/buttons.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/forms.css" rel="stylesheet" type="text/css" />
+    <link href="css/tables.css" rel="stylesheet" type="text/css" />
+    <link href="css/cleanlooks.css" rel="stylesheet" type="text/css" />
+
+
+    <script>
+
+      var g_lockedImg;
+      var g_heartImg;
+
+      var g_socket ;
+
+      var g_userId;
+      var g_sessionId;
+      var g_picId;
+
+      var g_activeSession = false;
+
+
+      $(document).ready( function() {
+        console.log("hello");
+
+        var g_lockedImg = new Image();
+        var g_heartImg = new Image();
+
+        g_lockedImg.src = "img/locked.png";
+        g_heartImg.src = "img/heart.png";
+
+        console.log("...");
+        console.log( location.search.replace("?", '') );
+        var s = location.search.replace('?', '').split('&').map(function(val){
+            return val.split('=');
+          });
+        console.log(s);
+
+        g_picId = "";
+        if (s[0][0] == "id")
+        {
+          g_picId = s[0][1];
+        }
+
+        console.log("sessionId: " + $.cookie("sessionToken") );
+        console.log("userid: " + $.cookie("userId") );
+        console.log("username: " + $.cookie("userName") );
+
+        if ( $.cookie("userId") && $.cookie("sessionId") )
+        {
+          g_userId = $.cookie("userId");
+          g_sessionId = $.cookie("sessionId");
+          g_activeSession = true;
+        }
+        //g_picId = "errpng2";
+
+        /*
+        if (!g_activeSession)
+        {
+          var b = document.getElementById('lockButton');
+          b.style.display = "";
+          b = document.getElementById('unlockButton');
+          b.style.display = "";
+        }
+        */
+
+
+        console.log("userId: " + g_userId );
+        console.log("sessionId: " + g_sessionId );
+
+
+        g_socket = io.connect("https://localhost");
+        g_socket.on("picpermission", handlePicPermission );
+        g_socket.on("picaccess", handlePicAccess );
+
+        if (g_activeSession)
+        {
+          g_socket.emit("picpermission", { userId : g_userId, sessionId : g_sessionId , picId : g_picId });
+        }
+        else
+        {
+          g_socket.emit("picpermission", {  picId : g_picId });
+        }
+
+      });
+
+      function handlePicAccess( data ) 
+      {
+        console.log("hanldPicAccess:");
+        console.log(data);
+      }
+
+      function handlePicPermission( data )
+      {
+        console.log("handlePicPermission:");
+        console.log(data);
+
+        if ( (data.type == "response") && (data.status == "success"))
+        {
+
+          if (g_activeSession)
+          {
+            fetchPrivatePic( g_picId, g_userId, g_sessionId );
+
+            var permission = data.permission;
+            console.log("permission: " + permission);
+
+            var b = document.getElementById('lockButton');
+            b.style.display = "";
+            b = document.getElementById('unlockButton');
+            b.style.display = "";
+
+            if (permission == "world-read")
+            {
+              unlockButton();
+            }
+            else 
+            {
+              lockButton();
+            }
+
+          }
+          else
+          {
+            fetchPublicPic( g_picId )
+          }
+
+        }
+
+        // keep trying if in case it's not available
+        //
+        else
+        {
+          setTimeout( function() {
+            g_socket.emit("picpermission", { userId : g_userId, sessionId : g_sessionId , picId : g_picId });
+          }, 1000);
+        }
+
+      }
+
+
+      function lockButton()
+      {
+        console.log("lock");
+
+        img = document.getElementById("lockImage");
+        img.src = "img/locked.png";
+
+        msg = document.getElementById('lockedMessage');
+        msg.innerHTML = "Image is only viewable by you";
+        msg.style.display = "";
+
+        button = document.getElementById("lockButton");
+        button.className = "pure-button pure-button-lock";
+        button.innerHTML = "Locked";
+
+        button = document.getElementById("unlockButton");
+        button.className = "pure-button pure-button-lock-unselected";
+        button.innerHTML = "Unlock";
+      }
+
+      function sendLockMessage()
+      {
+        g_socket.emit("picaccess", { userId : g_userId, sessionId : g_sessionId , picId : g_picId, permission: "user" });
+        lockButton();
+      }
+
+
+      function unlockButton()
+      {
+        console.log("unlock");
+
+        img = document.getElementById("lockImage");
+        img.src = "img/heart.png";
+
+        msg = document.getElementById('lockedMessage');
+        msg.innerHTML = "Image is viewable by everyone";
+        msg.style.display = "";
+
+        button = document.getElementById("lockButton");
+        button.className = "pure-button pure-button-lock-unselected";
+        button.innerHTML = "Lock";
+
+        button = document.getElementById("unlockButton");
+        button.className = "pure-button pure-button-unlock";
+        button.innerHTML = "Unlocked";
+
+      }
+
+      function sendUnlockMessage()
+      {
+        g_socket.emit("picaccess", { userId : g_userId, sessionId : g_sessionId , picId : g_picId, permission: "world-read" });
+        unlockButton();
+      }
+
+      function fetchPublicPic( picId )
+      {
+        var img = document.createElement("img");
+        img.src = "cgi/picSentry.py?id=" + picId + "&dummy=" + Math.floor((Math.random()*10000)+1);
+        var div = document.getElementById("imgContainer");
+        div.innerHTML = "";
+        $("#imgContainer").append( img );
+      }
+
+      function fetchPrivatePic( picId, userId, sessionId )
+      {
+        var img = document.createElement("img");
+        img.src = "cgi/picSentry.py?id=" + picId + "&userId=" + userId + "&sessionId=" + sessionId;
+        var div = document.getElementById("imgContainer");
+        div.innerHTML = "";
+        $("#imgContainer").append( img );
+      }
+
+      function dummy()
+      {
+        //img = document.getElementById("mainImage");
+        //img.src = "img/err.png";
+
+        //var userId = $.cookie("userId", { expires: 365, path : '/', secure: true } );
+        //var sessionId = $.cookie("sessionId", { expires: 365, path: '/', secure: true } );
+
+        var userId = $.cookie("userId" );
+        var sessionId = $.cookie("sessionId");
+
+
+        console.log("userId: " + userId );
+        console.log("sessionId: " + sessionId );
+
+        fetchPrivatePic( "errpng2", userId, sessionId );
+
+        console.log("cookie");
+        console.log( $.cookie() );
+
+      }
+
+      function dummy2()
+      {
+        fetchPublicPic( "errpng2" );
+        console.log("??");
+      }
+
+    </script>
+
+
+  </head>
+
+
+  <body>
+    <div id="container">
+    <div id="header">
+      <h1><a href='http://www.meowcad.com'>meowCAD</a> </h1>
+      <br />
+      <hr />
+    </div> <!-- end header -->
+
+    <div id='main'>
+
+      <div id='left'>
+
+        <div id='leftcontent'>
+
+          <img id='lockImage' src='img/background.png' height='42px' width='42px'></img>
+          <br />
+
+          <button id='lockButton' name='on' value='on' style='display:none;' class="pure-button pure-button-lock-unselected"
+            onclick='sendLockMessage();' >
+            Lock
+          </button>
+          <br />
+
+          <button id='unlockButton' name='off' value='off' style='display:none;' class='pure-button pure-button-lock-unselected'
+            onclick='sendUnlockMessage();' >
+            Unlock</button>
+          <br />
+
+            <div id='lockedMessage' style='display:none;' >fetching...</div>
+          <br />
+
+          <!--
+          <button id='dummy'  class='pure-button pure-button-lock-unselected'
+            onclick='dummy();' >
+            dummy</button>
+          <br />
+
+          <button id='dummy2'  class='pure-button pure-button-lock-unselected'
+            onclick='dummy2();' >
+            dummy2</button>
+          <br />
+          -->
+
+        </div>
+
+      </div>
+
+
+      <div id='maincontent'>
+
+        <div id='imgContainer'>
+          main content...
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
+
+
+

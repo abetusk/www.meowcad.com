@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>meowCAD / New Project</title>
+
+<link href="/css/buttons.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/forms.css" rel="stylesheet" type="text/css" />
+<link href="/css/tables.css" rel="stylesheet" type="text/css" />
+<link href="/css/cleanlooks.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+
+<body>
+<div id="container">
+  <div id="header">
+
+    <div class='top_right'>
+      <!--USERINDICATOR-->
+    </div>
+
+
+    <h1><a href='portfolio'><!--USER--></a> / <a href='newproject'>New Project</a></h1>
+      <br />
+      <hr />
+
+  </div> <!-- end header -->
+
+
+  <!--LEFT-->
+
+  <div id="main">
+    <div id="maincontent">
+
+      <!--
+      <h3 class='top_main_heading'>Create New Project</h3>
+      -->
+
+      <!--MESSAGE-->
+
+        <br>
+        <br>
+        <br>
+
+
+        <!-- <form class='pure-form pure-form-aligned'> -->
+        <form class='pure-form' action='/bleepsix/cgi/createproject' method='POST' >
+          <fieldset>
+
+            <div class='pure-control-group'>
+              <label for='name'>New Project Name</label>
+              <input id='name' name='name' type='text' placeholder='Project Name' required>
+            </div>
+
+          </fieldset>
+
+          <fieldset>
+            <legend>Permissions</legend>
+
+            <div class='pure-control-group'>
+
+              <label for='private' class='pure-radio'>
+                <img src='/img/locked.png' width='20px'></img>
+                <input id='private' type='radio' name='permissionOption' value='private' checked>
+                  </input>
+                  Private (only viewable by you)
+              </label>
+
+              <label for='public' class='pure-radio'>
+                <img src='/img/heart.png' width='20px'></img>
+                <input id='public' type='radio' name='permissionOption' value='public' >
+                  </input>
+                  Public (viewable by everyone)
+              </label>
+
+            </div>
+
+          </fieldset>
+
+          <fieldset>
+            <div class='pure-control-group'>
+              <button id='createButton' class='pure-button pure-button-tiel'>Create Project</button>
+            </div>
+          </fieldset>
+
+
+        <form>
+
+
+      <br />
+
+   
+      <br />
+
+    </div> <!-- end main content section -->
+  </div> 
+
+
+  <div id="footer"><div class="spacer"></div>
+    <hr />
+    <p class="left">| <a href="http://jigsaw.w3.org/css-validator/">CSS</a> | 
+    <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> </p>
+  </div> <!-- end footer -->
+
+</div> <!-- end container -->
+
+</body>
+</html>

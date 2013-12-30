@@ -8,6 +8,9 @@ import Cookie
 import meowaux as mew
 cgitb.enable()
 
+#print "Content-Type: text/html;charset=utf-8"
+#print 
+
 cookie = Cookie.SimpleCookie()
 
 cookie_hash = mew.getCookieHash( os.environ )
@@ -86,6 +89,34 @@ if not error:
     tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.successMessage( msg ) )
   else:
     tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.message( msg ) )
+
+  ### project details
+  if proj["permission"] == "world-read":
+    perm = "<img src='/img/heart.png' width='12px'></img> " + proj["permission"]
+  else:
+    perm = "<img src='/img/locked.png' width='12px'></img> " + proj["permission"]
+
+
+  x = [ proj["name"],
+        "<a href='/bleepsix/bleepsix_sch?sch=" + proj["sch"] + "' >Schematic</a>",
+        "<a href='/bleepsix/bleepsix_pcb?brd=" + proj["brd"] + "' >PCB</a>",
+        perm ]
+
+  trs = "<tr> <td> "
+  tre = "</td> </tr>"
+
+  projectDetails = ""
+  projectDetails += "<table class='pure-table pure-table-horizontal' width='100%'>"
+  projectDetails += "<thead><tr><th>Name</th> <th></th> <th></th> <th>Permission</th> </tr></thead> <tbody>"
+  projectDetails += trs +  "</td> <td>".join(x) + tre
+  projectDetails += "</tbody></table>"
+
+
+
+  tmp_str = tmp_str.replace("<!--PROJECTDETAILS-->", projectDetails )
+
+
+
 
 else:
   tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.errorMessage( msg ) )

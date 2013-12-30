@@ -24,12 +24,17 @@ if "message" in cookie_hash:
   message = cookie_hash["message"]
   message = re.sub( '^\s*"', '', message );
   message = re.sub( '"\s*$', '', message );
-  if "messageType" in cookie_hash:
-    messageType = cookie_hash["messageType"]
 
   expiration = datetime.datetime.now() + datetime.timedelta(days=-1)
+  exp_str = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
   cookie["message"] = ""
-  cookie["message"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
+  cookie["message"]["expires"] = exp_str
+
+  if "messageType" in cookie_hash:
+    messageType = cookie_hash["messageType"]
+    cookie["messageType"] = ""
+    cookie["messageType"]["expires"] = exp_str
+
 
 userId = cookie_hash["userId"]
 userData = mew.getUser( userId )

@@ -1,0 +1,26 @@
+picSentry
+---------
+
+  If the picture has 'world-read' permissions, or if the
+  current viewer is the owner, then serve the picture.  Otherwise
+  give back a 404 not found.
+
+----
+
+ issue a GET request with
+   "id" set to <picId>
+   "userId" set to <userId> (optional)
+   "sessionId" set to <sessionId> (optional)
+
+ lookup pic:<picId>.  
+
+ If "permission" is "world-read", serve the picture DONE
+
+ create <hashedSessionId> = sha512( <userId> + <sessionId> )
+ if pic:<picId>.userId == <userId>
+   serve the picture, DONE
+
+ any missing variables or errors, return 404
+ 
+
+

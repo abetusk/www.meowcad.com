@@ -1,0 +1,130 @@
+sesspool [set]
+  <hashedSessionId> 
+
+session:<hashedSessionId> [hash]
+  "id": <hashedSessionId>
+  "user": <userId>
+
+
+pic:<id> [hash]
+  "id" : <picId>
+  "permission" : ("world-read"|"user")
+  "userId" : <userId>
+
+
+user:<id> [hash]
+  "id" : <userId>
+  "userName" : <userName>
+  "passwordHash" : <passwordHashId>
+
+
+username:<username> [hash]
+  "id" : <userId>
+  "userName" : <userName>
+
+
+olio:<userId> [set]
+  <projectId>
+
+project:<projectId> [hash]
+  "id" : <projectId>
+  "userId" : <userId>
+  "name" : <projectName>
+  "sch" : <schematicId>
+  "brd" : <boardId>
+  "permission" : ("world-read"|"user")
+
+sch:<schematicId> [hash]
+  "id" : <schematicId>
+  "userId" : <userId>
+  "projectId" : <projectId>
+  "name" : <schematicName>
+  "data" : ??
+
+brd:<boardId> [hash]
+  "id" : <boardId>
+  "userId" : <userId>
+  "projectId" : <projectId>
+  "name" : <boardName>
+  "data" : ??
+
+
+-----
+By convention, everything ending with "Id" is a uuid.
+
+<sessionId> = h( <userId> + <hashedSessionId> )
+where <hashedSessionId> is given to the client at authentication startup.
+
+
+
+API Requests:
+---------
+
+Client Authentication Request: 
+  Establish a sessionid for communication
+
+  client                                    server
+  ------                                    ------
+
+  "auth"                ----->              
+    <username>
+    <password>
+
+                                            lookup <userId> from username:<username>
+                                            lookup <passwordHash> from user:<userId>
+                                            if sha512( <userId> + <password> ) == <passwordHash>
+                                              create <sessionId> = guid()
+                                              create <hashedSessionId> = sha512( <userId> + <sessionId> )
+                                              add <hashedSessionId> to set "sesspool" 
+                                              create hash entry 
+                                                session:<hashedSessionId> { user : <userId>, id <hashedSessionId> }
+                        <-----                send message
+                                                "auth" { type : "response", status: "success", 
+                                                         sessionId: <sessionId>, userId: <userId> }
+                                            else
+                        <-----                send message
+                                                "auth" { type : "response", status: "error", 
+                                                         message: "optional message" }
+                                             
+--------------------------------------------------------------------------------------------------------
+
+
+Client Pic Permission Request:  
+  Find the permissions on a picture 
+
+  if picId exists in pic:<picId> and has "permission" "world-read", return fail
+  else if user supplied sessionId hashes ( sha512( <userId> + <sessionId> ) ) exists
+    in session:<hashedSessionId> and userId's match, return success
+  else return fail
+
+  client                                    server
+  ------                                    ------
+
+  "picpermission"        ----->              <??>
+    userId: <userId>
+    sessionId: <sessionId>
+    picId: <picId>
+
+
+--------------------------------------------------------------------------------------------------------
+
+Client Pic Access Change Request:
+  Change the permission type of the picture
+
+  if user supplied sessionId hashes ( sha512( <userId> + <sessionId> ) ) exists
+    in session:<hashedSessionId> and userId's match
+  and
+  if userId's match in pic:<picId>, change permission to <newPermission> in pic:<picId>, return success
+  else return fail
+
+
+  client                                    server
+  ------                                    ------
+
+  "picaccess"        ----->                 <??>
+    userId: <userId>
+    sessionId: <sessionId>
+    picId: <picId>
+    permission: ("world-read"|"user")
+
+

@@ -71,6 +71,13 @@ module.exports = {
       function(d, callback)     // 
       {
 
+        if (!d)
+        {
+          console.log("fail (1)!");
+          socket.emit("auth", { type:"response", status: "error", message:"authentication failed" }) ;
+          return ;
+        }
+
         console.log("got:");
         console.log(d);
 
@@ -87,6 +94,14 @@ module.exports = {
       },
       function(d, callback)
       {
+        if (!d)
+        {
+          console.log("fail (2)!");
+          socket.emit("auth", { type:"response", status: "error", message:"authentication failed" }) ;
+          return ;
+        }
+
+
         var userid = d.id;
         var username = d.userName;
         var passwordHash = d.passwordHash;

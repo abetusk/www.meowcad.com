@@ -29,14 +29,16 @@
       function successMessage( text )
       {
         msg = document.getElementById("message");
-        msg.className = "pure-button pure-button-green";
+        //msg.className = "pure-button pure-button-green";
+        msg.className = "success-message";
         msg.innerHTML = text;
       }
 
       function errorMessage( text )
       {
         msg = document.getElementById("message");
-        msg.className = "pure-button pure-button-red";
+        //msg.className = "pure-button pure-button-red";
+        msg.className = "error-message";
         msg.innerHTML = text;
 
       }
@@ -150,9 +152,10 @@
         <div class='pure-g'>
 
           <div class='pure-form pure-form-aligned'>
-            <div id='message'>
-              <img src='/bleepsix/img/background.png' height='23px' width='23px' ></img>
-            </div>
+        <div id='message' class='no-message'>
+          <!-- <img src='/bleepsix/img/background.png' height='23px' width='23px' ></img> -->
+        </div>
+
 
             <fieldset>
               <div class='pure-control-group'>

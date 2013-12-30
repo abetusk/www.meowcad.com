@@ -3,6 +3,7 @@
 import re,cgi,cgitb,sys
 import os
 import urllib
+import hashlib
 import meowaux as mew
 import Cookie
 cgitb.enable()
@@ -24,8 +25,8 @@ if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
   sys.exit(0)
 
 form = cgi.FieldStorage()
-if ("password" not in form) or ("passwordAgain" not in form):
-  cookie["message"] = "Passwords must be non-empty " 
+if ("password" not in form) or ("passwordAgain" not in form) or ("passwordOrig" not in form):
+  cookie["message"] = "All passwords must be non-empty " 
   cookie["messageType"] = "error"
   print "Location:https://localhost/bleepsix/cgi/usersettings"
   print cookie.output()
@@ -43,6 +44,20 @@ if form["password"].value != form["passwordAgain"].value:
 userId = cookie_hash["userId"]
 userData = mew.getUser( userId )
 userName = userData["userName"]
+
+passOrig = form["passwordOrig"].value
+
+passHash = hashlib.sha512( str(userId) + str(passOrig) ).hexdigest()
+if passHash != userData["passwordHash"]:
+  cookie["message"] = "Authorization failed"
+  cookie["messageType"] = "error"
+  print "Location:https://localhost/bleepsix/cgi/usersettings"
+  print cookie.output()
+  print
+  sys.exit(0)
+
+
+
 
 password = form["password"].value
 if mew.setUserPassword( userId, password ):

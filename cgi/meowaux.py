@@ -7,6 +7,7 @@ import redis
 import hashlib
 import uuid
 
+## -- file system and header (cookie) processing functions
 
 def slurp_file(fn):
   f = open(fn, "r")
@@ -26,6 +27,7 @@ def getCookieHash( environ ):
 
   return cookie_hash
 
+## --- html helper functions
 
 def userIndicatorString( userId, userName ):
   userIndicator = "<b><a href='usersettings' >" # ?userId=" + str(userId) + "'> "
@@ -53,6 +55,7 @@ def nominalMessage( msg ):
 def message( msg ):
   return "<div id='message' class='no-message'>" + str(msg) + "</div>"
 
+## --- authentication and session functions 
 
 def authenticateSession( userId, sessionId ):
   db = redis.Redis()
@@ -72,6 +75,25 @@ def authenticateSession( userId, sessionId ):
 
   return 1
 
+
+def getSessions():
+  db = redis.Redis()
+  return db.smembers( "sesspool" )
+
+def deactivateSession( userId, sessionId ):
+  db = redis.Redis()
+
+  hashSessionId = hashlib.sha512( str(userId) + str(sessionId) ).hexdigest()
+  db.srem( "sesspool", str(hashSessionId) )
+  x = db.hgetall( "session:" + str(hashSessionId) )
+  #if "active" not in x: return 0
+  db.hset( "session:" + str(hashSessionId), "active", 0 )
+  return 1
+
+
+
+## --- user functions
+
 def getUser( userId ):
   db = redis.Redis()
   return db.hgetall( "user:" + str(userId) )
@@ -80,6 +102,9 @@ def setUserPassword( userId, password ):
   db = redis.Redis()
   hashPassword = hashlib.sha512( str(userId) + str(password) ).hexdigest()
   return db.hset( "user:" + str(userId), "passwordHash", hashPassword )
+
+
+## --- project functions
 
 def createProject( userId, projectName, permission ):
   db = redis.Redis()
@@ -139,6 +164,8 @@ def deleteProject( userId, projectId ):
   return db.hset( "project:" + str(projectId), "active", "0" )
 
 
+## --- portfolio functions
+
 
 def getPortfolio( userId ):
   db = redis.Redis()
@@ -162,21 +189,27 @@ def getPortfolios( userId ):
   return olios
 
 
+## --- picture functions
 
-def getSessions():
-  db = redis.Redis()
-  return db.smembers( "sesspool" )
 
-def deactivateSession( userId, sessionId ):
+def createPic( picId, userId, clientToken ):
   db = redis.Redis()
 
-  hashSessionId = hashlib.sha512( str(userId) + str(sessionId) ).hexdigest()
-  db.srem( "sesspool", str(hashSessionId) )
-  x = db.hgetall( "session:" + str(hashSessionId) )
-  #if "active" not in x: return 0
-  db.hset( "session:" + str(hashSessionId), "active", 0 )
-  return 1
+  pic = {}
+  pic["id"] = str(picId)
+  pic["userId"] = str(userId)
+  pic["permission"] = "user"
+  pic["clientToken"] = str(clientToken)
 
+  db.hmset( "pic:" + str(picId), pic )
+
+  msg = {}
+  msg["id"] = str(clientToken)
+  msg["message"] = str(picId)
+  msg["type"] = "picCreate"
+  db.hmset( "message:" + str(clientToken), msg )
+
+  return pic
 
 
 

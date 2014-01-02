@@ -8,8 +8,8 @@
     
    
     <script type='text/javascript' src='/socket.io/socket.io.js' ></script>
-    <script type='text/javascript' src='js/jquery.js'></script>
-    <script type='text/javascript' src='js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='js/lib/jquery.js'></script>
+    <script type='text/javascript' src='js/lib/jquery.cookie.js'></script>
 
     <link href="css/buttons.css" rel="stylesheet" type="text/css" />
 
@@ -31,6 +31,8 @@
 
       var g_activeSession = false;
 
+      var g_clientToken = null;
+
 
       $(document).ready( function() {
         console.log("hello");
@@ -48,11 +50,16 @@
           });
         console.log(s);
 
+        if (s[0][0] == "clientToken" )
+          g_clientToken = s[0][1];
+
+          /*
         g_picId = "";
         if (s[0][0] == "id")
         {
           g_picId = s[0][1];
         }
+        */
 
         console.log("sessionId: " + $.cookie("sessionToken") );
         console.log("userid: " + $.cookie("userId") );
@@ -83,6 +90,7 @@
 
         g_socket = io.connect("https://localhost");
         g_socket.on("picpermission", handlePicPermission );
+        //g_socket.on("picready", handlePicPermission );
         g_socket.on("picaccess", handlePicAccess );
 
         if (g_activeSession)
@@ -109,6 +117,11 @@
 
         if ( (data.type == "response") && (data.status == "success"))
         {
+
+
+          console.log("got picpermission response!  data.picId: " + data.picId );
+          g_picId = dta.picId;
+
 
           if (g_activeSession)
           {
@@ -144,6 +157,9 @@
         else
         {
           setTimeout( function() {
+
+            console.log("trying for pic again");
+
             g_socket.emit("picpermission", { userId : g_userId, sessionId : g_sessionId , picId : g_picId });
           }, 1000);
         }

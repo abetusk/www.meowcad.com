@@ -5,8 +5,6 @@ var io = require("socket.io").listen(8000);
 var redis = require('redis'),
     db = redis.createClient();
 
-aux.bar();
-
 io.sockets.on('connection', function (socket) {
   var transactionId = aux.guid();
 
@@ -27,7 +25,7 @@ io.sockets.on('connection', function (socket) {
         db : db, 
         data : data 
       }
-    ) 
+    ) ;
   });
 
   socket.on("picpermission", function(data) {
@@ -36,7 +34,7 @@ io.sockets.on('connection', function (socket) {
       socket : socket,
       db: db,
       data : data
-    })
+    });
   });
 
   socket.on("picaccess", function(data) {
@@ -45,8 +43,17 @@ io.sockets.on('connection', function (socket) {
       socket : socket,
       db: db,
       data : data
-    })
+    });
   });
+
+  socket.on("picready", function(data) {
+    aux.picReady({
+      transactionId: transactionId,
+      socket : socket,
+      db: db,
+      data : data
+    });
+  })
 
 });
 

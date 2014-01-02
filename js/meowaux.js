@@ -25,6 +25,97 @@ module.exports = {
 
   s4 : s4,
   guid : guid,
+
+  picReady : function( m ) {
+    var userId = m.data.userId;
+    var sessionId = m.data.sessionId;
+    var clientToken = m.data.clientToken;
+    var socket = m.socket;
+    var db = m.db;
+
+    if ( ( typeof userId !== 'undefined') &&
+         ( typeof sessionId !== 'undefined') )
+    {
+      socket.emit("picready", { type : "response", status : "error", message: "authorization failure" });
+    }
+
+    console.log("picReady starting, userid: " + userId + ", sessionId: " + sessionId);
+    async.waterfall([
+
+      function(callback)
+      {
+        var sha512 = crypto.createHash('sha512');
+        var sessHash = sha512.update( userId + sessionId ).digest('hex');
+        db.hgetall( "session:" + sessHash, callback);
+      },
+
+      function ( d, callback )
+      {
+
+        if ( (!d) || (d.active != "1") )
+        {
+          socket.emit("picready", { type:"response", status:"error", message:"access denied" });
+          return;
+        }
+
+
+        console.log("calling redis hgetall on pic:" + picId);
+
+        db.hgetall( "message:" + clientToken, callback );
+      },
+
+      function( d, callback )
+      {
+
+        // message lookup failed
+        //
+        if (!d)
+        {
+          socket.emit("picready", { type : "response", status : "error", message: "nonexistent or unauthorized" });
+          return;
+        }
+
+        var picId = d.picId;
+
+        db.hgetall( "pic:" + picId, callback );
+      },
+
+      function( d, callback ) 
+      {
+        if (!d)
+        {
+          socket.emit("picready", { type : "response", status : "error", message: "nonexistent or unauthorized" });
+          return;
+        }
+
+        // Pic found, see if it's owned by the user
+        //
+        if ( d.userId != userId )
+        {
+          socket.emit("picready", { type : "response", status : "error", message: "nonexistent or unauthorized" });
+          return;
+        }
+
+        // If it's world readable, send back a message, filling the editPermission appropriately
+        //
+        socket.emit("picready", { 
+          type : "response", 
+          status : "success", 
+          message: "ready", 
+          picId : d.picId
+        });
+        return;
+
+      }
+
+    ],
+    function (err,result) {
+      console.log("picPermission error:");
+      console.log(err);
+      console.log(result);
+    });
+
+  },
   
   picPermission : function( m ) {
     var userId = m.data.userId;
@@ -33,18 +124,86 @@ module.exports = {
     var socket = m.socket;
     var db = m.db;
 
+    var anonymousRequest = true;
+    if ( ( typeof userId !== 'undefined') &&
+         ( typeof sessionId !== 'undefined') )
+      anonymousRequest = false;
+
     console.log("picPermission starting, userid: " + userId + ", sessionId: " + sessionId);
 
+    /*
     var userRequest = false;
     if ( (typeof userId !== 'undefined') &&
          (typeof sessionId !== 'undefined') )
     {
       userRequest = true;
     }
+    */
 
+    if (anonymousRequest)
+    {
+      async.waterfall([
+        function(callback)
+        {
+          db.hgetall( "pic:" + picId, callback );
+        },
+        function( d, callback )
+        {
+
+          if (!d)
+          {
+            socket.emit("picpermission", { type : "response", status : "error", message: "nonexistent or unauthorized" });
+            return;
+          }
+
+          var picUserId = d.userId;
+          var picPermission = d.permission;
+
+          if ( picPermission == "world-read") 
+          {
+            socket.emit("picpermission", { 
+              type : "response", 
+              status : "success", 
+              message: "ready", 
+              editPermission: "denied" 
+            });
+            return;
+          }
+
+          socket.emit("picpermission", { type : "response", status : "error", message: "nonexistent or unauthorized" });
+
+        }
+
+      ],
+      function (err,result) {
+        console.log("picPermission error:");
+        console.log(err);
+        console.log(result);
+      } );
+
+      return;
+    }
+
+    // We have a sessionid, so we need to authenticate the request
+    //
     async.waterfall([
       function(callback)
       {
+
+        var sha512 = crypto.createHash('sha512');
+        var sessHash = sha512.update( userId + sessionId ).digest('hex');
+        db.hgetall( "session:" + sessHash, callback);
+
+      },
+      function ( d, callback )
+      {
+
+        if ( (!d) || (d.active != "1") )
+        {
+          socket.emit("picpermission", { type:"response", status:"error", message:"access denied" });
+          return;
+        }
+
 
         console.log("calling redis hgetall on pic:" + picId);
 
@@ -53,6 +212,8 @@ module.exports = {
       function( d, callback )
       {
 
+        // Pic lookup failed
+        //
         if (!d)
         {
           socket.emit("picpermission", { type : "response", status : "error", message: "nonexistent or unauthorized" });
@@ -62,51 +223,44 @@ module.exports = {
         var picUserId = d.userId;
         var picPermission = d.permission;
 
-        console.log("pic permission: " + picPermission);
+        // Pic found, see if it's owned by the user
+        //
+        perm = "denied";
+        if ( picUserId == userId )
+        {
+          perm = "allowed";
+        }
 
-        if ( (!userRequest) &&
-             (picPermission == "world-read") )
+        // If it's world readable, send back a message, filling the editPermission appropriately
+        //
+        if ( picPermission == "world-read" )
         {
           socket.emit("picpermission", { 
             type : "response", 
             status : "success", 
             message: "ready", 
-            editPermission: "denied" 
+            permission: picPermission,
+            editPermission: perm
           });
           return;
         }
-        
-        var sha512 = crypto.createHash('sha512');
-        var sessHash = sha512.update( picUserId + sessionId ).digest('hex');
 
-        console.log(sessHash);
-
-        db.hgetall( "session:" + sessHash, function(err, d) { callback(err, picPermission,d); });
-      },
-      function(picPermission, d, callback)
-      {
-
-        if (!d)
+        // Not owned by user, give back an error message
+        //
+        if (picUserId != d.userId) 
         {
           socket.emit("picpermission", { type : "response", status : "error", message: "nonexistent or unauthorized" });
           return;
         }
 
-        sessUserId = d.userId;
-
-        if ( sessUserId != userId )
-        {
-          socket.emit("picpermission", {type:"response", status:"error", message: "nonexistent or unauthroized" });
-          return;
-        }
-
-        socket.emit("picpermission", {
-          type:"response", 
-          status:"success", 
-          message: "ready",
-          editPermission: "allowed",
-          permission: picPermission
+        socket.emit("picpermission", { 
+          type : "response", 
+          status : "success", 
+          message: "ready", 
+          permission: picPermission,
+          editPermission: perm
         });
+        return;
 
       }
 
@@ -150,7 +304,7 @@ module.exports = {
       },
       function(d, callback) {
 
-        if (!d)
+        if ( (!d) || (d.active != "1") )
         {
           socket.emit("picaccess", { type:"response", status: "error", message: "access denied (1)" });
           return;
@@ -197,10 +351,6 @@ module.exports = {
     ],
     function(err, result) {
     });
-  },
-
-  bar : function() {
-    console.log("bar");
   }
 
 };

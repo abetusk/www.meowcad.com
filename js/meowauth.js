@@ -137,10 +137,6 @@ module.exports = {
       console.log(result);
     });
 
-  },
-
-  bar : function() {
-    console.log("bar");
   }
 
 };

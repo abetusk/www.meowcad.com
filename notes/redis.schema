@@ -10,6 +10,12 @@ pic:<id> [hash]
   "id" : <picId>
   "permission" : ("world-read"|"user")
   "userId" : <userId>
+  "clientToken": <clientToken>
+
+message:<messageId>
+  "id" : <messageId>
+  "message" : <message>
+  "type" : <type>
 
 
 user:<id> [hash]

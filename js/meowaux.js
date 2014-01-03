@@ -26,6 +26,7 @@ module.exports = {
   s4 : s4,
   guid : guid,
 
+  /*
   picReady : function( m ) {
     var userId = m.data.userId;
     var sessionId = m.data.sessionId;
@@ -116,7 +117,8 @@ module.exports = {
     });
 
   },
-  
+*/
+
   picPermission : function( m ) {
     var userId = m.data.userId;
     var sessionId = m.data.sessionId;
@@ -273,14 +275,81 @@ module.exports = {
 
   },
 
-  picAccess : function( m )
+  picReady : function( m )
   {
     var db          = m.db;
     var socket      = m.socket;
 
-    var picId       = m.data.picId;
+    var clientToken = m.data.clientToken;
     var userId      = m.data.userId;
     var sessionId   = m.data.sessionId;
+
+    console.log(m.data);
+
+    if ( ( typeof clientToken === 'undefined' ) ||
+         ( typeof userId === 'undefined' ) ||
+         ( typeof sessionId === 'undefined' ) )
+    {
+      socket.emit("picready", { type:"response", status: "error", message: "access denied (0)" });
+      return;
+    }
+
+    async.waterfall([
+      function(callback) {
+
+        var sha512 = crypto.createHash('sha512');
+        var sessHash = sha512.update( userId + sessionId ).digest('hex');
+
+        db.hgetall( "session:" + sessHash , callback );
+      },
+      function(d, callback) {
+
+        if ( (!d) || (d.active != "1") )
+        {
+          socket.emit("picready", { type:"response", status: "error", message: "access denied (1)" });
+          return;
+        }
+
+        db.hgetall( "message:" + clientToken, callback );
+      },
+
+      function(message, callback)
+      {
+        console.log("got:");
+        console.log(message);
+
+
+        if (!message)
+        {
+          socket.emit("picready", { type:"response", status: "error", message: "access denied (2)" });
+          return;
+        }
+
+        /*
+        var picUserId = message.userId;
+        if ( picUserId != userId )
+        {
+          socket.emit("picready", { type:"response", status: "error", message: "access denied (3)" });
+          return;
+        }
+        */
+
+        socket.emit("picready", { type:"response", status:"success", picId: message.message, message : message.type });
+      }
+
+    ],
+    function(err, result) {
+    });
+  },
+
+  picAccess : function( m )
+  {
+    var db = m.db;
+    var socket = m.socket;
+
+    var picId = m.data.picId;
+    var userId = m.data.userId;
+    var sessionId = m.data.sessionId;
     var picPermission = m.data.permission;
 
     console.log(m.data);
@@ -338,7 +407,7 @@ module.exports = {
         }
         else
         {
-          // user is authenticaed, so giving a useful error message doesn't leak 
+          // user is authenticaed, so giving a useful error message doesn't leak
           // unauthorized information.
           //
           socket.emit("picaccess", { type:"response", status: "error", message: "invalid permission" });

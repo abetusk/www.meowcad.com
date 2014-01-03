@@ -12,7 +12,8 @@ import hashlib
 
 cgitb.enable();
 
-FILEBASE = "/tmp/pic"
+#FILEBASE = "/tmp/pic"
+FILEBASE = "/tmp/stage"
 
 def error_and_quit():
   print "Status: 404 Not Found"
@@ -88,18 +89,24 @@ else:
   f.write("cp\n")
 
   ## DEBUG
-  f.write("pic userid: " + picDat["userId"] );
-  f.close()
+  f.write("pic userid: " + picDat["userId"] + "\n");
 
   if picDat["userId"] != userId:
     error_and_quit()
 
   try:
-    with open( FILEBASE + "/" + fileId ) as f:
+    with open( FILEBASE + "/" + fileId ) as pic_fd:
       print "Content-Type: image/png"
       print
-      print f.read()
-  except IOError:
+      print pic_fd.read()
+
+    f.write("wrote png\n");
+    f.close()
+  except IOError as e:
+    f.write("IOError:" + str(e) );
+
+    f.close()
+
     error_and_quit()
 
 

@@ -33,6 +33,50 @@
 
       var g_clientToken = null;
 
+      function processHandoff() 
+      {
+
+        console.log("processHandoff");
+
+        if (g_activeSession)
+        {
+
+          console.log(" emitting picready");
+          g_socket.emit("picready", 
+          { userId : g_userId, 
+            sessionId : g_sessionId , 
+            clientToken : g_clientToken });
+        }
+        else
+        {
+          console.log("picready request not allowed for anonymous visitors (must log in)");
+        }
+      }
+
+      function processPic() {
+
+        console.log("processPic");
+
+        if (g_activeSession)
+        {
+
+          console.log("  emitting authenticated picpermission");
+
+          g_socket.emit("picpermission", 
+          { userId : g_userId, 
+            sessionId : g_sessionId , 
+            picId : g_picId });
+        }
+        else
+        {
+
+          console.log("  emitting anonymous picpermission");
+
+          g_socket.emit("picpermission", {  picId : g_picId });
+        }
+
+      }
+
 
       $(document).ready( function() {
         console.log("hello");
@@ -43,6 +87,19 @@
         g_lockedImg.src = "img/locked.png";
         g_heartImg.src = "img/heart.png";
 
+        if ( $.cookie("userId") && $.cookie("sessionId") )
+        {
+          g_userId = $.cookie("userId");
+          g_sessionId = $.cookie("sessionId");
+          g_activeSession = true;
+        }
+
+        g_socket = io.connect("https://localhost");
+        g_socket.on("picpermission", handlePicPermissionResponse );
+        g_socket.on("picaccess", handlePicAccessResponse );
+        g_socket.on("picready", handlePicReadyResponse );
+
+
         console.log("...");
         console.log( location.search.replace("?", '') );
         var s = location.search.replace('?', '').split('&').map(function(val){
@@ -50,67 +107,56 @@
           });
         console.log(s);
 
-        if (s[0][0] == "clientToken" )
-          g_clientToken = s[0][1];
+        if ((s[0][0] == "action") && (s[0][1] == "handoff"))
+        {
+          if (s[1][0] == "clientToken")
+          {
+            g_clientToken = s[1][1];
 
-          /*
-        g_picId = "";
-        if (s[0][0] == "id")
+            processHandoff();
+            return;
+          }
+
+        }
+        else if (s[0][0] == "id") 
         {
           g_picId = s[0][1];
+
+          processPic();
+          return;
         }
-        */
 
-        console.log("sessionId: " + $.cookie("sessionToken") );
-        console.log("userid: " + $.cookie("userId") );
-        console.log("username: " + $.cookie("userName") );
+        console.log("unhandled case");
 
-        if ( $.cookie("userId") && $.cookie("sessionId") )
-        {
-          g_userId = $.cookie("userId");
-          g_sessionId = $.cookie("sessionId");
-          g_activeSession = true;
-        }
-        //g_picId = "errpng2";
+        var imgEle  = document.getElementById("imgContainer");
+        imgEle.innerHTML = "Error processing request";
 
-        /*
-        if (!g_activeSession)
-        {
-          var b = document.getElementById('lockButton');
-          b.style.display = "";
-          b = document.getElementById('unlockButton');
-          b.style.display = "";
-        }
-        */
-
-
-        console.log("userId: " + g_userId );
-        console.log("sessionId: " + g_sessionId );
-
-
-        g_socket = io.connect("https://localhost");
-        g_socket.on("picpermission", handlePicPermission );
-        //g_socket.on("picready", handlePicPermission );
-        g_socket.on("picaccess", handlePicAccess );
-
-        if (g_activeSession)
-        {
-          g_socket.emit("picpermission", { userId : g_userId, sessionId : g_sessionId , picId : g_picId });
-        }
-        else
-        {
-          g_socket.emit("picpermission", {  picId : g_picId });
-        }
+        return;
 
       });
 
-      function handlePicAccess( data ) 
+      function handlePicAccessResponse( data )
       {
-        console.log("hanldPicAccess:");
+        console.log("handlePicAccessRsponse:");
         console.log(data);
       }
 
-      function handlePicPermission( data )
+      function handlePicReadyResponse( data ) 
+      {
+        console.log("hanldPicReadyResponse:");
+        console.log(data);
+
+        g_picId = data.picId;
+
+        console.log("picId:");
+        console.log(g_picId);
+
+        window.history.replaceState("", "", "/bleepsix/pic.html?id=" + g_picId);
+
+        processPic();
+      }
+
+      function handlePicPermissionResponse( data )
       {
         console.log("handlePicPermission:");
         console.log(data);
@@ -119,9 +165,7 @@
         {
 
 
-          console.log("got picpermission response!  data.picId: " + data.picId );
-          g_picId = dta.picId;
-
+          console.log("got picpermission response!  using picId: " + g_picId );
 
           if (g_activeSession)
           {
@@ -223,6 +267,9 @@
 
       function fetchPublicPic( picId )
       {
+
+        console.log("fetching public pic: " + picId );
+
         var img = document.createElement("img");
         img.src = "cgi/picSentry.py?id=" + picId + "&dummy=" + Math.floor((Math.random()*10000)+1);
         var div = document.getElementById("imgContainer");
@@ -232,6 +279,9 @@
 
       function fetchPrivatePic( picId, userId, sessionId )
       {
+
+        console.log("fetching private pic: " + picId );
+
         var img = document.createElement("img");
         img.src = "cgi/picSentry.py?id=" + picId + "&userId=" + userId + "&sessionId=" + sessionId;
         var div = document.getElementById("imgContainer");
@@ -324,7 +374,7 @@
       <div id='maincontent'>
 
         <div id='imgContainer'>
-          main content...
+          Please wait while we fetch your picture...
         </div>
       </div>
 

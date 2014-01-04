@@ -51,8 +51,8 @@ if r is None:
   sys.exit(0)
 
 
-cookie["message"] = "Project " + str(proj["name"]) + " deleted"
-cookie["messageType"] = "success"
+cookie["message"] = "Project '" + str(proj["name"]) + "' deleted"
+cookie["messageType"] = "status"
 
 print "Location:https://localhost/bleepsix/cgi/portfolio"
 print cookie.output()

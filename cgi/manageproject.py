@@ -87,6 +87,10 @@ if not error:
     tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.errorMessage( msg ) )
   elif msgType == "success":
     tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.successMessage( msg ) )
+  elif msgType == "status":
+    tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.statusMessage( msg ) )
+  elif msgType == "nominal":
+    tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.nominalMessage( msg ) )
   else:
     tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.message( msg ) )
 

@@ -12,7 +12,7 @@ pic:<id> [hash]
   "userId" : <userId>
   "clientToken": <clientToken>
 
-message:<messageId>
+message:<messageId> [hash]
   "id" : <messageId>
   "message" : <message>
   "type" : <type>

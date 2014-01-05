@@ -40,19 +40,33 @@ project:<projectId> [hash]
   "brd" : <boardId>
   "permission" : ("world-read"|"user")
 
+
+
 sch:<schematicId> [hash]
   "id" : <schematicId>
   "userId" : <userId>
   "projectId" : <projectId>
   "name" : <schematicName>
-  "data" : ??
+  "ind" : <lastInd>
+
+sch:<schematicId>:<ind> [hash]
+  "type" : (delta|flush)
+  "action" : (add|remove|update)
+  "data" : <json_string>
+
+
 
 brd:<boardId> [hash]
   "id" : <boardId>
   "userId" : <userId>
   "projectId" : <projectId>
   "name" : <boardName>
-  "data" : ??
+  "ind" : <lastInd>
+
+brd:<boardId>:<ind> [hash]
+  "type" : (delta|flush)
+  "action" : (add|remove|update)
+  "data" : <json_string>
 
 
 -----

@@ -3,6 +3,7 @@
 import re,cgi,cgitb,sys
 import os
 import urllib
+import datetime
 import Cookie
 import meowaux as mew
 cgitb.enable()
@@ -20,10 +21,23 @@ sessionId = cookie_hash["sessionId"]
 userData = mew.getUser( userId )
 userName = userData["userName"]
 
+
 r = mew.deactivateSession( userId, sessionId )
 
 cookie = Cookie.SimpleCookie()
 cookie["message"] = str(userName) + " logged out"
+
+expiration = datetime.datetime.now() + datetime.timedelta(days=-1)
+exp_str = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
+cookie["userId"] = cookie_hash["userId"]
+cookie["userId"]["expires"] = exp_str
+cookie["userId"]["path"] = "/"
+cookie["sessionId"] = cookie_hash["sessionId"]
+cookie["sessionId"]["expires"] = exp_str
+cookie["sessionId"]["path"] = "/"
+cookie["userName"] = cookie_hash["userName"]
+cookie["userName"]["expires"] = exp_str
+cookie["userName"]["path"] = "/"
 
 #print "Content-type: text/html; charset=utf-8;"
 print "Location:https://localhost/bleepsix/cgi/login"

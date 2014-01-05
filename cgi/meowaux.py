@@ -5,9 +5,17 @@ import sys
 import os
 import redis
 import hashlib
+import time
+import datetime
 import uuid
 
 ## -- file system and header (cookie) processing functions
+
+def log( s ):
+  f = open( "/tmp/meowaux.log", "a" )
+  f.write( str(s) + "\n" )
+  f.close()
+
 
 def slurp_file(fn):
   f = open(fn, "r")
@@ -213,6 +221,25 @@ def createPic( picId, userId, clientToken ):
 
 
 
+##  --- signup helper functions
 
+def addEmailSignup( emailAddress ):
+  db = redis.Redis()
+
+  emailId = str(uuid.uuid4())
+  db.sadd( "emailSignups", emailId )
+
+  em = {}
+  em["id"] = emailId
+  em["email"] = emailAddress
+  em["date"] = datetime.datetime.now()
+  em["timestamp"] = time.time()
+
+
+  r = db.hmset( "email:" + emailId, em )
+  if not r:
+    return r
+
+  return em
 
 

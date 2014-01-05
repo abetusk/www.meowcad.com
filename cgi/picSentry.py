@@ -47,21 +47,22 @@ if picDat["permission"] == "world-read":
 
 else:
 
-  f = open("/tmp/pic.log", "a")
+  ## DEBUG
+  #f = open("/tmp/pic.log", "a")
 
   if "sessionId" not in fields:
     error_and_quit()
   sessionId = fields["sessionId"].value
 
   ## DEBUG
-  f.write("sessionId: " + sessionId + "\n")
+  #f.write("sessionId: " + sessionId + "\n")
 
   if "userId" not in fields:
     error_and_quit()
   fieldUserId = fields["userId"].value
 
   ## DEBUG
-  f.write("field userId: " + fieldUserId + "\n")
+  #f.write("field userId: " + fieldUserId + "\n")
 
   if (len(sessionId) == 0) or (len(fieldUserId) == 0):
     error_and_quit()
@@ -78,18 +79,18 @@ else:
 
 
   ## DEBUG
-  f.write("db userId: " + userId + "\n")
-  f.write("db userName: " + userName + "\n")
-  f.write("hashed session id: " + hashedSessionId + "\n")
+  #f.write("db userId: " + userId + "\n")
+  #f.write("db userName: " + userName + "\n")
+  #f.write("hashed session id: " + hashedSessionId + "\n")
 
   if not db.sismember( "sesspool" , hashedSessionId ):
     error_and_quit()
 
   ## DEBUG
-  f.write("cp\n")
+  #f.write("cp\n")
 
   ## DEBUG
-  f.write("pic userid: " + picDat["userId"] + "\n");
+  #f.write("pic userid: " + picDat["userId"] + "\n");
 
   if picDat["userId"] != userId:
     error_and_quit()
@@ -100,12 +101,15 @@ else:
       print
       print pic_fd.read()
 
-    f.write("wrote png\n");
-    f.close()
-  except IOError as e:
-    f.write("IOError:" + str(e) );
+    ## DEBUG
+    #f.write("wrote png\n");
+    #f.close()
 
-    f.close()
+  except IOError as e:
+
+    ## DEBUG
+    #f.write("IOError:" + str(e) );
+    #f.close()
 
     error_and_quit()
 

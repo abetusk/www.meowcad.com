@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>MeowCAD Picture Server</title>
+    <title>MeowCAD Picture</title>
     <link href="css/cleanlooks.css" rel="stylesheet" type="text/css" />
 
     <link rel="shortcut icon" href="/simpleoutline.ico" />
@@ -149,14 +149,24 @@
         console.log("hanldPicReadyResponse:");
         console.log(data);
 
-        g_picId = data.picId;
+        message = data.message;
+        stat    = data.status;
+        type    = data.type;
 
-        console.log("picId:");
-        console.log(g_picId);
+        if ( stat == "success" )
+        {
+          g_picId = data.picId;
 
-        window.history.replaceState("", "", "/bleepsix/pic.html?id=" + g_picId);
+          console.log("picId:");
+          console.log(g_picId);
 
-        processPic();
+          window.history.replaceState("", "", "/bleepsix/pic.html?id=" + g_picId);
+          processPic();
+        }
+        else
+        {
+          setTimeout(  processHandoff(), 1000 );
+        }
       }
 
       function handlePicPermissionResponse( data )
@@ -275,6 +285,9 @@
 
         var img = document.createElement("img");
         img.src = "cgi/picSentry.py?id=" + picId + "&dummy=" + Math.floor((Math.random()*10000)+1);
+
+        img.width = 600;
+
         var div = document.getElementById("imgContainer");
         div.innerHTML = "";
         $("#imgContainer").append( img );
@@ -287,6 +300,9 @@
 
         var img = document.createElement("img");
         img.src = "cgi/picSentry.py?id=" + picId + "&userId=" + userId + "&sessionId=" + sessionId;
+
+        img.width = 600;
+
         var div = document.getElementById("imgContainer");
         div.innerHTML = "";
         $("#imgContainer").append( img );

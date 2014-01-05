@@ -88,19 +88,22 @@ a.pure-button-selected {
 .pure-button-lock-unselected {
   background-color: rgb(160, 160, 160); 
   color: #fff;
-  width: 64px;
+/*  width: 64px; */
+  width: 80px; 
 }
 
 .pure-button-lock {
   background-color: rgb(220, 112, 112); 
   color: #fff;
-  width: 64px;
+/*  width: 64px; */
+  width: 80px; 
 }
 
 .pure-button-unlock {
   background-color: rgb(112, 220, 112); 
   color: #fff;
-  width: 64px;
+/*  width: 64px; */
+  width: 80px; 
 }
 
 .pure-button-red {

@@ -69,6 +69,15 @@ brd:<boardId>:<ind> [hash]
   "data" : <json_string>
 
 
+emailSignups [set]
+  <emailId>
+
+email:<emailId>
+  "id" : <emailId>
+  "email" : <email>
+  "date" : <datetime>
+  "timestamp" : <secondsSinceEpoch>
+
 -----
 By convention, everything ending with "Id" is a uuid.
 

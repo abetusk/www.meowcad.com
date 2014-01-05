@@ -63,7 +63,7 @@ for projectDat in olioList:
         perm ]
         #projectDat["permission"] ]
   trs = "<tr> <td> "
-  tre = "</td> <td> <a href='manageproject.py?projectId=" + str(projectDat["id"])+ "'>Edit</a> </td> </tr>"
+  tre = "</td> <td> <a href='manageproject.py?projectId=" + str(projectDat["id"])+ "'>Manage</a> </td> </tr>"
   tableProjectHTML.append( trs  + "</td> <td>".join(x) + tre )
 
 hs = "<table class='pure-table pure-table-horizontal' width='100%'>"

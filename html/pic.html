@@ -291,6 +291,9 @@
         var div = document.getElementById("imgContainer");
         div.innerHTML = "";
         $("#imgContainer").append( img );
+
+        var dlButton = document.getElementById("downloadButton");
+        dlButton.style.display = '';
       }
 
       function fetchPrivatePic( picId, userId, sessionId )
@@ -306,6 +309,9 @@
         var div = document.getElementById("imgContainer");
         div.innerHTML = "";
         $("#imgContainer").append( img );
+
+        var dlButton = document.getElementById("downloadButton");
+        dlButton.style.display = '';
       }
 
       function dummy()
@@ -336,6 +342,22 @@
         console.log("??");
       }
 
+      function downloadPicture()
+      {
+
+        if (g_picId)
+        {
+          console.log("downloading!");
+          var ifrm = document.getElementById("downloadFrame");
+          ifrm.src = "cgi/bleepsixDownloadManager.py?id=" + g_picId + "&name=pic.png" ;
+        }
+        else
+        {
+          console.log("cannot download");
+        }
+
+      }
+
     </script>
 
 
@@ -355,9 +377,9 @@
 
       <div id='left'>
 
-        <div id='leftcontent'>
+        <div id='leftcontent' >
 
-          <img id='lockImage' src='img/background.png' height='42px' width='42px'></img>
+          <img id='lockImage' src='img/background.png' height='42px' width='42px' style='display:block; margin:auto;'></img>
           <br />
 
           <button id='lockButton' name='on' value='on' style='display:none;' class="pure-button pure-button-lock-unselected"
@@ -393,9 +415,26 @@
 
       <div id='maincontent'>
 
+        <iframe id='downloadFrame' style='display:none'>
+        </iframe>
+
         <div id='imgContainer'>
           Please wait while we fetch your picture...
         </div>
+
+        <div class='generic_button' id='downloadButtonContainer'>
+          <input 
+            id='downloadButton'
+            class='generic_button' 
+            type='image' 
+            src='img/download.png' 
+            style=' height:32px; width:32px; display:none;'
+            value='download' 
+            align='right'
+            onclick='downloadPicture();' 
+          />
+        </div>
+
       </div>
 
     </div>

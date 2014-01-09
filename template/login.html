@@ -96,9 +96,16 @@
             {
               successMessage("success!");
 
+
+              /*
               $.cookie("userId", dat.userId , { expires:365, path:'/', secure: true} );
               $.cookie("sessionId", dat.sessionId, {expires:365, path:'/', secure:true} );
               $.cookie("userName" , uname , {expires:365, path:'/', secure:true} );
+              */
+
+              $.cookie("userId", dat.userId , { path:'/', secure: true} );
+              $.cookie("sessionId", dat.sessionId, { path:'/', secure:true} );
+              $.cookie("userName" , uname , { path:'/', secure:true} );
 
               console.log("cookie: " + $.cookie("sessionToken") );
 

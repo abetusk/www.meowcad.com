@@ -169,7 +169,14 @@ def deleteProject( userId, projectId ):
   if proj["userId"] != str(userId):
     return None
 
-  return db.hset( "project:" + str(projectId), "active", "0" )
+  r = db.hset( "project:" + str(projectId), "active", "0" )
+  schId = proj["sch"]
+  brdId = proj["brd"]
+
+  r = db.hset( "sch:" + str(schId), "active", "0" )
+  r = db.hset( "brd:" + str(brdId), "active", "0" )
+
+  return r
 
 
 ## --- portfolio functions

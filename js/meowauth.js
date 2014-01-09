@@ -51,6 +51,63 @@ module.exports = {
 
   s4 : s4,
   guid : guid,
+
+  meow : function( m ) {
+    console.log("meow request (authenticated meow)");
+
+    var socket = m.socket;
+    var db = m.db;
+
+    var sessionId = m.data.sessionId;
+    var userId = m.data.userId;
+
+    if ( ( typeof sessionId === 'undefined' ) ||
+         ( typeof userId === 'undefined' ) )
+    {
+      console.log("cp0");
+      socket.emit("meow", { type: "response", status: "error", message: "no sessionId or userId" } );
+      return;
+    }
+
+    console.log("starting waterfall");
+
+    async.waterfall([
+        function(callback)
+        {
+          var sha512 = crypto.createHash('sha512');
+          var sessHash = sha512.update( userId + sessionId ).digest('hex');
+
+          console.log("sessHash: " + sessHash);
+
+          db.hgetall( "session:" + sessHash , callback );
+        },
+        function(d, callback)
+        {
+
+          console.log("got:");
+          console.log(d);
+
+          if ( (!d)  || (d.active != "1") )
+          {
+            console.log("cp1");
+            socket.emit("meow", { type: "response", status: "error", message: "authentication failure" } );
+            return;
+          }
+
+          console.log("emitting mew");
+
+          socket.emit("mew", { type: "response", status: "success", message: "mew" } );
+
+        }
+        ],
+        function(err, result)
+        {
+          console.log("meow (auth) error:");
+          console.log(err);
+          console.log(result);
+        }
+    );
+  },
   
   authRequest : function( m ) {
     console.log("auth request (" + m.transactionId + ")");
@@ -137,6 +194,56 @@ module.exports = {
       console.log(result);
     });
 
+  },
+
+  anonymous : function( m )
+  {
+    console.log("creating anonymous user and anonymous board and schematic");
+
+    var userId = guid();
+    var dummyPassHash = guid();
+    var sessionId = guid();
+    var projId = guid();
+    var schId = guid();
+    var brdId = guid();
+
+    var sha512 = crypto.createHash('sha512');
+    var sessHash = sha512.update( userId + sessionId ).digest('hex');
+
+    // create user, portoflio, project with a single sch and brd
+    //   create the sch meta data, the current snapshot and current (base) index
+    //   create the brd meta data, the current snapshot and current (base) index
+    //   create session and add it to the pool
+    // 
+
+    m.db.hmset( "user:" + userId, { id : userId, userName: "", passwordHash: dummyPassHash, type : "anonymous" });
+
+    m.db.rpush( "olio:" + userId, projId );
+    m.db.hmset( "project:" + projId, { id: projId, userId : userId, name:"", sch: schId, brd: brdId, permission:"user" });
+
+    m.db.hmset( "sch:" + schId, { id : schId, userId : userId, projectId : projId, name: "", ind : 0 });
+    m.db.hmset( "sch:" + schId + ":0", { data : "{ element:[] }" });
+    m.db.hmset( "sch:" + schId + ":snapshot", { data : "{ element:[] }" });
+
+    m.db.hmset( "brd:" + brdId, { id : brdId, userId : userId, projectId : projId, name: "", ind : 0 });
+    m.db.hmset( "brd:" + brdId + ":0", { data : "{ element:[] }" });
+    m.db.hmset( "brd:" + brdId + ":snapshot", { data : "{ element:[] }" });
+
+    m.db.hmset( "session:" + sessHash, { id : sessHash, userId : userId, active : 1 } );
+    m.db.sadd( "sesspool", sessHash );
+
+    console.log("anonymous userId: " + userId + ", sessionId: " + sessionId + ", sessHash: " + sessHash );
+    console.log("  projectId: " + projId + ", schId: " + schId + ", brdId:" + brdId );
+
+    m.socket.emit("anonymous", { 
+      type:"response", 
+      status:"success", 
+      message:"anonymous user created", 
+      userId: userId, 
+      sessionId: sessionId,
+      projId: projId,
+      schId: schId,
+      brdId: brdId });
   }
 
 };

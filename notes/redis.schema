@@ -3,7 +3,8 @@ sesspool [set]
 
 session:<hashedSessionId> [hash]
   "id": <hashedSessionId>
-  "user": <userId>
+  "userId": <userId>
+  "active" : ("0"|"1")
 
 
 pic:<id> [hash]
@@ -22,6 +23,7 @@ user:<id> [hash]
   "id" : <userId>
   "userName" : <userName>
   "passwordHash" : <passwordHashId>
+  "type" : ("anonymous"|"user")
 
 
 username:<username> [hash]
@@ -48,6 +50,10 @@ sch:<schematicId> [hash]
   "projectId" : <projectId>
   "name" : <schematicName>
   "ind" : <lastInd>
+
+sch:<schematicId>:snapshot [hash]
+  "data": <schematicData>
+
 
 sch:<schematicId>:<ind> [hash]
   "type" : (delta|flush)

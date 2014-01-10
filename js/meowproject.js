@@ -231,9 +231,31 @@ module.exports = {
       function( d, callback )
       {
 
+        m.transportData = { sch : d };
+
+        m.db.hgetall( "project:" + d.projectId, callback );
+      },
+      fValidateItem( m ),
+      function( d, callback )
+      {
         console.log("ok!");
 
-        m.socket.emit("schauth", { type:"response", status:"success", message:"ok!", ind: d.ind, schematicId: d.id  });
+
+        console.log(d);
+
+        m.socket.emit("schauth", 
+          { type:"response", 
+            status:"success", 
+            message:"ok!", 
+            ind: m.transportData.sch.ind, 
+            schematicId: m.transportData.sch.id , 
+            schematicName : m.transportData.sch.name  ,
+            projectId : d.id,
+            projectName : d.name
+            //ind: d.ind, 
+            //schematicId: d.id , 
+            //schematicName : d.name  
+          });
       }
       ],
       function( err, result) {

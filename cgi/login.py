@@ -10,6 +10,18 @@ cgitb.enable()
 
 cookie = Cookie.SimpleCookie()
 
+cookie_hash = mew.getCookieHash( os.environ )
+
+if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash) and
+      mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) ):
+
+  cookie["message"] = "Already logged in"
+  print "Location:https://localhost/bleepsix/cgi/portfolio"
+  print cookie.output()
+  print
+  sys.exit(0)
+
+
 msg = ""
 
 cookie_hash = mew.getCookieHash( os.environ )

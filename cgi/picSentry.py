@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import re
+import os
 import cgi
 import cgitb
 import sys
@@ -15,13 +16,28 @@ cgitb.enable();
 #FILEBASE = "/tmp/pic"
 FILEBASE = "/tmp/stage"
 
+g_debug = False
+def log_line( l ):
+  logf = open("/tmp/picsentry.log", "a")
+  logf.write( l  + "\n")
+  logf.close()
+
+
 def error_and_quit():
+
+  if g_debug:
+    log_line("error, quitting")
+
   print "Status: 404 Not Found"
   print
   sys.exit(0)
 
 fields = cgi.FieldStorage()
 if "id" not in fields:
+
+  if g_debug:
+    log_line("no id")
+
   error_and_quit()
 
 fileId = fields["id"].value
@@ -31,44 +47,57 @@ db = redis.Redis()
 picDat = db.hgetall("pic:" + fileId)
 
 if ("id" not in picDat) or ("permission" not in picDat):
+  if g_debug:
+    log_line("no id or permission in picDat")
+
   error_and_quit()
 
 # If it's world readable, don't botehr looking up permissions,
 # just display it
 #
 if picDat["permission"] == "world-read":
+
   try:
     with open( FILEBASE + "/" + fileId ) as f:
       print "Content-Type: image/png"
       print
       print f.read()
-  except IOError:
+  except IOError, e:
+
+    if g_debug:
+      s_e = str(e)
+      log_line("ioerror (1) when trying to read " + fileId + " '" + s_e + "'"  )
+
     error_and_quit()
 
 else:
 
-  ## DEBUG
-  #f = open("/tmp/pic.log", "a")
-
   if "sessionId" not in fields:
+    if g_debug:
+      log_line("no session id")
     error_and_quit()
+
   sessionId = fields["sessionId"].value
 
-  ## DEBUG
-  #f.write("sessionId: " + sessionId + "\n")
-
   if "userId" not in fields:
+
+    if g_debug:
+      log_line("no user id")
+
     error_and_quit()
   fieldUserId = fields["userId"].value
 
-  ## DEBUG
-  #f.write("field userId: " + fieldUserId + "\n")
-
   if (len(sessionId) == 0) or (len(fieldUserId) == 0):
+    if g_debug:
+      log_line("length 0 for sessionId or fieldUserId")
+
     error_and_quit()
 
   userDat = db.hgetall("user:" + fieldUserId)
   if "id" not in userDat:
+    if g_debug:
+      log_line("no id in userDat")
+
     error_and_quit()
 
   userId = userDat["id"]
@@ -77,39 +106,36 @@ else:
 
   hashedSessionId = hashlib.sha512( userId + sessionId ).hexdigest()
 
-
-  ## DEBUG
-  #f.write("db userId: " + userId + "\n")
-  #f.write("db userName: " + userName + "\n")
-  #f.write("hashed session id: " + hashedSessionId + "\n")
-
   if not db.sismember( "sesspool" , hashedSessionId ):
+    if g_debug:
+      log_line("session not in sesspool")
+
     error_and_quit()
 
-  ## DEBUG
-  #f.write("cp\n")
-
-  ## DEBUG
-  #f.write("pic userid: " + picDat["userId"] + "\n");
-
   if picDat["userId"] != userId:
+    if g_debug:
+      log_line("picDat user id != userId")
+
     error_and_quit()
 
   try:
-    with open( FILEBASE + "/" + fileId ) as pic_fd:
-      print "Content-Type: image/png"
-      print
-      print pic_fd.read()
+    fn = FILEBASE + "/" + fileId
+    with open( fn ) as pic_fd:
+      d = pic_fd.read()
 
-    ## DEBUG
-    #f.write("wrote png\n");
-    #f.close()
+    print "Content-Type: image/png"
+    print
+    print d
 
   except IOError as e:
 
     ## DEBUG
     #f.write("IOError:" + str(e) );
     #f.close()
+    if g_debug:
+      s_e = str(e)
+      log_line("error opening file (2) " + fileId + ", got '" + s_e + "'")
+
 
     error_and_quit()
 

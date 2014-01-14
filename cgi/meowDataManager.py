@@ -8,11 +8,18 @@ import json
 import uuid
 import meowaux as mew
 import subprocess as sp
+from time import sleep
 
 cgitb.enable();
 
 jsonsch_exec = "/tmp/pykicad/jsonsch.py"
 staging_base = "/tmp/stage"
+
+def log_line( l ):
+  logf = open("/tmp/meowdm.log", "a")
+  logf.write( l  + "\n")
+  logf.close()
+
 
 def error_and_quit(err, notes):
   print "Content-Type: application/json"
@@ -71,7 +78,11 @@ def makePNG( json_message ):
     convert = sp.Popen( [ "convert", "-", "-flatten", "-crop", "900x525+50+50", png_fn ], \
         stdin = base64.stdout, stdout = sp.PIPE )
 
-    ## it's created, update database
+    if convert.wait() is None:
+      error_and_quit( "Popen wait failed", png_fn )
+
+    # it's created, update database
+    #
     mew.createPic( png_uid, json_message["userId"], json_message["clientToken"] )
 
   except Exception as e:

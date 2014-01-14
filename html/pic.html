@@ -370,6 +370,8 @@
     <div id="header">
       <img src='img/kitty_head_black_outline_p32.png' style='width:32px; height:32px; float:left; '></img>
       <h1> &nbsp; <a href='http://www.meowcad.com'>meowCAD</a> </h1>
+
+
       <br />
       <hr />
     </div> <!-- end header -->
@@ -380,23 +382,58 @@
 
         <div id='leftcontent' >
 
-          <img id='lockImage' src='img/background.png' height='42px' width='42px' style='display:block; margin:auto;'></img>
+          <img  
+            id='lockImage' 
+            src='img/background.png' 
+            height='42px' 
+            width='42px' 
+            style='display:block; margin:auto;'>
+          </img>
+
           <br />
 
-          <button id='lockButton' name='on' value='on' style='display:none;' class="pure-button pure-button-lock-unselected"
+          <button 
+            id='lockButton' 
+            name='on' 
+            value='on' 
+            style='display:none;' 
+            class="pure-button pure-button-lock-unselected"
             onclick='sendLockMessage();' >
             Lock
           </button>
+
           <br />
 
-          <button id='unlockButton' name='off' value='off' style='display:none;' class='pure-button pure-button-lock-unselected'
+          <button 
+            id='unlockButton' 
+            name='off' 
+            value='off' 
+            style='display:none;' 
+            class='pure-button pure-button-lock-unselected'
             onclick='sendUnlockMessage();' >
             Unlock</button>
           <br />
 
-            <div id='lockedMessage' style='display:none;' >fetching...</div>
+          <div id='lockedMessage' style='display:none;' >fetching...</div>
+
+          <br />
+          <br />
           <br />
 
+          <div 
+            class='generic_button' 
+            id='downloadButtonContainer' 
+            style=' margin:auto; width:32px; height:32px; ' >
+            <input 
+              id='downloadButton'
+              class='generic_button' 
+              type='image' 
+              src='img/download.png' 
+              style=' height:32px; width:32px; display:none; margin:auto;'
+              value='download' 
+              onclick='downloadPicture();' 
+            />
+          </div>
           <!--
           <button id='dummy'  class='pure-button pure-button-lock-unselected'
             onclick='dummy();' >
@@ -419,11 +456,10 @@
         <iframe id='downloadFrame' style='display:none'>
         </iframe>
 
-        <div id='imgContainer'>
-          Please wait while we fetch your picture...
-        </div>
 
-        <div class='generic_button' id='downloadButtonContainer'>
+        <!--
+        <div class='generic_button' id='downloadButtonContainer' 
+          style='margin: 0 auto; width:0%; ' >
           <input 
             id='downloadButton'
             class='generic_button' 
@@ -431,9 +467,14 @@
             src='img/download.png' 
             style=' height:32px; width:32px; display:none;'
             value='download' 
-            align='right'
             onclick='downloadPicture();' 
           />
+        </div>
+        -->
+
+
+        <div id='imgContainer'>
+          Please wait while we fetch your picture...
         </div>
 
       </div>

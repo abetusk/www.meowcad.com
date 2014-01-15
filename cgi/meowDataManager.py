@@ -32,8 +32,10 @@ def error_and_quit(err, notes):
   sys.exit(0)
 
 def dumpToFile( data ):
+
   u_id = uuid.uuid4()
   fn = staging_base + "/" + str(u_id)
+
   f = open( fn, "w" )
   #f.write( json.dumps(json_message["data"], indent=2) )
   f.write( data )
@@ -95,7 +97,6 @@ try:
   json_container = json.load(sys.stdin);
 except Exception as e:
   error_and_quit(e)
-
 
 if ( ( "userId" not in json_container ) or
      ( "sessionId" not in json_container ) or

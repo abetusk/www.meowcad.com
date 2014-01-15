@@ -8,6 +8,8 @@ import hashlib
 import time
 import datetime
 import uuid
+import json
+import random
 
 ## -- file system and header (cookie) processing functions
 
@@ -35,7 +37,27 @@ def getCookieHash( environ ):
 
   return cookie_hash
 
+## -- json dictionary
+
+def randomName( fn, n ):
+
+  json_data = open(fn)
+  data = json.load(json_data)
+  json_data.close()
+
+  s = ""
+  for i in range(n):
+    if i>0:
+      s += " "
+    k = random.randrange( len(data["word"]) )
+    s += data["word"][k]
+
+  return s
+
+
 ## --- html helper functions
+
+
 
 def userIndicatorString( userId, userName ):
   userIndicator = "<b><a href='usersettings' >" # ?userId=" + str(userId) + "'> "
@@ -117,12 +139,18 @@ def setUserPassword( userId, password ):
 def createProject( userId, projectName, permission ):
   db = redis.Redis()
 
+  projId = str(uuid.uuid4())
+  schId = str(uuid.uuid4())
+  brdId = str(uuid.uuid4())
+
+  db.rpush( "olio:" + str(userId), projId )
+
   proj = {}
-  proj["id"] = str(uuid.uuid4())
+  proj["id"] = projId
   proj["userId"] = str(userId)
   proj["name"] = str(projectName)
-  proj["sch"] = "default"
-  proj["brd"] = "default"
+  proj["sch"] = schId
+  proj["brd"] = brdId
   proj["active"] = "1"
   if str(permission) == "world-read":
     proj["permission"] = "world-read"
@@ -131,8 +159,32 @@ def createProject( userId, projectName, permission ):
   if not db.hmset( "project:" + proj["id"], proj ):
     return None
 
-  db.rpush( "olio:" + str(userId), proj["id"] )
-  
+  sch = {}
+  sch["id"] = schId
+  sch["userId"] = str(userId)
+  sch["projectId"] = projId
+  sch["name"] = randomName( "./american-english.json", 3 )
+  sch["active"] = 1
+  sch["permission"] = proj["permission"]
+  db.hmset("sch:" + schId, sch )
+
+  schData = "{ \"element\" : [] }"
+  db.hmset("sch:" + schId + ":0", { "data" : schData } )
+  db.hmset("sch:" + schId + ":snapshot", { "data" : schData } )
+
+  brd = {}
+  brd["id"] = brdId
+  brd["userId"] = str(userId)
+  brd["projectId"] = projId
+  brd["name"] = randomName( "./american-english.json", 3 )
+  brd["active"] = 1
+  brd["permission"] = proj["permission"]
+  db.hmset("brd:" + brdId, brd )
+
+  brdData = "{ \"element\" : [] }"
+  db.hmset("brd:" + brdId + ":0", { "data" : brdData } )
+  db.hmset("brd:" + brdId + ":snapshot", { "data" : brdData } )
+
   return proj
 
 def updateProjectPermission( userId, projectId, perm ):

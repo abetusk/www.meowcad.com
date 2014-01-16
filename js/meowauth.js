@@ -131,7 +131,13 @@ module.exports = {
         if (!d)
         {
           console.log("fail (1)!");
-          socket.emit("auth", { type:"response", status: "error", message:"authentication failed" }) ;
+
+          setTimeout(
+            function() {
+              socket.emit("auth", { type:"response", status: "error", message:"authentication failed" });
+            },
+            1000
+            );
           return ;
         }
 
@@ -154,7 +160,12 @@ module.exports = {
         if (!d)
         {
           console.log("fail (2)!");
-          socket.emit("auth", { type:"response", status: "error", message:"authentication failed" }) ;
+          setTimeout(
+              function() {
+                socket.emit("auth", { type:"response", status: "error", message:"authentication failed" }) ;
+              },
+            1000
+            );
           return ;
         }
 
@@ -184,7 +195,12 @@ module.exports = {
         else 
         {
           console.log("fail!");
-          socket.emit("auth", { type:"response", status: "error", message:"authentication failed" }) ;
+          setTimeout(
+            function() {
+              socket.emit("auth", { type:"response", status: "error", message:"authentication failed" }) ;
+            },
+            1000
+            );
           return;
         }
       }

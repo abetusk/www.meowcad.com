@@ -23,7 +23,6 @@ us an email at info@meowcad.com or try again later! \
 </p>"
 
 msg = errorMessage
-resultLocation = "https://localhost/bleepsix/signupemailfail.html"
 
 cookie = Cookie.SimpleCookie()
 
@@ -32,18 +31,18 @@ form = cgi.FieldStorage()
 if "email" in form:
   email = form["email"].value
   msg = successMessage;
-  resultLocation = "https://localhost/bleepsix/signupemailsuccess.html"
 
-  em = mew.addEmailSignup( email )
 
-print "Location:" + resultLocation
+em = mew.addEmailSignup( email )
+
+
+template = mew.slurp_file("../template/signupresponse.html")
+tmp_str = template.replace("<!--RESPONSE-->", msg )
+
+
+print "Content-type: text/html; charset=utf-8;"
 print
+print tmp_str
 
-
-#template = mew.slurp_file("../template/signupresponse.html")
-#tmp_str = template.replace("<!--RESPONSE-->", msg )
-#print "Content-type: text/html; charset=utf-8;"
-#print
-#print tmp_str
 
 

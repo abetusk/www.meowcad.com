@@ -16,6 +16,7 @@ if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash) and
       mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) ):
 
   cookie["message"] = "Already logged in"
+  cookie["messageType"] = "status"
   print "Location:https://localhost/bleepsix/cgi/portfolio"
   print cookie.output()
   print

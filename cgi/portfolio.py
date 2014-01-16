@@ -77,11 +77,14 @@ tmp_str = template.replace("<!--USER-->", userName )
 tmp_str = tmp_str.replace( "<!--PROJECTS-->", hs + "\n".join(tableProjectHTML) + he )
 tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("../template/left_template.html") )
 tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", mew.userIndicatorString( userId, userName ) )
+tmp_str = tmp_str.replace( "<!--HEADING-->", mew.message("&nbsp; &nbsp;") )
 
 if messageType == "error":
   tmp_str = tmp_str.replace( "<!--MESSAGE-->", mew.errorMessage( message ) )
 elif messageType == "success":
   tmp_str = tmp_str.replace( "<!--MESSAGE-->", mew.successMessage( message ) )
+elif messageType == "status":
+  tmp_str = tmp_str.replace( "<!--MESSAGE-->", mew.statusMessage( message ) )
 else:
   tmp_str = tmp_str.replace( "<!--MESSAGE-->", mew.message( message ) )
 

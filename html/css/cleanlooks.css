@@ -284,12 +284,14 @@ h3 {
   text-align:center; 
   vertical-align:middle; 
   display:table-cell; 
-  width:150px;
+  width:350px;
 }
 
 .status-message {
   /* background:rgb(220,160,90);  */
-  background: #ff851b;
+  /* background: #ff851b; */ /* orange */
+  /* background: #b10dc9;  */ /* purple */
+  background: #aaaaaa;  /* silver */
 
   color:#fff; 
   height:30px; 

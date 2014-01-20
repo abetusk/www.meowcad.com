@@ -128,6 +128,27 @@ def deactivateSession( userId, sessionId ):
   return 1
 
 
+def feedback( userId, feedback ):
+  db = redis.Redis()
+
+  user = getUser( userId )
+  if ("id" not in user) or (user["active"] != "1"):
+    return False
+
+  feedbackId = str(uuid.uuid4())
+
+  ts = time.time()
+  obj = {}
+  obj["id"] = feedbackId
+  obj["text"] = str(feedback)
+  obj["userId"] = str(userId)
+  obj["stime"] = ts
+  obj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+  db.hmset( "feedback:" + feedbackId, obj )
+
+  db.sadd( "feedbackpool", feedbackId )
+
+  return True
 
 ## --- user functions
 
@@ -151,16 +172,42 @@ def createUser( userName, password ):
   usernameObj["username"] = str(userName)
   r = db.hmset( "username:" + str(userName), usernameObj );
 
+  ts = time.time()
   user = {}
   user["id"] = userId
   user["passwordHash"] = str(hashPassword)
   user["active"] = 1
   user["userName"] = str(userName)
   user["type"] = "user"
+  user["stime"] = ts
+  user["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
   r = db.hmset( "user:" + userId, user );
+
+  db.sadd( "userpool", userId )
 
   return user
 
+def getUserName( userName ):
+  db = redis.Redis()
+  return db.hgetall( "username:" + str(userName) )
+
+def userExists( userId ):
+  db = redis.Redis()
+
+  r = db.hgetall( "user:" + str(userId) )
+  if r is None:
+    return False
+
+  if ("active" in r) and (r["active"] == "1"):
+    return True
+
+  return False
+
+def deactivateUser( userId ):
+  db = redis.Redis()
+  return db.hset( "user:" + str(userId) , "active","0" )
+
+  
 
 ## --- project functions
 
@@ -178,6 +225,7 @@ def createProject( userId, projectName, permission ):
 
   db.rpush( "olio:" + str(userId), projId )
 
+  ts = time.time()
   proj = {}
   proj["id"] = projId
   proj["userId"] = str(userId)
@@ -185,6 +233,8 @@ def createProject( userId, projectName, permission ):
   proj["sch"] = schId
   proj["brd"] = brdId
   proj["active"] = "1"
+  proj["stime"] = ts
+  proj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
   if str(permission) == "world-read":
     proj["permission"] = "world-read"
   else:
@@ -198,6 +248,7 @@ def createProject( userId, projectName, permission ):
   sch["projectId"] = projId
   sch["name"] = randomName( "./american-english.json", 3 )
   sch["active"] = 1
+  sch["ind"] = 0
   sch["permission"] = proj["permission"]
   db.hmset("sch:" + schId, sch )
 
@@ -211,12 +262,15 @@ def createProject( userId, projectName, permission ):
   brd["projectId"] = projId
   brd["name"] = randomName( "./american-english.json", 3 )
   brd["active"] = 1
+  brd["ind"] = 0
   brd["permission"] = proj["permission"]
   db.hmset("brd:" + brdId, brd )
 
   brdData = "{ \"element\" : [] }"
   db.hmset("brd:" + brdId + ":0", { "data" : brdData } )
   db.hmset("brd:" + brdId + ":snapshot", { "data" : brdData } )
+
+  db.sadd( "projectpool", projId )
 
   return proj
 
@@ -291,6 +345,22 @@ def getPortfolio( userId ):
   db = redis.Redis()
   return db.lrange( "olio:" + str(userId), 0, -1 )
 
+def getAllProjects( ):
+  db = redis.Redis()
+
+  pool = db.smembers( "projectpool" )
+
+  projects = []
+
+  for projId in pool:
+    proj = db.hgetall( "project:" + projId )
+    if proj and proj["active"] == "1" and proj["permission"] == "world-read":
+      projects.append(proj)
+
+  return projects
+
+
+
 def getPortfolios( userId ):
   db = redis.Redis()
 
@@ -320,12 +390,15 @@ def createPic( picId, userId, clientToken ):
   if (user["type"] == "anonymous"):
     picPermission = "world-read"
 
+  ts = time.time()
+
   pic = {}
   pic["id"] = str(picId)
   pic["userId"] = str(userId)
   pic["permission"] = picPermission
   pic["clientToken"] = str(clientToken)
-
+  pic["stime"] = ts
+  pic["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
   db.hmset( "pic:" + str(picId), pic )
 
   msg = {}
@@ -333,6 +406,8 @@ def createPic( picId, userId, clientToken ):
   msg["message"] = str(picId)
   msg["type"] = "picCreate"
   db.hmset( "message:" + str(clientToken), msg )
+
+  db.sadd( "picpool", str(picId) )
 
   return pic
 

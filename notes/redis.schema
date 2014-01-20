@@ -1,6 +1,26 @@
 sesspool [set]
   <hashedSessionId> 
 
+userpool [set]
+  <userId>
+
+projectpool [set]
+  <projectId>
+
+picpool [set]
+  <picId>
+
+feedbackpool [set]
+  <feedbackId>
+
+feedback:<feedbackId> [hash]
+  "id" : <feedbackId>
+  "userId": <userId>
+  "stime" : <seconds>
+  "timestamp" : <datetime>
+  "text" : <feedbacText>
+
+
 session:<hashedSessionId> [hash]
   "id": <hashedSessionId>
   "userId": <userId>
@@ -42,6 +62,9 @@ project:<projectId> [hash]
   "sch" : <schematicId>
   "brd" : <boardId>
   "permission" : ("world-read"|"user")
+  "active" : ("0"|"1")
+  "stime" : <seconds>
+  "timestamp" : <datetime>
 
 projectrecent:<userId>
   "project" : <projectId>

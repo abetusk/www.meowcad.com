@@ -10,17 +10,24 @@ import meowaux as mew
 import subprocess as sp
 from time import sleep
 
+### DEBUG
+#print "Content-Type: application/json; charset=utf-8"
+
 cgitb.enable();
 
 jsonsch_exec = "/tmp/pykicad/jsonsch.py"
 staging_base = "/tmp/stage"
 
+##########################
+#
 def log_line( l ):
   logf = open("/tmp/meowdm.log", "a")
   logf.write( l  + "\n")
   logf.close()
 
 
+##########################
+#
 def error_and_quit(err, notes):
   print "Content-Type: application/json"
   print
@@ -31,19 +38,23 @@ def error_and_quit(err, notes):
   print json.dumps(ret_obj)
   sys.exit(0)
 
+
+##########################
+#
 def dumpToFile( data ):
 
   u_id = uuid.uuid4()
   fn = staging_base + "/" + str(u_id)
 
   f = open( fn, "w" )
-  #f.write( json.dumps(json_message["data"], indent=2) )
   f.write( data )
   f.close()
 
   return u_id, fn
 
 
+##########################
+#
 def makeKiCADSchematic( json_message ):
   u_id, sch_json_fn = dumpToFile( json.dumps(json_message["data"], indent=2) )
 
@@ -56,11 +67,17 @@ def makeKiCADSchematic( json_message ):
   obj = { "type" : "id", "id" : str(u_id), "notes" : "KiCAD Schematic File ID"  }
   return obj
 
+
+##########################
+#
 def makeJSONSchematic( json_message ):
   u_id, sch_json_fn = dumpToFile( json.dumps(json_message["data"], indent=2) )
   obj = { "type" : "id", "id" : str(u_id), "notes" : "JSON KiCAD Schematic File ID"  }
   return obj
 
+
+##########################
+#
 def makePNG( json_message ):
   u_id, fn = dumpToFile( str(json_message["data"]) )
 
@@ -93,6 +110,62 @@ def makePNG( json_message ):
   obj = { "type" : "id", "id" : str(png_uid), "notes" : "PNG file id" }
   return obj
 
+
+##########################
+#
+def startupProject( json_message ):
+  userId = json_message["userId"]
+
+  # find the most recent project worked on
+  #
+  recentProj = mew.getProjectRecent( userId )
+  if "project" in recentProj :
+    proj = mew.getProject( recentProj["project"] )
+    if ( ("project" in proj) and ("sch" in proj) and ("brd" in proj) ):
+      obj = {}
+      obj["type"]         = "success"
+      obj["notes"]        = "recent project"
+      obj["projectId"]    = proj["project"]
+      obj["schematicId"]  = proj["sch"]
+      obj["boardId"]      = proj["brd"]
+      return obj
+
+  # otherwise get the first valid project in the portfolio
+  #
+  olio = mew.getPortfolios( userId )
+  if len(olio) > 0:
+    obj = {}
+    obj["type"]         = "success"
+    obj["notes"]        = "first in portfolio"
+    obj["projectId"]    = olio[0]["id"]
+    obj["schematicId"]  = olio[0]["sch"]
+    obj["boardId"]      = olio[0]["brd"]
+    return obj
+
+#  obj = {} 
+#  obj["type"]           = "error"
+#  obj["notes"]          = "testing"
+#  return obj
+#
+
+  # otherwise create a new project
+  proj = mew.createProject( userId, mew.randomName( "./american-english.json", 2 ), "user" )
+
+  obj = {} 
+  obj["type"]           = "success"
+  obj["notes"]          = "could not find recent project or a project in the portfolio"
+  obj["projectId"]      = proj["id"]
+  obj["schematicId"]    = proj["sch"]
+  obj["boardId"]        = proj["brd"]
+
+  return obj
+
+
+##########################
+#
+#  Main dispatch
+#
+
 try:
   json_container = json.load(sys.stdin);
 except Exception as e:
@@ -119,6 +192,8 @@ elif msg_type == "createJSONSchematic":
   obj = makeJSONSchematic( json_container )
 elif msg_type == "createPNG":
   obj = makePNG( json_container );
+elif msg_type == "startupProject":
+  obj = startupProject( json_container )
 
 s = "nothing"
 args = cgi.FieldStorage()

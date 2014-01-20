@@ -1,0 +1,31 @@
+Policy when loading schematics.
+
+If the user session is valid:
+  if there is a schematic id in the url:
+    if it's valid, use it
+    if      it's invalid, use cookie recentSchematicId
+    else if there's a valid schematic in the 'projectrecent' table, use it
+    else if there's a valid schematic in the portfolio, use the first
+    else create a new one and use it
+
+  else if the cookie recentSchematicId is valid, use it
+  else if there's a valid schematic in the 'projectrecent' table, use it
+  else if there is a valid schematic in the portfolio, use the first
+  else create a new one and use it
+
+else (user session is invalid or non existent):
+  create an anonymous user with a new schematic and project (and session)
+
+
+Normal usage should be: click on a schemaatic link, see it in the url, use it
+as normal if you're logged in.  User session is persistent until browser quit.
+
+If you're not logged in and just browsing, then you'll be given an anonymous
+account to play around with.  Anonymous user session is persistent for a year.
+
+In the corner cases where you're trying to access the schematic editor without
+valid information, it takes a 'best effort' approach of trying to load the
+schematic that seemed most natural to me.  This is bound to produce some
+unexpected behavior, so maybe it's better to just give an error and let the
+user know.
+

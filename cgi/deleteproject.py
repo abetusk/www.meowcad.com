@@ -43,7 +43,7 @@ proj = mew.getProject( projectId )
 r = mew.deleteProject( userId, projectId ) 
 
 if r is None:
-  cookie["message"] = "Error occursd"
+  cookie["message"] = "Error occured"
   cookie["messageType"] = "error"
   print "Location:https://localhost/bleepsix/cgi/manageproject?projectId=" + str(projectId)
   print cookie.output()

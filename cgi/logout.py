@@ -39,7 +39,9 @@ cookie["userName"] = cookie_hash["userName"]
 cookie["userName"]["expires"] = exp_str
 cookie["userName"]["path"] = "/"
 
-#print "Content-type: text/html; charset=utf-8;"
+## DEBUG
+print "Content-type: text/html; charset=utf-8;"
+
 print "Location:https://localhost/bleepsix/cgi/login"
 print cookie.output()
 print

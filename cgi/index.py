@@ -22,12 +22,24 @@ if "message" in cookie_hash:
   cookie["message"] = ""
   cookie["message"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
 
-template = mew.slurp_file("../template/landing.html")
+loggedInFlag = False
+if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
+     (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) != 0) ):
+  loggedInFlag = True
 
+
+template = mew.slurp_file("../template/landing.html")
 if len(msg) > 0:
   tmp_str = template.replace("<!--MESSAGE-->", mew.nominalMessage(msg) )
 else:
   tmp_str = template.replace("<!--MESSAGE-->", mew.message("") )
+
+if loggedInFlag:
+  userData = mew.getUser( cookie_hash["userId"] )
+  userName = userData["userName"]
+  tmp_str = tmp_str.replace("<!--USERINDICATOR-->", mew.userIndicatorString( cookie_hash["userId"], userName ) )
+else:
+  tmp_str = tmp_str.replace("<!--USERINDICATOR-->", "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href='signup'>Signup</a>")
 
 print "Content-type: text/html; charset=utf-8;"
 print cookie.output()

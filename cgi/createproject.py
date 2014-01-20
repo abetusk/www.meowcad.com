@@ -44,7 +44,7 @@ userName = userData["userName"]
 
 proj = mew.createProject( userId, projectName, permission )
 if proj is None:
-  cookie["message"] = "Error occursd"
+  cookie["message"] = "Error occured"
   cookie["messageType"] = "error"
   print "Location:https://localhost/bleepsix/cgi/newproject"
   print cookie.output()

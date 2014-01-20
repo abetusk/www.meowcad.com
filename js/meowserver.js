@@ -39,8 +39,8 @@ io.sockets.on('connection', function (socket) {
     auth.meow( _makeData( transactionId, socket, db, data ) );
   });
 
-  socket.on("anonymous", function(data) { 
-    auth.anonymous( _makeData( transactionId, socket, db, data ) );
+  socket.on("anonymouscreate", function(data) { 
+    auth.anonymousCreate( _makeData( transactionId, socket, db, data ) );
   });
 
 

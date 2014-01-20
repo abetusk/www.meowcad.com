@@ -378,6 +378,22 @@ module.exports = {
           socket.emit("picaccess", { type:"response", status: "error", message: "access denied (1)" });
           return;
         }
+        
+        db.hgetall( "user:" + userId , callback );
+      },
+      function(d, callback) {
+
+        if ( (!d) || (d.active != "1") )
+        {
+          socket.emit("picaccess", { type:"response", status: "error", message: "access denied (1.5)" });
+          return;
+        }
+
+        if (d.type == "anonymous")
+        {
+          socket.emit("picaccess", { type:"response", status: "error", message: "anonymous users cannot change permissions" });
+          return;
+        }
 
         db.hgetall( "pic:" + picId, callback );
       },

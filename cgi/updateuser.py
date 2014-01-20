@@ -61,7 +61,7 @@ if passHash != userData["passwordHash"]:
 
 password = form["password"].value
 if mew.setUserPassword( userId, password ):
-  cookie["message"] = "Error occursd"
+  cookie["message"] = "Error occured"
   cookie["messageType"] = "error"
 else:
   cookie["message"] = "Password updated"

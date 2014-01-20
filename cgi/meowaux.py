@@ -92,15 +92,22 @@ def authenticateSession( userId, sessionId ):
 
   hashSessionId = hashlib.sha512( str(userId) + str(sessionId) ).hexdigest()
 
+  #print "hashsession:"
+  #print hashSessionId
+
   if not db.sismember( "sesspool", hashSessionId ):
     return 0
 
   sessionDat = db.hgetall( "session:" + str(hashSessionId) )
   userDat = db.hgetall( "user:" + str(userId) )
 
+  #print sessionDat
+  #print userDat
+
   if ( ("userName" not in userDat) or
        ("userId" not in sessionDat) or
-      (sessionDat["userId"] != userId) ):
+      (sessionDat["userId"] != userId) or
+      (sessionDat["active"] != "1") ):
     return 0;
 
   return 1
@@ -133,6 +140,27 @@ def setUserPassword( userId, password ):
   hashPassword = hashlib.sha512( str(userId) + str(password) ).hexdigest()
   return db.hset( "user:" + str(userId), "passwordHash", hashPassword )
 
+def createUser( userName, password ):
+  db = redis.Redis()
+
+  userId = str( uuid.uuid4() )
+  hashPassword = hashlib.sha512( str(userId) + str(password) ).hexdigest()
+
+  usernameObj = {}
+  usernameObj["id"] = userId
+  usernameObj["username"] = str(userName)
+  r = db.hmset( "username:" + str(userName), usernameObj );
+
+  user = {}
+  user["id"] = userId
+  user["passwordHash"] = str(hashPassword)
+  user["active"] = 1
+  user["userName"] = str(userName)
+  user["type"] = "user"
+  r = db.hmset( "user:" + userId, user );
+
+  return user
+
 
 ## --- project functions
 
@@ -142,6 +170,11 @@ def createProject( userId, projectName, permission ):
   projId = str(uuid.uuid4())
   schId = str(uuid.uuid4())
   brdId = str(uuid.uuid4())
+
+  userData = db.hgetall( "user:" + str(userId) )
+  if ( (not userData) or  (userData["type"] == "anonymous") ):
+    return None
+
 
   db.rpush( "olio:" + str(userId), projId )
 
@@ -231,8 +264,28 @@ def deleteProject( userId, projectId ):
   return r
 
 
-## --- portfolio functions
+def getProjectRecent( userId ):
+  db = redis.Redis()
 
+  proj = db.hgetall( "projectrecent:" + str(userId) )
+  if not proj:
+    return {}
+
+  return proj
+
+def setProjectRecent( userId, projectId, schematicId, boardId  ):
+  db = redis.Redis()
+
+  obj = {}
+  obj["project"] = projectId
+  obj["sch"] = schematicId
+  obj["brd"] = boardId
+
+  r = db.hmset( "projectrecent:" + str(userId), obj )
+  return r
+
+
+## --- portfolio functions
 
 def getPortfolio( userId ):
   db = redis.Redis()
@@ -262,10 +315,15 @@ def getPortfolios( userId ):
 def createPic( picId, userId, clientToken ):
   db = redis.Redis()
 
+  user = db.hgetall( "user:" + str(userId) )
+  picPermission = "user"
+  if (user["type"] == "anonymous"):
+    picPermission = "world-read"
+
   pic = {}
   pic["id"] = str(picId)
   pic["userId"] = str(userId)
-  pic["permission"] = "user"
+  pic["permission"] = picPermission
   pic["clientToken"] = str(clientToken)
 
   db.hmset( "pic:" + str(picId), pic )

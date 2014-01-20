@@ -24,6 +24,7 @@ user:<id> [hash]
   "userName" : <userName>
   "passwordHash" : <passwordHashId>
   "type" : ("anonymous"|"user")
+  "active" : ("1"|"0")
 
 
 username:<username> [hash]
@@ -31,7 +32,7 @@ username:<username> [hash]
   "userName" : <userName>
 
 
-olio:<userId> [set]
+olio:<userId> [list]
   <projectId>
 
 project:<projectId> [hash]
@@ -42,6 +43,11 @@ project:<projectId> [hash]
   "brd" : <boardId>
   "permission" : ("world-read"|"user")
 
+projectrecent:<userId>
+  "project" : <projectId>
+  "sch" : <schematicId>
+  "brd" : <boardId>
+
 
 
 sch:<schematicId> [hash]
@@ -50,6 +56,7 @@ sch:<schematicId> [hash]
   "projectId" : <projectId>
   "name" : <schematicName>
   "ind" : <lastInd>
+  "active" : ("0"|"1")
 
 sch:<schematicId>:snapshot [hash]
   "data": <schematicData>
@@ -68,11 +75,13 @@ brd:<boardId> [hash]
   "projectId" : <projectId>
   "name" : <boardName>
   "ind" : <lastInd>
+  "active" : ("0"|"1")
 
 brd:<boardId>:<ind> [hash]
   "type" : (delta|flush)
   "action" : (add|remove|update)
   "data" : <json_string>
+
 
 
 emailSignups [set]

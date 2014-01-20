@@ -1,6 +1,47 @@
 var crypto = require('crypto');
 var async = require("async");
 
+var fs = require('fs');
+
+var json_words = null;
+var json_words_fn = "./american-english.json";
+
+function randomName( word_list, n ) {
+  var s = "";
+  for (var i=0; i<n; i++)
+  {
+    var k = parseInt( Math.random() * word_list.length );
+    if (i > 0)
+      s += " ";
+    s += word_list[k];
+  }
+  return s;
+}
+
+fs.readFile(json_words_fn, "utf8", function(err, data) {
+  if (err) {
+    console.log("got error: " + err);
+    return;
+  }
+
+  json_words = JSON.parse(data);
+
+  /*
+  console.log("dictionary loaded");
+  console.log("???");
+  console.log(json_words.word[0]);
+  console.log("??");
+  console.log("here are some random names:");
+  console.log( randomName(json_words.word, 2) );
+  console.log( randomName(json_words.word, 2) );
+  console.log( randomName(json_words.word, 3) );
+  console.log( randomName(json_words.word, 3) );
+  console.log( randomName(json_words.word, 3) );
+  */
+
+});
+
+
 function authResponse( m )
 {
   console.log("auth response (" + m.uid + ")" );
@@ -212,7 +253,7 @@ module.exports = {
 
   },
 
-  anonymous : function( m )
+  anonymousCreate : function( m )
   {
     console.log("creating anonymous user and anonymous board and schematic");
 
@@ -232,34 +273,82 @@ module.exports = {
     //   create session and add it to the pool
     // 
 
-    m.db.hmset( "user:" + userId, { id : userId, userName: "", passwordHash: dummyPassHash, type : "anonymous" });
+    var projName = randomName(json_words.word, 2) ;
+    var schName  = randomName(json_words.word, 3) ;
+    var brdName  = randomName(json_words.word, 3) ;
+
+    var blankSch = "{ \"element\":[] }";
+    var blankBrd = "{ \"element\":[] }";
+
+    m.db.hmset( "user:" + userId, 
+        { id : userId, 
+          userName: "anonymous", 
+          passwordHash: dummyPassHash, 
+          type : "anonymous" ,
+          active : "1"
+        });
 
     m.db.rpush( "olio:" + userId, projId );
-    m.db.hmset( "project:" + projId, { id: projId, userId : userId, name:"", sch: schId, brd: brdId, permission:"user" });
+    m.db.hmset( "project:" + projId, 
+        { id: projId, 
+          userId : userId, 
+          name: projName,
+          sch: schId, 
+          brd: brdId, 
+          permission:"user", 
+          active:1 
+        });
 
-    m.db.hmset( "sch:" + schId, { id : schId, userId : userId, projectId : projId, name: "", ind : 0 });
-    m.db.hmset( "sch:" + schId + ":0", { data : "{ element:[] }" });
-    m.db.hmset( "sch:" + schId + ":snapshot", { data : "{ element:[] }" });
+    m.db.hmset( "sch:" + schId, 
+        { id : schId, 
+          userId : userId, 
+          projectId : projId, 
+          name: schName,
+          ind : 0, 
+          active:1 
+        });
+    m.db.hmset( "sch:" + schId + ":0", { data : blankSch });
+    m.db.hmset( "sch:" + schId + ":snapshot", { data : blankSch });
+    //m.db.hmset( "sch:" + schId + ":0", { data : "{ \"element\":[] }" });
+    //m.db.hmset( "sch:" + schId + ":snapshot", { data : "{ \"element\":[] }" });
 
-    m.db.hmset( "brd:" + brdId, { id : brdId, userId : userId, projectId : projId, name: "", ind : 0 });
-    m.db.hmset( "brd:" + brdId + ":0", { data : "{ element:[] }" });
-    m.db.hmset( "brd:" + brdId + ":snapshot", { data : "{ element:[] }" });
+    m.db.hmset( "brd:" + brdId, 
+        { id : brdId, 
+          userId : userId, 
+          projectId : projId, 
+          name: brdName,
+          ind : 0, 
+          active:1 
+        });
+    m.db.hmset( "brd:" + brdId + ":0", { data : blankBrd });
+    m.db.hmset( "brd:" + brdId + ":snapshot", { data : blankBrd });
+    //m.db.hmset( "brd:" + brdId + ":0", { data : "{ element:[] }" });
+    //m.db.hmset( "brd:" + brdId + ":snapshot", { data : "{ element:[] }" });
 
-    m.db.hmset( "session:" + sessHash, { id : sessHash, userId : userId, active : 1 } );
+    m.db.hmset( "session:" + sessHash, 
+        { id : sessHash, 
+          userId : userId, 
+          active : 1 
+        });
     m.db.sadd( "sesspool", sessHash );
+
+    m.db.hmset( "recentsession:" + userId,
+        { schematicId : schId,
+          boardId : brdId
+        });
 
     console.log("anonymous userId: " + userId + ", sessionId: " + sessionId + ", sessHash: " + sessHash );
     console.log("  projectId: " + projId + ", schId: " + schId + ", brdId:" + brdId );
 
-    m.socket.emit("anonymous", { 
+    m.socket.emit("anonymouscreate", { 
       type:"response", 
       status:"success", 
       message:"anonymous user created", 
       userId: userId, 
       sessionId: sessionId,
-      projId: projId,
-      schId: schId,
-      brdId: brdId });
+      projectId: projId,
+      schematicId: schId,
+      boardId: brdId });
   }
 
 };

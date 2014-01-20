@@ -57,7 +57,7 @@ userName = userData["userName"]
 r = mew.updateProjectPermission( userId, projectId, perm ) 
 
 if mew.updateProjectPermission( userId, projectId, perm ) is None:
-  cookie["message"] = "Error occursd"
+  cookie["message"] = "Error occured"
   cookie["messageType"] = "error"
 else:
   cookie["message"] = "Project updated"

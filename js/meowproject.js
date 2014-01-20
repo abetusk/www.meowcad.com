@@ -67,7 +67,11 @@ function fSessionGet( m )
   var sha512 = crypto.createHash('sha512');
   var sessHash = sha512.update( userId + sessionId ).digest('hex');
 
+  console.log("session id:");
+  console.log( sessHash );
+
   return function( callback ) { db.hgetall( "session:" + sessHash, callback ); };
+
 }
 
 function fValidateSession( m )
@@ -81,14 +85,20 @@ function fValidateSession( m )
 
     if (!d)
     {
-      socket.emit( msgParent, { type:"response", status: "error", message: "authentication faliure" } );
+      socket.emit( msgParent, { type:"response", status: "error", message: "authentication faliure (1)" } );
       return;
     }
 
     dbUserId = d.userId;
     if (dbUserId != userId )
     {
-      socket.emit( msgParent, { type:"response", status: "error", message: "authentication faliure" } );
+      socket.emit( msgParent, { type:"response", status: "error", message: "authentication faliure (2)" } );
+      return;
+    }
+
+    if (d.active != 1)
+    {
+      socket.emit( msgParent, { type:"response", status: "error", message: "authentication faliure (3)" } );
       return;
     }
 
@@ -352,6 +362,33 @@ module.exports = {
       fSessionGet( m ),
       fValidateSession( m ),
       function(d, callback) {
+        var userId = m.data.userId;
+        m.db.hgetall( "user:" + String(userId), callback );
+      },
+      function(d, callback) {
+        if (!d)
+        {
+          m.socket.emit("newproject", 
+            { type:"response",
+              status:"error",
+              message:"no data on user"
+            });
+          return;
+        }
+
+        if (d.type == "anonymous")
+        {
+          m.socket.emit("newproject", 
+            { type:"response",
+              status:"error",
+              message:"anonymous users cannot create new projects"
+            });
+          return;
+        }
+
+        callback(null, d);
+      },
+      function(d, callback) {
 
         var userId = m.data.userId;
 
@@ -401,9 +438,9 @@ module.exports = {
                 type:"response",
                 status:"success",
                 message:"new project created",
-                projId: projId,
-                schId: schId,
-                brdId: brdId 
+                projectId: projId,
+                schematicId: schId,
+                boardId: brdId 
         });
 
         console.log("finishing");
@@ -474,7 +511,7 @@ module.exports = {
 
         key = "sch:" + m.data.schematicId;
         m.db.hmset( key , "ind", k );
-
+        m.db.hmset( "user:" + m.data.userId, { schematicId: m.data.schematicId } );
 
         m.socket.emit("schfullpush", 
             { type:"response", 
@@ -538,8 +575,71 @@ module.exports = {
         console.log(err);
         console.log(result);
       });
+  },
+
+  projectRecent: function( m ) {
+    console.log("meowproject brdfullpush");
+
+    async.waterfall([
+      fSessionGet( m ),
+      fValidateSession( m ),
+      function(d, callback) {
+        m.db.hgetall( "projectrecent:" + m.data.userId, callback );
+      },
+      function( d, callback )
+      {
+
+        if (d)
+        {
+          m.socket.emit("projectrecent", 
+            { type:"response", 
+              status:"success",
+              schematicId: d.schematicId,
+              boardId: d.boardId
+            });
+          return;
+        }
+
+        m.db.lrange( "olio:" + m.data.userId, 0, -1, callback );
+      },
+      function( d, callback )
+      {
+        if (!d)
+        {
+          m.socket.emti("projectrecent", 
+            { type:"response", 
+              status:"error", 
+              message:"no recent project and nothing in portfolio"
+            });
+          return;
+        }
+
+        m.db.hgetall( "project:" + d[0], callback );
+
+      },
+      function( d, callback )
+      {
+
+        if (!d)
+        {
+        }
+
+        m.socket.emit("projectrecent",
+            { type:"response",
+              status:"success",
+              schematicId: d.schematicId,
+              boardId: d.boardId
+            });
+      }
+
+      ],
+      function( err, result) {
+        console.log("brdfullpush error");
+        console.log(err);
+        console.log(result);
+      });
   }
-  
+
   /*
   ,
 

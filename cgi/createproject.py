@@ -8,9 +8,6 @@ import Cookie
 cgitb.enable()
 
 
-#print "Content-type: text/html; charset=utf-8;"
-#print
-
 cookie = Cookie.SimpleCookie()
 
 cookie_hash = mew.getCookieHash( os.environ )
@@ -18,7 +15,7 @@ cookie_hash = mew.getCookieHash( os.environ )
 if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
   cookie["message"] = "Session expired"
-  print "Location:https://localhost/bleepsix/cgi/login"
+  print "Location:login"
   print cookie.output()
   print
   sys.exit(0)
@@ -27,7 +24,7 @@ form = cgi.FieldStorage()
 if ("name" not in form) :
   cookie["message"] = "Provide a project name" 
   cookie["messageType"] = "error"
-  print "Location:https://localhost/bleepsix/cgi/newproject"
+  print "Location:newproject"
   print cookie.output()
   print
   sys.exit(0)
@@ -46,7 +43,7 @@ proj = mew.createProject( userId, projectName, permission )
 if proj is None:
   cookie["message"] = "Error occured"
   cookie["messageType"] = "error"
-  print "Location:https://localhost/bleepsix/cgi/newproject"
+  print "Location:newproject"
   print cookie.output()
   print
   sys.exit(0)
@@ -55,7 +52,7 @@ if proj is None:
 cookie["message"] = "Project created"
 cookie["messageType"] = "success"
 
-print "Location:https://localhost/bleepsix/cgi/manageproject?projectId=" + str(proj["id"])
+print "Location:manageproject?projectId=" + str(proj["id"])
 print cookie.output()
 print
 #print tmp_str

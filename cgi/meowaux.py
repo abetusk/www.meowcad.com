@@ -37,6 +37,51 @@ def getCookieHash( environ ):
 
   return cookie_hash
 
+# return the message, setting it expired if it's processed
+#
+def processCookieMessage( cookie, cookieHash ):
+
+  msg,msgType = "", ""
+  if "message" in cookieHash:
+    msg = str(cookieHash["message"])
+    msg = re.sub( '^\s*"', '', msg )
+    msg = re.sub( '"\s*$', '', msg )
+
+    if "messageType" in cookieHash:
+      msgType = cookieHash["messageType"]
+      msgType = re.sub( '^\s*"', '', msgType )
+      msgType = re.sub( '"\s*$', '', msgType )
+
+    expiration = datetime.datetime.now() + datetime.timedelta(days=-1)
+    cookie["message"] = ""
+    cookie["message"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
+    cookie["messageType"] = ""
+    cookie["messageType"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
+
+  return msg,msgType
+
+def replaceTemplateMessage( template, msg, msgType ):
+  if len(msg) == 0:
+    return template.replace("<!--MESSAGE-->", message( "" ) )
+
+  if msgType == "error":
+    return template.replace("<!--MESSAGE-->", errorMessage( msg ) )
+
+  elif msgType == "success":
+    return template.replace("<!--MESSAGE-->", successMessage( msg ) )
+
+  elif msgType == "status":
+    return template.replace("<!--MESSAGE-->", statusMessage( msg ) )
+
+  elif msgType == "nominal":
+    return template.replace("<!--MESSAGE-->", nominalMessage( msg ) )
+
+  else:
+    return template.replace("<!--MESSAGE-->", message( msg ) )
+
+
+
+
 ## -- json dictionary
 
 def randomName( fn, n ):

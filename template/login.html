@@ -3,25 +3,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title>MeowCAD Picture Server</title>
-    <link href="/css/cleanlooks.css" rel="stylesheet" type="text/css" />
 
     <link rel="shortcut icon" href="/simpleoutline.ico" />
     <link rel="icon" href="/simpleoutline.ico" />
 
     <script type='text/javascript' src='/socket.io/socket.io.js' ></script>
-    <script type='text/javascript' src='/bleepsix/js/jquery.js' ></script>
-    <script type='text/javascript' src='/bleepsix/js/jquery.cookie.js' ></script>
+    <script type='text/javascript' src='js/lib/jquery.js' ></script>
+    <script type='text/javascript' src='js/lib/jquery.cookie.js' ></script>
 
-    <link href="/css/buttons.css" rel="stylesheet" type="text/css" />
+    <link href="css/buttons.css" rel="stylesheet" type="text/css" />
 
-    <link href="/css/forms.css" rel="stylesheet" type="text/css" />
-    <link href="/css/tables.css" rel="stylesheet" type="text/css" />
-    <link href="/css/cleanlooks.css" rel="stylesheet" type="text/css" />
+    <link href="css/forms.css" rel="stylesheet" type="text/css" />
+    <link href="css/tables.css" rel="stylesheet" type="text/css" />
+    <link href="css/cleanlooks.css" rel="stylesheet" type="text/css" />
 
 
     <script>
 
-      g_url = "https://localhost";
+      g_url = "/";
 
       $(document).ready( function() {
         console.log("hello");
@@ -110,8 +109,7 @@
 
               // redirect...
               //
-              //window.location.href = g_url + "/bleepsix/pic.html?id=errpng2";
-              window.location.href = g_url + "/bleepsix/cgi/portfolio";
+              window.location.href = g_url + "portfolio";
 
               // I don't think we want to use this, but just in case...
               //window.location.replace( g_url + "/bleepsix/bleepsix_sch.html");
@@ -147,8 +145,12 @@
       </div>
 
 
-      <img src='../img/kitty_head_black_outline_p32.png' style='width:32px; height:32px; opacity:0.5; float:left; '></img>
-      <h1>&nbsp <a href='http://www.meowcad.com'>meowCAD</a> / Login </h1>
+      <a href='/'>
+        <img src='img/kitty_head_black_outline_p32.png' 
+             style='width:32px; height:32px; opacity:0.5; float:left; '></img>
+      </a>
+
+      <h1>&nbsp <a href='/'>meowCAD</a> / Login </h1>
       <br />
       <hr />
     </div> <!-- end header -->
@@ -170,9 +172,8 @@
         <div class='pure-g'>
 
           <div class='pure-form pure-form-aligned'>
-        <div id='message' class='no-message'>
-          <!-- <img src='/bleepsix/img/background.png' height='23px' width='23px' ></img> -->
-        </div>
+            <div id='message' class='no-message'>
+            </div>
 
 
             <fieldset>

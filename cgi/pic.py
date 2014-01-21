@@ -9,18 +9,9 @@ import meowaux as mew
 cgitb.enable()
 
 cookie = Cookie.SimpleCookie()
-
-msg = ""
-
 cookie_hash = mew.getCookieHash( os.environ )
-if "message" in cookie_hash:
-  msg = str(cookie_hash["message"])
-  msg = re.sub( '^\s*"', '', msg )
-  msg = re.sub( '"\s*$', '', msg )
 
-  expiration = datetime.datetime.now() + datetime.timedelta(days=-1)
-  cookie["message"] = ""
-  cookie["message"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
+msg,msgType = mew.processCookieMessage( cookie, cookie_hash )
 
 loggedInFlag = False
 if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
@@ -28,11 +19,9 @@ if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
   loggedInFlag = True
 
 
-template = mew.slurp_file("../template/pic.html")
-if len(msg) > 0:
-  tmp_str = template.replace("<!--MESSAGE-->", mew.nominalMessage(msg) )
-else:
-  tmp_str = template.replace("<!--MESSAGE-->", mew.message("") )
+template = mew.slurp_file("template/pic.html")
+
+tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
 
 if loggedInFlag:
   userData = mew.getUser( cookie_hash["userId"] )

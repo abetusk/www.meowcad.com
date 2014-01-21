@@ -3,22 +3,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title>MeowCAD Picture</title>
-    <!-- <link href="/css/cleanlooks.css" rel="stylesheet" type="text/css" /> -->
 
     <link rel="shortcut icon" href="/simpleoutline.ico" />
     <link rel="icon" href="/simpleoutline.ico" />
 
-    
-   
     <script type='text/javascript' src='/socket.io/socket.io.js' ></script>
-    <script type='text/javascript' src='/bleepsix/js/lib/jquery.js'></script>
-    <script type='text/javascript' src='/bleepsix/js/lib/jquery.cookie.js'></script>
+    <script type='text/javascript' src='js/lib/jquery.js'></script>
+    <script type='text/javascript' src='js/lib/jquery.cookie.js'></script>
 
-    <link href="/css/buttons.css" rel="stylesheet" type="text/css" />
+    <link href="css/buttons.css" rel="stylesheet" type="text/css" />
 
-    <link href="/css/forms.css" rel="stylesheet" type="text/css" />
-    <link href="/css/tables.css" rel="stylesheet" type="text/css" />
-    <link href="/css/cleanlooks.css" rel="stylesheet" type="text/css" />
+    <link href="css/forms.css" rel="stylesheet" type="text/css" />
+    <link href="css/tables.css" rel="stylesheet" type="text/css" />
+    <link href="css/cleanlooks.css" rel="stylesheet" type="text/css" />
 
 
     <script>
@@ -89,8 +86,8 @@
         var g_lockedImg = new Image();
         var g_heartImg = new Image();
 
-        g_lockedImg.src = "/bleepsix/img/locked.png";
-        g_heartImg.src = "/bleepsix/img/heart.png";
+        g_lockedImg.src = "img/locked.png";
+        g_heartImg.src = "img/heart.png";
 
         if ( $.cookie("userId") && $.cookie("sessionId") )
         {
@@ -165,8 +162,7 @@
           console.log("picId:");
           console.log(g_picId);
 
-          //window.history.replaceState("", "", "/bleepsix/pic.html?id=" + g_picId);
-          window.history.replaceState("", "", "/bleepsix/cgi/pic?id=" + g_picId);
+          window.history.replaceState("", "", "pic?id=" + g_picId);
           processPic();
         }
         else
@@ -340,7 +336,6 @@
         {
           console.log("downloading!");
           var ifrm = document.getElementById("downloadFrame");
-          //ifrm.src = "cgi/bleepsixDownloadManager.py?id=" + g_picId + "&name=pic.png" ;
           ifrm.src = "bleepsixDownloadManager.py?id=" + g_picId + "&name=pic.png" ;
         }
         else
@@ -373,7 +368,7 @@
 
 
 
-      <img src='/bleepsix/img/kitty_head_black_outline_p32.png' 
+      <img src='img/kitty_head_black_outline_p32.png' 
            style='width:32px; height:32px; opacity:0.5; float:left; '></img>
       <h1> &nbsp; <a href='http://www.meowcad.com'>meowCAD / Snapshot</a> </h1>
 
@@ -390,7 +385,7 @@
 
           <img  
             id='lockImage' 
-            src='/bleepsix/img/background.png' 
+            src='img/background.png' 
             height='42px' 
             width='42px' 
             style='display:block; opacity:0.5; margin:auto;'>
@@ -434,7 +429,7 @@
               id='downloadButton'
               class='generic_button' 
               type='image' 
-              src='/bleepsix/img/download.png' 
+              src='img/download.png' 
               style=' height:32px; width:32px; display:none; opacity:0.5; margin:auto;'
               value='download' 
               onclick='downloadPicture();' 

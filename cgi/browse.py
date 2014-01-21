@@ -10,35 +10,17 @@ import Cookie
 import meowaux as mew
 cgitb.enable()
 
-
 cookie = Cookie.SimpleCookie()
-
 cookie_hash = mew.getCookieHash( os.environ )
 
 if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
-  print "Location:https://localhost/bleepsix/cgi/login"
+  print "Location:login"
   print
   sys.exit(0)
 
 
-message = ""
-messageType = "none"
-if "message" in cookie_hash:
-  message = cookie_hash["message"]
-  message = re.sub( '^\s*"', '', message );
-  message = re.sub( '"\s*$', '', message );
-
-  expiration = datetime.datetime.now() + datetime.timedelta(days=-1)
-  cookie["message"] = ""
-  cookie["message"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
-
-  if "messageType" in cookie_hash:
-    messageType = cookie_hash["messageType"]
-    cookie["messageType"] = ""
-    cookie["messageType"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
-
-
+message,messageType = mew.processCookieMessage( cookie, cookie_hash )
 
 userId = cookie_hash["userId"]
 sessionId = cookie_hash["sessionId"]
@@ -58,8 +40,8 @@ for projectDat in olioList:
 
 
   x = [  str(projectDat["name"]) ,
-        "<a href='/bleepsix/bleepsix_sch?sch=" + projectDat["sch"] + "' >Schematic</a>", 
-        "<a href='/bleepsix/bleepsix_pcb?brd=" + projectDat["brd"] + "' >PCB</a>", 
+        "<a href='bleepsix_sch?sch=" + projectDat["sch"] + "' >Schematic</a>", 
+        "<a href='bleepsix_pcb?brd=" + projectDat["brd"] + "' >PCB</a>", 
         perm ]
         #projectDat["permission"] ]
   trs = "<tr> <td> "
@@ -72,21 +54,13 @@ he = "</tbody></table>"
 userData = mew.getUser( userId )
 userName = userData["userName"]
 
-template = mew.slurp_file("../template/browse.html")
+template = mew.slurp_file("template/browse.html")
 tmp_str = template.replace("<!--USER-->", userName )
 tmp_str = tmp_str.replace( "<!--PROJECTS-->", hs + "\n".join(tableProjectHTML) + he )
-tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("../template/left_template.html") )
+tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
 tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", mew.userIndicatorString( userId, userName ) )
 tmp_str = tmp_str.replace( "<!--HEADING-->", mew.message("&nbsp; &nbsp;") )
-
-if messageType == "error":
-  tmp_str = tmp_str.replace( "<!--MESSAGE-->", mew.errorMessage( message ) )
-elif messageType == "success":
-  tmp_str = tmp_str.replace( "<!--MESSAGE-->", mew.successMessage( message ) )
-elif messageType == "status":
-  tmp_str = tmp_str.replace( "<!--MESSAGE-->", mew.statusMessage( message ) )
-else:
-  tmp_str = tmp_str.replace( "<!--MESSAGE-->", mew.message( message ) )
+tmp_str = mew.replaceTemplateMessage( tmp_str, message, messageType )
 
 print "Content-Type: text/html;charset=utf-8"
 print cookie.output()

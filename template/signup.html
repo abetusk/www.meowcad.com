@@ -3,23 +3,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title>MeowCAD Picture Server</title>
-    <link href="/css/cleanlooks.css" rel="stylesheet" type="text/css" />
 
     <link rel="shortcut icon" href="/simpleoutline.ico" />
     <link rel="icon" href="/simpleoutline.ico" />
 
     <script type='text/javascript' src='/socket.io/socket.io.js' ></script>
-    <script type='text/javascript' src='/bleepsix/js/jquery.js' ></script>
-    <script type='text/javascript' src='/bleepsix/js/jquery.cookie.js' ></script>
+    <script type='text/javascript' src='js/lib/jquery.js' ></script>
+    <script type='text/javascript' src='js/lib/jquery.cookie.js' ></script>
 
-    <link href="/css/buttons.css" rel="stylesheet" type="text/css" />
-    <link href="/css/grids-core.css" rel="stylesheet" type="text/css" />
-    <link href="/css/grids-units.css" rel="stylesheet" type="text/css" />
-    <link href="/css/grids-r.css" rel="stylesheet" type="text/css" />
+    <link href="css/buttons.css" rel="stylesheet" type="text/css" />
+    <link href="css/grids-core.css" rel="stylesheet" type="text/css" />
+    <link href="css/grids-units.css" rel="stylesheet" type="text/css" />
+    <link href="css/grids-r.css" rel="stylesheet" type="text/css" />
 
-    <link href="/css/forms.css" rel="stylesheet" type="text/css" />
-    <link href="/css/tables.css" rel="stylesheet" type="text/css" />
-    <link href="/css/cleanlooks.css" rel="stylesheet" type="text/css" />
+    <link href="css/forms.css" rel="stylesheet" type="text/css" />
+    <link href="css/tables.css" rel="stylesheet" type="text/css" />
+    <link href="css/cleanlooks.css" rel="stylesheet" type="text/css" />
 
 
     <script>
@@ -34,27 +33,20 @@
     <div id="header">
 
       <div class='top_right'>
-        <a href='login'>[Login]</a>
-        &nbsp; &nbsp;
-        &nbsp; &nbsp;
-        Signup
+
+        <!--USERINDICATOR-->
+
       </div>
 
-      <img src='../img/kitty_head_black_outline_p32.png' style='width:32px; height:32px; opacity:0.5; float:left; '></img>
-      <h1>&nbsp <a href='https://www.meowcad.com'>meowCAD</a> / Signup </h1>
+      <a href='/'>
+        <img src='img/kitty_head_black_outline_p32.png' 
+             style='width:32px; height:32px; opacity:0.5; float:left; '></img>
+      </a>
+
+      <h1>&nbsp <a href='/'>meowCAD</a> / Signup </h1>
       <br />
       <hr />
     </div> <!-- end header -->
-
-    <!--
-    <div id='left'>
-      <div id='leftcontent'>
-        <ul>
-          <li> <a href='signup'>Signup</a> </li>
-        </ul>
-      </div>
-    </div>
-    -->
 
     <div id='main'>
 
@@ -62,8 +54,7 @@
       <div id='maincontent'>
 
         <!--MESSAGE-->
-        <!-- <form class='pure-form' action='/bleepsix/cgi/signupemail' method='POST' > -->
-        <form class='pure-form' action='/bleepsix/cgi/signupemail' method='POST' > 
+        <form class='pure-form' action='signupemail' method='POST' > 
           <fieldset>
 
             <div class='pure-control-group'>

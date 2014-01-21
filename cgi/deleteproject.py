@@ -18,7 +18,7 @@ cookie_hash = mew.getCookieHash( os.environ )
 if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
   cookie["message"] = "Session expired"
-  print "Location:https://localhost/bleepsix/cgi/login"
+  print "Location:login"
   print cookie.output()
   print
   sys.exit(0)
@@ -27,7 +27,7 @@ form = cgi.FieldStorage()
 if "projectId" not in form:
   cookie["message"] = "Invalid project ID"
   cookie["messageType"] = "error"
-  print "Location:https://localhost/bleepsix/cgi/portfolio"
+  print "Location:portfolio"
   print cookie.output()
   print
   sys.exit(0)
@@ -45,7 +45,7 @@ r = mew.deleteProject( userId, projectId )
 if r is None:
   cookie["message"] = "Error occured"
   cookie["messageType"] = "error"
-  print "Location:https://localhost/bleepsix/cgi/manageproject?projectId=" + str(projectId)
+  print "Location:manageproject?projectId=" + str(projectId)
   print cookie.output()
   print
   sys.exit(0)
@@ -54,7 +54,7 @@ if r is None:
 cookie["message"] = "Project '" + str(proj["name"]) + "' deleted"
 cookie["messageType"] = "status"
 
-print "Location:https://localhost/bleepsix/cgi/portfolio"
+print "Location:portfolio"
 print cookie.output()
 print
 #print tmp_str

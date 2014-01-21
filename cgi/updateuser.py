@@ -19,7 +19,7 @@ cookie_hash = mew.getCookieHash( os.environ )
 if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
   cookie["message"] = "Session expired"
-  print "Location:https://localhost/bleepsix/cgi/login"
+  print "Location:login"
   print cookie.output()
   print
   sys.exit(0)
@@ -28,7 +28,7 @@ form = cgi.FieldStorage()
 if ("password" not in form) or ("passwordAgain" not in form) or ("passwordOrig" not in form):
   cookie["message"] = "All passwords must be non-empty " 
   cookie["messageType"] = "error"
-  print "Location:https://localhost/bleepsix/cgi/usersettings"
+  print "Location:usersettings"
   print cookie.output()
   print
   sys.exit(0)
@@ -36,7 +36,7 @@ if ("password" not in form) or ("passwordAgain" not in form) or ("passwordOrig" 
 if form["password"].value != form["passwordAgain"].value:
   cookie["message"] = "Passwords do not match"
   cookie["messageType"] = "error"
-  print "Location:https://localhost/bleepsix/cgi/usersettings"
+  print "Location:usersettings"
   print cookie.output()
   print
   sys.exit(0)
@@ -51,7 +51,7 @@ passHash = hashlib.sha512( str(userId) + str(passOrig) ).hexdigest()
 if passHash != userData["passwordHash"]:
   cookie["message"] = "Authorization failed"
   cookie["messageType"] = "error"
-  print "Location:https://localhost/bleepsix/cgi/usersettings"
+  print "Location:usersettings"
   print cookie.output()
   print
   sys.exit(0)
@@ -67,7 +67,7 @@ else:
   cookie["message"] = "Password updated"
   cookie["messageType"] = "success"
 
-print "Location:https://localhost/bleepsix/cgi/usersettings"
+print "Location:usersettings"
 print cookie.output()
 print
 #print tmp_str

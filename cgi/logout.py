@@ -12,7 +12,7 @@ cookie_hash = mew.getCookieHash( os.environ )
 
 if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
          (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
-  print "Location:https://localhost/bleepsix/cgi/login"
+  print "Location:login"
   print
   sys.exit(0)
 
@@ -39,10 +39,7 @@ cookie["userName"] = cookie_hash["userName"]
 cookie["userName"]["expires"] = exp_str
 cookie["userName"]["path"] = "/"
 
-## DEBUG
-print "Content-type: text/html; charset=utf-8;"
-
-print "Location:https://localhost/bleepsix/cgi/login"
+print "Location:login"
 print cookie.output()
 print
 

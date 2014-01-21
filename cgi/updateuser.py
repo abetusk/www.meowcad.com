@@ -8,10 +8,6 @@ import meowaux as mew
 import Cookie
 cgitb.enable()
 
-#
-#print "Content-type: text/html; charset=utf-8;"
-#print
-
 cookie = Cookie.SimpleCookie()
 
 cookie_hash = mew.getCookieHash( os.environ )

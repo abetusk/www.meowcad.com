@@ -36,7 +36,6 @@ if "email" in form:
 em = mew.addEmailSignup( email )
 
 
-#template = mew.slurp_file("../template/signupresponse.html")
 template = mew.slurp_file("template/signupresponse.html")
 tmp_str = template.replace("<!--RESPONSE-->", msg )
 

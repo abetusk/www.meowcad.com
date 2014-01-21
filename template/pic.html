@@ -36,6 +36,8 @@
 
       var g_clientToken = null;
 
+      var g_isOwnerFlag = false;
+
       function processHandoff() 
       {
 
@@ -52,7 +54,7 @@
         }
         else
         {
-          console.log("picready request not allowed for anonymous visitors (must log in)");
+          console.log("picready request not allowed for non authenticated visitors (must log in)");
         }
       }
 
@@ -92,12 +94,12 @@
 
         if ( $.cookie("userId") && $.cookie("sessionId") )
         {
-          if ($.cookie("userName") && ($.cookie("userName") != "anonymous") )
-          {
+          //if ($.cookie("userName") && ($.cookie("userName") != "anonymous") )
+          //{
             g_userId = $.cookie("userId");
             g_sessionId = $.cookie("sessionId");
             g_activeSession = true;
-          }
+          //}
         }
 
         g_socket = io.connect("https://localhost");
@@ -191,18 +193,28 @@
             var permission = data.permission;
             console.log("permission: " + permission);
 
-            var b = document.getElementById('lockButton');
-            b.style.display = "";
-            b = document.getElementById('unlockButton');
-            b.style.display = "";
-
-            if (permission == "world-read")
+            var flag = true;
+            if ( $.cookie("userName") && ($.cookie("userName") == "anonymous") )
             {
-              unlockButton();
+              flag = false;
             }
-            else 
+
+
+            if ( ( data.editPermission == "allowed" ) && flag )
             {
-              lockButton();
+              var b = document.getElementById('lockButton');
+              b.style.display = "";
+              b = document.getElementById('unlockButton');
+              b.style.display = "";
+
+              if (permission == "world-read")
+              {
+                unlockButton();
+              }
+              else 
+              {
+                lockButton();
+              }
             }
 
           }
@@ -361,7 +373,8 @@
 
 
 
-      <img src='/bleepsix/img/kitty_head_black_outline_p32.png' style='width:32px; height:32px; opacity:0.5; float:left; '></img>
+      <img src='/bleepsix/img/kitty_head_black_outline_p32.png' 
+           style='width:32px; height:32px; opacity:0.5; float:left; '></img>
       <h1> &nbsp; <a href='http://www.meowcad.com'>meowCAD / Snapshot</a> </h1>
 
 

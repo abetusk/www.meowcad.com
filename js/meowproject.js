@@ -459,6 +459,10 @@ module.exports = {
   schFullPush : function( m ) {
     console.log("meowproject schfullpush");
 
+
+    // DEBUG
+    setTimeout( function() { m.socket.emit("debug", { message: "testing server push" }); }, 3000 );
+
     m.messageParent = "schfullpush";
 
     if (!inputSchCheck( m ))

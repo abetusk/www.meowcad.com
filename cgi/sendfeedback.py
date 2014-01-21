@@ -8,35 +8,29 @@ import Cookie
 cgitb.enable()
 
 
-#print "Content-type: text/html; charset=utf-8;"
-#print
-
 cookie = Cookie.SimpleCookie()
-
 cookie_hash = mew.getCookieHash( os.environ )
 
-if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
-     (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
-  cookie["message"] = "Session expired"
-  print "Location:login"
-  print cookie.output()
-  print
-  sys.exit(0)
-
-
+loggedInFlag = False
+if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
+     (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 1) ):
+  loggedInFlag = True
 
 
 form = cgi.FieldStorage()
 if "feedback" not in form:
   cookie["message"] = "Please provide feedback text" 
   cookie["messageType"] = "error"
-  print "Location:newproject"
+  print "Location:feedback"
   print cookie.output()
   print
   sys.exit(0)
 
 
-userId = cookie_hash["userId"]
+userId = -1
+if loggedInFlag:
+  userId = cookie_hash["userId"]
+
 feedback = form["feedback"].value
 
 mew.feedback( userId, feedback )
@@ -47,5 +41,4 @@ cookie["messageType"] = "success"
 print "Location:feedbacksent"
 print cookie.output()
 print
-#print tmp_str
 

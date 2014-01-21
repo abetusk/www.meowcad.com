@@ -62,16 +62,7 @@ if not error:
   tmp_str = tmp_str.replace("<!--PROJECTID-->", str(projectId) )
   tmp_str = tmp_str.replace("<!--HEADING-->",  mew.message( "&nbsp; &nbsp;" ) )
 
-  if msgType == "error":
-    tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.errorMessage( msg ) )
-  elif msgType == "success":
-    tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.successMessage( msg ) )
-  elif msgType == "status":
-    tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.statusMessage( msg ) )
-  elif msgType == "nominal":
-    tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.nominalMessage( msg ) )
-  else:
-    tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.message( msg ) )
+  tmp_str = mew.replaceTemplateMessage( tmp_str, msg, msgType )
 
   ### project details
   if proj["permission"] == "world-read":

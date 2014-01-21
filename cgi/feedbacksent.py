@@ -40,9 +40,9 @@ userData = mew.getUser( userId )
 userName = userData["userName"]
 
 
-template = mew.slurp_file("../template/feedbacksent.html")
+template = mew.slurp_file("template/feedbacksent.html")
 tmp_str = template.replace("<!--USER-->", userName)
-tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("../template/left_template.html") )
+tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
 tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", mew.userIndicatorString( userId, userName ) )
 
 if messageType == "success":

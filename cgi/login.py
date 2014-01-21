@@ -27,6 +27,7 @@ msg,msgType = mew.processCookieMessage( cookie, cookie_hash )
 template = mew.slurp_file("template/login.html")
 
 tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
+tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_world.html") )
 
 print "Content-type: text/html; charset=utf-8;"
 print cookie.output()

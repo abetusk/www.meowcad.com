@@ -26,6 +26,10 @@ if "feedback" not in form:
   print
   sys.exit(0)
 
+email = ""
+if "email" in form:
+  email = form["email"].value
+
 
 userId = -1
 if loggedInFlag:
@@ -33,12 +37,22 @@ if loggedInFlag:
 
 feedback = form["feedback"].value
 
-mew.feedback( userId, feedback )
+r = mew.feedback( userId, email, feedback )
 
-cookie["message"] = "Feedback sent"
-cookie["messageType"] = "success"
+if r:
+  cookie["message"] = "Feedback sent"
+  cookie["messageType"] = "success"
 
-print "Location:feedbacksent"
-print cookie.output()
-print
+  print "Location:feedbacksent"
+  print cookie.output()
+  print
+
+else:
+  cookie["message"] = "We're sorry, an error occured!  Please contact as at info@meowcad.com instead!" 
+  cookie["messageType"] = "error"
+  print "Location:feedback"
+  print cookie.output()
+  print
+  sys.exit(0)
+
 

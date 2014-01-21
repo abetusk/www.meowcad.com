@@ -21,6 +21,7 @@ if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
 
 template = mew.slurp_file("template/about.html")
 tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
+tmp_str = template.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_world.html") )
 
 if loggedInFlag:
   userData = mew.getUser( cookie_hash["userId"] )
@@ -29,7 +30,7 @@ if loggedInFlag:
 else:
   tmp_str = tmp_str.replace("<!--USERINDICATOR-->", "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href='signup'>Signup</a>")
 
-tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
+#tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
 
 
 print "Content-type: text/html; charset=utf-8;"

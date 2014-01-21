@@ -43,12 +43,12 @@ def processCookieMessage( cookie, cookieHash ):
 
   msg,msgType = "", ""
   if "message" in cookieHash:
-    msg = str(cookieHash["message"])
+    msg = str(cookieHash["message"]).decode('string_escape')
     msg = re.sub( '^\s*"', '', msg )
     msg = re.sub( '"\s*$', '', msg )
 
     if "messageType" in cookieHash:
-      msgType = cookieHash["messageType"]
+      msgType = cookieHash["messageType"].decode('string_escape')
       msgType = re.sub( '^\s*"', '', msgType )
       msgType = re.sub( '"\s*$', '', msgType )
 
@@ -173,12 +173,12 @@ def deactivateSession( userId, sessionId ):
   return 1
 
 
-def feedback( userId, feedback ):
+def feedback( userId, email, feedback ):
   db = redis.Redis()
 
-  user = getUser( userId )
-  if ("id" not in user) or (user["active"] != "1"):
-    return False
+  #user = getUser( userId )
+  #if ("id" not in user) or (user["active"] != "1"):
+  #  return False
 
   feedbackId = str(uuid.uuid4())
 
@@ -187,6 +187,7 @@ def feedback( userId, feedback ):
   obj["id"] = feedbackId
   obj["text"] = str(feedback)
   obj["userId"] = str(userId)
+  obj["email"] = str(email)
   obj["stime"] = ts
   obj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
   db.hmset( "feedback:" + feedbackId, obj )

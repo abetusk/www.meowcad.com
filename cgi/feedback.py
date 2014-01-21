@@ -19,7 +19,7 @@ message,messageType = mew.processCookieMessage( cookie, cookie_hash )
 
 template = mew.slurp_file("template/feedback.html")
 
-tmp_str = template
+tmp_str = template.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_world.html") )
 
 if loggedInFlag:
   userId = cookie_hash["userId"]
@@ -31,7 +31,9 @@ if loggedInFlag:
 
   tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", mew.userIndicatorString( userId, userName ) )
 else:
-  tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; Signup")
+  a = "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href='signup'>Signup</a>"
+
+  tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", a )
 tmp_str = mew.replaceTemplateMessage( tmp_str, message, messageType )
 
 

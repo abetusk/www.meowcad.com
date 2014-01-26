@@ -15,13 +15,17 @@ from time import sleep
 
 cgitb.enable();
 
-jsonsch_exec = "/tmp/pykicad/jsonsch.py"
-staging_base = "/tmp/stage"
+#jsonsch_exec = "/tmp/pykicad/jsonsch.py"
+#staging_base = "/tmp/stage"
+
+jsonsch_exec = "/home/meow/pykicad/jsonsch.py"
+staging_base = "/home/meow/stage"
 
 ##########################
 #
 def log_line( l ):
-  logf = open("/tmp/meowdm.log", "a")
+  #logf = open("/tmp/meowdm.log", "a")
+  logf = open("/home/meow/log/meowdm.log", "a")
   logf.write( l  + "\n")
   logf.close()
 

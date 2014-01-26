@@ -27,7 +27,7 @@ sessionId = cookie_hash["sessionId"]
 
 olioList = mew.getAllProjects()
 
-tableProjectHTML = [ "<thead><tr><th>Name</th> <th></th> <th></th> <th>Permission</th> </tr></thead> <tbody>" ]
+tableProjectHTML = [ "<thead><tr><th>Name</th> <th></th> <th></th> <th>Permission</th> <th>User</th> </tr></thead> <tbody>" ]
 for projectDat in olioList:
   projectId = projectDat["id"]
 
@@ -42,7 +42,9 @@ for projectDat in olioList:
   x = [  str(projectDat["name"]) ,
         "<a href='bleepsix_sch?sch=" + projectDat["sch"] + "' >Schematic</a>", 
         "<a href='bleepsix_pcb?brd=" + projectDat["brd"] + "' >PCB</a>", 
-        perm ]
+        perm,
+        str(projectDat["userName"])
+        ]
         #projectDat["permission"] ]
   trs = "<tr> <td> "
   tre = "</td> </tr>"

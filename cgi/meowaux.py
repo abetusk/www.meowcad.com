@@ -400,7 +400,11 @@ def getAllProjects( ):
 
   for projId in pool:
     proj = db.hgetall( "project:" + projId )
+
     if proj and proj["active"] == "1" and proj["permission"] == "world-read":
+      user = db.hgetall( "user:" + proj["userId"] )
+      proj["userName"] = user["userName"]
+      proj["userType"] = user["type"]
       projects.append(proj)
 
   return projects

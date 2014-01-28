@@ -140,8 +140,11 @@ def authenticateSession( userId, sessionId ):
   #print "hashsession:"
   #print hashSessionId
 
+  x = db.sismember( "sesspool", hashSessionId )
+
   if not db.sismember( "sesspool", hashSessionId ):
-    return 0
+    log("authenticatSession cp0.9")
+    return False
 
   sessionDat = db.hgetall( "session:" + str(hashSessionId) )
   userDat = db.hgetall( "user:" + str(userId) )
@@ -153,9 +156,9 @@ def authenticateSession( userId, sessionId ):
        ("userId" not in sessionDat) or
       (sessionDat["userId"] != userId) or
       (sessionDat["active"] != "1") ):
-    return 0;
+    return False;
 
-  return 1
+  return True
 
 
 def getSessions():
@@ -257,17 +260,23 @@ def deactivateUser( userId ):
 
 ## --- project functions
 
+# add to olio
+# create project
+# create projectop
+# add to projectevent
+# create projectsnapshot
+# update projectrecent
+#
+# add to projectpool
+#
 def createProject( userId, projectName, permission ):
   db = redis.Redis()
 
   projId = str(uuid.uuid4())
-  schId = str(uuid.uuid4())
-  brdId = str(uuid.uuid4())
 
   userData = db.hgetall( "user:" + str(userId) )
   if ( (not userData) or  (userData["type"] == "anonymous") ):
     return None
-
 
   db.rpush( "olio:" + str(userId), projId )
 
@@ -276,8 +285,6 @@ def createProject( userId, projectName, permission ):
   proj["id"] = projId
   proj["userId"] = str(userId)
   proj["name"] = str(projectName)
-  proj["sch"] = schId
-  proj["brd"] = brdId
   proj["active"] = "1"
   proj["stime"] = ts
   proj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
@@ -288,34 +295,31 @@ def createProject( userId, projectName, permission ):
   if not db.hmset( "project:" + proj["id"], proj ):
     return None
 
-  sch = {}
-  sch["id"] = schId
-  sch["userId"] = str(userId)
-  sch["projectId"] = projId
-  sch["name"] = randomName( "./american-english.json", 3 )
-  sch["active"] = 1
-  sch["ind"] = 0
-  sch["permission"] = proj["permission"]
-  db.hmset("sch:" + schId, sch )
-
   schData = "{ \"element\" : [] }"
-  db.hmset("sch:" + schId + ":0", { "data" : schData } )
-  db.hmset("sch:" + schId + ":snapshot", { "data" : schData } )
-
-  brd = {}
-  brd["id"] = brdId
-  brd["userId"] = str(userId)
-  brd["projectId"] = projId
-  brd["name"] = randomName( "./american-english.json", 3 )
-  brd["active"] = 1
-  brd["ind"] = 0
-  brd["permission"] = proj["permission"]
-  db.hmset("brd:" + brdId, brd )
-
   brdData = "{ \"element\" : [] }"
-  db.hmset("brd:" + brdId + ":0", { "data" : brdData } )
-  db.hmset("brd:" + brdId + ":snapshot", { "data" : brdData } )
 
+  snap = {}
+  snap["id"] = proj["id"]
+  snap["json_sch"] = schData
+  snap["json_brd"] = brdData
+  db.hmset( "projectsnapshot:" + proj["id"] , snap )
+
+  evId = str(uuid.uuid4())
+  ev = {}
+  ev["id"] = evId
+  dat = {}
+  dat["json_sch"] = schData
+  dat["jons_brd"] = brdData
+  dat["type"] = "none"
+  dat["source"] = "none"
+  dat["destination"] = "none"
+  dat["action"] = "snapshot"
+  ev["data"] = dat
+  db.hmset( "projectop:" + evId, ev )
+  db.rpush("projeectevent:" + projId, evId )
+
+
+  db.hset( "projectrecent:" + str(userId), "projectId", proj["id"] )
   db.sadd( "projectpool", projId )
 
   return proj
@@ -343,6 +347,10 @@ def getProject( projectId ):
   db = redis.Redis()
   return db.hgetall( "project:" + str(projectId) )
 
+def getProjectSnapshot( projectId ):
+  db = redis.Redis()
+  return db.hgetall( "projectsnapshot:" + str(projectId) )
+
 
 def deleteProject( userId, projectId ):
   db = redis.Redis()
@@ -355,12 +363,6 @@ def deleteProject( userId, projectId ):
     return None
 
   r = db.hset( "project:" + str(projectId), "active", "0" )
-  schId = proj["sch"]
-  brdId = proj["brd"]
-
-  r = db.hset( "sch:" + str(schId), "active", "0" )
-  r = db.hset( "brd:" + str(brdId), "active", "0" )
-
   return r
 
 
@@ -373,13 +375,11 @@ def getProjectRecent( userId ):
 
   return proj
 
-def setProjectRecent( userId, projectId, schematicId, boardId  ):
+def setProjectRecent( userId, projectId ):
   db = redis.Redis()
 
   obj = {}
-  obj["project"] = projectId
-  obj["sch"] = schematicId
-  obj["brd"] = boardId
+  obj["projectId"] = projectId
 
   r = db.hmset( "projectrecent:" + str(userId), obj )
   return r
@@ -418,10 +418,13 @@ def getPortfolios( userId ):
   #olios = {}
   olioList = db.lrange( "olio:" + str(userId), 0, -1 )
 
-  
-
   for projectId in olioList:
     proj = getProject( projectId )
+
+    snap = getProjectSnapshot( projectId )
+    proj["json_sch"] = snap["json_sch"];
+    proj["json_brd"] = snap["json_brd"];
+
     if ("active" in proj) and (str(proj["active"]) == "1"):
       olios.append( proj )
     #olios[str(projectId)] = getProject(projectId)

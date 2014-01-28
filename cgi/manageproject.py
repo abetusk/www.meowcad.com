@@ -72,8 +72,8 @@ if not error:
 
 
   x = [ proj["name"],
-        "<a href='bleepsix_sch?sch=" + proj["sch"] + "' >Schematic</a>",
-        "<a href='bleepsix_pcb?brd=" + proj["brd"] + "' >PCB</a>",
+        "<a href='bleepsix_sch?project=" + proj["id"] + "' >Schematic</a>",
+        "<a href='bleepsix_pcb?project=" + proj["id"] + "' >PCB</a>",
         perm ]
 
   trs = "<tr> <td> "

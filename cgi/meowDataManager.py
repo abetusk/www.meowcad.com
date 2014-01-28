@@ -12,6 +12,7 @@ from time import sleep
 
 ### DEBUG
 #print "Content-Type: application/json; charset=utf-8"
+#print
 
 cgitb.enable();
 
@@ -32,7 +33,8 @@ def log_line( l ):
 
 ##########################
 #
-def error_and_quit(err, notes):
+def error_and_quit(err, notes = None):
+
   print "Content-Type: application/json"
   print
 
@@ -123,44 +125,40 @@ def startupProject( json_message ):
   # find the most recent project worked on
   #
   recentProj = mew.getProjectRecent( userId )
+
   if "project" in recentProj :
     proj = mew.getProject( recentProj["project"] )
-    if ( ("project" in proj) and ("sch" in proj) and ("brd" in proj) ):
+
+    if ("project" in proj) :
       obj = {}
       obj["type"]         = "success"
       obj["notes"]        = "recent project"
       obj["projectId"]    = proj["project"]
-      obj["schematicId"]  = proj["sch"]
-      obj["boardId"]      = proj["brd"]
       return obj
 
   # otherwise get the first valid project in the portfolio
   #
   olio = mew.getPortfolios( userId )
+
   if len(olio) > 0:
+
     obj = {}
     obj["type"]         = "success"
     obj["notes"]        = "first in portfolio"
     obj["projectId"]    = olio[0]["id"]
-    obj["schematicId"]  = olio[0]["sch"]
-    obj["boardId"]      = olio[0]["brd"]
+    obj["json_sch"]     = olio[0]["json_sch"]
+    obj["json_brd"]     = olio[0]["json_brd"]
+
     return obj
 
-#  obj = {} 
-#  obj["type"]           = "error"
-#  obj["notes"]          = "testing"
-#  return obj
-#
-
   # otherwise create a new project
-  proj = mew.createProject( userId, mew.randomName( "./american-english.json", 2 ), "user" )
+  #
+  proj = mew.createProject( userId, mew.randomName( "./american-english.json", 3 ), "user" )
 
   obj = {} 
   obj["type"]           = "success"
   obj["notes"]          = "could not find recent project or a project in the portfolio"
   obj["projectId"]      = proj["id"]
-  obj["schematicId"]    = proj["sch"]
-  obj["boardId"]        = proj["brd"]
 
   return obj
 

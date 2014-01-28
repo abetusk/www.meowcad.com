@@ -36,8 +36,8 @@ for projectDat in olioList:
     perm = "<img src='img/locked.png' width='12px'></img> " + projectDat["permission"] 
 
   x = [ "<a href='manageproject.py?projectId=" + str(projectDat["id"]) + "'>" + projectDat["name"] + "</a>", 
-        "<a href='bleepsix_sch?sch=" + projectDat["sch"] + "' >Schematic</a>", 
-        "<a href='bleepsix_pcb?brd=" + projectDat["brd"] + "' >PCB</a>", 
+        "<a href='bleepsix_sch?project=" + projectDat["id"] + "' >Schematic</a>", 
+        "<a href='bleepsix_pcb?project=" + projectDat["id"] + "' >PCB</a>", 
         perm ]
         #projectDat["permission"] ]
   trs = "<tr> <td> "

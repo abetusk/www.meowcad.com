@@ -59,18 +59,38 @@ project:<projectId> [hash]
   "id" : <projectId>
   "userId" : <userId>
   "name" : <projectName>
-  "sch" : <schematicId>
-  "brd" : <boardId>
   "permission" : ("world-read"|"user")
   "active" : ("0"|"1")
   "stime" : <seconds>
   "timestamp" : <datetime>
 
+projectevent:<projectId> [list]
+  <eventId>
+
+projectop:<projectId>:<eventId> [hash]
+  "id" : <eventId>
+  "data" : <json_string>
+
+
+projectsnapshot:<projectId> [hash]
+  "id" : <projectId>
+  "json_sch" : <json_string>
+  "json_brd" : <json_string>
+
+projectrecent:<userId> [hash]
+  "projectId" : <projectId>
+
+
+
+
+
+
+
+
 projectrecent:<userId>
   "project" : <projectId>
   "sch" : <schematicId>
   "brd" : <boardId>
-
 
 
 sch:<schematicId> [hash]

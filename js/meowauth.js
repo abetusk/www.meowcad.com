@@ -261,8 +261,8 @@ module.exports = {
     var dummyPassHash = guid();
     var sessionId = guid();
     var projId = guid();
-    var schId = guid();
-    var brdId = guid();
+    //var schId = guid();
+    //var brdId = guid();
 
     var sha512 = crypto.createHash('sha512');
     var sessHash = sha512.update( userId + sessionId ).digest('hex');
@@ -273,9 +273,9 @@ module.exports = {
     //   create session and add it to the pool
     // 
 
-    var projName = randomName(json_words.word, 2) ;
-    var schName  = randomName(json_words.word, 3) ;
-    var brdName  = randomName(json_words.word, 3) ;
+    var projName = randomName(json_words.word, 3) ;
+    //var schName  = randomName(json_words.word, 3) ;
+    //var brdName  = randomName(json_words.word, 3) ;
 
     var blankSch = "{ \"element\":[] }";
     var blankBrd = "{ \"element\":[] }";
@@ -288,17 +288,55 @@ module.exports = {
           active : "1"
         });
 
+    m.db.sadd( "userpool", userId );
+
+    var dt = new Date();
+    var sec = dt.getTime();
+    var dt_str = String(1900 + dt.getYear()) + "-" + 
+                 String(1+dt.getMonth()) + "-" + 
+                 String(dt.getDate()) + " " +
+                 String(dt.getHours()) + ":" +
+                 String(dt.getMinutes()) + ":" + 
+                 String(dt.getSeconds()) ;
     m.db.rpush( "olio:" + userId, projId );
     m.db.hmset( "project:" + projId, 
         { id: projId, 
           userId : userId, 
           name: projName,
-          sch: schId, 
-          brd: brdId, 
+
+          stime : sec,
+          timestamp : dt_str,
+          
           permission:"user", 
           active:1 
         });
 
+    m.db.hmset( "projectrecent:" + userId, { projectId: projId });
+
+
+    m.db.hmset( "projectsnapshot:" + projId,
+        { id : projId,
+          json_sch : blankSch,
+          json_brd : blankBrd 
+        });
+
+    var eventId = guid();
+
+    var op = { type : "snapshot", source : "none", destination : "none" };
+    op.action = "snapshot";
+    op.data = { json_sch : blankSch, json_brd : blankBrd };
+    var str_op = JSON.stringify( op );
+
+    m.db.hmset( "projectop:" + projId + ":" + eventId,
+        { id : eventId,
+          data : str_op
+        });
+
+    m.db.rpush( "projectevent:" + projId, eventId );
+
+
+
+    /*
     m.db.hmset( "sch:" + schId, 
         { id : schId, 
           userId : userId, 
@@ -311,7 +349,9 @@ module.exports = {
     m.db.hmset( "sch:" + schId + ":snapshot", { data : blankSch });
     //m.db.hmset( "sch:" + schId + ":0", { data : "{ \"element\":[] }" });
     //m.db.hmset( "sch:" + schId + ":snapshot", { data : "{ \"element\":[] }" });
+    */
 
+    /*
     m.db.hmset( "brd:" + brdId, 
         { id : brdId, 
           userId : userId, 
@@ -324,6 +364,7 @@ module.exports = {
     m.db.hmset( "brd:" + brdId + ":snapshot", { data : blankBrd });
     //m.db.hmset( "brd:" + brdId + ":0", { data : "{ element:[] }" });
     //m.db.hmset( "brd:" + brdId + ":snapshot", { data : "{ element:[] }" });
+    */
 
     m.db.hmset( "session:" + sessHash, 
         { id : sessHash, 
@@ -332,13 +373,16 @@ module.exports = {
         });
     m.db.sadd( "sesspool", sessHash );
 
+    /*
     m.db.hmset( "recentsession:" + userId,
         { schematicId : schId,
           boardId : brdId
         });
+        */
 
     console.log("anonymous userId: " + userId + ", sessionId: " + sessionId + ", sessHash: " + sessHash );
-    console.log("  projectId: " + projId + ", schId: " + schId + ", brdId:" + brdId );
+    //console.log("  projectId: " + projId + ", schId: " + schId + ", brdId:" + brdId );
+    console.log("  projectId: " + projId  );
 
     m.socket.emit("anonymouscreate", { 
       type:"response", 
@@ -346,9 +390,11 @@ module.exports = {
       message:"anonymous user created", 
       userId: userId, 
       sessionId: sessionId,
-      projectId: projId,
-      schematicId: schId,
-      boardId: brdId });
+      projectId: projId
+      //,
+      //schematicId: schId,
+      //boardId: brdId 
+    });
   }
 
 };

@@ -105,8 +105,14 @@ def randomName( fn, n ):
 
 
 def userIndicatorString( userId, userName ):
-  userIndicator = "<b><a href='usersettings' >" # ?userId=" + str(userId) + "'> "
-  userIndicator += "[" + str(userName) + "] </a> </b> "
+  userData = getUser( userId )
+
+  userIndicator = ""
+  if str(userData["type"]) == "anonymous":
+    userIndicator += "<b> &lt; " + str(userName) + "&gt;  </b> "
+  else:
+    userIndicator = "<b><a href='usersettings' >" # ?userId=" + str(userId) + "'> "
+    userIndicator += "[" + str(userName) + "] </a> </b> "
   userIndicator += " &nbsp; &nbsp; <a href='logout'>Logout</a> "
   return userIndicator
 

@@ -284,7 +284,7 @@ module.exports = {
     var userId      = m.data.userId;
     var sessionId   = m.data.sessionId;
 
-    console.log(m.data);
+    //console.log(m.data);
 
     if ( ( typeof clientToken === 'undefined' ) ||
          ( typeof userId === 'undefined' ) ||
@@ -315,8 +315,8 @@ module.exports = {
 
       function(message, callback)
       {
-        console.log("got:");
-        console.log(message);
+        //console.log("got:");
+        //console.log(message);
 
 
         if (!message)
@@ -352,7 +352,7 @@ module.exports = {
     var sessionId = m.data.sessionId;
     var picPermission = m.data.permission;
 
-    console.log(m.data);
+    //console.log(m.data);
 
     if ( ( typeof picPermission === 'undefined' ) ||
          ( typeof picId === 'undefined' ) ||

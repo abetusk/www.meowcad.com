@@ -8,6 +8,22 @@ var projectListener = {};
 var projectListenerCount = {};
 var projectListenerController = {};
 
+var g_auth = null;
+var g_proj = null;
+var g_aux = null;
+
+function init( auth, aux, proj )
+{
+  g_auth = auth;
+  g_aux = aux;
+  g_proj = proj;
+}
+
+function save_snapshot(err, data, projectId)
+{
+
+}
+
 function load_snapshot(err, data, projectId)
 {
   if (err)
@@ -21,8 +37,11 @@ function load_snapshot(err, data, projectId)
   try {
     json_sch = JSON.parse( data.json_sch );
     json_brd = JSON.parse( data.json_brd );
-  }catch (e)
+  } 
+  catch (e)
   {
+    console.log("ERROR: meowsession.load_snapshot could not parse json_sch or json_brd:");
+    console.log(e);
     return;
   }
 
@@ -116,6 +135,46 @@ function dispatch_op( transactionId, socket, db, data )
     console.log("displatch_op projectId: " + data.projectId);
     if ( projectId in projectListener )
     {
+
+      //update local copy
+      if (projectId in projectListenerController)
+      {
+
+        console.log("info: updating projectId " + projectId + " from projectListenerController");
+        console.log("info: op: (" + (typeof data.op) + ")"  );
+        console.log(data.op);
+
+        var c = projectListenerController[projectId];
+
+        /*
+        console.log("\n\n\n------------------------------------------------------\n");
+        console.log("BEFORE c.board.kicad_brd_json:\n");
+        console.log( JSON.stringify(c.board.kicad_brd_json, undefined, 2 ) );
+        console.log("\n------------------------------------------------------\n\n\n\n");
+        */
+
+        c.op.opCommand( data.op );
+
+        console.log("info: saving snapshot");
+        db.hmset( "projectsnapshot:" + projectId, 
+            {
+              json_sch : JSON.stringify( c.schematic.kicad_sch_json ),
+              json_brd : JSON.stringify( c.board.kicad_brd_json )
+            });
+
+        /*
+        console.log("\n\n\n------------------------------------------------------\n");
+        console.log("AFTER c.board.kicad_brd_json:\n");
+        console.log( JSON.stringify(c.board.kicad_brd_json, undefined, 2 ) );
+        console.log("\n------------------------------------------------------\n\n\n\n");
+        */
+
+      }
+      else
+      {
+        console.log("ERROR: could not find projectId " + projectId + " in projectListenerController!");
+      }
+
       for (var tid in projectListener[projectId])
       {
         if (tid == transactionId)
@@ -142,6 +201,7 @@ function dispatch_op( transactionId, socket, db, data )
 setInterval( debug_print, 5000 );
 
 module.exports = {
+  init : init,
   dispatch_op : dispatch_op,
   load_snapshot : load_snapshot,
   registerSession : registerSession,

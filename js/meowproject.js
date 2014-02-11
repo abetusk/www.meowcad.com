@@ -123,7 +123,7 @@ function fValidateItem( m )
       return;
     }
 
-    console.log(d);
+    //console.log(d);
     console.log("userId: " + userId + " dbUserId: " + d.userId );
 
     if (d.userId != userId)
@@ -132,7 +132,7 @@ function fValidateItem( m )
       return;
     }
 
-    console.log("active? " + d.active);
+    //console.log("active? " + d.active);
 
     if (d.active != 1)
     {
@@ -249,7 +249,7 @@ module.exports = {
       function(d, callback)
       {
         console.log("ok!");
-        console.log(d);
+        //console.log(d);
 
         m.socket.emit("projectauth", 
           { type:"response", 
@@ -304,9 +304,7 @@ module.exports = {
     m.messageParent = "projectsnapshot";
 
     async.waterfall([
-
       fSessionGet( m ),
-
       fValidateSession( m ),
 
       function(d, callback) {
@@ -358,9 +356,13 @@ module.exports = {
       fValidateItem(m),
       function(d, callback) {
         m.data.eventId = guid();
-        m.db.rpush( "projectevent:" + projId, m.data.eventId );
+        m.db.rpush( "projectevent:" + m.data.projectId, m.data.eventId );
         m.db.hmset( "projectop:" + m.data.projectId + ":" + m.data.eventId,
-          { data: m.data.op });
+          { data: JSON.stringify(m.data.op) });
+
+        //console.log("pushing m.data.op:");
+        //console.log( JSON.stringify(m.data.op) );
+
         m.socket.emit( "projectop", { type:"response", status:"success", message:"ok!", eventId: m.data.eventId });
       }
       ],
@@ -473,7 +475,7 @@ module.exports = {
         console.log(err);
         console.log(result);
       });
-  },
+  }
 
 };
 

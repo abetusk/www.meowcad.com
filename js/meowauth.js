@@ -126,7 +126,7 @@ module.exports = {
         {
 
           console.log("got:");
-          console.log(d);
+          //console.log(d);
 
           if ( (!d)  || (d.active != "1") )
           {
@@ -183,7 +183,7 @@ module.exports = {
         }
 
         console.log("got:");
-        console.log(d);
+        //console.log(d);
 
         var userid = d.id;
         var username = d.userName;

@@ -2,9 +2,17 @@ var auth = require("./meowauth.js");
 var aux = require("./meowaux.js");
 var proj = require("./meowproject.js");
 var async = require("async");
-var io = require("socket.io").listen(8000);
 var redis = require('redis'),
     db = redis.createClient();
+
+var bleepsixSchematicController = require("../../bleepsix/js/sch/bleepsixSchematicController.js");
+var meowsession = require("./meowsession.js");
+
+meowsession.init( auth, aux, proj );
+
+var io = require("socket.io").listen(8000);
+
+io.set('log level', 1);
 
 function _makeData(  transactionId, socket, db, data, callback )
 {
@@ -22,39 +30,21 @@ function _makeData(  transactionId, socket, db, data, callback )
   return x;
 }
 
-var activeSession = {};
-var projectListener = {};
-
-function registerProjectListener( transactionId, projectId, socket )
-{
-  activeSession[transactionId].projectId = projectId;
-
-  if (projectId in projectListener)
-    projectListener[projectId][transactionId] = socket;
-  else
-    projectListener[projectId] = { transactionId : socket };
-
-}
 
 io.sockets.on('connection', function (socket) {
   var transactionId = aux.guid();
 
-  activeSession[transactionId] = { authenticated : false, socket : socket, db : db,  };
+  console.log("CONNECT: " + transactionId );
+
+  meowsession.registerSession( transactionId, socket, db );
 
   // state management
   //
   socket.on("disconnect", function() {
     console.log("deleting session with transactionId " + transactionId);
 
-    if ("projectId" in activeSession[transactionId])
-    {
-      var projId = activeSession[transactionId].projectId;
+    meowsession.remove( transactionId );
 
-      console.log("  found projectId, " + projId + ", deleting from projectListener");
-
-      delete projectListener[ projId ];
-    }
-    delete activeSession[transactionId];
   });
 
   //socket.emit('meow');
@@ -81,11 +71,13 @@ io.sockets.on('connection', function (socket) {
   // -- proj
   //
   socket.on("newproject", function(data) {
-    proj.newProject( _makeData( transactionId, socket, db, data, registerProjectListener) );
+    proj.newProject( _makeData( transactionId, socket, db, data, 
+        meowsession.registerProject) );
   });
 
   socket.on("projectauth", function(data) {
-    proj.projectAuth( _makeData( transactionId, socket, db, data, registerProjectListener ) );
+    proj.projectAuth( _makeData( transactionId, socket, db, data, 
+        meowsession.registerProject) );
   });
 
 
@@ -95,6 +87,8 @@ io.sockets.on('connection', function (socket) {
 
   socket.on("projectop", function(data) {
     proj.projectOp( _makeData( transactionId, socket, db, data ) );
+
+    meowsession.dispatch_op( transactionId, socket, db, data );
   });
 
   socket.on("projectsnapshot", function(data) {

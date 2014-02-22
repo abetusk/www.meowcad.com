@@ -31,6 +31,12 @@ if loggedInFlag:
 
   #tmp_str = template.replace("<!--USER-->", userName)
   #tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
+
+  if userData["type"] == "anonymous":
+    tmp_str = template.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_anonymous.html") )
+  else:
+    tmp_str = template.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
+
   tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", mew.userIndicatorString( userId, userName ) )
 else:
   tmp_str = tmp_str.replace( "<!--USERINDICATOR-->",  "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; Signup")

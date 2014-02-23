@@ -1,0 +1,58 @@
+<VirtualHost *:8080>
+	ServerAdmin webmaster@localhost
+
+    RewriteLog "/tmp/rewrite.log"
+    RewriteLogLevel 9
+    RewriteEngine On
+    #RewriteBase /
+    RewriteRule ^(.*cgi)$ $1/index.py [NC,L]
+    #RewriteRule ^/test_rewrite/([a-zA-Z0-9_-]+)/?$ /test_rewrite?lib=$1 [NC,L]
+    #RewriteRule ^/test_rewrite/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ /test_rewrite?lib=$1&name=$2 [NC,L]
+    #RewriteRule ^/schlib_browser/([a-zA-Z0-9_\(\)\%\.-]+)/?$ /schlib_browser?lib=$1 [NC,L]
+    #RewriteRule ^/schlib_browser/([a-zA-Z0-9_\(\)\%\.-]+)/([a-zA-Z0-9_\(\)\%\.-]+)/?$ /schlib_browser?lib=$1&name=$2 [NC,L]
+
+	DocumentRoot /var/www
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+
+
+	<Directory /var/www/>
+
+		Options -Indexes FollowSymLinks MultiViews
+		#Options -Indexes FollowSymLinks 
+
+		AllowOverride None
+		#AllowOverride All
+        #RewriteEngine On
+
+
+		Order allow,deny
+		allow from all
+        Options +ExecCGI
+        AddHandler cgi-script .cgi .pl .py
+        DirectoryIndex index.html index.py
+
+
+        #Options +MultiViews
+	</Directory>
+
+
+	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+	<Directory "/usr/lib/cgi-bin">
+		AllowOverride None
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>

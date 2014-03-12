@@ -86,9 +86,18 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on("projectop", function(data) {
-    proj.projectOp( _makeData( transactionId, socket, db, data ) );
 
-    meowsession.dispatch_op( transactionId, socket, db, data );
+    try {
+      proj.projectOp( _makeData( transactionId, socket, db, data ) );
+      meowsession.dispatch_op( transactionId, socket, db, data );
+    } 
+    catch (e)
+    {
+      console.log("ERROR: projectop threw an error");
+      console.log(e);
+      console.log( transactionId, socket, db, data )
+    }
+
   });
 
   socket.on("projectsnapshot", function(data) {

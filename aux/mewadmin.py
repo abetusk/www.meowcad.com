@@ -118,24 +118,79 @@ def signups():
     print 
     print 
 
+def adduser(username, password):
+  if username is None or password is None:
+    print "provide username and password"
+    return
+  usr = mew.createUser( username, password )
+  print str(usr["id"])
+
+def deluser(userid):
+  if userid is None :
+    print "provide userid"
+    return
+  db = redis.Redis()
+  userDat = db.hgetall( "user:" + str(userid) )
+  if "id" not in userDat:
+    print "user not found"
+    return
+  mew.deactivateUser( userid )
+
+def activateuser(userid):
+  if userid is None :
+    print "provide userid"
+    return
+  
+  db = redis.Redis()
+  userDat = db.hgetall( "user:" + str(userid) )
+  if "id" not in userDat:
+    print "user not found"
+    return
+
+  db.hset( "user:" + str(userid), "active", "1" )
+
+
+def showhelp():
+  print "  feedback"
+  print "  users [all|anonymous]"
+  print "  sessions"
+  print "  signups"
 
 if len(sys.argv) < 2:
   print "provide command"
+  showhelp()
   sys.exit(0)
 
 op = str(sys.argv[1])
-x = None
+x, y = None, None
 if len(sys.argv) > 2:
   x = str(sys.argv[2])
+  if len(sys.argv) > 3:
+    y = str(sys.argv[3])
 
 if op == "feedback":
   feedback()
+
 elif op == "users":
   users( x )
+
 elif op == "sessions":
   sessions()
+
 elif op == "signups":
   signups()
+
+elif op == "adduser":
+  adduser(x, y)
+
+elif op == "deluser":
+  deluser(x)
+
+elif op == "activateuser":
+  activateuser(x)
+
+elif op == "help":
+  showhelp()
 
 
 

@@ -1,15 +1,13 @@
 <VirtualHost *:8080>
-	ServerAdmin webmaster@localhost
+    ServerAdmin webmaster@localhost
 
-    RewriteLog "/tmp/rewrite.log"
-    RewriteLogLevel 9
+    #RewriteLog "/tmp/rewrite.log"
+    #RewriteLogLevel 9
     RewriteEngine On
-    #RewriteBase /
+    RewriteCond %{HTTP_HOST} !^meowcad\.com [NC]
+    RewriteRule ^/?(.*)$ https://meowcad.com/$1 [L,R]
+
     RewriteRule ^(.*cgi)$ $1/index.py [NC,L]
-    #RewriteRule ^/test_rewrite/([a-zA-Z0-9_-]+)/?$ /test_rewrite?lib=$1 [NC,L]
-    #RewriteRule ^/test_rewrite/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ /test_rewrite?lib=$1&name=$2 [NC,L]
-    #RewriteRule ^/schlib_browser/([a-zA-Z0-9_\(\)\%\.-]+)/?$ /schlib_browser?lib=$1 [NC,L]
-    #RewriteRule ^/schlib_browser/([a-zA-Z0-9_\(\)\%\.-]+)/([a-zA-Z0-9_\(\)\%\.-]+)/?$ /schlib_browser?lib=$1&name=$2 [NC,L]
 
 	DocumentRoot /var/www
 	<Directory />

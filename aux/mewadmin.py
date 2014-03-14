@@ -32,7 +32,8 @@ def feedback():
 
     print ">>>"
     print "datetime:", tim
-    print "user:", userDat["userName"], uid
+    if userDat:
+      print "user:", userDat["userName"], uid
     print "email:", email
     print "text:>"
     print txt

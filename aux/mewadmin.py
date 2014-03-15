@@ -156,6 +156,10 @@ def showhelp():
   print "  users [all|anonymous]"
   print "  sessions"
   print "  signups"
+  print
+  print "  adduser <user> <pass>"
+  print "  deluser <id>"
+  print "  activateuser <id>"
 
 if len(sys.argv) < 2:
   print "provide command"

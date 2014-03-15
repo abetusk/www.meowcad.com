@@ -4,3 +4,4 @@ private/*
 *.swp
 tmp
 *.log
+*.pyc

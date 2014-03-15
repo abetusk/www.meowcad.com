@@ -16,9 +16,8 @@ cookie_hash = mew.getCookieHash( os.environ )
 if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
   print "Location:login"
-  print
+  print 
   sys.exit(0)
-
 
 message,messageType = mew.processCookieMessage( cookie, cookie_hash )
 
@@ -31,8 +30,6 @@ tableProjectHTML = [ "<thead><tr><th>Name</th> <th></th> <th></th> <th>Permissio
 for projectDat in olioList:
   projectId = projectDat["id"]
 
-  #projectDat = olioList[projectId]
-
   if projectDat["permission"] == "world-read":
     perm = "<img src='/img/heart.png' width='12px'></img> " + projectDat["permission"] 
   else:
@@ -40,14 +37,13 @@ for projectDat in olioList:
 
 
   x = [  str(projectDat["name"]) ,
-        #"<a href='bleepsix_sch?project=" + projectDat["project"] + "' >Schematic</a>", 
-        #"<a href='bleepsix_pcb?project=" + projectDat["project"] + "' >PCB</a>", 
-        "<a href='sch?project=" + projectDat["project"] + "' >Schematic</a>", 
-        "<a href='brd?project=" + projectDat["project"] + "' >PCB</a>", 
+        "<a href='sch?project=" + projectId + "' >Schematic</a>", 
+        "<a href='brd?project=" + projectId + "' >PCB</a>", 
         perm,
         str(projectDat["userName"])
         ]
         #projectDat["permission"] ]
+
   trs = "<tr> <td> "
   tre = "</td> </tr>"
   tableProjectHTML.append( trs  + "</td> <td>".join(x) + tre )

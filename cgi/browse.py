@@ -40,8 +40,10 @@ for projectDat in olioList:
 
 
   x = [  str(projectDat["name"]) ,
-        "<a href='bleepsix_sch?project=" + projectDat["project"] + "' >Schematic</a>", 
-        "<a href='bleepsix_pcb?project=" + projectDat["project"] + "' >PCB</a>", 
+        #"<a href='bleepsix_sch?project=" + projectDat["project"] + "' >Schematic</a>", 
+        #"<a href='bleepsix_pcb?project=" + projectDat["project"] + "' >PCB</a>", 
+        "<a href='sch?project=" + projectDat["project"] + "' >Schematic</a>", 
+        "<a href='brd?project=" + projectDat["project"] + "' >PCB</a>", 
         perm,
         str(projectDat["userName"])
         ]

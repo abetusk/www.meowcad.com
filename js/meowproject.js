@@ -445,14 +445,18 @@ module.exports = {
             { id: projId,
               type : "snapshot",
               schematicData : "{ \"element\" : [] }",
-              boardData : "{ \"element\" : [], \"units\" : \"deci-mils\"  }",
+              boardData : "{ \"element\" : [], \"equipot\" : [], " + 
+                    " \"equipot\" : [ { \"net_name\" : \"\", \"net_number\" : 0 }], " + 
+                    " \"units\" : \"deci-mils\"  }",
               ind : 0
             });
 
         m.db.hmset( "projectsnapshot:" + projId  ,
             { id: projId,
               schematicData : "{ \"element\" : [] }",
-              boardData : "{ \"element\" : [], \"units\" : \"deci-mils\"  }",
+              boardData : "{ \"element\" : [], " + 
+                    " \"equipot\" : [ { \"net_name\" : \"\", \"net_number\" : 0 }], " + 
+                    " \"units\" : \"deci-mils\"  }",
               ind : 0
             });
 

@@ -302,7 +302,9 @@ def createProject( userId, projectName, permission ):
     return None
 
   schData = "{ \"element\" : [] }"
-  brdData = "{ \"element\" : [] , \"units\" : \"deci-mils\" }"
+  brdData = "{ \"element\" : [] , " + \
+      " \"equipot\" : [ { \"net_name\" : \"\", \"net_number\" : 0 } ] , " + \
+      " \"units\" : \"deci-mils\" }"
 
   snap = {}
   snap["id"] = proj["id"]

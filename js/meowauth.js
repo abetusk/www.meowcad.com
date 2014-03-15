@@ -278,7 +278,9 @@ module.exports = {
     //var brdName  = randomName(json_words.word, 3) ;
 
     var blankSch = "{ \"element\":[] }";
-    var blankBrd = "{ \"element\":[], \"units\" : \"deci-mils\"  }";
+    var blankBrd = "{ \"element\":[], " + 
+                    " \"equipot\" : [ { \"net_name\" : \"\", \"net_number\" : 0 }], " + 
+                    " \"units\" : \"deci-mils\"  }";
 
     m.db.hmset( "user:" + userId, 
         { id : userId, 

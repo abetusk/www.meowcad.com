@@ -11,16 +11,17 @@ cgitb.enable()
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
 
-msg,msgType = mew.processCookieMessage( cookie, cookie_hash )
-
 loggedInFlag = False
 if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) != 0) ):
   loggedInFlag = True
 
 
-template = mew.slurp_file("template/about.html")
+msg,msgType = mew.processCookieMessage( cookie, cookie_hash )
+
+template = mew.slurp_file("template/signupemailsuccess.html")
 tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
+
 
 if loggedInFlag:
   userData = mew.getUser( cookie_hash["userId"] )
@@ -33,11 +34,9 @@ if loggedInFlag:
     tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
 
 else:
-  tmp_str = tmp_str.replace("<!--USERINDICATOR-->", "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href='signup'>Signup</a>")
+  a = "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; Signup"
+  tmp_str = tmp_str.replace("<!--USERINDICATOR-->", a )
   tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_world.html") )
-
-#tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
-
 
 print "Content-type: text/html; charset=utf-8;"
 print cookie.output()

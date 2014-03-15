@@ -36,7 +36,6 @@ if loggedInFlag:
 else:
   a = "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; Signup"
   tmp_str = tmp_str.replace("<!--USERINDICATOR-->", a )
-
   tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_world.html") )
 
 print "Content-type: text/html; charset=utf-8;"

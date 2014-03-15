@@ -23,7 +23,8 @@ us an email at info@meowcad.com or try again later! \
 </p>"
 
 msg = errorMessage
-resultLocation = "signupemailfail.html"
+#resultLocation = "signupemailfail.html"
+resultLocation = "signupfail"
 
 cookie = Cookie.SimpleCookie()
 
@@ -32,7 +33,8 @@ form = cgi.FieldStorage()
 if "email" in form:
   email = form["email"].value
   msg = successMessage;
-  resultLocation = "signupemailsuccess.html"
+  #resultLocation = "signupemailsuccess.html"
+  resultLocation = "signupsuccess"
 
   em = mew.addEmailSignup( email )
 

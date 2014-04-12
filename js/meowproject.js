@@ -448,7 +448,7 @@ module.exports = {
            "description" : "This is the default net class.",
            "unit" : "deci-thou",
            "track_width" : 100,
-           "clerance" : 100,
+           "clearance" : 100,
            "via_diameter" : 472,
            "via_drill_diameter" : 250,
            "uvia_diameter" : 200,

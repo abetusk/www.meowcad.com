@@ -307,7 +307,7 @@ def createProject( userId, projectName, permission ):
   defNetClass["description"] = "This is the default net class."
   defNetClass["unit"] = "deci-thou"
   defNetClass["track_width"] = 100
-  defNetClass["clerance"] =  100
+  defNetClass["clearance"] =  100
   defNetClass["via_diameter"] =  472
   defNetClass["via_drill_diameter"] =  250
   defNetClass["uvia_diameter"] =  200

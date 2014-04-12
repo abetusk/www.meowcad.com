@@ -441,22 +441,63 @@ module.exports = {
 
         m.db.rpush( "projectevent:" + projId, "0" );
 
+        var default_net_parameter = 
+        {
+         "Default" : {
+           "name" : "Default",
+           "description" : "This is the default net class.",
+           "unit" : "deci-thou",
+           "track_width" : 100,
+           "clerance" : 100,
+           "via_diameter" : 472,
+           "via_drill_diameter" : 250,
+           "uvia_diameter" : 200,
+           "uvia_drill_diameter" : 50,
+           "net" : [ ]
+           }
+        };
+
+
+        var schematic_data = { element: [] };
+        var board_data = { 
+          element: [], 
+          equipot: [ { net_name : "", net_number : 0 }],  
+          units: "deci-mils", 
+          net_class: default_net_parameter
+        };
+
+
         m.db.hmset( "projectop:" + projId  + ":0",
             { id: projId,
               type : "snapshot",
+              schematicData : JSON.stringify( schematic_data ),
+              boardData : JSON.stringify( board_data ),
+
+          /*
               schematicData : "{ \"element\" : [] }",
               boardData : "{ \"element\" : [], \"equipot\" : [], " + 
                     " \"equipot\" : [ { \"net_name\" : \"\", \"net_number\" : 0 }], " + 
-                    " \"units\" : \"deci-mils\"  }",
+                    " \"units\" : \"deci-mils\" " +
+                    default_net_parameter + 
+              " }",
+              */
+
               ind : 0
             });
 
         m.db.hmset( "projectsnapshot:" + projId  ,
             { id: projId,
+              schematicData : JSON.stringify( schematic_data ),
+              boardData : JSON.stringify( board_data ),
+
+              /*
               schematicData : "{ \"element\" : [] }",
               boardData : "{ \"element\" : [], " + 
                     " \"equipot\" : [ { \"net_name\" : \"\", \"net_number\" : 0 }], " + 
-                    " \"units\" : \"deci-mils\"  }",
+                    " \"units\" : \"deci-mils\" "
+                    default_net_parameter + 
+                    "}",
+                    */
               ind : 0
             });
 

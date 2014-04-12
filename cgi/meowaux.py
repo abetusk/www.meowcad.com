@@ -294,6 +294,7 @@ def createProject( userId, projectName, permission ):
   proj["active"] = "1"
   proj["stime"] = ts
   proj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+
   if str(permission) == "world-read":
     proj["permission"] = "world-read"
   else:
@@ -301,15 +302,31 @@ def createProject( userId, projectName, permission ):
   if not db.hmset( "project:" + proj["id"], proj ):
     return None
 
-  schData = "{ \"element\" : [] }"
-  brdData = "{ \"element\" : [] , " + \
-      " \"equipot\" : [ { \"net_name\" : \"\", \"net_number\" : 0 } ] , " + \
-      " \"units\" : \"deci-mils\" }"
+  defNetClass = {}
+  defNetClass["name"] = "Default"
+  defNetClass["description"] = "This is the default net class."
+  defNetClass["unit"] = "deci-thou"
+  defNetClass["track_width"] = 100
+  defNetClass["clerance"] =  100
+  defNetClass["via_diameter"] =  472
+  defNetClass["via_drill_diameter"] =  250
+  defNetClass["uvia_diameter"] =  200
+  defNetClass["uvia_drill_diameter"] =  50
+  defNetClass["net"] =  [ ]
+
+  netClass = {}
+  netClass["Default"] = defNetClass 
+
+  schData = { "element" : [] }
+  schData_s = json.dumps( schData )
+
+  brdData = { "units": "deci-mils", "element" : [], "equipot" : [ { "net_name" : "", "net_number" : 0 } ], "net_class" : netClass }
+  brdData_s = json.dumps( brdData )
 
   snap = {}
   snap["id"] = proj["id"]
-  snap["json_sch"] = schData
-  snap["json_brd"] = brdData
+  snap["json_sch"] = schData_s
+  snap["json_brd"] = brdData_s
   db.hmset( "projectsnapshot:" + proj["id"] , snap )
 
   evId = str(uuid.uuid4())

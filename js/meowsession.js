@@ -41,6 +41,8 @@ function load_snapshot(err, data, projectId)
   catch (e)
   {
     console.log("ERROR: meowsession.load_snapshot could not parse json_sch or json_brd:");
+    console.log( data.json_sch );
+    console.log( data.json_brd );
     console.log(e);
     return;
   }

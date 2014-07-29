@@ -169,7 +169,7 @@ def startupProject( json_message ):
 #
 
 try:
-  json_container = json.load(sys.stdin);
+  json_container = json.load(sys.stdin)
 except Exception as e:
   error_and_quit(e)
 

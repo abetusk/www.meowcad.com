@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>meowCAD / Modules </title>
+
+<link rel="shortcut icon" href="/simpleoutline.ico" />
+<link rel="icon" href="/simpleoutline.ico" />
+
+
+<link href="css/buttons.css" rel="stylesheet" type="text/css" />
+
+<link href="css/forms.css" rel="stylesheet" type="text/css" />
+<link href="css/tables.css" rel="stylesheet" type="text/css" />
+<link href="css/cleanlooks.css" rel="stylesheet" type="text/css" />
+
+    <script type='text/javascript' src='js/lib/jquery.js' ></script>
+    <script type='text/javascript' src='js/lib/jquery.cookie.js' ></script>
+    <script type='text/javascript' src='js/lib/meowmeow.js' ></script>
+    <script>
+      $(document).ready( function() { meowmeow(); });
+    </script>
+
+
+</head>
+
+
+
+<body>
+<div id="container">
+  <div id="header">
+
+    <div class='top_right'>
+      <!--USERINDICATOR-->
+    </div>
+
+    <a href='/'>
+      <img src='img/kitty_head_black_outline_p32.png' 
+           style='width:32px; height:32px; opacity:0.5; float:left; '></img>
+    </a>
+
+    <h1> &nbsp; <a href='portfolio'><!--USER--></a> / <a href='modules'>Board Modules</a> </h1>
+
+      <br />
+      <hr />
+
+  </div> <!-- end header -->
+
+
+  <!--LEFT-->
+
+
+
+    <div id="main">
+      <div id="maincontent">
+
+        <!--MESSAGE-->
+        <h3>Board Modules</h3>
+        <p>
+        Board modules (as opposed to component library) are individual or groups of 
+        footprint layouts to be used in the PCB board layout.  These do not
+        include the schematics used in the schematic layout.
+        <br/>
+        For example, this is an ATTiny13 board module:
+        <br/>
+        <img   src='/img/brdAttiny13Example.png' height='150'></img>
+        <br/>
+        That could be uploaded and then used in your projects if it wasn't already provided
+        by the default board modules available.
+        </p>
+
+        <!-- <form class='pure-form pure-form-aligned'> -->
+        <form class='pure-form' action='createfootprintmod' method='POST' >
+          <fieldset>
+
+            <div class='pure-control-group'>
+              <label for='name'>New Module Name</label>
+              <input id='name' name='name' type='text' placeholder='Module Name' required>
+            </div>
+
+          </fieldset>
+
+          <fieldset>
+            <legend>Access</legend>
+
+            <div class='pure-control-group'>
+
+              <!--
+              <label for='single' class='pure-radio'>
+                <img src='/img/locked.png' width='20px'></img>
+                <input id='single' type='radio' name='accessOption' value='single' checked>
+                  </input>
+                  Private (only viewable by you)
+              </label>
+              -->
+
+              <label for='all' class='pure-radio'>
+                <!-- <img src='/img/heart.png' width='20px'></img> -->
+                <input id='all' type='radio' name='accessOption' value='all' checked >
+                  </input>
+                  All projects will have access to these board modules.
+              </label>
+
+            </div>
+
+          </fieldset>
+
+          <fieldset>
+            <div class='pure-control-group'>
+              <button id='uploadButton' class='pure-button pure-button-tiel'>Upload Board Module</button>
+            </div>
+          </fieldset>
+
+
+        <form>
+
+        <br/>
+        <br/>
+        <br/>
+
+      </div> <!-- end main content section -->
+    </div> 
+
+
+  <div id="footer"><div class="spacer"></div>
+    <hr />
+    <p class="left">| <a href="http://jigsaw.w3.org/css-validator/">CSS</a> | 
+    <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> </p>
+  </div> <!-- end footer -->
+
+</div> <!-- end container -->
+
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://meowcad.com/analytics/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "1"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+</body>
+</html>

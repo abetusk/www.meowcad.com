@@ -67,11 +67,14 @@ import os.path
 
 cgitb.enable()
 
-DEFAULT_DATA_LOCATION = "/var/www/json"
+#DEFAULT_DATA_LOCATION = "/var/www/json"
+DEFAULT_DATA_LOCATION = "/var/www"
 DEFAULT_COMP_LOCATION = "/var/www"
 DEFAULT_MOD_LOCATION  = "/var/www"
 #DEFAULT_COMP_LOCATION = "/var/www/eeschema/json"
 #DEFAULT_MOD_LOCATION  = "/var/www/pcb/json"
+
+USR_BASE_LOCATION = "/home/meow/usr"
 
 ##########################
 #
@@ -96,13 +99,13 @@ def error_and_quit(err, notes = None):
 # http://stackoverflow.com/questions/3812849/how-to-check-whether-a-directory-is-a-sub-directory-of-another-directory
 #
 def in_directory(fn, directory):
-    #make both absolute    
-    directory = os.path.join(os.path.realpath(directory), '')
-    fn = os.path.realpath(fn)
+  #make both absolute    
+  directory = os.path.join(os.path.realpath(directory), '')
+  fn = os.path.realpath(fn)
 
-    #return true, if the common prefix of both is equal to directory
-    #e.g. /a/b/c/d.rst and directory is /a/b, the common prefix is /a/b
-    return os.path.commonprefix([fn , directory]) == directory
+  #return true, if the common prefix of both is equal to directory
+  #e.g. /a/b/c/d.rst and directory is /a/b, the common prefix is /a/b
+  return os.path.commonprefix([fn , directory]) == directory
 
 
 
@@ -116,20 +119,52 @@ def json_slurp_file(fn):
   return data
 
 
-def comp_loc( userId, sessoinId ):
-  if (userId is None) or (sessionId is None):
-    return json_slurp_file( DEFAULT_DATA_LOCATION + "/component_location.json" )
+# return file if found, checking in the following order:
+#  - USR_BASE_LOCATION / <userId> / <projectId> / fn
+#  - USR_BASE_LOCATION / <userId> / fn
+#  - DEFAULT_DATA_LOCATION / FN
+#
+# return None if none found.
+#
+def file_cascade( userId, projectId, fn ):
 
-  return json_slurp_file( DEFAULT_DATA_LOCATION + "/component_location.json" )
+  usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
+  projDir = os.path.join( usrDir , str(projectId) )
 
-def comp_list( userId, sessionId ):
-  if (userId is None) or (sessionId is None):
-    return json_slurp_file( DEFAULT_DATA_LOCATION + "/component_list_default.json" )
+  if in_directory( usrDir, USR_BASE_LOCATION ):
 
-  return json_slurp_file( DEFAULT_DATA_LOCATION + "/component_list_default.json" )
+    if in_directory( projDir, usrDir ):
+      fullfn = os.path.join( projDir, fn )
+      if in_directory( fullfn, projDir ) and os.path.isfile( fullfn ):
+        return json_slurp_file( fullfn )
 
-def comp_ele( userId, sessoinId, json_data ):
-  if (userId is None) or (sessionId is None):
+    fullfn = os.path.join( usrDir, fn )
+    if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
+      return json_slurp_file( fullfn )
+
+  fullfn = os.path.join( DEFAULT_DATA_LOCATION, fn )
+  if in_directory( fullfn, DEFAULT_DATA_LOCATION ) and os.path.isfile( fullfn ):
+    return json_slurp_file( fullfn )
+
+  return "{ \"type\" : \"error\", \"reason\" : \"error\" }"
+
+
+def comp_loc( userId, projectId ):
+
+  if (userId is None) or (projectId is None):
+    return json_slurp_file( os.path.join( DEFAULT_DATA_LOCATION , "json", "component_location.json" ) )
+
+  return file_cascade( userId, projectId, os.path.join("json", "component_location.json") )
+
+
+def comp_list( userId, projectId ):
+  if (userId is None) or (projectId is None):
+    return json_slurp_file( os.path.join( DEFAULT_DATA_LOCATION , "json" , "component_list_default.json" ) )
+
+  return file_cascade( userId, projectId, os.path.join("json", "component_list_default.json") )
+
+def comp_ele( userId, projectId, json_data ):
+  if (userId is None) or (projectId is None):
     loc = DEFAULT_COMP_LOCATION + "/" + urllib.unquote( json_data["location"] )
     if not in_directory( loc, DEFAULT_COMP_LOCATION ):
       error_and_quit("invalid component location")
@@ -141,19 +176,25 @@ def comp_ele( userId, sessoinId, json_data ):
   return json_slurp_file( loc )
 
 
-def mod_loc( userId, sessionId ):
-  if (userId is None) or (sessionId is None):
-    return json_slurp_file( DEFAULT_DATA_LOCATION + "/footprint_location.json" )
-  return json_slurp_file( DEFAULT_DATA_LOCATION + "/footprint_location.json" )
+def mod_loc( userId, projectId ):
+  if (userId is None) or (projectId is None):
+    return json_slurp_file( os.path.join( DEFAULT_DATA_LOCATION , "json", "footprint_location.json" ) )
+
+  return file_cascade( userId, projectId, os.path.join("json", "footprint_location.json") )
+  #bd = USR_BASE_LOCATION + "/" + str(userId)
+  #return json_slurp_file( bd + "/footprint_location.json" )
 
 
-def mod_list( userId, sessionId ):
-  if (userId is None) or (sessionId is None):
-    return json_slurp_file( DEFAULT_DATA_LOCATION + "/footprint_list_default.json" )
-  return json_slurp_file( DEFAULT_DATA_LOCATION + "/footprint_list_default.json" )
+def mod_list( userId, projectId ):
+  if (userId is None) or (projectId is None):
+    return json_slurp_file( os.path.join( DEFAULT_DATA_LOCATION , "json", "footprint_list_default.json" ) )
 
-def mod_ele( userId, sessionId, json_data ):
-  if (userId is None) or (sessionId is None):
+  return file_cascade( userId, projectId, os.path.join("json", "footprint_list_default.json") )
+  #bd = USR_BASE_LOCATION + "/" + str(userId)
+  #return json_slurp_file( bd + "/footprint_list_default.json" )
+
+def mod_ele( userId, projectId, json_data ):
+  if (userId is None) or (projectId is None):
     loc = DEFAULT_COMP_LOCATION + "/" + urllib.unquote( json_data["location"] )
     if not in_directory( loc, DEFAULT_COMP_LOCATION ):
       error_and_quit("invalid module location")
@@ -168,54 +209,47 @@ def mod_ele( userId, sessionId, json_data ):
 v = ""
 
 try:
-  #json_container = json.loads(sys.stdin)
   v = sys.stdin.read()
   json_container = json.loads( v )
 
 except Exception as ee:
-  #error_and_quit( str(ee) )
   error_and_quit( str(ee) + " (1) " + str(v) )
 
 if ( "op" not in json_container ):
   error_and_quit( "invalid message" )
 
-#if ( ( "userId" not in json_container ) or
-#     ( "sessionId" not in json_container ) or
-#     ( "type" not in json_container ) or
-#     ( "data" not in json_container) ):
-#  error_and_quit( "invalid message" )
-
-
 op = json_container["op"]
 
 userId = None
 sessionId = None
+projectId = None
 
 if ( ( "userId" in json_container ) and
      ( "sessionId" in json_container) ):
 
-
   userId = json_container["userId"]
   sessionId = json_container["sessionId"]
 
-
+  if "projectId" in json_container:
+    projectId = json_container["projectId"]
+  
   if not mew.authenticateSession( userId, sessionId ):
     error_and_quit( "authentication error" )
 
 str_obj = "{ \"type\" : \"error\", \"message\":\"invalid op\" }"
-if op   == "COMP_LOC":      str_obj = comp_loc( userId, sessionId )
-elif op == "COMP_LIST":     str_obj = comp_list( userId, sessionId )
+if op   == "COMP_LOC":      str_obj = comp_loc( userId, projectId )
+elif op == "COMP_LIST":     str_obj = comp_list( userId, projectId )
 elif op == "COMP_ELE":
   if "location" not in json_container:
     error_and_quit( "specify 'location'" )
-  str_obj = comp_ele( userId, sessionId, json_container )
+  str_obj = comp_ele( userId, projectId, json_container )
 
-elif op == "MOD_LOC":       str_obj = mod_loc( userId, sessionId )
-elif op == "MOD_LIST":      str_obj = mod_list( userId, sessionId )
+elif op == "MOD_LOC":       str_obj = mod_loc( userId, projectId )
+elif op == "MOD_LIST":      str_obj = mod_list( userId, projectId )
 elif op == "MOD_ELE":
   if "location" not in json_container:
     error_and_quit( "specify 'location'" )
-  str_obj = mod_ele( userId, sessionId, json_container )
+  str_obj = mod_ele( userId, projectId, json_container )
 
 print "Content-Type: application/json; charset=utf-8"
 print

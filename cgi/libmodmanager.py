@@ -128,19 +128,20 @@ def json_slurp_file(fn):
 #
 def file_cascade( userId, projectId, fn ):
 
-  usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
-  projDir = os.path.join( usrDir , str(projectId) )
+  if (userId is not None) and (projectId is not None):
+    usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
+    projDir = os.path.join( usrDir , str(projectId) )
 
-  if in_directory( usrDir, USR_BASE_LOCATION ):
+    if in_directory( usrDir, USR_BASE_LOCATION ):
 
-    if in_directory( projDir, usrDir ):
-      fullfn = os.path.join( projDir, fn )
-      if in_directory( fullfn, projDir ) and os.path.isfile( fullfn ):
+      if in_directory( projDir, usrDir ):
+        fullfn = os.path.join( projDir, fn )
+        if in_directory( fullfn, projDir ) and os.path.isfile( fullfn ):
+          return json_slurp_file( fullfn )
+
+      fullfn = os.path.join( usrDir, fn )
+      if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
         return json_slurp_file( fullfn )
-
-    fullfn = os.path.join( usrDir, fn )
-    if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
-      return json_slurp_file( fullfn )
 
   fullfn = os.path.join( DEFAULT_DATA_LOCATION, fn )
   if in_directory( fullfn, DEFAULT_DATA_LOCATION ) and os.path.isfile( fullfn ):
@@ -150,60 +151,25 @@ def file_cascade( userId, projectId, fn ):
 
 
 def comp_loc( userId, projectId ):
-
-  if (userId is None) or (projectId is None):
-    return json_slurp_file( os.path.join( DEFAULT_DATA_LOCATION , "json", "component_location.json" ) )
-
   return file_cascade( userId, projectId, os.path.join("json", "component_location.json") )
 
-
 def comp_list( userId, projectId ):
-  if (userId is None) or (projectId is None):
-    return json_slurp_file( os.path.join( DEFAULT_DATA_LOCATION , "json" , "component_list_default.json" ) )
-
   return file_cascade( userId, projectId, os.path.join("json", "component_list_default.json") )
 
 def comp_ele( userId, projectId, json_data ):
-  if (userId is None) or (projectId is None):
-    loc = DEFAULT_COMP_LOCATION + "/" + urllib.unquote( json_data["location"] )
-    if not in_directory( loc, DEFAULT_COMP_LOCATION ):
-      error_and_quit("invalid component location")
-    return json_slurp_file( loc )
-
-  loc = DEFAULT_COMP_LOCATION + "/" + urllib.unquote( json_data["location"] )
-  if not in_directory( loc, DEFAULT_COMP_LOCATION ):
-    error_and_quit("invalid component location")
-  return json_slurp_file( loc )
+  loc = urllib.unquote( json_data["location"] )
+  return file_cascade( userId, projectId, loc )
 
 
 def mod_loc( userId, projectId ):
-  if (userId is None) or (projectId is None):
-    return json_slurp_file( os.path.join( DEFAULT_DATA_LOCATION , "json", "footprint_location.json" ) )
-
   return file_cascade( userId, projectId, os.path.join("json", "footprint_location.json") )
-  #bd = USR_BASE_LOCATION + "/" + str(userId)
-  #return json_slurp_file( bd + "/footprint_location.json" )
-
 
 def mod_list( userId, projectId ):
-  if (userId is None) or (projectId is None):
-    return json_slurp_file( os.path.join( DEFAULT_DATA_LOCATION , "json", "footprint_list_default.json" ) )
-
   return file_cascade( userId, projectId, os.path.join("json", "footprint_list_default.json") )
-  #bd = USR_BASE_LOCATION + "/" + str(userId)
-  #return json_slurp_file( bd + "/footprint_list_default.json" )
 
 def mod_ele( userId, projectId, json_data ):
-  if (userId is None) or (projectId is None):
-    loc = DEFAULT_COMP_LOCATION + "/" + urllib.unquote( json_data["location"] )
-    if not in_directory( loc, DEFAULT_COMP_LOCATION ):
-      error_and_quit("invalid module location")
-    return json_slurp_file( loc )
-
-  loc = DEFAULT_COMP_LOCATION + "/" + urllib.unquote( json_data["location"] )
-  if not in_directory( loc, DEFAULT_COMP_LOCATION ):
-    error_and_quit("invalid module location")
-  return json_slurp_file( loc )
+  loc = urllib.unquote( json_data["location"] )
+  return file_cascade( userId, projectId, loc )
 
 
 v = ""
@@ -243,6 +209,7 @@ elif op == "COMP_ELE":
   if "location" not in json_container:
     error_and_quit( "specify 'location'" )
   str_obj = comp_ele( userId, projectId, json_container )
+
 
 elif op == "MOD_LOC":       str_obj = mod_loc( userId, projectId )
 elif op == "MOD_LIST":      str_obj = mod_list( userId, projectId )

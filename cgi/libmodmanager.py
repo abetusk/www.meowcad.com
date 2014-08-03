@@ -129,13 +129,14 @@ def json_slurp_file(fn):
 def file_cascade( userId, projectId, fn ):
 
   if (userId is not None) and (projectId is not None):
+
     usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
     projDir = os.path.join( usrDir , str(projectId) )
-
     if in_directory( usrDir, USR_BASE_LOCATION ):
 
       if in_directory( projDir, usrDir ):
         fullfn = os.path.join( projDir, fn )
+
         if in_directory( fullfn, projDir ) and os.path.isfile( fullfn ):
           return json_slurp_file( fullfn )
 
@@ -144,6 +145,7 @@ def file_cascade( userId, projectId, fn ):
         return json_slurp_file( fullfn )
 
   fullfn = os.path.join( DEFAULT_DATA_LOCATION, fn )
+
   if in_directory( fullfn, DEFAULT_DATA_LOCATION ) and os.path.isfile( fullfn ):
     return json_slurp_file( fullfn )
 

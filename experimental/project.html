@@ -31,8 +31,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <link rel="stylesheet" type="text/css" href="/css/forms.css" />
     <link rel="stylesheet" type="text/css" href="/css/tables.css" />
 
+
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -91,6 +93,27 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             </div>
         </div>
 
+        <div class='container-fluid'>
+
+          <div class='row'>
+
+            <div class='col-xs-4'>
+              <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img>
+            </div>
+
+            <div class='col-xs-4'>
+              <h3 style='text-align:center; margin-bottom:25px;'>Project</h3>
+            </div>
+
+            <div class='col-xs-4'>
+              <!-- <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img> -->
+              <img src='/img/ghost_big.png' style='float:right; margin-top:25px;' height='16px' width='16px' ></img>
+            </div>
+
+          </div>
+        </div>
+
+
         <!--PROJECT_BREADCRUMB-->
         <div class='col-lg-12'>
           <ol class='breadcrumb' > <!-- style='margin-botton:5px;'> -->
@@ -98,6 +121,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             <li> <a href='#'>mewmew</a> </li>
           </ol>
         </div>
+
+
 
         <div class='col-lg-12' style='margin-botton:25px;'>
 
@@ -139,8 +164,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 <li class='active'><a href='#PanelOverview' data-toggle='tab'>Overview</a></li>
                 <li><a href='#PanelBOM' data-toggle='tab'>BOM</a></li>
                 <li><a href='#PanelFiles' data-toggle='tab'>Files</a></li>
-                <li><a href='#PanelComponents' data-toggle='tab'>Components</a></li>
-                <li><a href='#PanelModules' data-toggle='tab'>Modules</a></li>
+                <li><a href='#PanelComponents' data-toggle='tab'>Library Components</a></li>
+                <li><a href='#PanelModules' data-toggle='tab'>Library Modules</a></li>
                 <li><a href='#PanelManage' data-toggle='tab'>Manage</a></li>
 
               </ul>
@@ -231,14 +256,156 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 <div class='tab-pane' id='PanelComponents'>
 
                   <!--PROJECT_COMPONENTS-->
-                  <p>Components</p>
 
-                </div>
+                  <div class='panel-group' id='accordian'>
+
+                    <!--collapsibe 0-->
+
+                    <div class='panel panel-default'>
+                      <div class='panel-heading'>
+                        <h4 class='panel-title'>
+                          <a data-toggle='collapse' data-parent='#accordian' href='#collapseOne'>
+                            component group 1
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div id='collapseOne' class='panel-collapse collapse in'>
+                      <div class='panel-body'>
+
+                        <ul class='list-group'>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>foo</div>
+                              <div class='col-xs-6'>oof</div>
+                            </div>
+                          </li>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>bar</div>
+                              <div class='col-xs-6'>rab</div>
+                            </div>
+                          </li>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>baz</div>
+                              <div class='col-xs-6'>zab</div>
+                            </div>
+                          </li>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>qux</div>
+                              <div class='col-xs-6'>xuq</div>
+                            </div>
+                          </li>
+
+                        </ul>
+
+                      </div>
+                    </div>
+
+                    <!--collapsibe 1-->
+
+                    <div class='panel panel-default'>
+                      <div class='panel-heading'>
+                        <h4 class='panel-title'>
+                          <a data-toggle='collapse' data-parent='#accordian' href='#collapseTwo'>
+                            component group 2
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div id='collapseTwo' class='panel-collapse collapse'>
+                      <div class='panel-body'>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>foo</div>
+                              <div class='col-xs-6'>oof</div>
+                            </div>
+                          </li>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>bar</div>
+                              <div class='col-xs-6'>rab</div>
+                            </div>
+                          </li>
+
+                      </div>
+                    </div>  <!-- collapse two -->
+
+                  </div> <!-- whole collapsible -->
+
+                </div>  <!-- panel -->
 
                 <div class='tab-pane' id='PanelModules'>
 
                   <!--PROJECT_MODULE-->
-                  <p>Modules</p>
+                  <div class='panel-group' id='accordian'>
+
+                    <!--module collapsibe 0-->
+
+                    <div class='panel panel-default'>
+                      <div class='panel-heading'>
+                        <h4 class='panel-title'>
+                          <a data-toggle='collapse' data-parent='#accordian' href='#moduleCollapseOne'>
+                            module group 1
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div id='moduleCollapseOne' class='panel-collapse collapse in'>
+                      <div class='panel-body'>
+
+                        <ul class='list-group'>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>foo</div>
+                              <div class='col-xs-6'>oof</div>
+                            </div>
+                          </li>
+
+                        </ul>
+
+                      </div>
+                    </div>
+
+                    <!--module collapsibe 1-->
+
+                    <div class='panel panel-default'>
+                      <div class='panel-heading'>
+                        <h4 class='panel-title'>
+                          <a data-toggle='collapse' data-parent='#accordian' href='#moduleCollapseTwo'>
+                            module group 2
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div id='moduleCollapseTwo' class='panel-collapse collapse'>
+                      <div class='panel-body'>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>bar</div>
+                              <div class='col-xs-6'>rab</div>
+                            </div>
+                          </li>
+
+                      </div>
+                    </div>  <!-- collapse two -->
+
+                  </div> <!-- whole collapsible -->
+
 
                 </div>
 

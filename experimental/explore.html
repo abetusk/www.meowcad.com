@@ -58,6 +58,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <ul class="nav navbar-nav">
                             <li><a href="#">[abe]</a></li>
                         </ul>
+
+                        <!--
                         <form class="navbar-form navbar-left">
                           <div class='input-group'>
                             <input type="text" class="form-control col-lg-8" placeholder="Search">
@@ -66,6 +68,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                             </span>
                           </div>
                         </form>
+                        -->
 
                         <ul class="nav navbar-nav">
                             <li><a href="#">Explore</a></li>
@@ -91,21 +94,34 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             </div>
         </div>
 
-        <div class='container-fluid'>
+        <div class='container-fluid' style='margin-bottom:10px;'>
 
           <div class='row'>
 
-            <div class='col-xs-4'>
+            <div class='col-xs-2'>
+              <!--
               <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img>
+              -->
+              <img src='/img/ghost_big.png' height='16px' width='16px' ></img>
             </div>
 
+            <!--
             <div class='col-xs-4'>
               <h3 style='text-align:center; margin-bottom:25px;'>Explore</h3>
             </div>
+            -->
 
-            <div class='col-xs-4'>
+            <div class='col-xs-8'>
+                <div class='input-group'>
+                  <input type="text" class="form-control" placeholder="Search">
+                  <span class='input-group-addon'>!</span>
+                </div>
+            </div>
+
+            <div class='col-xs-2'>
               <!-- <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img> -->
-              <img src='/img/ghost_big.png' style='float:right; margin-top:25px;' height='16px' width='16px' ></img>
+              <!-- <img src='/img/ghost_big.png' style='float:right; margin-top:25px;' height='16px' width='16px' ></img> -->
+              <img src='/img/ghost_big.png' style='float:right;' height='16px' width='16px' ></img>
             </div>
 
           </div>
@@ -118,9 +134,42 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             <div class='panel panel-default'>
               -->
 
-                  <!--PROJECT_TABLE-->
-                  <table class='table table-striped table-bordered table-condensed'>
+                  <!--PROJECT_GRID-->
+                  <!--
+                  <div class='container-fluid'>
 
+                    <div class='row' style='border-top: 1px solid black;' >
+                        <div class='col-lg-8'>foo</div>
+                        <div class='col-lg-4' style='float:right;' >bar</div>
+                    </div>
+
+                    <div class='row' style='border-top: 1px solid black;'>
+                      <div class='col-lg-8'>foo</div>
+                      <div class='col-lg-4' style='float:right;' >bar</div>
+                    </div>
+
+                    <div class='row' style='border-top: 1px solid black;'>
+                      <div class='col-lg-8'>foo</div>
+                      <div class='col-lg-4' style='float:right;' >bar</div>
+                    </div>
+
+                    <div class='row' style='border-top: 1px solid black; border-bottom: 1px solid black;'>
+                      <div class='col-lg-8'>foo</div>
+                      <div class='col-lg-4' style='float:right;' >bar</div>
+                    </div>
+
+                  </div>
+                  -->
+
+                  <!--PROJECT_TABLE-->
+                  <!-- <table class='table table-striped table-bordered table-condensed'> -->
+
+                  <!--
+                  <table class='table table-striped table-bordered'>
+                  -->
+                  <table class='table table-striped'>
+
+                    <!--
                     <thead>
                       <tr>
                         <th style='text-align:center;' class='col-xs-5'> Project </th>
@@ -130,39 +179,52 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <th style='text-align:center;' class='col-xs-2'> Prestige </th>
                       </tr>
                     </thead>
+                    -->
 
                     <tbody>
 
-                      <tr>
-                        <td align='center'>mewmew mew mew mew mew mew mew</td>
-                        <td align='center'> <a href='#'>sch</a> </td>
-                        <td align='center'> <a href='#'>brd</a> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
+                     <tr>
+                        <td style='col-xs-8' >
+                          <span style='font-size:1.5em;'> <a href='#'>
+                              <img src='/img/ghost_big.png' height='16px' width='16px' >  </img>
+                              mew / mewmew</a> </span> <br/>
+                          foo bar baz
+                        </td>
+                        <td align='center' style='col-xs-2' >  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
+                        <td align='center' style='col-xs-2' >  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
                       </tr>
 
                       <tr>
-                        <td align='center'>mewmew</td>
-                        <td align='center'> <a href='#'>sch</a> </td>
-                        <td align='center'> <a href='#'>brd</a> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
+                        <td style='col-xs-8' >
+                          <span style='font-size:1.5em;'> <a href='#'>
+                              <img src='/img/ghost_big.png' height='16px' width='16px' >  </img>
+                              mew / mewmew</a> </span> <br/>
+                          foo bar baz
+                        </td>
+                        <td align='center' style='col-xs-2' >  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
+                        <td align='center' style='col-xs-2' >  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
                       </tr>
 
                       <tr>
-                        <td align='center'>mewmew</td>
-                        <td align='center'> <a href='#'>sch</a> </td>
-                        <td align='center'> <a href='#'>brd</a> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
+                        <td style='col-xs-8' >
+                          <span style='font-size:1.5em;'> <a href='#'>
+                              <img src='/img/ghost_big.png' height='16px' width='16px' >  </img>
+                              mew / mewmew</a> </span> <br/>
+                          foo bar baz
+                        </td>
+                        <td align='center' style='col-xs-2' >  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
+                        <td align='center' style='col-xs-2' >  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
                       </tr>
 
                       <tr>
-                        <td align='center'>mewmew</td>
-                        <td align='center'> <a href='#'>sch</a> </td>
-                        <td align='center'> <a href='#'>brd</a> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
+                        <td style='col-xs-8' >
+                          <span style='font-size:1.5em;'> <a href='#'>
+                              <img src='/img/ghost_big.png' height='16px' width='16px' >  </img>
+                              mew / mewmew</a> </span> <br/>
+                          foo bar baz
+                        </td>
+                        <td align='center' style='col-xs-2' >  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
+                        <td align='center' style='col-xs-2' >  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
                       </tr>
 
                     </tbody>

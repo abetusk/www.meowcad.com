@@ -101,9 +101,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           </ul>
         </div>
 
-        <!--PORTFOLIO_MESSAGE-->
-        <div class='alert alert-success' role='alert' style='text-align:center;'>Success!</div>
-
 
         <!--PROJECT_FILES-->
         <!--
@@ -200,6 +197,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 </div>
 
                 <div class='tab-pane' id='PanelProjectCreate'>
+
+                  <!--PORTFOLIO_MESSAGE-->
+                  <!--
+                  -->
+                  <div class='alert alert-success' role='alert' style='text-align:center;'>Success!</div>
+                  <!--
+                  <div class='alert' style='text-align:center;'></div>
+                  -->
+
+
           
                   <!-- <form class='pure-form pure-form-aligned'> -->
                   <form class='pure-form' action='createproject' method='POST' style='margin-left:15px;'>
@@ -248,14 +255,98 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
                 <div class='tab-pane' id='PanelComponent'>
+
                   <!--PORTFOLIO_COMPONENTS-->
-                  <p>Portfolio Components</p>
+                  <div class='panel-group' id='accordionComponent'>
+
+                    <!--collapsibe 0-->
+
+                    <div class='panel panel-default'>
+                      <div class='panel-heading'>
+                        <h4 class='panel-title'>
+                          <a class='accordion-toggle' data-toggle='collapse' data-parent='#accordionComponent' href='#collapseOne'>
+                            component group 1
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div id='collapseOne' class='panel-collapse collapse in'>
+                      <div class='panel-body'>
+
+                        <ul class='list-group'>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>foo</div>
+                              <div class='col-xs-6'>oof</div>
+                            </div>
+                          </li>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>bar</div>
+                              <div class='col-xs-6'>rab</div>
+                            </div>
+                          </li>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>baz</div>
+                              <div class='col-xs-6'>zab</div>
+                            </div>
+                          </li>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>qux</div>
+                              <div class='col-xs-6'>xuq</div>
+                            </div>
+                          </li>
+
+                        </ul>
+                      </div> <!-- panel-body -->
+                    </div>  <!-- collapse one -->
+
+                  </div> <!-- panel component -->
+
                 </div>
 
 
                 <div class='tab-pane' id='PanelModule'>
+
                   <!--PORTFOLIO_MODULES-->
-                  <p>Portfolio Modules</p>
+                  <div class='panel-group' id='accordionModule'>
+
+                    <!--module collapsibe 0-->
+
+                    <div class='panel panel-default'>
+                      <div class='panel-heading'>
+                        <h4 class='panel-title'>
+                          <a class='accordion-toggle' data-toggle='collapse' data-parent='#accordionModule' href='#moduleCollapseOne'>
+                            module group 1
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div id='moduleCollapseOne' class='panel-collapse collapse in'>
+                      <div class='panel-body'>
+
+                        <ul class='list-group'>
+
+                          <li class='list-group-item'>
+                            <div class='row'>
+                              <div class='col-xs-6'>foo</div>
+                              <div class='col-xs-6'>oof</div>
+                            </div>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
 
 

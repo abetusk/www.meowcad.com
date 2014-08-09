@@ -131,6 +131,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
               <ul class='nav nav-tabs' style='margin-bottom: 15px;'>
                 <li class='active'><a href='#PanelUser' data-toggle='tab'>User Settings</a></li>
+                <li ><a href='#PanelPermissions' data-toggle='tab'>User Permissions</a></li>
               </ul>
 
               <div id='PaneTabContent' class='tab-content'>
@@ -138,6 +139,46 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 <div class='tab-pane active in' id='PanelUser'>
 
                   <form class='pure-form pure-form-aligned' action='updateuser' method='POST' style='margin-left:25px;'>
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='password'>Current Password</label>
+                        <input id='passwordOrig' name='passwordOrig' type='password' placeholder='Current password' required>
+                      </div>
+                    </fieldset>
+          
+                    <br />
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='password'>New Password</label>
+                        <input id='password' name='password' type='password' placeholder='New password' required>
+                      </div>
+                    </fieldset>
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='passwordAgain'> Re-Enter </label>
+                        <input id='passwordAgain' name='passwordAgain' type='password' placeholder='Re-enter new password' required>
+                      </div>
+                    </fieldset>
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='none'> </label>
+                        <button id='update' class='pure-button pure-button-tiel'>Update</button>
+                      </div>
+                    </fieldset>
+          
+                  </form>
+                 
+                </div>
+
+                <div class='tab-pane' id='PanelPermissions'>
+
+                  <form class='pure-form pure-form-aligned' action='updateuserpermissions' method='POST' style='margin-left:25px;'>
+
+                    foo bar baz
           
                     <fieldset>
                       <div class='pure-control-group'>

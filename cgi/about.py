@@ -51,32 +51,19 @@ if loggedInFlag:
 
   unamestr = str(userName)
 
-  #tmp_str = tmp_str.replace("<!--USERINDICATOR-->", mew.userIndicatorString( cookie_hash["userId"], userName ) )
   if userData["type"] == "anonymous":
     unamestr = "<" + unamestr + ">"
     nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", "Sign up!" )
   else:
     nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", 
-        "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout/" + str(userData) + "'>Logout</a></li> </ul>")
-
-
-    #tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_anonymous.html") )
-  #else:
-  #  tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
-
+        "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout/" + str(userData["id"]) + "'>Logout</a></li> </ul>")
   nav = nav.replace( "<!--NAVBAR_USER_DISPLAY-->", 
-      "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/" + str(userData) + "\">[" + unamestr + "]</a></li> </ul>")
-
-
+      "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/" + str(userData["id"]) + "\">[" + unamestr + "]</a></li> </ul>")
 else:
   nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", login_signup )
 
-  #tmp_str = tmp_str.replace("<!--USERINDICATOR-->", "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href='signup'>Signup</a>")
-  #tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_world.html") )
 
 tmp_str = tmp_str.replace( "<!--NAVBAR_FLUSH-->", nav)
-
-#tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
 
 
 print "Content-type: text/html; charset=utf-8;"

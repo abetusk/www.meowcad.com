@@ -8,6 +8,16 @@ import datetime
 import meowaux as mew
 cgitb.enable()
 
+loginform = """
+<ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
+  <li>
+    <form action='/login' style='display:inline;' >
+      <button class='btn btn-success' type='submit'>Log in</button>
+    </form>
+  </li>
+</ul>
+"""
+
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
 
@@ -16,27 +26,25 @@ if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) != 0) ):
   loggedInFlag = True
 
-
 msg,msgType = mew.processCookieMessage( cookie, cookie_hash )
 
-template = mew.slurp_file("template/signup.html")
+template = mew.slurp_file("test/signup.html")
+
+nav = mew.slurp_file("test/navbar_template.html")
+
+if not loggedInFlag:
+  nav = nav.replace("<!--NAVBAR_USER_CONTEXT-->", loginform )
+
+footer = mew.slurp_file("test/footer_template.html")
+analytics = mew.slurp_file("test/analytics_template.html")
+
+
 tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
 
+tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
+tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
+tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )
 
-if loggedInFlag:
-  userData = mew.getUser( cookie_hash["userId"] )
-  userName = userData["userName"]
-  tmp_str = tmp_str.replace("<!--USERINDICATOR-->", mew.userIndicatorString( cookie_hash["userId"], userName ) )
-
-  if userData["type"] == "anonymous":
-    tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_anonymous.html") )
-  else:
-    tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
-
-else:
-  a = "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; Signup"
-  tmp_str = tmp_str.replace("<!--USERINDICATOR-->", a )
-  tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_world.html") )
 
 print "Content-type: text/html; charset=utf-8;"
 print cookie.output()

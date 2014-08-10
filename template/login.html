@@ -1,252 +1,110 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+<!DOCTYPE html>
+
+<!--
+http://www.prepbootstrap.com/license
+
+All the Templates and Themes on this website can be used under the MIT license, stated below. Some templates and themes can use third-party components and frameworks, that are subject to their own licenses.
+
+Copyright (c) 2014 PrepBootstrap.com
+Alterations made by abetusk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeowCAD</title>
 
-    <link rel="shortcut icon" href="/simpleoutline.ico" />
-    <link rel="icon" href="/simpleoutline.ico" />
 
-    <script type='text/javascript' src='/socket.io/socket.io.js' ></script>
-    <script type='text/javascript' src='js/lib/jquery.js' ></script>
-    <script type='text/javascript' src='js/lib/jquery.cookie.js' ></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/pastel-stream.css" />
 
-    <script type='text/javascript' src='js/lib/meowmeow.js' ></script>
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="/css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="/css/tables.css" />
 
-    <link href="css/buttons.css" rel="stylesheet" type="text/css" />
+    <!-- <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> -->
+    <script type="text/javascript" src="js/jquery.js"></script>
 
-    <link href="css/forms.css" rel="stylesheet" type="text/css" />
-    <link href="css/tables.css" rel="stylesheet" type="text/css" />
-    <link href="css/cleanlooks.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
-
-    <script>
-
-      g_url = "/";
-
-      $(document).ready( function() {
-
-        meowmeow();
-
-        $("#username").keyup( function(e) {
-          if (e.keyCode == 13)
-          {
-            $("#password").focus();
-          }
-        });
-
-        $("#password").keyup( function(e) {
-          if (e.keyCode == 13)
-          {
-            tryLogin();
-          }
-        });
-
-      });
-
-
-      function successMessage( text )
-      {
-        //msg = document.getElementById("message");
-        //msg.className = "success-message";
-        //msg.innerHTML = text;
+    <style>
+      .jumbotron-background {
+        background: url('/img/kitty_head_light_p512_bg.png') no-repeat center center !important;
+        width: 100% !important;
+        height: 450px !important;
       }
+    </style>
+</head>
 
-      function errorMessage( text )
-      {
-        msg = document.getElementById("message");
-        msg.className = "error-message";
-        msg.innerHTML = text;
-
-      }
-
-      function tryLogin()
-      {
-        console.log("tryLogin");
-
-        var username = document.getElementById("username");
-        var password = document.getElementById("password");
-
-        var uname = username.value;
-        var pword = password.value;
-
-        if (uname.length == 0)
-        {
-          errorMessage("Please provide Username");
-          username.focus();
-          return;
-        }
-
-        if (pword.length == 0)
-        {
-          errorMessage("Please provide Password");
-          password.focus();
-          return;
-        }
-
-        if (typeof io !== 'undefined')
-        {
-          var socket = io.connect( g_url );
-
-          socket.on("disconnect", function() { console.log("disconnected"); });
-          socket.on("connect_failed", function() { console.log("connect_failed"); });
-          socket.on("reconnect_failed", function() { console.log("reconnect_failed"); });
-          socket.on("error", function() { 
-            console.log("error");
-            errorMessage("Server error, please try again later!  Sorry for the inconvenience!");
-          });
-
-          socket.emit("auth", { username : username.value, password : password.value });
-          socket.on("auth", function(dat) {
-            console.log("auth response, got:");
-            console.log(dat);
-
-            if ( (dat.type != "response") || (dat.status != "success") )
-            {
-              errorMessage("Authentication failed");
-              return;
-            }
-            else
-            {
-              successMessage("success!");
+<body>
 
 
-              /*
-              $.cookie("userId", dat.userId , { expires:365, path:'/', secure: true} );
-              $.cookie("sessionId", dat.sessionId, {expires:365, path:'/', secure:true} );
-              $.cookie("userName" , uname , {expires:365, path:'/', secure:true} );
-              */
-
-              $.cookie("userId", dat.userId , { path:'/', secure: true} );
-              $.cookie("sessionId", dat.sessionId, { path:'/', secure:true} );
-              $.cookie("userName" , uname , { path:'/', secure:true} );
-
-              console.log("cookie: " + $.cookie("sessionToken") );
+  <!--NAVBAR-->
 
 
-              // redirect...
-              //
-              window.location.href = g_url + "portfolio";
-
-              // I don't think we want to use this, but just in case...
-              //window.location.replace( g_url + "/bleepsix/bleepsix_sch.html");
-
-            }
-          });
-
-        }
-        else {
-          errorMessage("Server offline, please try again later!  Sorry for the inconvenience!");
-          return;
-        }
-
-        //errorMessage("login not supported yet");
-
-      }
-
-      function u_kp()
-      {
-
-      }
-
-    </script>
+  <div class="container">
 
 
-  </head>
+    <!--MESSAGE-->
+    <br/>
+    <br/>
+    <br/>
 
+    <div class='row'>
 
-  <body>
-    <div id="container">
-    <div id="header">
+      <div class='col-xs-2'></div>
 
-      <div class='top_right'>
-        [Login]
-          &nbsp; &nbsp;
-          &nbsp; &nbsp;
-        <a href='signup'>Signup</a>
-      </div>
+      <div class='col-xs-8' >
 
+        <div class='panel panel-dark'>
 
-      <a href='/'>
-        <img src='img/kitty_head_black_outline_p32.png' 
-             style='width:32px; height:32px; opacity:0.5; float:left; '></img>
-      </a>
+          <div class='panel-heading'>Sign in</div>
+          <div class='panel-body'>
 
-      <h1>&nbsp <a href='/'>meowCAD</a> / Login </h1>
-      <br />
-      <hr />
-    </div> <!-- end header -->
+            <form class='form-horizontal' style='margin-left:10px; margin-right:10px; ' >
 
-    <!--LEFT-->
-
-    <div id='main'>
-
-      <!--
-      <div id='left'>
-
-        <div id='leftcontent'>
-        </div>
-
-      </div>
-      -->
-
-
-
-      <div id='maincontent'>
-
-        <!--MESSAGE-->
-
-        <div class='pure-g'>
-
-          <div class='pure-form pure-form-aligned'>
-            <div id='message' class='no-message'>
-            </div>
-
-
-            <fieldset>
-              <div class='pure-control-group'>
-                <label for='name'>Username</label>
-                <input id='username' type='text' placeholder='Username' required>
+              <div class='form-group'>
+                <label for='inputUsername'>Username</label>
+                <input type="text" class="form-control" placeholder="Username">
               </div>
 
-              <div class='pure-control-group'>
-                <label for='password'>Password</label>
-                <input id='password' type='password' placeholder='Password' required>
+              <div class='form-group'>
+                <label for='inputPassword'>Password <a href='#'><small>(forgot password?)</small></a> </label>
+                <input type="password" class="form-control" placeholder="Password">
               </div>
 
-              <div class='pure-controls'>
-                <button id='dummy' class='pure-button pure-button-tiel' onclick='tryLogin();'>Login</button>
+              <div class='form-group' style='float:right;' >
+                <button class='btn btn-success' type='submit'>Sign in</button>
               </div>
 
-            </fieldset>
+            </form>
+
           </div>
-
         </div>
 
-
       </div>
+
+      <div class='col-xs-2'></div>
 
     </div>
 
 
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(["trackPageView"]);
-  _paq.push(["enableLinkTracking"]);
+  <!--FOOTER-->
 
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://meowcad.com/analytics/piwik/";
-    _paq.push(["setTrackerUrl", u+"piwik.php"]);
-    _paq.push(["setSiteId", "1"]);
-    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Piwik Code -->
+  </div> <!-- container -->
 
-  </body>
+  <!--ANALYTICS-->
+
+
+</body>
 </html>
-
-
 

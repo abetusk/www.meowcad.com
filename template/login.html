@@ -24,6 +24,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeowCAD</title>
 
+    <link rel="shortcut icon" href="/simpleoutline.ico" />
+    <link rel="icon" href="/simpleoutline.ico" />
+
+    <script type='text/javascript' src='/socket.io/socket.io.js' ></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+    <script type='text/javascript' src='js/lib/meowmeow.js' ></script>
 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/pastel-stream.css" />
 
@@ -31,10 +39,182 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <link rel="stylesheet" type="text/css" href="/css/forms.css" />
     <link rel="stylesheet" type="text/css" href="/css/tables.css" />
 
-    <!-- <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> -->
-    <script type="text/javascript" src="js/jquery.js"></script>
-
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!--spinner-->
+    <link rel="stylesheet" href="/css/ladda-themeless.css">
+    <script src="/js/lib/spin.js"></script>
+    <script src="/js/lib/ladda.js"></script>
+    <!--spinner-->
+
+    <script>
+
+      var g_url = "/";
+
+      $(document).ready( function() {
+        meowmeow();
+        $("#username").keyup( function(e) {
+          if (e.keyCode == 13) { $("#password").focus(); }
+        });
+
+        $("#password").keyup( function(e) {
+          if (e.keyCode == 13) { tryLogin(); }
+        });
+
+      });
+
+      function clearMessage() {
+        var msg = document.getElementById("message");
+        msg.className = "";
+        msg.innerHTML = "";
+      }
+
+      function successMessage( text )
+      {
+        var msg = document.getElementById("message");
+        msg.className = "alert alert-success";
+        msg.innerHTML = text;
+      }
+
+      var messagesDisplayed=0;
+      function errorMessage( text )
+      {
+        var msg = document.getElementById("message");
+        //msg.className = "alert alert-danger fade in";
+
+        if (messagesDisplayed==0) {
+          msg.className = "alert alert-danger";
+        } else {
+          msg.className = "alert alert-danger fade";
+          setTimeout( function() { 
+            $("#message").addClass("in");
+          }, 100);
+        }
+
+        messagesDisplayed++;
+
+        msg.innerHTML = text;
+
+      }
+
+      function clearErrorHints() 
+      {
+        var u = document.getElementById("usernameDiv");
+        u.className = "form-group";
+        var p = document.getElementById("passwordDiv");
+        p.className = "form-group";
+      }
+
+      function errorHint(name) {
+        var b = document.getElementById(name);
+        b.className = "form-group has-error";
+      }
+
+      function disableButton() {
+        var btn = document.getElementById( 'buttonSignin' );
+        var l = Ladda.create(btn);
+        l.start();
+      }
+
+      function enableButton() {
+        var btn = document.getElementById( 'buttonSignin' );
+        var l = Ladda.create(btn);
+        l.stop();
+      }
+
+      function tryLogin()
+      {
+        console.log("tryLogin");
+
+        clearErrorHints();
+        clearMessage();
+        disableButton();
+
+        var username = document.getElementById("username");
+        var password = document.getElementById("password");
+
+        var uname = username.value;
+        var pword = password.value;
+
+        if (uname.length == 0)
+        {
+          errorMessage("Please provide Username");
+          errorHint("usernameDiv");
+          enableButton();
+          username.focus();
+          return;
+        }
+
+        if (pword.length == 0)
+        {
+          errorMessage("Please provide Password");
+          errorHint("passwordDiv");
+          enableButton();
+          password.focus();
+          return;
+        }
+
+        if (typeof io !== 'undefined')
+        {
+          var socket = io.connect( g_url );
+
+          messagesDisplayed=0;
+
+          socket.on("disconnect", function() { console.log("disconnected"); });
+          socket.on("connect_failed", function() { console.log("connect_failed"); });
+          socket.on("reconnect_failed", function() { console.log("reconnect_failed"); });
+          socket.on("error", function() {
+            console.log("error");
+            errorMessage("Server error, please try again later!  Sorry for the inconvenience!");
+            enableButton();
+          });
+
+          socket.emit("auth", { username : username.value, password : password.value });
+          socket.on("auth", function(dat) {
+            console.log("auth response, got:");
+            console.log(dat);
+
+            enableButton();
+
+            if ( (dat.type != "response") || (dat.status != "success") )
+            {
+              errorMessage("Authentication failed");
+              return;
+            }
+            else
+            {
+              successMessage("success!");
+
+              $.cookie("userId", dat.userId , { path:'/', secure: true} );
+              $.cookie("sessionId", dat.sessionId, { path:'/', secure:true} );
+              $.cookie("userName" , uname , { path:'/', secure:true} );
+
+              console.log("cookie: " + $.cookie("sessionToken") );
+
+
+              // redirect...
+              //
+              window.location.href = g_url + "portfolio";
+
+              // I don't think we want to use this, but just in case...
+              //window.location.replace( g_url + "/bleepsix/bleepsix_sch.html");
+
+            }
+          });
+
+        }
+        else {
+          errorMessage("Server offline, please try again later!  Sorry for the inconvenience!");
+          enableButton();
+          return;
+        }
+
+      }
+
+
+    </script>
+
+                                                                                           
 
     <style>
       .jumbotron-background {
@@ -55,8 +235,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
     <!--MESSAGE-->
-    <br/>
-    <br/>
+    <div id='message'></div>
+
     <br/>
 
     <div class='row'>
@@ -70,23 +250,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           <div class='panel-heading'>Sign in</div>
           <div class='panel-body'>
 
-            <form class='form-horizontal' style='margin-left:10px; margin-right:10px; ' >
-
-              <div class='form-group'>
-                <label for='inputUsername'>Username</label>
-                <input type="text" class="form-control" placeholder="Username">
+              <div class='form-group' id='usernameDiv'>
+                <label >Username</label>
+                <input id='username' type="text" class='form-control' placeholder="Username">
               </div>
 
-              <div class='form-group'>
-                <label for='inputPassword'>Password <a href='#'><small>(forgot password?)</small></a> </label>
-                <input type="password" class="form-control" placeholder="Password">
+              <label >Password <a href='#'><small>(forgot password?)</small></a> </label>
+
+              <div class='form-group' id='passwordDiv' >
+                <input id='password' type="password" class='form-control' placeholder="Password">
               </div>
 
-              <div class='form-group' style='float:right;' >
-                <button class='btn btn-success' type='submit'>Sign in</button>
+              <div class='form-group' >
+                <button id='buttonSignin' class='btn btn-success ladda-button' data-style='zoom-out' onclick='tryLogin();'>
+                  <span class='ladda-label'> 
+                    Sign in
+                  </span>
+                </button>
               </div>
 
-            </form>
 
           </div>
         </div>

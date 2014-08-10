@@ -9,23 +9,39 @@ import meowaux as mew
 cgitb.enable()
 
 signupnav="""
-<form class="navbar-form navbar-right" role='form' action='/signup' >
+<form class="navbar-form navbar-right" role='form' action='/signup' method='POST'>
 <div class='form-group'>
 <button class='btn btn-warning' type='submit'>Sign up!</button>
 </div>
-"""
-
-loginnav="""
-<form class="navbar-form navbar-right" role='form' action='/login' >
-
-<div class='form-group'>
-<input type="text" size='8' class="form-control" placeholder="Username">
-<input type="password" size='12' class="form-control" placeholder="Password">
-<button class='btn btn-success' type='submit'>Login</button>
-</div>
-
 </form>
 """
+
+login_signup_nav="""
+
+<ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
+  <li>
+
+    <form action='/login' style='display:inline;' >
+      <button class='btn btn-success' type='submit'>Log in</button>
+    </form>
+
+    <form action='/signup' style='display:inline;' >
+      <button class='btn btn-warning' type='submit'>Sign up!</button>
+    </form>
+
+  </li>
+</ul>
+"""
+
+#"""
+#<form class="navbar-form navbar-right" role='form' action='/login' method='POST'>
+#<div class='form-group'>
+#<!-- <input type="text" size='8' class="form-control" placeholder="Username"> -->
+#<!-- <input type="password" size='12' class="form-control" placeholder="Password"> -->
+#<button class='btn btn-success' type='submit'>Login</button>
+#</div>
+#</form>
+#"""
 
 
 cookie = Cookie.SimpleCookie()
@@ -68,7 +84,7 @@ if loggedInFlag:
   nav = nav.replace( "<!--NAVBAR_USER_DISPLAY-->",
       "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/" + str(userData["id"]) + "\">" + unamestr + "</a></li> </ul>")
 else:
-  nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", loginnav)
+  nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", login_signup_nav)
 
 tmp_str = tmp_str.replace( "<!--NAVBAR_FLUSH-->", nav)
 

@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+
+<!--
+http://www.prepbootstrap.com/license
+
+All the Templates and Themes on this website can be used under the MIT license, stated below. Some templates and themes can use third-party components and frameworks, that are subject to their own licenses.
+
+Copyright (c) 2014 PrepBootstrap.com
+Alterations made by abetusk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowCAD</title>
+
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/pastel-stream.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="/css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="/css/tables.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+
+
+        <!-- sample templates start -->
+
+        <!-- Navbar -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="navbar navbar-inverse">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><img src='/img/ghost_big.png' height='16px' width='16px' ></img></a>
+                    </div>
+                    <div class="navbar-collapse collapse navbar-inverse-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">[abe]</a></li>
+                        </ul>
+                        <form class="navbar-form navbar-left">
+                          <div class='input-group'>
+                            <input type="text" class="form-control col-lg-8" placeholder="Search">
+                            <span class='input-group-btn'>
+                              <button class='btn btn-default' type='button'>!</button>
+                            </span>
+                          </div>
+                        </form>
+
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">Explore</a></li>
+                        </ul>
+
+
+                        <!--USER_CONTEXT-->
+
+                        <!--
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><button type="button" class="btn btn-success" style="margin-top:8px; margin-right:5px;" >Log In</button></li>
+                            <li><button type="button" class="btn btn-warning" style="margin-top:8px; margin-right:5px;" >Signup</button></li>
+                        </ul>
+                        -->
+
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href='#'>Logout</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class='container-fluid'>
+
+          <div class='row'>
+
+            <div class='col-xs-4'>
+              <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img>
+            </div>
+
+            <div class='col-xs-4'>
+              <h3 style='text-align:center; margin-bottom:25px;'>User Settings</h3>
+            </div>
+
+            <div class='col-xs-4'>
+              <!-- <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img> -->
+              <img src='/img/ghost_big.png' style='float:right; margin-top:25px;' height='16px' width='16px' ></img>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!--USER_BREADCRUMB-->
+        <div class='col-lg-12'>
+          <ul class='breadcrumb' > <!-- style='margin-botton:5px;'> -->
+            <li> <a href='#'>abe</a>  </li>
+          </ul>
+        </div>
+
+        <!--USER_MESSAGE-->
+        <div class='alert alert-success' role='alert' style='text-align:center;'>Success!</div>
+
+
+        <!--USER_PANE-->
+        <div class='row' style='margin-top:25px'>
+          <div class='col-lg-12'>
+            <div class='panel panel-default'>
+
+              <ul class='nav nav-tabs' style='margin-bottom: 15px;'>
+                <li class='active'><a href='#PanelUser' data-toggle='tab'>User Settings</a></li>
+                <li ><a href='#PanelPermissions' data-toggle='tab'>User Permissions</a></li>
+              </ul>
+
+              <div id='PaneTabContent' class='tab-content'>
+
+                <div class='tab-pane active in' id='PanelUser'>
+
+                  <form class='pure-form pure-form-aligned' action='updateuser' method='POST' style='margin-left:25px;'>
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='password'>Current Password</label>
+                        <input id='passwordOrig' name='passwordOrig' type='password' placeholder='Current password' required>
+                      </div>
+                    </fieldset>
+          
+                    <br />
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='password'>New Password</label>
+                        <input id='password' name='password' type='password' placeholder='New password' required>
+                      </div>
+                    </fieldset>
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='passwordAgain'> Re-Enter </label>
+                        <input id='passwordAgain' name='passwordAgain' type='password' placeholder='Re-enter new password' required>
+                      </div>
+                    </fieldset>
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='none'> </label>
+                        <button id='update' class='pure-button pure-button-tiel'>Update</button>
+                      </div>
+                    </fieldset>
+          
+                  </form>
+                 
+                </div>
+
+                <div class='tab-pane' id='PanelPermissions'>
+
+                  <form class='pure-form pure-form-aligned' action='updateuserpermissions' method='POST' style='margin-left:25px;'>
+
+                    foo bar baz
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='password'>Current Password</label>
+                        <input id='passwordOrig' name='passwordOrig' type='password' placeholder='Current password' required>
+                      </div>
+                    </fieldset>
+          
+                    <br />
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='password'>New Password</label>
+                        <input id='password' name='password' type='password' placeholder='New password' required>
+                      </div>
+                    </fieldset>
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='passwordAgain'> Re-Enter </label>
+                        <input id='passwordAgain' name='passwordAgain' type='password' placeholder='Re-enter new password' required>
+                      </div>
+                    </fieldset>
+          
+                    <fieldset>
+                      <div class='pure-control-group'>
+                        <label for='none'> </label>
+                        <button id='update' class='pure-button pure-button-tiel'>Update</button>
+                      </div>
+                    </fieldset>
+          
+                  </form>
+                 
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <!--FOOTER-->
+        <hr>
+        <div class='fluid-container'>
+
+          <div class='row'>
+
+            <!-- <div style='text-align:left; ' class='col-md-4'>  -->
+            <div class='col-xs-4'> 
+              <a href='#' style='color:#aaaaaa; font-size:0.9em;' >Source</a>
+              &nbsp;
+              &nbsp;
+                
+              <a href='#' style='color:#aaaaaa; font-size:0.9em;' >Feedback</a>
+            </div>
+
+            <!-- <div style='text-align:center; ' class='col-md-4'>  -->
+            <div style='text-align:center;' class='col-xs-4'> 
+              <!-- meowcad home -->
+              <a href='#' style='color:#aaaaaa; opacity:0.7; ' > <img src='/img/ghost_big.png' height='15px' width='15px'></img> </a>
+            </div>
+
+            <!-- <div style='text-align:right; ' class='col-md-4'>  -->
+            <div style='text-align:right;' class='col-xs-4'> 
+              <a href='#' style='color:#aaaaaa; font-size:0.9em;' >About</a>
+            </div>
+          </div>
+
+        </div>
+
+
+    </div> <!-- container -->
+
+
+
+</body>
+</html>
+

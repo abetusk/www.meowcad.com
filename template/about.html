@@ -1,148 +1,230 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+<!DOCTYPE html>
+
+<!--
+http://www.prepbootstrap.com/license
+
+All the Templates and Themes on this website can be used under the MIT license, stated below. Some templates and themes can use third-party components and frameworks, that are subject to their own licenses.
+
+Copyright (c) 2014 PrepBootstrap.com
+Alterations made by abetusk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeowCAD</title>
-    <link href="/css/cleanlooks.css" rel="stylesheet" type="text/css" />
-
-    <link rel="shortcut icon" href="/simpleoutline.ico" />
-    <link rel="icon" href="/simpleoutline.ico" />
 
 
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/pastel-stream.css" />
 
-    <link href="/css/buttons.css" rel="stylesheet" type="text/css" />
-    <link href="/css/grids-core.css" rel="stylesheet" type="text/css" />
-    <link href="/css/grids-units.css" rel="stylesheet" type="text/css" />
-    <link href="/css/grids-r.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="/css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="/css/tables.css" />
 
-    <link href="/css/forms.css" rel="stylesheet" type="text/css" />
-    <link href="/css/tables.css" rel="stylesheet" type="text/css" />
-    <link href="/css/cleanlooks.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
+    <style>
+      .jumbotron-background {
+        background: url('/img/kitty_head_light_p512_bg.png') no-repeat center center !important;
+        width: 100% !important;
+        height: 450px !important;
+      }
+    </style>
+</head>
 
-    <script type='text/javascript' src='js/lib/jquery.js' ></script>
-    <script type='text/javascript' src='js/lib/jquery.cookie.js' ></script>
-    <script type='text/javascript' src='js/lib/meowmeow.js' ></script>
-    <script>
-      $(document).ready( function() { meowmeow(); });
-    </script>
-
-
-  </head>
+<body>
 
 
-  <body>
-    <div id="container">
-    <div id="header">
+<!--NAVBAR_FLUSH-->
 
-      <div class='top_right'>
-        <!--USERINDICATOR-->
+
+<!--
+        <div class="navbar-flush navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img style='opacity:0.5;' src='/img/kitty_head_white_outline_p32.png' height='16px' width='16px' ></img></a>
+            </div>
+            <div class="navbar-collapse collapse navbar-inverse-collapse">
+
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Explore</a></li>
+                </ul>
+
+                <form class="navbar-form navbar-right" role='form'>
+
+                  <div class='form-group'>
+                    <input type="text" class="form-control" placeholder="Username">
+                    <input type="password" class="form-control" placeholder="Password">
+                    <button class='btn btn-success' type='submit'>Log in</button>
+                  </div>
+
+                </form>
+
+            </div>
+        </div>
+        -->
+
+<!-- navbar end -->
+
+
+  <div class='jumbotron' style="background-image: url('/img/bright_squares/bright_squares.png'); ;">
+
+    <div class='row'>
+
+      <div class='col-xs-2'>
+        <img src='/img/kitty_head_light_p512.png' style='width:100%; opacity:0.9;'></img>
       </div>
 
 
-      <a href='/'>
-        <img src='img/kitty_head_black_outline_p32.png' 
-             style='width:32px; height:32px; opacity:0.5; float:left; '></img>
-      </a>
+      <div class='col-xs-8'>
+        <div style='text-align:center;'>
+          <h1> MeowCAD </h1>
+        </div>
+      </div>
 
-      <h1>&nbsp; <a href='/'>meowCAD</a> / About</h1>
-      <br />
-      <hr />
-    </div> <!-- end header -->
+      <div class='col-xs-2'>
+        <img src='/img/kitty_head_blue_p512.png' style='width:100%; opacity:0.9;'></img>
+      </div>
 
-    <!--LEFT-->
 
-    <div id='main'>
+    </div>
+  </div>
 
-      <div id='maincontent'>
 
-        <!--MESSAGE-->
 
-        <h2>About</h2>
+  <div class="container">
 
+    <div class='row'>
+
+      <div class='col-xs-2'>
+      </div>
+
+      <div class='col-xs-8' style='text-align:center;' >
+
+        <h2>Online Electronic Design</h2>
         <br />
-        <br />
 
+        <p>
         MeowCAD is an online electronics design application.  With it, you'll be able to design schematics like this:
+        </p>
 
         <br />
         <br />
 
-        <img src='img/schExample.png' style='width:500px;'></img>
+        <img src='/img/schExample.png' style='width:80%;'></img>
 
         <br />
         <br />
 
+        <p>
         and board layouts like this:
+        </p>
 
         <br />
         <br />
 
-        <img src='img/brdExample.png' style='width:500px;'></img>
+        <img src='/img/brdExample.png' style='width:80%;'></img>
 
         <br />
         <br />
 
-        You can also share your designs or browse designs other people.  
-        You can import and export your designs into and out of meowCAD to use in other EDA packages.
+        <p>
+        The schematic design and board layout are all online and in the browser.
+        </p>
 
         <br />
         <br />
 
-        All our code is free and open and can be found here:
+
+        <h2>Free and Open Design</h2>
+
+        <br />
+
+        <!--
+        <p>
+          <img src='/img/osh-logo-w256.png' style='width:30%;' ></img>
+          <img src='/img/heart_p256.png' style='width:30%;'  ></img>
+          <img src='/img/osh-logo-w256.png' style='width:30%;' ></img>
+        </p>
+        -->
+
+
+        <p>
+        You can import your designs or libraries from other EDA tools to use in your own project or
+        export your own project out of MeowCAD.
+        </p>
 
         <br />
         <br />
 
-              <a href='https://github.com/abetusk/bleepsix'>bleepsix</a>
+
+        <p>
+        All our code is free and open (AGPLv3 or GPL compatible) and can be found here:
+        </p>
 
         <br />
 
-              <a href='https://github.com/abetusk/www.meowcad.com'>website</a>
+        <a href='https://github.com/abetusk/bleepsix'>
+          <img src='/img/git-logo-o-h56.png' style='height:23px;'></img>
+          bleepsix
+        </a>
 
         <br />
         <br />
 
+        <a href='https://github.com/abetusk/www.meowcad.com'>
+          <img src='/img/git-logo-o-h56.png' style='height:23px;'></img>
+          website
+        </a>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <p>
         If you have any comments, suggestions
-        or anything else that might be on your mind, 
+        or anything else that might be on your mind,
         please give us some <a href='feedback'>feedback</a>!
+        </p>
+
+        <p>
+        We're still working on a lot of features, so if you find something is missing or broken,
+        please be patient with us (and tell us about it)!
+        </p>
 
         <br />
 
+      </div>
 
-
+      <div class='col-xs-2'>
       </div>
 
     </div>
 
-    <div id="footer"><div class="spacer"></div>
-      <hr />
-      <p class="left">| <a href="http://jigsaw.w3.org/css-validator/">CSS</a> |
-      <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> </p>
-    </div> <!-- end footer -->
+
+    <!--FOOTER-->
+
+  </div> <!-- container -->
+
+  <!--ANALYTICS-->
 
 
-  </div>
-
-
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(["trackPageView"]);
-  _paq.push(["enableLinkTracking"]);
-
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://meowcad.com/analytics/piwik/";
-    _paq.push(["setTrackerUrl", u+"piwik.php"]);
-    _paq.push(["setSiteId", "1"]);
-    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Piwik Code -->
-
-  </body>
+</body>
 </html>
-
-
 

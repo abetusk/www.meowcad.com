@@ -13,6 +13,21 @@ import random
 
 ## -- file system and header (cookie) processing functions
 
+def breadcrumb( username, project=None ):
+  prefix = """
+  <div class='col-lg-12'>
+    <ul class='breadcrumb' >
+  """
+
+  s = "<li> <a href='/portfolio'>" + str(username) + "</a></li>\n"
+
+  if project is not None:
+    s += "<li> <a href='/portfolio/" + str(project) + "'>" + str(project) + "</a></li>\n"
+
+  suffix = "</div>"
+
+  return prefix + s + suffix
+
 def log( s ):
   f = open( "/tmp/meowaux.log", "a" )
   f.write( str(s) + "\n" )

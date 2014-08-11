@@ -25,71 +25,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <title>MeowCAD</title>
 
 
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/pastel-stream.css" />
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/pastel-stream.css" />
 
     <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
     <link rel="stylesheet" type="text/css" href="/css/forms.css" />
     <link rel="stylesheet" type="text/css" href="/css/tables.css" />
 
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
+  <!--NAVBAR-->
+
   <div class="container">
-
-
-        <!-- sample templates start -->
-
-        <!-- Navbar -->
-        <div class="row">
-            <div class="col-lg-12">
-
-                <div class="navbar navbar-inverse">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#"><img src='/img/ghost_big.png' height='16px' width='16px' ></img></a>
-                    </div>
-                    <div class="navbar-collapse collapse navbar-inverse-collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">[abe]</a></li>
-                        </ul>
-                        <form class="navbar-form navbar-left">
-                          <div class='input-group'>
-                            <input type="text" class="form-control col-lg-8" placeholder="Search">
-                            <span class='input-group-btn'>
-                              <button class='btn btn-default' type='button'>!</button>
-                            </span>
-                          </div>
-                        </form>
-
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">Explore</a></li>
-                        </ul>
-
-
-                        <!--USER_CONTEXT-->
-
-                        <!--
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><button type="button" class="btn btn-success" style="margin-top:8px; margin-right:5px;" >Log In</button></li>
-                            <li><button type="button" class="btn btn-warning" style="margin-top:8px; margin-right:5px;" >Signup</button></li>
-                        </ul>
-                        -->
-
-                        <ul class="nav navbar-nav navbar-right">
-                          <li><a href='#'>Logout</a></li>
-                        </ul>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
 
 
         <div class='container-fluid'>
@@ -97,7 +46,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           <div class='row'>
 
             <div class='col-xs-4'>
-              <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img>
+              <!-- <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img> -->
             </div>
 
             <div class='col-xs-4'>
@@ -105,23 +54,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             </div>
 
             <div class='col-xs-4'>
-              <!-- <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img> -->
-              <img src='/img/ghost_big.png' style='float:right; margin-top:25px;' height='16px' width='16px' ></img>
+              <!-- <img src='/img/ghost_big.png' style='float:right; margin-top:25px;' height='16px' width='16px' ></img> -->
             </div>
 
           </div>
         </div>
 
 
-        <!--USER_BREADCRUMB-->
-        <div class='col-lg-12'>
-          <ul class='breadcrumb' > <!-- style='margin-botton:5px;'> -->
-            <li> <a href='#'>abe</a>  </li>
-          </ul>
-        </div>
+        <!--BREADCRUMB-->
 
         <!--USER_MESSAGE-->
-        <div class='alert alert-success' role='alert' style='text-align:center;'>Success!</div>
+        <!-- <div class='alert alert-success' role='alert' style='text-align:center;'>Success!</div> -->
 
 
         <!--USER_PANE-->
@@ -130,8 +73,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             <div class='panel panel-default'>
 
               <ul class='nav nav-tabs' style='margin-bottom: 15px;'>
-                <li class='active'><a href='#PanelUser' data-toggle='tab'>User Settings</a></li>
-                <li ><a href='#PanelPermissions' data-toggle='tab'>User Permissions</a></li>
+                <li class='active'><a href='#PanelUser' data-toggle='tab'>Passwords</a></li>
+                <li ><a href='#PanelPermissions' data-toggle='tab'>Permissions</a></li>
               </ul>
 
               <div id='PaneTabContent' class='tab-content'>
@@ -178,8 +121,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
                   <form class='pure-form pure-form-aligned' action='updateuserpermissions' method='POST' style='margin-left:25px;'>
 
-                    foo bar baz
-          
+                    ...
+         
                     <fieldset>
                       <div class='pure-control-group'>
                         <label for='password'>Current Password</label>
@@ -222,38 +165,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
         <!--FOOTER-->
-        <hr>
-        <div class='fluid-container'>
-
-          <div class='row'>
-
-            <!-- <div style='text-align:left; ' class='col-md-4'>  -->
-            <div class='col-xs-4'> 
-              <a href='#' style='color:#aaaaaa; font-size:0.9em;' >Source</a>
-              &nbsp;
-              &nbsp;
-                
-              <a href='#' style='color:#aaaaaa; font-size:0.9em;' >Feedback</a>
-            </div>
-
-            <!-- <div style='text-align:center; ' class='col-md-4'>  -->
-            <div style='text-align:center;' class='col-xs-4'> 
-              <!-- meowcad home -->
-              <a href='#' style='color:#aaaaaa; opacity:0.7; ' > <img src='/img/ghost_big.png' height='15px' width='15px'></img> </a>
-            </div>
-
-            <!-- <div style='text-align:right; ' class='col-md-4'>  -->
-            <div style='text-align:right;' class='col-xs-4'> 
-              <a href='#' style='color:#aaaaaa; font-size:0.9em;' >About</a>
-            </div>
-          </div>
-
-        </div>
-
 
     </div> <!-- container -->
 
-
+    <!--ANALYTICS-->
 
 </body>
 </html>

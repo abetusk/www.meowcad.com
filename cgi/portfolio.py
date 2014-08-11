@@ -10,6 +10,28 @@ import Cookie
 import meowaux as mew
 cgitb.enable()
 
+def breadcrumb( username ):
+  prefix = """
+  <div class='col-lg-12'>
+    <ul class='breadcrumb' >
+      <li> <a href='#'>
+  """
+  suffix = """
+  </a>  </li>
+    </ul>
+  </div>
+  """
+  return prefix + username + suffix
+
+signupnav="""
+<form class="navbar-form navbar-right" role='form' action='/signup' method='POST'>
+<div class='form-group'>
+<button class='btn btn-warning' type='submit'>Sign up!</button>
+</div>
+</form>
+"""
+
+
 newproject_form = """
 <form action='newproject.py'>
   <button id='buttonNewProject' 
@@ -17,6 +39,12 @@ newproject_form = """
     Create New Project
   </button>
 </form>
+"""
+
+logout_nav = """
+<ul class="nav navbar-nav navbar-right">
+  <li><a href='/logout'>Logout</a></li>
+</ul>
 """
 
 cookie = Cookie.SimpleCookie()
@@ -38,54 +66,72 @@ userData = mew.getUser( userId )
 userName = userData["userName"]
 
 
-tableProjectHTML = [ "<thead><tr><th>Name</th> <th></th> <th></th> <th>Permission</th> <th></th> </tr></thead> <tbody>" ]
-for projectDat in olioList:
-  projectId = projectDat["id"]
-  if projectDat["permission"] == "world-read":
-    perm = "<img src='img/heart.png' width='12px'></img> " + projectDat["permission"] 
-  else:
-    perm = "<img src='img/locked.png' width='12px'></img> " + projectDat["permission"] 
-
-  x = [ "<a href='manageproject.py?projectId=" + str(projectDat["id"]) + "'>" + projectDat["name"] + "</a>", 
-        #"<a href='bleepsix_sch?project=" + projectDat["id"] + "' >Schematic</a>", 
-        #"<a href='bleepsix_pcb?project=" + projectDat["id"] + "' >PCB</a>", 
-        "<a href='sch?project=" + projectDat["id"] + "' >Schematic</a>", 
-        "<a href='brd?project=" + projectDat["id"] + "' >PCB</a>", 
-        perm ]
-        #projectDat["permission"] ]
-  trs = "<tr> <td> "
-
-  if userData["type"] == "anonymous":
-    tre = "</td> <td> </td> </tr>"
-  else:
-    tre = "</td> <td> <a href='manageproject.py?projectId=" + str(projectDat["id"])+ "'>Manage</a> </td> </tr>"
-  tableProjectHTML.append( trs  + "</td> <td>".join(x) + tre )
-
-hs = "<table class='pure-table pure-table-horizontal' width='100%'>"
-he = "</tbody></table>"
-
+#
+#
+#
+#tableProjectHTML = [ "<thead><tr><th>Name</th> <th></th> <th></th> <th>Permission</th> <th></th> </tr></thead> <tbody>" ]
+#for projectDat in olioList:
+#  projectId = projectDat["id"]
+#  if projectDat["permission"] == "world-read":
+#    perm = "<img src='img/heart.png' width='12px'></img> " + projectDat["permission"] 
+#  else:
+#    perm = "<img src='img/locked.png' width='12px'></img> " + projectDat["permission"] 
+#
+#  x = [ "<a href='manageproject.py?projectId=" + str(projectDat["id"]) + "'>" + projectDat["name"] + "</a>", 
+#        #"<a href='bleepsix_sch?project=" + projectDat["id"] + "' >Schematic</a>", 
+#        #"<a href='bleepsix_pcb?project=" + projectDat["id"] + "' >PCB</a>", 
+#        "<a href='sch?project=" + projectDat["id"] + "' >Schematic</a>", 
+#        "<a href='brd?project=" + projectDat["id"] + "' >PCB</a>", 
+#        perm ]
+#        #projectDat["permission"] ]
+#  trs = "<tr> <td> "
+#
+#  if userData["type"] == "anonymous":
+#    tre = "</td> <td> </td> </tr>"
+#  else:
+#    tre = "</td> <td> <a href='manageproject.py?projectId=" + str(projectDat["id"])+ "'>Manage</a> </td> </tr>"
+#  tableProjectHTML.append( trs  + "</td> <td>".join(x) + tre )
+#
+#hs = "<table class='pure-table pure-table-horizontal' width='100%'>"
+#he = "</tbody></table>"
+#
 
 
 template = mew.slurp_file("template/portfolio.html")
-tmp_str = template.replace("<!--USER-->", userName )
+nav = mew.slurp_file("template/navbar_template.html")
 
 
-tmp_str = tmp_str.replace( "<!--PROJECTS-->", hs + "\n".join(tableProjectHTML) + he )
 
+unamestr = "[" + str(userName) + "]"
 
 if userData["type"] == "anonymous":
-  tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template_anonymous.html") )
-else:
-  tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
-  tmp_str = tmp_str.replace("<!--NEWPROJECT-->", newproject_form )
+  unamestr = "&lt; " + str(userName) + " &gt;"
+  nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", signupnav )
 
-tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", mew.userIndicatorString( userId, userName ) )
-tmp_str = tmp_str.replace( "<!--HEADING-->", mew.message("&nbsp; &nbsp;") )
+else:
+  nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->",
+      "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout'>Logout</a></li> </ul>")
+
+nav = nav.replace( "<!--NAVBAR_USER_DISPLAY-->",
+    "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/\">" + unamestr + "</a></li> </ul>")
+
+
+footer = mew.slurp_file("template/footer_template.html")
+analytics = mew.slurp_file("template/analytics_template.html")
+
+#tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
+
+tmp_str = template
+
+tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
+tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", breadcrumb( str(userName) ) )
+tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
+tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )
+
 
 print "Content-Type: text/html;charset=utf-8"
 print cookie.output()
 print
-
 print tmp_str
 
 

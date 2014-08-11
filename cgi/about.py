@@ -8,6 +8,14 @@ import datetime
 import meowaux as mew
 cgitb.enable()
 
+signupnav="""
+<form class="navbar-form navbar-right" role='form' action='/signup' method='POST'>
+<div class='form-group'>
+<button class='btn btn-warning' type='submit'>Sign up!</button>
+</div>
+</form>
+"""
+
 login_signup="""
 <ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
   <li>
@@ -34,11 +42,11 @@ if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) != 0) ):
   loggedInFlag = True
 
-template = mew.slurp_file("test/about.html")
+template = mew.slurp_file("template/about.html")
 
-nav = mew.slurp_file("test/navbarflush_template.html")
-footer = mew.slurp_file("test/footer_template.html")
-analytics = mew.slurp_file("test/analytics_template.html")
+nav = mew.slurp_file("template/navbarflush_template.html")
+footer = mew.slurp_file("template/footer_template.html")
+analytics = mew.slurp_file("template/analytics_template.html")
 
 
 tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
@@ -49,16 +57,16 @@ if loggedInFlag:
   userData = mew.getUser( cookie_hash["userId"] )
   userName = userData["userName"]
 
-  unamestr = str(userName)
+  unamestr = "[" + str(userName) + "]"
 
   if userData["type"] == "anonymous":
-    unamestr = "<" + unamestr + ">"
-    nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", "Sign up!" )
+    unamestr = "&lt; " + str(userName) + " &gt;"
+    nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", signupnav )
   else:
     nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", 
         "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout/" + str(userData["id"]) + "'>Logout</a></li> </ul>")
   nav = nav.replace( "<!--NAVBAR_USER_DISPLAY-->", 
-      "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/" + str(userData["id"]) + "\">[" + unamestr + "]</a></li> </ul>")
+      "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/" + str(userData["id"]) + "\">" + unamestr + "</a></li> </ul>")
 else:
   nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", login_signup )
 

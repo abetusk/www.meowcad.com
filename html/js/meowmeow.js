@@ -1,7 +1,7 @@
 
 function meowmeow()
 {
-  console.log(
+  console.log("\n" +
       '                                 _______ ' + " \n " +
       '            /\\       /\\        /       \\ ' + " \n " +
       '           /  \\_____/  \\      |  /\\/\\   | ' + " \n " +

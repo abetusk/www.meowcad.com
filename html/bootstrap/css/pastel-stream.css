@@ -5812,7 +5812,7 @@ http://stackoverflow.com/questions/18325779/bootstrap-3-collapse-show-state-with
     /* symbol for "opening" panels */
     font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
     content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-    float: right;        /* adjust as needed */
+    float: left;        /* adjust as needed */
     color: grey;         /* adjust as needed */
 }
 .panel-heading .accordion-toggle.collapsed:after {

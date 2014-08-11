@@ -67,6 +67,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         var msg = document.getElementById("message");
         msg.className = "";
         msg.innerHTML = "";
+        //msg.style.height = "100px";
+
+        var filler = document.getElementById("filler");
+        filler.style.height = "80px";
       }
 
       function successMessage( text )
@@ -74,12 +78,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         var msg = document.getElementById("message");
         msg.className = "alert alert-success";
         msg.innerHTML = text;
+        //msg.style.height = "";
+
+        var filler = document.getElementById("filler");
+        filler.style.height = "0px";
+
       }
 
       var messagesDisplayed=0;
       function errorMessage( text )
       {
         var msg = document.getElementById("message");
+        //msg.style.height = "";
+
         //msg.className = "alert alert-danger fade in";
 
         if (messagesDisplayed==0) {
@@ -94,6 +105,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         messagesDisplayed++;
 
         msg.innerHTML = text;
+
+        var filler = document.getElementById("filler");
+        filler.style.height = "0px";
+
+
 
       }
 
@@ -214,15 +230,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     </script>
 
-                                                                                           
 
-    <style>
-      .jumbotron-background {
-        background: url('/img/kitty_head_light_p512_bg.png') no-repeat center center !important;
-        width: 100% !important;
-        height: 450px !important;
-      }
-    </style>
 </head>
 
 <body>
@@ -235,9 +243,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
     <!--MESSAGE-->
-    <div id='message'></div>
+    <!-- <div id='message' style='height:100px;' ></div> -->
 
-    <br/>
+    <div id='message' ></div>
+    <div id='filler' style='height:80px;'></div>
+
 
     <div class='row'>
 

@@ -50,7 +50,7 @@ nav = nav.replace("<!--NAVBAR_USER_CONTEXT-->", signupform)
 footer = mew.slurp_file("template/footer_template.html")
 analytics = mew.slurp_file("template/analytics_template.html")
 
-tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
+tmp_str = mew.replaceTemplateMessage( template, msg, msgType )
 
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )

@@ -24,13 +24,6 @@ cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
 
 
-if os.environ['REQUEST_METHOD'] == 'POST':
-  print "Location:user"
-  print cookie.output()
-  print
-  sys.exit(0)
-
-
 loggedInFlag = False
 if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 1) ):
@@ -42,8 +35,75 @@ if not loggedInFlag:
   print
   sys.exit(0)
 
+userId = ""
+if "userId" in cookie_hash:
+  userId = cookie_hash["userId"]
 
-message,messageType = mew.processCookieMessage( cookie, cookie_hash )
+if os.environ['REQUEST_METHOD'] == 'POST':
+
+  h = {}
+
+  form = cgi.FieldStorage()
+  for k in form:
+    h[k] = form[k].value
+
+
+  if ("action" in h) and (h["action"] == "password"):
+
+    if "passwordOrig" not in h:
+
+      cookie["message"] = "No password"
+      cookie["messageType"] = "error"
+      print "Location:user"
+      print cookie.output()
+      print
+      sys.exit(0)
+
+    if h["password"] != h["passwordAgain"]:
+
+      cookie["message"] = "Password do not match"
+      cookie["messageType"] = "error"
+      print "Location:user"
+      print cookie.output()
+      print
+      sys.exit(0)
+
+    if not mew.passwordTest( h["password"] ):
+
+      cookie["message"] = "Passwords must be greater than 7 characters long, contain at least one numeral" + \
+          " and be of mixed case.  Passwords greater than 20 characters have no restrictions."
+      cookie["messageType"] = "error"
+      print "Location:user"
+      print cookie.output()
+      print
+      sys.exit(0)
+
+
+    if mew.userPasswordTest( userId, h["passwordOrig"] ):
+
+      mew.setUserPassword( userId, h["password"] )
+      cookie["message"] = "Password updated!"
+      cookie["messageType"] = "success"
+      print "Location:user"
+      print cookie.output()
+      print
+      sys.exit(0)
+
+    cookie["message"] = "Invalid password"
+    cookie["messageType"] = "error"
+    print "Location:user"
+    print cookie.output()
+    print
+    sys.exit(0)
+
+
+  print "Location:user"
+  print cookie.output()
+  print
+  sys.exit(0)
+
+
+msg,msgType = mew.processCookieMessage( cookie, cookie_hash )
 
 template = mew.slurp_file("template/user.html")
 
@@ -62,16 +122,16 @@ if userData["type"] == "anonymous":
   nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", signup )
 else:
   nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", 
-      "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout/" + str(userData["id"]) + "'>Logout</a></li> </ul>")
+      "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout'>Logout</a></li> </ul>")
 
 nav = nav.replace( "<!--NAVBAR_USER_DISPLAY-->",
-    "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/" + str(userData["id"]) + "\">" + unamestr + "</a></li> </ul>")
+    "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/\">" + unamestr + "</a></li> </ul>")
 
 
 
 tmp_str = template
-#tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
 
+tmp_str = mew.replaceTemplateMessage( tmp_str , msg, msgType )
 tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) )
 
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )

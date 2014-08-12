@@ -63,7 +63,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
         <!--BREADCRUMB-->
 
-        <!--USER_MESSAGE-->
+        <!--MESSAGE-->
         <!-- <div class='alert alert-success' role='alert' style='text-align:center;'>Success!</div> -->
 
 
@@ -74,7 +74,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
               <ul class='nav nav-tabs' style='margin-bottom: 15px;'>
                 <li class='active'><a href='#PanelUser' data-toggle='tab'>Passwords</a></li>
-                <li ><a href='#PanelPermissions' data-toggle='tab'>Permissions</a></li>
+                <!-- <li ><a href='#PanelPermissions' data-toggle='tab'>Permissions</a></li> -->
               </ul>
 
               <div id='PaneTabContent' class='tab-content'>
@@ -91,7 +91,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     </fieldset>
           
                     <br />
-          
+
+         
                     <fieldset>
                       <div class='pure-control-group'>
                         <label for='password'>New Password</label>
@@ -105,6 +106,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <input id='passwordAgain' name='passwordAgain' type='password' placeholder='Re-enter new password' required>
                       </div>
                     </fieldset>
+
+                    <p style='margin-left:30px; margin-right:30px;' >
+                    <small>
+                      Passwords must be greater than 7 characters long, contain at least one numeral
+                      and be of mixed case.  Passwords greater than 20 characters have no restrictions.
+                    </small>
+                    </p>
+
           
                     <fieldset>
                       <div class='pure-control-group'>
@@ -112,11 +121,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <button id='update' class='pure-button pure-button-tiel'>Update</button>
                       </div>
                     </fieldset>
+
+                    <input id='action' name='action' type='hidden' value='password'></input>
           
                   </form>
                  
                 </div>
 
+                <!--
                 <div class='tab-pane' id='PanelPermissions'>
 
                   <form class='pure-form pure-form-aligned' action='updateuserpermissions' method='POST' style='margin-left:25px;'>
@@ -156,6 +168,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                   </form>
                  
                 </div>
+                -->
 
               </div>
 

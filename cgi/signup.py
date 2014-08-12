@@ -8,6 +8,33 @@ import datetime
 import meowaux as mew
 cgitb.enable()
 
+def processSignup(ch):
+
+  if "username" not in ch: return False, "Please provide a username"
+  if "password" not in ch: return False, "Please provide a password"
+
+  username = ch["username"]
+  password = ch["password"]
+
+  if len( username ) == 0: return False, "The username field is empty"
+  if len( password ) == 0: return False, "The password field is empty"
+
+  x = mew.getUserName( username )
+
+  if x:
+    return False, "We're sorry, this username is already taken!"
+
+  if not mew.passwordTest( password ):
+    return False, "Passwords must be at least 7 charactesr long with numerals and mixed case or be longer than 20 characters."
+
+  user = mew.createUser( username, password )
+
+  if ("email" in ch) and len(ch["email"]) > 0:
+    mew.addemail( user["id"], ch["email"] )
+
+  return True, user["id"]
+
+
 signup="""
 <ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
   <li>
@@ -35,6 +62,31 @@ cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
 
 if os.environ['REQUEST_METHOD'] == 'POST':
+
+  form = cgi.FieldStorage()
+
+  h = {}
+  for k in form:
+    h[k] = form[k].value
+
+  v,x = processSignup(h)
+  if v:
+
+    userId = x
+
+    mew.createProject( userId, "My-New-Project", "user" )
+
+    cookie["message"] = "Welcome to MeowCAD!  Please login to continue!"
+    cookie["messageType"] = "success"
+
+    print "Location:login"
+    print cookie.output()
+    print
+    sys.exit(0)
+
+  cookie["message"] = x
+  cookie["messageType"] = "error"
+
   print "Location:signup"
   print cookie.output()
   print
@@ -79,7 +131,7 @@ else:
 
 
 
-tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
+tmp_str = mew.replaceTemplateMessage( template, msg, msgType )
 
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )

@@ -132,24 +132,29 @@ def userIndicatorString( userId, userName ):
   return userIndicator
 
 def errorMessage( msg ):
-  return "<div id='message' class='error-message' >" + str(msg) + "</div>"
+  return "<div style='text-align:center;' id='message' class='alert alert-danger' >" + str(msg) + "</div>"
+  #return "<div id='message' class='error-message' >" + str(msg) + "</div>"
 
 def successMessage( msg ):
-  return "<div id='message' class='success-message'>" + str(msg) + "</div>"
+  return "<div style='text-align:center;' id='message' class='alert alert-success' >" + str(msg) + "</div>"
+  #return "<div id='message' class='success-message'>" + str(msg) + "</div>"
 
 def warningMessage( msg ):
-  return "<div id='message' class='warning-message'>" + str(msg) + "</div>"
+  return "<div style='text-align:center;' id='message' class='alert alert-warning' >" + str(msg) + "</div>"
+  #return "<div id='message' class='warning-message'>" + str(msg) + "</div>"
 
 def statusMessage( msg ):
-  return "<div id='message' class='status-message'>" + str(msg) + "</div>"
+  return "<div style='text-align:center;' id='message' class='alert alert-info' >" + str(msg) + "</div>"
+  #return "<div id='message' class='status-message'>" + str(msg) + "</div>"
 
 def nominalMessage( msg ):
-  return "<div id='message' class='nominal-message'>" + str(msg) + "</div>"
+  return "<div style='text-align:center;' id='message' class='alert alert-primary' >" + str(msg) + "</div>"
+  #return "<div id='message' class='nominal-message'>" + str(msg) + "</div>"
 
 # landing place so wanrings don't move all content below it
 #
 def message( msg ):
-  return "<div id='message' class='no-message'>" + str(msg) + "</div>"
+  return "<div style='text-align:center;' id='message' class='no-message'>" + str(msg) + "</div>"
 
 ## --- authentication and session functions 
 
@@ -164,7 +169,6 @@ def authenticateSession( userId, sessionId ):
   x = db.sismember( "sesspool", hashSessionId )
 
   if not db.sismember( "sesspool", hashSessionId ):
-    log("authenticatSession cp0.9")
     return False
 
   sessionDat = db.hgetall( "session:" + str(hashSessionId) )
@@ -196,6 +200,22 @@ def deactivateSession( userId, sessionId ):
   db.hset( "session:" + str(hashSessionId), "active", 0 )
   return 1
 
+def addemail( userId, email ):
+  db = redis.Redis()
+
+  useremailid = str(uuid.uuid4())
+
+  obj = {}
+  ts = time.time()
+  obj["id"] = str(useremailid)
+  obj["userId"] = str(userId)
+  obj["email"] = str(email)
+  obj["stime"] = ts
+  obj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+  db.hmset( "useremail:" + str(useremailid), obj )
+
+  db.sadd( "useremail:" + str(userId), str(useremailid) )
+
 
 def feedback( userId, email, feedback ):
   db = redis.Redis()
@@ -222,6 +242,17 @@ def feedback( userId, email, feedback ):
 
 ## --- user functions
 
+def userPasswordTest( userId, testpass ):
+  db = redis.Redis()
+  testhashPassword = hashlib.sha512( str(userId) + str(testpass) ).hexdigest()
+  obj = db.hgetall( "user:" + str(userId) )
+  if not obj:
+    return False
+  if obj["passwordHash"] == testhashPassword:
+    return True
+  return False
+
+
 def getUser( userId ):
   db = redis.Redis()
   return db.hgetall( "user:" + str(userId) )
@@ -230,6 +261,19 @@ def setUserPassword( userId, password ):
   db = redis.Redis()
   hashPassword = hashlib.sha512( str(userId) + str(password) ).hexdigest()
   return db.hset( "user:" + str(userId), "passwordHash", hashPassword )
+
+def passwordTest( password ):
+  if len(password) < 8:
+    return False
+  if len(password) > 20:
+    return True
+  if not re.search( '[0-9]', password):
+    return False
+  if not re.search( '[A-Z]', password):
+    return False
+  if not re.search( '[a-z]', password):
+    return False
+  return True
 
 def createUser( userName, password ):
   db = redis.Redis()

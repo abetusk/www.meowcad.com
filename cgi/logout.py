@@ -14,10 +14,6 @@ mew.log( str(cookie_hash) )
 
 if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
          (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
-
-  mew.log( "cp0" )
-
-  #print "Location:login"
   print "Location:/index"
   print
   sys.exit(0)
@@ -45,9 +41,6 @@ cookie["userName"] = cookie_hash["userName"]
 cookie["userName"]["expires"] = exp_str
 cookie["userName"]["path"] = "/"
 
-mew.log( "cp1" )
-
-#print "Location:login"
 print "Location:index"
 print cookie.output()
 print

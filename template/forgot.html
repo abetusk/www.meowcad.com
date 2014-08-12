@@ -1,0 +1,129 @@
+
+
+<!DOCTYPE html>
+
+<!--
+http://www.prepbootstrap.com/license
+
+All the Templates and Themes on this website can be used under the MIT license, stated below. Some templates and themes can use third-party components and frameworks, that are subject to their own licenses.
+
+Copyright (c) 2014 PrepBootstrap.com
+Alterations made by abetusk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowCAD</title>
+
+    <link rel="shortcut icon" href="/simpleoutline.ico" />
+    <link rel="icon" href="/simpleoutline.ico" />
+
+    <script type='text/javascript' src='/socket.io/socket.io.js' ></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+    <script type='text/javascript' src='js/lib/meowmeow.js' ></script>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/pastel-stream.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="/css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="/css/tables.css" />
+
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!--spinner-->
+    <link rel="stylesheet" href="/css/ladda-themeless.css">
+    <script src="/js/lib/spin.js"></script>
+    <script src="/js/lib/ladda.js"></script>
+    <!--spinner-->
+
+</head>
+
+<body>
+
+
+  <!--NAVBAR-->
+
+
+  <div class="container">
+
+
+    <!--MESSAGE-->
+
+    <div id='message' ></div>
+    <div id='filler' style='height:80px;'></div>
+
+
+    <div class='row'>
+
+      <div class='col-xs-2'></div>
+
+      <div class='col-xs-8' >
+
+        <div class='panel panel-danger'>
+
+          <div class='panel-heading'>Request Password Reset</div>
+          <div class='panel-body'>
+            <br />
+
+            <p>
+            We will send you a password reset link that to the email we have on record.  
+            <br />
+            <br />
+            <b>Note:If you
+            have not registered an email with us, please fill in the message below with your username
+            and an email address that we can use to contact you.
+            </b>
+            </p>
+            <br />
+
+            <form class='form-horizontal' style='margin-left:10px; margin-right:10px;' action='/forgot' method='POST'>
+
+              <div class='form-group' id='userDiv'>
+                <label >Username or Email </label>
+                <input id='user' type="text" class='form-control' placeholder="Username or Email">
+              </div>
+
+              <div class='form-group' id='noteDiv'>
+                <label >Message <small>(optional)</small> </label>
+                <textarea id='note' class='form-control' rows='5' > </textarea>
+              </div>
+
+              <div class='form-group' >
+                <button id='buttonForgot' class='btn btn-danger'>
+                    Request Password Reset
+                </button>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class='col-xs-2'></div>
+
+    </div>
+
+
+  <!--FOOTER-->
+
+  </div> <!-- container -->
+
+  <!--ANALYTICS-->
+
+
+</body>
+</html>
+

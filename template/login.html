@@ -31,7 +31,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
 
-    <script type='text/javascript' src='js/lib/meowmeow.js' ></script>
+    <script type='text/javascript' src='js/meowmeow.js' ></script>
 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/pastel-stream.css" />
 
@@ -53,13 +53,50 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
       $(document).ready( function() {
         meowmeow();
+
+        $("#username").keydown( function(e) {
+          //tab
+          if ((e.keyCode == 9) && (!e.shiftKey)) { 
+            $("#password").focus(); return false; 
+          }
+          return true;
+        });
+
         $("#username").keyup( function(e) {
+          // carriage return
           if (e.keyCode == 13) { $("#password").focus(); }
+        });
+
+        $("#password").keydown( function(e) {
+          if ((e.keyCode == 9) && (e.shiftKey)) { 
+            $("#username").focus();
+            return false;
+          }
+          return true;
         });
 
         $("#password").keyup( function(e) {
           if (e.keyCode == 13) { tryLogin(); }
         });
+
+        $("#buttonSignin").keydown( function(e) {
+          if (e.keyCode == 9) {
+            $("#forgot").focus();
+            return false;
+          }
+          return true;
+        });
+
+        $("#forgot").keydown( function(e) { 
+          console.log(e);
+          if (e.keyCode == 9) {
+            $("#forgot").blur();
+            return false;
+          }
+          return true; 
+
+        });
+
 
       });
 
@@ -83,9 +120,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         var filler = document.getElementById("filler");
         filler.style.height = "0px";
 
-      }
-
-      var messagesDisplayed=0;
+      } var messagesDisplayed=0;
       function errorMessage( text )
       {
         var msg = document.getElementById("message");
@@ -265,7 +300,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 <input id='username' type="text" class='form-control' placeholder="Username">
               </div>
 
-              <label >Password <a href='/forgot'><small>(forgot password?)</small></a> </label>
+              <label id='forgotLabel' >Password <a id='forgot' href='/forgot'><small>(forgot password?)</small></a> </label>
 
               <div class='form-group' id='passwordDiv' >
                 <input id='password' type="password" class='form-control' placeholder="Password">

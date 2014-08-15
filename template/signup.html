@@ -24,6 +24,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeowCAD</title>
 
+    <script type='text/javascript' src='js/meowmeow.js' ></script>
 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/pastel-stream.css" />
 
@@ -34,6 +35,39 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <script type="text/javascript" src="js/jquery.js"></script>
 
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+
+    $(document).ready( function() {
+      meowmeow();
+
+      $("#username").keydown( function(e) {
+        if (e.keyCode == 13) {
+          return false;
+        }
+      });
+
+      $("#username").keyup( function(e) {
+        if (e.keyCode == 13) {
+          $("#email").focus();
+          return false;
+        }
+      });
+
+      $("#email").keydown( function(e) {
+        if (e.keyCode == 13) { return false; }
+      });
+
+      $("#email").keyup( function(e) {
+        if (e.keyCode == 13) {
+          $("#password").focus();
+          return false;
+        }
+      });
+
+    });
+ 
+    </script>
 
 </head>
 
@@ -66,19 +100,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
               <div class='form-group'>
                 <label for='inputUsername'>Username</label>
-                <input name='username' type="text" class="form-control" placeholder="Username">
+                <input id='username' name='username' type="text" class="form-control" placeholder="Username">
+                <!--STICKY_USERNAME-->
+                </input>
               </div>
 
               <div class='form-group'>
                 <label for='inputEmail'>Email <small>(optional)</small> </label>
-                <input name='email' type="text" class="form-control" placeholder="Email (optional)"></input>
+                <input id='email' name='email' type="text" class="form-control" placeholder="Email (optional)">
+                <!--STICKY_EMAIL-->
+                </input>
               </div>
 
               <br />
 
               <div class='form-group'>
                 <label for='inputPassword'>Password </label>
-                <input name='password' type="password" class="form-control" placeholder="Password"></input>
+                <input id='password' name='password' type="password" class="form-control" placeholder="Password"></input>
               </div>
 
               <p>
@@ -90,7 +128,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
               <div class='form-group' style='float:right;' >
                 <!-- <button name='submit' class='btn btn-warning' type='submit'>Sign up</button> -->
-                <input type='submit' value='Sign up' class='btn btn-warning' type='submit'></input>
+                <input id='submit' value='Sign up' class='btn btn-warning' type='submit'></input>
               </div>
 
             </form>

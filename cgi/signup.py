@@ -8,6 +8,9 @@ import datetime
 import meowaux as mew
 cgitb.enable()
 
+stickyUsername = ""
+stickyEmail = ""
+
 def processSignup(ch):
 
   if "username" not in ch: return False, "Please provide a username"

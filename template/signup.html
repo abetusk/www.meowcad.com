@@ -32,7 +32,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <link rel="stylesheet" type="text/css" href="/css/forms.css" />
     <link rel="stylesheet" type="text/css" href="/css/tables.css" />
 
+
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
 
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
@@ -64,6 +66,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           return false;
         }
       });
+
+      var x = $("#sticky_username");
+      if ( x.length ) {
+        y = $("#username");
+        y.val( $.cookie("signup_username") );
+      }
+
+      x = $("#sticky_email");
+      if ( x.length ) {
+        y = $("#email");
+        y.val( $.cookie("signup_email") );
+      }
+
+      x = $.cookie("signup_focus");
+      if (x) {
+        $("#" + x ).focus();
+      }
 
     });
  
@@ -100,16 +119,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
               <div class='form-group'>
                 <label for='inputUsername'>Username</label>
-                <input id='username' name='username' type="text" class="form-control" placeholder="Username">
-                <!--STICKY_USERNAME-->
+                <input id='username' name='username' type="text" class="form-control" placeholder="Username" >
                 </input>
+                <!--STICKY_USERNAME-->
               </div>
 
               <div class='form-group'>
                 <label for='inputEmail'>Email <small>(optional)</small> </label>
-                <input id='email' name='email' type="text" class="form-control" placeholder="Email (optional)">
-                <!--STICKY_EMAIL-->
+                <input id='email' name='email' type="text" class="form-control" placeholder="Email (optional)" >
                 </input>
+                <!--STICKY_EMAIL-->
               </div>
 
               <br />

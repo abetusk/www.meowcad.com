@@ -75,6 +75,11 @@ def processCookieMessage( cookie, cookieHash ):
 
   return msg,msgType
 
+def expireCookie( cookie, val ):
+  expiration = datetime.datetime.now() + datetime.timedelta(days=-1)
+  cookie[val] = ""
+  cookie[val]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
+
 def replaceTemplateMessage( template, msg, msgType ):
   if len(msg) == 0:
     return template.replace("<!--MESSAGE-->", message( "" ) )

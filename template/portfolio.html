@@ -30,6 +30,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
     <link rel="stylesheet" type="text/css" href="/css/forms.css" />
     <link rel="stylesheet" type="text/css" href="/css/tables.css" />
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
 
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
@@ -43,8 +44,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
         <h3 style='text-align:center; margin-bottom:25px;'>Portfolio</h3>
 
-
-        <!--PORTFOLIO_BREADCRUMB-->
         <!--BREADCRUMB-->
 
         <!--
@@ -97,6 +96,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 <div class='tab-pane active in' id='PanelProjects'>
 
                   <!--PROJECT_TABLE-->
+
+                  <!--
                   <table class='table table-striped table-bordered table-condensed'>
 
                     <thead> 
@@ -146,6 +147,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     </tbody>
 
                   </table>
+-->
 
                   
                 </div>
@@ -210,6 +212,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
                 <div class='tab-pane' id='PanelComponent'>
 
+                  <p style='text-align:center; margin-left:10px; margin-right:10px;' >
+                  Components here will be inhereted by all projects unless overridden by components specific to a project.
+                  </p>
+
                   <!--PORTFOLIO_COMPONENTS-->
                   <div class='panel-group' id='accordionComponent'>
 
@@ -268,6 +274,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
                 <div class='tab-pane' id='PanelModule'>
+
+                  <p style='text-align:center; margin-left:10px; margin-right:10px;' >
+                  Modules here will be inhereted by all projects unless overridden by modules specific to a project.
+                  </p>
+
 
                   <!--PORTFOLIO_MODULES-->
                   <div class='panel-group' id='accordionModule'>

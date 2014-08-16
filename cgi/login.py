@@ -11,9 +11,12 @@ cgitb.enable()
 signupform = """
 <ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
   <li>
+  <button class='btn btn-warning' type='submit' onclick='location.href="/signup";' >Sign up!</button>
+  <!--
     <form action='/signup' style='display:inline;' method='POST' >
       <button class='btn btn-warning' type='submit'>Sign up!</button>
     </form>
+    -->
   </li>
 </ul>
 """

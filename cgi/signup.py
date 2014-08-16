@@ -13,29 +13,29 @@ stickyEmail = ""
 
 def processSignup(ch):
 
-  if "username" not in ch: return False, "Please provide a username"
-  if "password" not in ch: return False, "Please provide a password"
+  if "username" not in ch: return False, "badusername", "Please provide a username"
+  if "password" not in ch: return False, "badpassword", "Please provide a password"
 
   username = ch["username"]
   password = ch["password"]
 
-  if len( username ) == 0: return False, "The username field is empty"
-  if len( password ) == 0: return False, "The password field is empty"
+  if len( username ) == 0: return False, "badusername", "The username field is empty"
+  if len( password ) == 0: return False, "badpassword","The password field is empty"
 
   x = mew.getUserName( username )
 
   if x:
-    return False, "We're sorry, this username is already taken!"
+    return False, "badusername", "We're sorry, but the username '" + str(username) + "' is already taken!"
 
   if not mew.passwordTest( password ):
-    return False, "Passwords must be at least 7 charactesr long with numerals and mixed case or be longer than 20 characters."
+    return False, "badpassword", "Passwords must be at least 7 charactesr long with numerals and mixed case or be longer than 20 characters."
 
   user = mew.createUser( username, password )
 
   if ("email" in ch) and len(ch["email"]) > 0:
     mew.addemail( user["id"], ch["email"] )
 
-  return True, user["id"]
+  return True, "ok", user["id"]
 
 
 signup="""
@@ -72,13 +72,10 @@ if os.environ['REQUEST_METHOD'] == 'POST':
   for k in form:
     h[k] = form[k].value
 
-  v,x = processSignup(h)
+  v,typ,x = processSignup(h)
   if v:
-
     userId = x
-
     mew.createProject( userId, "My-New-Project", "user" )
-
     cookie["message"] = "Welcome to MeowCAD!  Please login to continue!"
     cookie["messageType"] = "success"
 
@@ -89,6 +86,23 @@ if os.environ['REQUEST_METHOD'] == 'POST':
 
   cookie["message"] = x
   cookie["messageType"] = "error"
+
+  if (typ == "badpassword") and ("username" in h) and (len(h["username"]) > 0):
+    cookie["signup_username"] = h["username"]
+  else:
+    mew.expireCookie( cookie, "signup_username" )
+
+  if ("email" in h) and (len(h["email"]) > 0):
+    cookie["signup_email"] = h["email"]
+  else:
+    mew.expireCookie( cookie, "signup_email" )
+
+  if typ == "badusername":
+    cookie["signup_focus"] = "username"
+  elif typ == "badpassword":
+    cookie["signup_focus"] = "password"
+  else:
+    cookie["signup_focus"] = "username"
 
   print "Location:signup"
   print cookie.output()
@@ -140,6 +154,13 @@ tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )
 
+if "signup_username" in cookie_hash:
+  tmp_str = tmp_str.replace( "<!--STICKY_USERNAME-->", 
+                            '<input type="hidden" id="sticky_username" value="' +  cookie_hash["signup_username"]  + '" >' ) 
+
+if "signup_email" in cookie_hash:
+  tmp_str = tmp_str.replace( "<!--STICKY_EMAIL-->", 
+                            '<input type="hidden" id="sticky_email" value="' +  cookie_hash["signup_email"]  + '" >' ) 
 
 print "Content-type: text/html; charset=utf-8;"
 print cookie.output()

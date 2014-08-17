@@ -25,7 +25,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <title>MeowCAD</title>
 
 
-    <link rel="stylesheet" type="text/css" href="/bootstrap/css/pastel-stream.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="/bootstrap/css/pastel-stream.css" /> -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
 
     <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
     <link rel="stylesheet" type="text/css" href="/css/forms.css" />
@@ -45,42 +46,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <h3 style='text-align:center; margin-bottom:25px;'>Portfolio</h3>
 
         <!--BREADCRUMB-->
+        <!--MESSAGE-->
 
-        <!--
-        <div class='col-lg-12'>
-          <ul class='breadcrumb' >
-            <li> <a href='#'>abe</a>  </li>
-          </ul>
-        </div>
-        -->
-
-
+        <!--not used for now...-->
         <!--PROJECT_FILES-->
-        <!--
-        <div class='row'>
-          <div class='col-lg-4'>
-            <div class='panel panel-default'>
-              <div class='panel-heading'>mewmew</div>
-              <div class='panel-body'>
-                ...
-              </div>
-            </div>
-          </div>
-        </div>
-        -->
 
-        <!--PROJECT_README-->
+
         <div class='row' style='margin-top:25px'>
           <div class='col-lg-12'>
             <div class='panel panel-default'>
-
-                <!-- <div class='panel-heading'>README.md</div> -->
-                <!--
-                <div class='panel-body'>
-                  <img src='/img/ghost_big.png'></img>
-                </div>
-                -->
-
 
               <ul class='nav nav-tabs' style='margin-bottom: 15px;'>
 
@@ -96,125 +70,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 <div class='tab-pane active in' id='PanelProjects'>
 
                   <!--PROJECT_TABLE-->
-
-                  <!--
-                  <table class='table table-striped table-bordered table-condensed'>
-
-                    <thead> 
-                      <tr> 
-                        <th style='text-align:center;' class='col-xs-5'> Name </th> 
-                        <th style='text-align:center;' class='col-xs-2'> Sch </th> 
-                        <th style='text-align:center;' class='col-xs-2'> Brd </th> 
-                        <th style='text-align:center;' class='col-xs-1'> Access </th> 
-                        <th style='text-align:center;' class='col-xs-2'> Dl </th> 
-                      </tr> 
-                    </thead>
-
-                    <tbody>
-
-                      <tr> 
-                        <td align='center'>mewmew</td> 
-                        <td align='center'> <a href='#'>sch</a> </td> 
-                        <td align='center'> <a href='#'>brd</a> </td> 
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                      </tr>
-
-                      <tr> 
-                        <td align='center'>mewmew</td> 
-                        <td align='center'> <a href='#'>sch</a> </td> 
-                        <td align='center'> <a href='#'>brd</a> </td> 
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                      </tr>
-
-                      <tr> 
-                        <td align='center'>mewmew</td> 
-                        <td align='center'> <a href='#'>sch</a> </td> 
-                        <td align='center'> <a href='#'>brd</a> </td> 
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                      </tr>
-
-                      <tr> 
-                        <td align='center'>mewmew</td> 
-                        <td align='center'> <a href='#'>sch</a> </td> 
-                        <td align='center'> <a href='#'>brd</a> </td> 
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                        <td align='center'>  <img src='/img/ghost_big.png' height='16px' width='16px' ></img> </td>
-                      </tr>
-
-                    </tbody>
-
-                  </table>
--->
-
                   
                 </div>
 
-                <div class='tab-pane' id='PanelProjectCreate'>
-
-                  <!--PORTFOLIO_MESSAGE-->
-                  <!--
-                  -->
-                  <div class='alert alert-success' role='alert' style='text-align:center;'>Success!</div>
-                  <!--
-                  <div class='alert' style='text-align:center;'></div>
-                  -->
-
-
-          
-                  <!-- <form class='pure-form pure-form-aligned'> -->
-                  <form class='pure-form' action='createproject' method='POST' style='margin-left:15px;'>
-                    <fieldset>
-          
-                      <div class='pure-control-group'>
-                        <label for='name'>New Project Name</label>
-                        <input id='name' name='name' type='text' placeholder='Project Name' required>
-                      </div>
-          
-                    </fieldset>
-          
-                    <fieldset>
-                      <legend>Permissions</legend>
-          
-                      <div class='pure-control-group'>
-          
-                        <label for='private' class='pure-radio'>
-                          <img src='/img/locked.png' width='20px'></img>
-                          <input id='private' type='radio' name='permissionOption' value='private' checked>
-                            </input>
-                            Private (only viewable by you)
-                        </label>
-          
-                        <label for='public' class='pure-radio'>
-                          <img src='/img/heart.png' width='20px'></img>
-                          <input id='public' type='radio' name='permissionOption' value='public' >
-                            </input>
-                            Public (viewable by everyone)
-                        </label>
-          
-                      </div>
-          
-                    </fieldset>
-          
-                    <fieldset>
-                      <div class='pure-control-group'>
-                        <button id='createButton' class='pure-button pure-button-tiel'>Create Project</button>
-                      </div>
-                    </fieldset>
-          
-          
-                  </form>
-
+                <div class='tab-pane' id='PanelProjectCreate' style='margin-left:10px; margin-right:10px;' >
+                  <!--PROJECT_CREATE_FORM-->
                 </div> <!-- PanelProjectCreate -->
 
 
                 <div class='tab-pane' id='PanelComponent'>
 
-                  <p style='text-align:center; margin-left:10px; margin-right:10px;' >
-                  Components here will be inhereted by all projects unless overridden by components specific to a project.
-                  </p>
+                  <div class='alert alert-info'>
+                    <p style='text-align:center; margin-left:10px; margin-right:10px;' >
+                      Components here will be inhereted by all projects unless overridden by components specific to a project.
+                    </p>
+                  </div>
 
                   <!--PORTFOLIO_COMPONENTS-->
                   <div class='panel-group' id='accordionComponent'>
@@ -275,9 +145,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
                 <div class='tab-pane' id='PanelModule'>
 
-                  <p style='text-align:center; margin-left:10px; margin-right:10px;' >
-                  Modules here will be inhereted by all projects unless overridden by modules specific to a project.
-                  </p>
+                  <div class='alert alert-info'>
+                    <p style='text-align:center; margin-left:10px; margin-right:10px;' >
+                    Modules here will be inhereted by all projects unless overridden by modules specific to a project.
+                    </p>
+                  </div>
 
 
                   <!--PORTFOLIO_MODULES-->

@@ -1,0 +1,34 @@
+
+                  <form role='form' action='createproject' method='POST' >
+
+                      <div class='form-group'>
+                        <label for='name'>New Project Name</label>
+                        <input id='name' name='name' type='text' class='form-control' placeholder='Project Name' required>
+                      </div>
+          
+                      <legend>Permissions</legend>
+          
+                      <div class='form-group'>
+                        <label for='private' class='pure-radio'>
+                          <i class='fa fa-lock' style='font-size:17px;' ></i>
+                          <input id='private' type='radio' name='permissionOption' value='private' checked>
+                          </input>
+                          Private (only viewable by you)
+                        </label>
+                      </div>
+
+                      <div class='form-group'>
+                        <label for='public' class='pure-radio'>
+                          <i class='fa fa-heart'></i>
+                          <input id='public' type='radio' name='permissionOption' value='public' >
+                          </input>
+                          Public (viewable by everyone)
+                        </label>
+                      </div>
+
+                      <div class='form-group'>
+                        <button id='createButton' class='btn btn-primary' type='submit'>Create Project</button>
+                      </div>
+          
+                  </form>
+

@@ -24,7 +24,7 @@ form = cgi.FieldStorage()
 if ("name" not in form) :
   cookie["message"] = "Provide a project name" 
   cookie["messageType"] = "error"
-  print "Location:newproject"
+  print "Location:portfolio"
   print cookie.output()
   print
   sys.exit(0)
@@ -43,7 +43,7 @@ proj = mew.createProject( userId, projectName, permission )
 if proj is None:
   cookie["message"] = "Error occured"
   cookie["messageType"] = "error"
-  print "Location:newproject"
+  print "Location:portfolio"
   print cookie.output()
   print
   sys.exit(0)
@@ -52,7 +52,9 @@ if proj is None:
 cookie["message"] = "Project created"
 cookie["messageType"] = "success"
 
-print "Location:manageproject?projectId=" + str(proj["id"])
+#print "Location:manageproject?projectId=" + str(proj["id"])
+#print "Location:project?projectId=" + str(proj["id"])
+print "Location:portfolio"
 print cookie.output()
 print
 #print tmp_str

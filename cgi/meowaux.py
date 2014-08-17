@@ -13,20 +13,20 @@ import random
 
 ## -- file system and header (cookie) processing functions
 
-def breadcrumb( username, project=None ):
-  prefix = """
-  <div class='col-lg-12'>
-    <ul class='breadcrumb' >
-  """
-
-  s = "<li> <a href='/portfolio'>" + str(username) + "</a></li>\n"
-
-  if project is not None:
-    s += "<li> <a href='/portfolio/" + str(project) + "'>" + str(project) + "</a></li>\n"
-
-  suffix = "</div>"
-
-  return prefix + s + suffix
+#def breadcrumb( username, project=None ):
+#  prefix = """
+#  <div class='col-lg-12'>
+#    <ul class='breadcrumb' >
+#  """
+#
+#  s = "<li> <a href='/portfolio'>" + str(username) + "</a></li>\n"
+#
+#  if project is not None:
+#    s += "<li> <a href='/portfolio/" + str(project) + "'>" + str(project) + "</a></li>\n"
+#
+#  suffix = "</div>"
+#
+#  return prefix + s + suffix
 
 def log( s ):
   f = open( "/tmp/meowaux.log", "a" )
@@ -80,7 +80,55 @@ def expireCookie( cookie, val ):
   cookie[val] = ""
   cookie[val]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
 
+def breadcrumb( username=None, projectName=None, projectId=None ):
+  prefix = """
+  <div class='col-lg-12'>
+    <ul class='breadcrumb' >
+      <li> <a href='/portfolio'>
+  """
+  suffix = """
+  </a>  </li>
+    </ul>
+  </div>
+  """
+
+  s = ""
+
+  if username is not None:
+    s += username
+    if (projectName is not None) and (projectId is not None):
+      s += "</a></li> <li><a href='/project?projectId=" + str(projectId) + "'>" + str(projectName)
+
+  return prefix + s + suffix
+
+
+
+def processLoggedInNavTemplate( nav_template, userName, userType ):
+
+  signupnav="""
+  <form class="navbar-form navbar-right" role='form' action='/signup' method='POST'>
+  <div class='form-group'>
+  <button class='btn btn-warning' type='submit'>Sign up!</button>
+  </div>
+  </form>
+  """
+
+  unamestr = "[" + str(userName) + "]"
+
+  if userType == "anonymous":
+    unamestr = "&lt; " + str(userName) + " &gt;"
+    nav_template = nav_template.replace( "<!--NAVBAR_USER_CONTEXT-->", signupnav )
+  else:
+    nav_template = nav_template.replace( "<!--NAVBAR_USER_CONTEXT-->",
+        "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout'>Logout</a></li> </ul>")
+
+  nav_template = nav_template.replace( "<!--NAVBAR_USER_DISPLAY-->",
+      "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/\">" + unamestr + "</a></li> </ul>")
+
+  return nav_template
+
 def replaceTemplateMessage( template, msg, msgType ):
+
   if len(msg) == 0:
     return template.replace("<!--MESSAGE-->", message( "" ) )
 
@@ -190,6 +238,15 @@ def authenticateSession( userId, sessionId ):
 
   return True
 
+
+def getHeartCount( projectId ):
+  return 0
+
+def getCommentCount( projectId ):
+  return 0
+
+def getDownloadCount( projectId ):
+  return 0
 
 def getSessions():
   db = redis.Redis()

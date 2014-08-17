@@ -24,13 +24,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeowCAD</title>
 
-
-    <link rel="stylesheet" type="text/css" href="/bootstrap/css/pastel-stream.css" />
-
-    <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
-    <link rel="stylesheet" type="text/css" href="/css/forms.css" />
-    <link rel="stylesheet" type="text/css" href="/css/tables.css" />
-
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -64,7 +58,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <!--BREADCRUMB-->
 
         <!--MESSAGE-->
-        <!-- <div class='alert alert-success' role='alert' style='text-align:center;'>Success!</div> -->
 
 
         <!--USER_PANE-->
@@ -77,98 +70,60 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 <!-- <li ><a href='#PanelPermissions' data-toggle='tab'>Permissions</a></li> -->
               </ul>
 
-              <div id='PaneTabContent' class='tab-content'>
+              <div id='PaneTabContent' class='tab-content' style='margin-left:10px; margin-right:10px;' >
 
-                <div class='tab-pane active in' id='PanelUser'>
+                <div class='tab-pane active in' id='PanelUser' >
 
-                  <form class='pure-form pure-form-aligned' action='user' method='POST' style='margin-left:25px;'>
+                  <form role='form' action='user' method='POST' class='form-horizontal' >
           
-                    <fieldset>
-                      <div class='pure-control-group'>
-                        <label for='password'>Current Password</label>
-                        <input id='passwordOrig' name='passwordOrig' type='password' placeholder='Current password' required>
+                    <div class='form-group'>
+                      <label for='password' class='col-sm-2' >Current Password</label>
+                      <div class='col-sm-10'>
+                        <input id='passwordOrig' name='passwordOrig' type='password' class='form-control' placeholder='Current password' required>
                       </div>
-                    </fieldset>
-          
-                    <br />
-
+                    </div>
+        
          
-                    <fieldset>
-                      <div class='pure-control-group'>
-                        <label for='password'>New Password</label>
-                        <input id='password' name='password' type='password' placeholder='New password' required>
+                    <div class='form-group'>
+                      <label for='password' class='col-sm-2'>New Password</label>
+                      <div class='col-sm-10'>
+                        <input id='password' name='password' type='password' class='form-control' placeholder='New password' required>
                       </div>
-                    </fieldset>
+                    </div>
           
-                    <fieldset>
-                      <div class='pure-control-group'>
-                        <label for='passwordAgain'> Re-Enter </label>
-                        <input id='passwordAgain' name='passwordAgain' type='password' placeholder='Re-enter new password' required>
+                    <div class='form-group'>
+                      <label for='passwordAgain' class='col-sm-2'> Re-Enter </label>
+                      <div class='col-sm-10'>
+                        <input 
+                          id='passwordAgain' 
+                          name='passwordAgain' 
+                          type='password' 
+                          class='form-control' 
+                          placeholder='Re-enter new password' required>
                       </div>
-                    </fieldset>
+                    </div>
 
-                    <p style='margin-left:30px; margin-right:30px;' >
-                    <small>
-                      Passwords must be greater than 7 characters long, contain at least one numeral
-                      and be of mixed case.  Passwords greater than 20 characters have no restrictions.
-                    </small>
-                    </p>
+                    <div class='col-sm-offset-2 col-sm-10'>
+                      <p>
+                        <small>
+                          Passwords must be greater than 7 characters long, contain at least one numeral
+                          and be of mixed case.  Passwords greater than 20 characters have no restrictions.
+                        </small>
+                      </p>
+                    </div>
 
           
-                    <fieldset>
-                      <div class='pure-control-group'>
-                        <label for='none'> </label>
-                        <button id='update' class='pure-button pure-button-tiel'>Update</button>
+                    <div class='form-group'>
+                      <div class='col-sm-offset-2 col-sm-10'>
+                        <button id='update' class='btn btn-primary' type='submit'>Update</button>
                       </div>
-                    </fieldset>
+                    </div>
 
                     <input id='action' name='action' type='hidden' value='password'></input>
           
                   </form>
                  
                 </div>
-
-                <!--
-                <div class='tab-pane' id='PanelPermissions'>
-
-                  <form class='pure-form pure-form-aligned' action='updateuserpermissions' method='POST' style='margin-left:25px;'>
-
-                    ...
-         
-                    <fieldset>
-                      <div class='pure-control-group'>
-                        <label for='password'>Current Password</label>
-                        <input id='passwordOrig' name='passwordOrig' type='password' placeholder='Current password' required>
-                      </div>
-                    </fieldset>
-          
-                    <br />
-          
-                    <fieldset>
-                      <div class='pure-control-group'>
-                        <label for='password'>New Password</label>
-                        <input id='password' name='password' type='password' placeholder='New password' required>
-                      </div>
-                    </fieldset>
-          
-                    <fieldset>
-                      <div class='pure-control-group'>
-                        <label for='passwordAgain'> Re-Enter </label>
-                        <input id='passwordAgain' name='passwordAgain' type='password' placeholder='Re-enter new password' required>
-                      </div>
-                    </fieldset>
-          
-                    <fieldset>
-                      <div class='pure-control-group'>
-                        <label for='none'> </label>
-                        <button id='update' class='pure-button pure-button-tiel'>Update</button>
-                      </div>
-                    </fieldset>
-          
-                  </form>
-                 
-                </div>
-                -->
 
               </div>
 

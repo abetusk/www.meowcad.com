@@ -45,7 +45,7 @@ r = mew.deleteProject( userId, projectId )
 if r is None:
   cookie["message"] = "Error occured"
   cookie["messageType"] = "error"
-  print "Location:manageproject?projectId=" + str(projectId)
+  print "Location:project?projectId=" + str(projectId)
   print cookie.output()
   print
   sys.exit(0)

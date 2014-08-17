@@ -40,10 +40,13 @@ feedback = form["feedback"].value
 r = mew.feedback( userId, email, feedback )
 
 if r:
-  cookie["message"] = "Feedback sent"
+  cookie["message"] = "Thank you!  Your feedback has been sent!"
   cookie["messageType"] = "success"
 
-  print "Location:feedbacksent"
+  if loggedInFlag:
+    print "Location:portfolio"
+  else:
+    print "Location:signup"
   print cookie.output()
   print
 

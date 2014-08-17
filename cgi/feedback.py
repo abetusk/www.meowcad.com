@@ -93,7 +93,7 @@ else:
 
 
 tmp_str = template
-#tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
+tmp_str = mew.replaceTemplateMessage( template, message, messageType )
 
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )

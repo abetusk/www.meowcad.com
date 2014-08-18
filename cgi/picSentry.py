@@ -13,13 +13,10 @@ import hashlib
 
 cgitb.enable();
 
-#FILEBASE = "/tmp/pic"
-#FILEBASE = "/tmp/stage"
 FILEBASE = "/home/meow/stage"
 
 g_debug = False
 def log_line( l ):
-  #logf = open("/tmp/picsentry.log", "a")
   logf = open("/home/meow/picsentry.log", "a")
   logf.write( l  + "\n")
   logf.close()

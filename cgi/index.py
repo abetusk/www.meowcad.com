@@ -8,14 +8,6 @@ import datetime
 import meowaux as mew
 cgitb.enable()
 
-signupnav="""
-<form class="navbar-form navbar-right" role='form' action='/register' method='POST'>
-<div class='form-group'>
-<button class='btn btn-warning' type='submit'>Register!</button>
-</div>
-</form>
-"""
-
 login_signup_nav="""
 
 <ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
@@ -70,19 +62,7 @@ tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics)
 
 if loggedInFlag:
   userData = mew.getUser( cookie_hash["userId"] )
-  userName = userData["userName"]
-
-  unamestr = "[" + str(userName) + "]"
-
-  if userData["type"] == "anonymous":
-    unamestr = "&lt; " + str(userName) + " &gt;"
-    nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", signupnav)
-  else:
-    nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->",
-        "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout'>Logout</a></li> </ul>")
-
-  nav = nav.replace( "<!--NAVBAR_USER_DISPLAY-->",
-      "<ul class=\"nav navbar-nav\"> <li><a href=\"/user\">" + unamestr + "</a></li> </ul>")
+  nav = mew.processLoggedInNavTemplate( nav, userData["userName"], userData["type"] )
 else:
   nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", login_signup_nav)
 

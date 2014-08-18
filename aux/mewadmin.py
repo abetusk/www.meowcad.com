@@ -9,6 +9,34 @@ import redis
 import json
 import meowaux as mew
 
+def project( projectId ):
+  """Get user information"""
+
+  u = mew.getProject( projectId )
+  for x in u:
+    print str(x) + ":", u[x]
+  print
+
+
+def user( userId ):
+  """Get user information"""
+
+  u = mew.getUser( userId )
+  for x in u:
+    print str(x) + ":", u[x]
+  print
+
+def portfolio( userId ):
+  """Get Portfolio for a userid"""
+
+  olio = mew.getPortfolios( userId )
+  for proj in olio:
+    print
+    print 
+    for x in proj:
+      print str(x) + ":", proj[x]
+
+  print
 
 def feedback():
   """Print all feedback entries"""
@@ -154,12 +182,16 @@ def activateuser(userid):
 def showhelp():
   print "  feedback"
   print "  users [all|anonymous]"
+  print "  portfolio <userId>"
+  print "  user <userId>"
+  print "  project <projectId>"
   print "  sessions"
   print "  signups"
   print
   print "  adduser <user> <pass>"
   print "  deluser <id>"
   print "  activateuser <id>"
+  print
 
 if len(sys.argv) < 2:
   print "provide command"
@@ -193,6 +225,15 @@ elif op == "deluser":
 
 elif op == "activateuser":
   activateuser(x)
+
+elif op == "portfolio":
+  portfolio(x)
+
+elif op == "user":
+  user(x)
+
+elif op == "project":
+  project(x)
 
 elif op == "help":
   showhelp()

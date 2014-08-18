@@ -7,22 +7,8 @@ import Cookie
 import meowaux as mew
 cgitb.enable()
 
-
-signup="""
-<ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
-  <li>
-
-    <form action='/register' style='display:inline;' method='POST' >
-      <button class='btn btn-warning' type='submit'>Sign up!</button>
-    </form>
-
-  </li>
-</ul>
-"""
-
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
-
 
 loggedInFlag = False
 if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
@@ -118,16 +104,13 @@ userName = userData["userName"]
 unamestr = "["  + str(userName) + "]"
 
 if userData["type"] == "anonymous":
-  unamestr = "&lt; " + str(userName) + " &gt;"
-  nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", signup )
-else:
-  nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", 
-      "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout'>Logout</a></li> </ul>")
-
-nav = nav.replace( "<!--NAVBAR_USER_DISPLAY-->",
-    "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/\">" + unamestr + "</a></li> </ul>")
+  print "Location:/register"
+  print cookie.output()
+  print
+  sys.exit(0)
 
 
+nav = mew.processLoggedInNavTemplate( nav, userData["userName"], userData["type"] )
 
 tmp_str = template
 

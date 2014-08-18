@@ -12,7 +12,7 @@ signup="""
   <li>
 
     <form action='/signup' style='display:inline;' method='POST' >
-      <button class='btn btn-warning' type='submit'>Sign up!</button>
+      <button class='btn btn-warning' type='submit'>Register!</button>
     </form>
 
   </li>
@@ -30,7 +30,7 @@ login_signup_nav="""
     </form>
 
     <form action='/signup' style='display:inline;' >
-      <button class='btn btn-warning' type='submit'>Sign up!</button>
+      <button class='btn btn-warning' type='submit'>Register!</button>
     </form>
 
   </li>
@@ -73,20 +73,23 @@ footer = mew.slurp_file("template/footer_template.html")
 analytics = mew.slurp_file("template/analytics_template.html")
 
 if loggedInFlag:
+
   userData = mew.getUser( cookie_hash["userId"] )
   userName = userData["userName"]
 
-  unamestr = "["  + str(userName) + "]"
+  nav = mew.processLoggedInNavTemplate( nav, userData["userName"], userData["type"] )
 
-  if userData["type"] == "anonymous":
-    unamestr = "&lt; " + str(userName) + " &gt;"
-    nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", signup )
-  else:
-    nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", 
-        "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout/" + str(userData["id"]) + "'>Logout</a></li> </ul>")
-
-  nav = nav.replace( "<!--NAVBAR_USER_DISPLAY-->",
-      "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/" + str(userData["id"]) + "\">" + unamestr + "</a></li> </ul>")
+#  unamestr = "["  + str(userName) + "]"
+#
+#  if userData["type"] == "anonymous":
+#    unamestr = "&lt; " + str(userName) + " &gt;"
+#    nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", signup )
+#  else:
+#    nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", 
+#        "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout/" + str(userData["id"]) + "'>Logout</a></li> </ul>")
+#
+#  nav = nav.replace( "<!--NAVBAR_USER_DISPLAY-->",
+#      "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/" + str(userData["id"]) + "\">" + unamestr + "</a></li> </ul>")
 else:
   nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", login_signup_nav )
 

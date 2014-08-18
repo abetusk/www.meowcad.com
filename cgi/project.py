@@ -35,8 +35,6 @@ form = cgi.FieldStorage()
 project = {}
 if "projectId" in form:
   project = mew.getProject( str(form["projectId"].value) )
-
-  mew.log( str(project) )
 else:
   cookie["message"] = "We're sorry, we couldn't find that project!"
   cookie["messageType"] = "error"

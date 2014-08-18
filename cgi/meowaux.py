@@ -105,12 +105,18 @@ def breadcrumb( username=None, projectName=None, projectId=None ):
 
 def processLoggedInNavTemplate( nav_template, userName, userType ):
 
+#  signupnav="""
+#  <form class="navbar-form navbar-right" role='form' action='/register' method='POST'>
+#  <div class='form-group'>
+#  <button class='btn btn-warning' type='submit'>Register!</button>
+#  </div>
+#  </form>
+#  """
+
   signupnav="""
-  <form class="navbar-form navbar-right" role='form' action='/register' method='POST'>
-  <div class='form-group'>
-  <button class='btn btn-warning' type='submit'>Sign up!</button>
+  <div class='navbar-right' style='margin-top:7px;' >
+  <button class='btn btn-warning' onclick='window.location.href = "/register";'>Register!</button>
   </div>
-  </form>
   """
 
   unamestr = "[" + str(userName) + "]"
@@ -122,8 +128,12 @@ def processLoggedInNavTemplate( nav_template, userName, userType ):
     nav_template = nav_template.replace( "<!--NAVBAR_USER_CONTEXT-->",
         "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout'>Logout</a></li> </ul>")
 
-  nav_template = nav_template.replace( "<!--NAVBAR_USER_DISPLAY-->",
-      "<ul class=\"nav navbar-nav\"> <li><a href=\"/user/\">" + unamestr + "</a></li> </ul>")
+  if userType == "anonymous":
+    nav_template = nav_template.replace( "<!--NAVBAR_USER_DISPLAY-->",
+        "<ul class=\"nav navbar-nav\"> <li><a href=\"/register\">" + unamestr + "</a></li> </ul>")
+  else:
+    nav_template = nav_template.replace( "<!--NAVBAR_USER_DISPLAY-->",
+        "<ul class=\"nav navbar-nav\"> <li><a href=\"/user\">" + unamestr + "</a></li> </ul>")
 
   return nav_template
 
@@ -216,9 +226,6 @@ def authenticateSession( userId, sessionId ):
 
   hashSessionId = hashlib.sha512( str(userId) + str(sessionId) ).hexdigest()
 
-  #print "hashsession:"
-  #print hashSessionId
-
   x = db.sismember( "sesspool", hashSessionId )
 
   if not db.sismember( "sesspool", hashSessionId ):
@@ -226,9 +233,6 @@ def authenticateSession( userId, sessionId ):
 
   sessionDat = db.hgetall( "session:" + str(hashSessionId) )
   userDat = db.hgetall( "user:" + str(userId) )
-
-  #print sessionDat
-  #print userDat
 
   if ( ("userName" not in userDat) or
        ("userId" not in sessionDat) or
@@ -258,9 +262,25 @@ def deactivateSession( userId, sessionId ):
   hashSessionId = hashlib.sha512( str(userId) + str(sessionId) ).hexdigest()
   db.srem( "sesspool", str(hashSessionId) )
   x = db.hgetall( "session:" + str(hashSessionId) )
-  #if "active" not in x: return 0
   db.hset( "session:" + str(hashSessionId), "active", 0 )
   return 1
+
+def createSession( userId ):
+
+  db = redis.Redis()
+
+  sessionId = uuid.uuid4()
+
+  hashSessionId = hashlib.sha512( str(userId) + str(sessionId) ).hexdigest()
+  db.sadd( "sesspool", str(hashSessionId) )
+
+  sess = {}
+  sess["id"] = str(hashSessionId)
+  sess["userId"] = str(userId)
+  sess["active"] = 1
+  db.hmset( "session:" + str(hashSessionId), sess )
+  return str(sessionId)
+
 
 def addemail( userId, email ):
   db = redis.Redis()
@@ -336,6 +356,34 @@ def passwordTest( password ):
   if not re.search( '[a-z]', password):
     return False
   return True
+
+def transferUser( userid, username, password ):
+
+  db = redis.Redis()
+
+  u = db.hgetall( "user:" + str(userid) )
+  if not u:
+    return {}
+
+  if u["type"] != "anonymous":
+    t = db.hgetall( "username:" + str(u["userName"]) )
+    if t:
+      return {}
+
+  usernameHash = {}
+  usernameHash["id"] = str(userid)
+  usernameHash["userName"] = str(username)
+
+  hashpassword = hashlib.sha512( str(userid) + str(password) ).hexdigest()
+
+  db.hset( "user:" + str(userid), "userName", str(username) )
+  db.hset( "user:" + str(userid), "passwordHash", str(hashpassword) )
+  db.hset( "user:" + str(userid), "type", "user" )
+
+  db.hmset( "username:" + str(username), usernameHash )
+
+  return db.hgetall( "user:" + str(userid) )
+
 
 def createUser( userName, password ):
   db = redis.Redis()

@@ -8,13 +8,19 @@
     <link rel="icon" href="/simpleoutline.ico" />
 
     <script type='text/javascript' src='/socket.io/socket.io.js' ></script>
-    <script type='text/javascript' src='js/lib/jquery.js'></script>
-    <script type='text/javascript' src='js/lib/jquery.cookie.js'></script>
+    <!-- <script type='text/javascript' src='/js/lib/jquery.js'></script> -->
+    <!-- <script type='text/javascript' src='/js/lib/jquery.cookie.js'></script> -->
+    <script type='text/javascript' src='/js/jquery.js'></script> 
+    <script type='text/javascript' src='/js/jquery.cookie.js'></script>
 
     <script type='text/javascript' src='js/lib/meowmeow.js' ></script>
 
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
-    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+
 
     <!--
     <link href="css/buttons.css" rel="stylesheet" type="text/css" />
@@ -247,8 +253,8 @@
       {
         console.log("lock");
 
-        img = document.getElementById("lockImage");
-        img.src = "/img/locked.png";
+        //img = document.getElementById("lockImage");
+        //img.src = "/img/locked.png";
 
         msg = document.getElementById('lockedMessage');
         msg.innerHTML = "Image is currently locked and only viewable by you";
@@ -276,8 +282,8 @@
       {
         console.log("unlock");
 
-        img = document.getElementById("lockImage");
-        img.src = "/img/heart.png";
+        //img = document.getElementById("lockImage");
+        //img.src = "/img/heart.png";
 
         msg = document.getElementById('lockedMessage');
         msg.innerHTML = "Image is unlocked and viewable by everyone";
@@ -285,12 +291,12 @@
 
         button = document.getElementById("lockButton");
         //button.className = "pure-button pure-button-lock-unselected";
-        button.className = "btn btn-danger";
+        button.className = "btn btn-default";
         button.innerHTML = "<i class='fa fa-lock'></i> " + "Lock";
 
         button = document.getElementById("unlockButton");
         //button.className = "pure-button pure-button-unlock";
-        button.className = "btn btn-default";
+        button.className = "btn btn-success";
         button.innerHTML = "<i class='fa fa-heart'></i> " + "Unlocked";
 
       }
@@ -307,10 +313,11 @@
         console.log("fetching public pic: " + picId );
 
         var img = document.createElement("img");
-        //img.src = "cgi/picSentry.py?id=" + picId + "&dummy=" + Math.floor((Math.random()*10000)+1);
         img.src = "picSentry.py?id=" + picId + "&dummy=" + Math.floor((Math.random()*10000)+1);
 
-        img.width = 600;
+        img.className = "img-responsive";
+        img.style.opacity = "0.95";
+        img.style.border = "1px solid black";
 
         var div = document.getElementById("imgContainer");
         div.innerHTML = "";
@@ -327,10 +334,11 @@
 
 
         var img = document.createElement("img");
-        //img.src = "cgi/picSentry.py?id=" + picId + "&userId=" + userId + "&sessionId=" + sessionId;
         img.src = "picSentry.py?id=" + picId + "&userId=" + userId + "&sessionId=" + sessionId;
 
-        img.width = 600;
+        img.className = "img-responsive";
+        img.style.opacity = "0.95";
+        img.style.border = "1px solid black";
 
         var div = document.getElementById("imgContainer");
         div.innerHTML = "";
@@ -372,7 +380,7 @@
       <div class='container-fluid'>
         <div class='row'>
           <div class='col-xs-4'> </div>
-          <div class='col-xs-4'> <h3 style='tex-align:center; margin-bottom:25px;'>Snapshot</h3> </div>
+          <div class='col-xs-4'> <h3 style='text-align:center; margin-bottom:25px;'>Snapshot</h3> </div>
           <div class='col-xs-4'> </div>
         </div>
       </div>
@@ -383,70 +391,88 @@
 
       <!--MESSAGE-->
 
+
+        <div class='container-fluid' style='margin-top:5px; margin-bottom:15px;' >
+          <div class='row'>
+
+            <!--
+            <div class='col-sm-2'>
+              <img  
+                id='lockImage' 
+                src='img/background.png' 
+                height='42px' 
+                width='42px' 
+                style='display:block; opacity:0.5; margin:auto;'>
+              </img>
+            </div>
+-->
+
+
+            <div class='col-sm-2' style='text-align:center;' >
+              <button 
+                id='lockButton' 
+                name='on' 
+                value='on' 
+                style='display:none;' 
+                class="btn btn-danger"
+                onclick='sendLockMessage();' >
+                <i class='fa fa-lock'></i>
+                Lock
+              </button>
+            </div>
+
+
+
+            <div class='col-sm-2' style='text-align:center;' >
+              <button 
+                id='unlockButton' 
+                name='off' 
+                value='off' 
+                style='display:none;' 
+                class='btn btn-default'
+                onclick='sendUnlockMessage();' >
+                <i class='fa fa-unlock-alt'></i>
+                Unlock</button>
+            </div>
+
+            <div class='col-sm-6' style='text-align:center;' >
+              <div id='lockedMessage' style='display:none;' >fetching...</div>
+            </div>
+
+            <div class='col-sm-2' style='text-align:center;' >
+              <div 
+                class='generic_button' 
+                id='downloadButtonContainer' 
+                style=' margin:auto; width:32px; height:32px; ' >
+                <input 
+                  id='downloadButton'
+                  class='generic_button' 
+                  type='image' 
+                  src='img/download.png' 
+                  style=' height:32px; width:32px; display:none; opacity:0.5; margin:auto;'
+                  value='download' 
+                  onclick='downloadPicture();' 
+                />
+              </div>
+
+            </div>  <!-- row -->
+          </div>  <!-- contianer fluid -->
+
+        </div>
+
         <iframe id='downloadFrame' style='display:none'>
         </iframe>
 
-        <div id='imgContainer'>
-          Please wait while we fetch your picture...
-        </div>
+        <div class='container-fluid'>
+          <div class='row'>
 
+            <!-- <div class='col-sm-1'></div> -->
+            <div id='imgContainer' class='col-sm-12' style='text-align:center;' >
+              Please wait while we fetch your picture...
+            </div>
+            <!-- <div class='col-sm-1'></div> -->
 
-
-          <img  
-            id='lockImage' 
-            src='img/background.png' 
-            height='42px' 
-            width='42px' 
-            style='display:block; opacity:0.5; margin:auto;'>
-          </img>
-
-          <br />
-
-          <button 
-            id='lockButton' 
-            name='on' 
-            value='on' 
-            style='display:none;' 
-            class="btn btn-danger"
-            onclick='sendLockMessage();' >
-            <i class='fa fa-lock'></i>
-            Lock
-          </button>
-
-          <br />
-
-          <button 
-            id='unlockButton' 
-            name='off' 
-            value='off' 
-            style='display:none;' 
-            class='btn btn-default'
-            onclick='sendUnlockMessage();' >
-            <i class='fa fa-unlock-alt'></i>
-            Unlock</button>
-          <br />
-
-          <div id='lockedMessage' style='display:none;' >fetching...</div>
-
-          <br />
-          <br />
-          <br />
-
-          <div 
-            class='generic_button' 
-            id='downloadButtonContainer' 
-            style=' margin:auto; width:32px; height:32px; ' >
-            <input 
-              id='downloadButton'
-              class='generic_button' 
-              type='image' 
-              src='img/download.png' 
-              style=' height:32px; width:32px; display:none; opacity:0.5; margin:auto;'
-              value='download' 
-              onclick='downloadPicture();' 
-            />
           </div>
-
         </div>
 
 

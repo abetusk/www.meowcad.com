@@ -9,9 +9,9 @@ import meowaux as mew
 cgitb.enable()
 
 signupnav="""
-<form class="navbar-form navbar-right" role='form' action='/signup' method='POST'>
+<form class="navbar-form navbar-right" role='form' action='/register' method='POST'>
 <div class='form-group'>
-<button class='btn btn-warning' type='submit'>Sign up!</button>
+<button class='btn btn-warning' type='submit'>Register!</button>
 </div>
 </form>
 """
@@ -25,8 +25,8 @@ login_signup_nav="""
       <button class='btn btn-success' type='submit'>Log in</button>
     </form>
 
-    <form action='/signup' style='display:inline;' >
-      <button class='btn btn-warning' type='submit'>Sign up!</button>
+    <form action='/register' style='display:inline;' >
+      <button class='btn btn-warning' type='submit'>Register!</button>
     </form>
 
   </li>

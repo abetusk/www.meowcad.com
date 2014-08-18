@@ -42,7 +42,7 @@ signup="""
 <ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
   <li>
 
-    <form action='/signup' style='display:inline;' method='POST' >
+    <form action='/register' style='display:inline;' method='POST' >
       <button class='btn btn-warning' type='submit'>Sign up!</button>
     </form>
 
@@ -117,7 +117,7 @@ if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
 
 msg,msgType = mew.processCookieMessage( cookie, cookie_hash )
 
-template = mew.slurp_file("template/signup.html")
+template = mew.slurp_file("template/register.html")
 
 nav = mew.slurp_file("template/navbar_template.html")
 

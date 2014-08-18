@@ -106,7 +106,7 @@ def breadcrumb( username=None, projectName=None, projectId=None ):
 def processLoggedInNavTemplate( nav_template, userName, userType ):
 
   signupnav="""
-  <form class="navbar-form navbar-right" role='form' action='/signup' method='POST'>
+  <form class="navbar-form navbar-right" role='form' action='/register' method='POST'>
   <div class='form-group'>
   <button class='btn btn-warning' type='submit'>Sign up!</button>
   </div>

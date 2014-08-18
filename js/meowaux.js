@@ -290,7 +290,7 @@ module.exports = {
          ( typeof userId === 'undefined' ) ||
          ( typeof sessionId === 'undefined' ) )
     {
-      socket.emit("picready", { type:"response", status: "error", message: "access denied (0)" });
+      socket.emit("picready", { type:"response", status: "error", message: "access denied (0.r)" });
       return;
     }
 
@@ -306,7 +306,7 @@ module.exports = {
 
         if ( (!d) || (d.active != "1") )
         {
-          socket.emit("picready", { type:"response", status: "error", message: "access denied (1)" });
+          socket.emit("picready", { type:"response", status: "error", message: "access denied (1.r)" });
           return;
         }
 
@@ -321,7 +321,7 @@ module.exports = {
 
         if (!message)
         {
-          socket.emit("picready", { type:"response", status: "error", message: "access denied (2)" });
+          socket.emit("picready", { type:"response", status: "error", message: "access denied (2.r)" });
           return;
         }
 
@@ -375,7 +375,7 @@ module.exports = {
 
         if ( (!d) || (d.active != "1") )
         {
-          socket.emit("picaccess", { type:"response", status: "error", message: "access denied (1)" });
+          socket.emit("picaccess", { type:"response", status: "error", message: "access denied (1.a)" });
           return;
         }
         

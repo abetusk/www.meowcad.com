@@ -8,6 +8,24 @@ import datetime
 import meowaux as mew
 cgitb.enable()
 
+login_signup_nav="""
+<ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
+  <li>
+
+    <form action='/login' style='display:inline;' >
+      <button class='btn btn-success' type='submit'>Log in</button>
+    </form>
+
+    <form action='/register' style='display:inline;' >
+      <button class='btn btn-warning' type='submit'>Register!</button>
+    </form>
+
+  </li>
+</ul>
+"""
+
+
+
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
 
@@ -20,15 +38,23 @@ if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
 
 
 template = mew.slurp_file("template/pic.html")
-
 tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
+
+nav = mew.slurp_file("template/navbar_template.html")
+footer = mew.slurp_file("template/footer_template.html")
+analytics = mew.slurp_file("template/analytics_template.html")
+
+
+tmp_str = tmp_str.replace( "<!--FOOTER-->", footer)
+tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics)
 
 if loggedInFlag:
   userData = mew.getUser( cookie_hash["userId"] )
-  userName = userData["userName"]
-  tmp_str = tmp_str.replace("<!--USERINDICATOR-->", mew.userIndicatorString( cookie_hash["userId"], userName ) )
+  nav = mew.processLoggedInNavTemplate( nav, userData["userName"], userData["type"] )
 else:
-  tmp_str = tmp_str.replace("<!--USERINDICATOR-->", "<a href='login'>[Login]</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href='signup'>Signup</a>")
+  nav = nav.replace( "<!--NAVBAR_USER_CONTEXT-->", login_signup_nav)
+
+tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav)
 
 print "Content-type: text/html; charset=utf-8;"
 print cookie.output()

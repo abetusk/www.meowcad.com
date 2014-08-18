@@ -25,16 +25,6 @@ login_signup_nav="""
 </ul>
 """
 
-#"""
-#<form class="navbar-form navbar-right" role='form' action='/login' method='POST'>
-#<div class='form-group'>
-#<!-- <input type="text" size='8' class="form-control" placeholder="Username"> -->
-#<!-- <input type="password" size='12' class="form-control" placeholder="Password"> -->
-#<button class='btn btn-success' type='submit'>Login</button>
-#</div>
-#</form>
-#"""
-
 
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
@@ -50,13 +40,10 @@ msg,msgType = mew.processCookieMessage( cookie, cookie_hash )
 template = mew.slurp_file("template/landing.html")
 tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
 
-
 nav = mew.slurp_file("template/navbarflush_template.html")
 footer = mew.slurp_file("template/footer_template.html")
 analytics = mew.slurp_file("template/analytics_template.html")
 
-
-tmp_str = mew.replaceTemplateMessage( template, msg, "nominal" )
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer)
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics)
 

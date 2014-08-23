@@ -10,7 +10,7 @@ cgitb.enable()
 
 login_signup_nav="""
 
-<ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
+<ul class='nav navbar-nav' style='float:right; margin-top:7px; margin-right:5px; ' >
   <li>
 
     <form action='/login' style='display:inline;' >
@@ -34,6 +34,11 @@ loggedInFlag = False
 if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) != 0) ):
   loggedInFlag = True
+  print "Location:portfolio"
+  print cookie.output()
+  print
+  sys.exit(0)
+
 
 msg,msgType = mew.processCookieMessage( cookie, cookie_hash )
 

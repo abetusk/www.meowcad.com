@@ -132,8 +132,21 @@ def processLoggedInNavTemplate( nav_template, userName, userType ):
     nav_template = nav_template.replace( "<!--NAVBAR_USER_DISPLAY-->",
         "<ul class=\"nav navbar-nav\"> <li><a href=\"/register\">" + unamestr + "</a></li> </ul>")
   else:
-    nav_template = nav_template.replace( "<!--NAVBAR_USER_DISPLAY-->",
-        "<ul class=\"nav navbar-nav\"> <li><a href=\"/user\">" + unamestr + "</a></li> </ul>")
+    s = ""
+    s += "<ul class=\"nav navbar-nav\">"
+    s += "  <li>"
+    s += "    <a href=\"/user\">" 
+    s += "      <i class='fa fa-cog'></i>"
+    s += "    </a>"
+    s += "  </li>"
+    s += "  <li>"
+    #s += "    &nbsp;"
+    s += "    <a href=\"/portfolio\">" 
+    s +=      unamestr 
+    s += "    </a>"
+    s += "  </li>"
+    s += "</ul>"
+    nav_template = nav_template.replace( "<!--NAVBAR_USER_DISPLAY-->", s )
 
   return nav_template
 
@@ -180,19 +193,18 @@ def randomName( fn, n ):
 
 ## --- html helper functions
 
+#def userIndicatorString( userId, userName ):
+#  userData = getUser( userId )
+#
+#  userIndicator = ""
+#  if str(userData["type"]) == "anonymous":
+#    userIndicator += "<b> &lt; " + str(userName) + "&gt;  </b> "
+#  else:
+#    userIndicator = "<b><a href='usersettings' >" # ?userId=" + str(userId) + "'> "
+#    userIndicator += "[" + str(userName) + "] </a> </b> "
+#  userIndicator += " &nbsp; &nbsp; <a href='logout'>Logout</a> "
+#  return userIndicator
 
-
-def userIndicatorString( userId, userName ):
-  userData = getUser( userId )
-
-  userIndicator = ""
-  if str(userData["type"]) == "anonymous":
-    userIndicator += "<b> &lt; " + str(userName) + "&gt;  </b> "
-  else:
-    userIndicator = "<b><a href='usersettings' >" # ?userId=" + str(userId) + "'> "
-    userIndicator += "[" + str(userName) + "] </a> </b> "
-  userIndicator += " &nbsp; &nbsp; <a href='logout'>Logout</a> "
-  return userIndicator
 
 def errorMessage( msg ):
   return "<div style='text-align:center;' id='message' class='alert alert-danger' >" + str(msg) + "</div>"

@@ -62,7 +62,7 @@ def processSignup( ch, cook_hash ):
 
 
 signup="""
-<ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
+<ul class='nav navbar-nav' style='float:right; margin-top:7px; margin-right:5px; ' >
   <li>
 
     <form action='/register' style='display:inline;' method='POST' >
@@ -75,7 +75,7 @@ signup="""
 
 
 loginform = """
-<ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
+<ul class='nav navbar-nav' style='float:right; margin-top:7px; margin-right:5px; ' >
   <li>
     <form action='/login' style='display:inline;' method='POST' >
       <button class='btn btn-success' type='submit'>Log in</button>

@@ -9,7 +9,7 @@ import meowaux as mew
 cgitb.enable()
 
 login_signup="""
-<ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
+<ul class='nav navbar-nav' style='float:right; margin-top:7px; margin-right:5px; ' >
   <li>
 
     <form action='/login' style='display:inline;' >

@@ -23,6 +23,8 @@ userId = cookie_hash["userId"]
 userData = mew.getUser( userId )
 userName = userData["userName"]
 
+mew.log("cp")
+
 template = mew.slurp_file("template/usersettings.html")
 tmp_str = template.replace("<!--USER-->", userName )
 tmp_str = tmp_str.replace("<!--USERID-->", userId )

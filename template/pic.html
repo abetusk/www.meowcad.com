@@ -30,6 +30,7 @@
 -->
 
 
+    <script src='js/meowconfig.js'></script>
     <script>
 
       var g_lockedImg;
@@ -111,8 +112,9 @@
           //}
         }
 
-        g_socket = io.connect("https://localhost");
+        //g_socket = io.connect("https://localhost");
         //g_socket = io.connect("https://www.meowcad.com");
+        g_socket = io.connect( MEOWURL );
         g_socket.on("picpermission", handlePicPermissionResponse );
         g_socket.on("picaccess", handlePicAccessResponse );
         g_socket.on("picready", handlePicReadyResponse );

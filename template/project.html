@@ -241,16 +241,17 @@ function cancelReadme() {
 
       <div class='row'>
 
-        <div class='col-xs-4'>
-          <!-- <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img> -->
+        <div class='col-sm-4'>
+          <h3 style='text-align:center;' >
+            <i class='fa fa-leaf' style='opacity:0.5;' ></i>
+          </h3>
         </div>
 
-        <div class='col-xs-4'>
+        <div class='col-sm-4'>
           <h3 style='text-align:center; margin-bottom:25px;'>Project</h3>
         </div>
 
-        <div class='col-xs-4'>
-          <!-- <img src='/img/ghost_big.png' style='float:right; margin-top:25px;' height='16px' width='16px' ></img> -->
+        <div class='col-sm-4'>
         </div>
 
       </div>
@@ -274,6 +275,7 @@ function cancelReadme() {
 
         <div class='col-sm-6' style='text-align:center; margin-bottom:5px;' >
        
+          <!--
           <button type='button' class='btn btn-default' onclick='gotosch();' >
             <i class='fa fa-toggle-right'></i>
             Schematic
@@ -283,6 +285,7 @@ function cancelReadme() {
             <i class='fa fa-arrow-circle-right'></i>
             Board
           </button>
+          -->
 
         </div>
         <div class='col-sm-3' style='text-align:center; margin-bottom:5px;' >
@@ -323,12 +326,50 @@ function cancelReadme() {
               style='margin-left:10px; margin-right:10px; margin-top:10px; margin-bottom:10px; word-break:break-word;' >
 
 
+              <div class='row'>
 
-              <!-- <div style='margin-left:10px; margin-right:10px; margin-top:10px; margin-bottom:10px; word-break:break-word;' > -->
-                <div id='readme' >
-                  <img src='/img/ghost_big.png'></img>
+                <div class='col-sm-6' style='text-align:center;' >
+                  <div id='schematicSnapshot' >
+                    <img src='/img/ghost_big.png' style='width:100%;' ></img>
+                  </div>
+
+                  <div>
+                    <button id='schematicSnapshotButton' type='button' class='btn btn-info' onclick='gotosch();' >
+                      <i class='fa fa-pencil'></i>
+                      Edit Schematic
+                    </button>
+                  </div>
                 </div>
-              <!-- </div> -->
+
+                <div class='col-sm-6' style='text-align:center;' >
+                  <div id='boardSnapshot' >
+                    <img src='/img/ghost_big.png' style='width:100%;' ></img>
+                  </div>
+
+                  <div>
+                    <button id='boardSnapshotButton' type='button' class='btn btn-info' onclick='gotobrd();' >
+                      <i class='fa fa-pencil'></i>
+                      Edit Board
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <br />
+              <br />
+              <br />
+
+
+              <div id='readme' >
+                <!-- <img src='/img/ghost_big.png'></img> -->
+                The readme for this project...
+              </div>
+
+              <br />
+              <br />
+              <br />
 
               <div id='edit-readme'>
 

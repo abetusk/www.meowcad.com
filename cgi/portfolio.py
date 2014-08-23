@@ -11,7 +11,7 @@ import meowaux as mew
 cgitb.enable()
 
 def renderProjectTable( olioList ):
-  tableProjectHTML = [ "<thead><tr><th>" + "</th><th>".join( [ "Project", "&nbsp;", "&nbsp;", "Access", "&nbsp;" ] ) + "</th></tr></thead>" ]
+  tableProjectHTML = [ "<thead><tr><th>" + "</th><th style='text-align:center;' >".join( [ "Project", "&nbsp;", "&nbsp;", "Access", "&nbsp;" ] ) + "</th></tr></thead>" ]
   for projectDat in olioList:
     projectId = projectDat["id"]
     if projectDat["permission"] == "world-read":
@@ -22,13 +22,15 @@ def renderProjectTable( olioList ):
     nam = projectDat["name"]
 
     x = [ "<a href='project?projectId=" + str(projectDat["id"]) + "'>" + nam + "</a>", 
-          "<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-toggle-right' ></i></a>", 
-          "<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-arrow-circle-right' ></i></a>", 
-          perm, "<a href='#'><i class='fa fa-cloud-download'></i></img></a>" ]
+          "<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-share-alt fa-lg' ></i></a>", 
+          "<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-share-alt-square fa-lg' ></i></a>", 
+          #"<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-toggle-right' ></i></a>", 
+          #"<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-arrow-circle-right' ></i></a>", 
+          perm, "<a href='#'><i class='fa fa-cloud-download fa-lg'></i></img></a>" ]
 
     trs = "<tr> <td style='word-break:break-all;' > "
     tre = "</td> </tr>"
-    tableProjectHTML.append( trs  + "</td> <td style='word-break:break-word;' >".join(x) + tre )
+    tableProjectHTML.append( trs  + "</td> <td style='word-break:break-word; text-align:center; ' >".join(x) + tre )
 
   hs = "<table class='table table-striped table-bordered table-condensed' >"
   he = "</tbody></table>"

@@ -125,8 +125,14 @@ def processLoggedInNavTemplate( nav_template, userName, userType ):
     unamestr = "&lt; " + str(userName) + " &gt;"
     nav_template = nav_template.replace( "<!--NAVBAR_USER_CONTEXT-->", signupnav )
   else:
-    nav_template = nav_template.replace( "<!--NAVBAR_USER_CONTEXT-->",
-        "<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout'>Logout</a></li> </ul>")
+    logout = ""
+    logout += "<ul class=\"nav navbar-nav navbar-right\">"
+    logout += "  <li>"
+    logout += "    <a href='/logout'><i class='fa fa-sign-out'></i> Logout</a>"
+    logout += "  </li>"
+    logout += "</ul>"
+    nav_template = nav_template.replace( "<!--NAVBAR_USER_CONTEXT-->", logout )
+        #"<ul class=\"nav navbar-nav navbar-right\"> <li><a href='/logout'>Logout</a></li> </ul>")
 
   if userType == "anonymous":
     nav_template = nav_template.replace( "<!--NAVBAR_USER_DISPLAY-->",

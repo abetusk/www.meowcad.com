@@ -51,7 +51,7 @@ if ("id" not in picDat) or ("permission" not in picDat):
 
   error_and_quit()
 
-# If it's world readable, don't botehr looking up permissions,
+# If it's world readable, don't bother looking up permissions,
 # just display it
 #
 if picDat["permission"] == "world-read":

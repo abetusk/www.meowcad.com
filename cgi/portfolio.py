@@ -23,9 +23,9 @@ def renderProjectTable( olioList ):
 
     x = [ "<a href='project?projectId=" + str(projectDat["id"]) + "'>" + nam + "</a>", 
           "<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-share-alt fa-lg' ></i></a>", 
-          "<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-share-alt-square fa-lg' ></i></a>", 
+          "<a href='brd?project=" + projectDat["id"] + "' ><i class='fa fa-share-alt-square fa-lg' ></i></a>", 
           #"<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-toggle-right' ></i></a>", 
-          #"<a href='sch?project=" + projectDat["id"] + "' ><i class='fa fa-arrow-circle-right' ></i></a>", 
+          #"<a href='brd?project=" + projectDat["id"] + "' ><i class='fa fa-arrow-circle-right' ></i></a>", 
           perm, "<a href='#'><i class='fa fa-cloud-download fa-lg'></i></img></a>" ]
 
     trs = "<tr> <td style='word-break:break-all;' > "

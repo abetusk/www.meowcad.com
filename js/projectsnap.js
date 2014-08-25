@@ -59,6 +59,10 @@ var slurp = require( "./slurp_component_cache.js" );
 slurp.load_full_cache( g_component_cache, "json/component_location.json", userId, projectId );
 slurp.load_full_cache( g_footprint_cache, "json/footprint_location.json", userId, projectId );
 
+for (var x in g_component_cache ) {
+  sch.find_component_bounding_box( g_component_cache[x] );
+}
+
 
 var hershey_ascii_json = slurp.slurp_json( "/var/www/json/utf8_hershey_ascii.json" );
 brd._load_hershey_ascii_font( hershey_ascii_json );
@@ -109,7 +113,7 @@ function processProject_sch(err, obj) {
 
   if (verbose) { console.log( sch.kicad_sch_json ); }
 
-  sch.drawSchematic();
+  sch.drawSchematic( false );
 
   var bbox = sch.getSchematicBoundingBox();
 
@@ -131,7 +135,7 @@ function processProject_sch(err, obj) {
   g_painter.setView( cx, cy, 1/f );
 
   g_painter.startDrawColor( "rgb(255,255,255)" );
-  sch.drawSchematic();
+  sch.drawSchematic( false );
   g_painter.endDraw();
 
 

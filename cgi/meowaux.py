@@ -40,6 +40,22 @@ def slurp_file(fn):
   f.close()
   return s
 
+def getProjectPic( userId, projectId ):
+  db = redis.Redis()
+
+  proj = db.hgetall( "project:" + str(projectId) )
+
+  projpic = db.hgetall( "projectpic:" + str(projectId) )
+  if projpic:
+    projpic["type"] = "project"
+    return projpic
+
+  projpic["schPicId"] = "/img/sch-proj-default.png"
+  projpic["brdPicId"] = "/img/brd-proj-default.png"
+  projpic["type"] = "default"
+
+  return projpic
+
 def getCookieHash( environ ):
   cookie_hash = {}
   if 'HTTP_COOKIE' in environ:

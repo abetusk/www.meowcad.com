@@ -85,6 +85,20 @@ tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName), p
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )
 
+aa = "<img class='img-rounded' "
+zz = "style='width:100%; border:1px solid gray;'></img>"
+
+picdata = mew.getProjectPic( userId, project["id"] )
+if picdata["type"] == "default":
+  tmp_str = tmp_str.replace( "<!--SCHPIC-->", aa + "src='" + picdata["schPicId"] + "' " + zz )
+  tmp_str = tmp_str.replace( "<!--BRDPIC-->", aa + "src='" + picdata["brdPicId"] + "' " + zz )
+
+else:
+  tmp_str = tmp_str.replace( "<!--SCHPIC-->", 
+          aa + "src='picSentry.py?id=" + picdata["schPicId"] + "&userId=" + userId + "&sessionId=" + sessionId + "' " + zz )
+  tmp_str = tmp_str.replace( "<!--BRDPIC-->", 
+          aa + "src='picSentry.py?id=" + picdata["brdPicId"] + "&userId=" + userId + "&sessionId=" + sessionId + "' " + zz )
+
 print "Content-Type: text/html;charset=utf-8"
 print cookie.output()
 print

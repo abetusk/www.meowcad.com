@@ -1,13 +1,14 @@
 /* Take a picture of the schematic and board */
 
 var argv = require("yargs")
-           .usage("$0 -p projectId [-u userId] [-W width] [-H height] [-o outpng] [-v]")
+           .usage("$0 -p projectId [-u userId] [-W width] [-H height] [-sch sch-outpng] [-brd brd-outpng] [-v]")
            .demand("p")
            .describe("p projectId", "project id")
            .describe("u userId", "user id")
            .describe("W width", "width")
            .describe("H height", "height")
-           .describe("o outpng", "specify output name")
+           .describe("s sch-outpng", "specify schematic output name")
+           .describe("b brd-outpng", "specify board output name")
            .describe("v", "verbose")
            .argv;
 
@@ -17,8 +18,11 @@ if (argv.u) { userId = argv.u; }
 var projectId;
 if (argv.p) { projectId = argv.p; }
 
-var outfn = "out.png";
-if (argv.o) { outfn = argv.o; }
+var schoutfn = "sch-out.png";
+if (argv.s) { schoutfn = argv.s; }
+
+var brdoutfn = "brd-out.png";
+if (argv.b) { brdoutfn = argv.b; }
 
 var width = 400;
 if (argv.W) { width = argv.W; }
@@ -78,7 +82,7 @@ bleepsix.fillRect( 200, 150, 100, 50, "rgb(255,255,136)" )
 
 
 if (verbose) { 
-  console.log( "#proctedId:", projectId , "w:", width, "h:", height, "ofn:", outfn  );
+  console.log( "#projectId:", projectId, "w:", width, "h:", height, "schofn:", schoutfn,  "brdofn:", brdoutfn );
 }
 
 var g_project;
@@ -139,7 +143,8 @@ function processProject_sch(err, obj) {
   g_painter.endDraw();
 
 
-  writeSchPng( "sch-" + outfn );
+  //writeSchPng( "sch-" + outfn );
+  writeSchPng( schoutfn );
 
 }
 
@@ -198,7 +203,8 @@ function processProject_brd() {
   g_painter.endDraw();
 
 
-  writeBrdPng( "brd-" + outfn );
+  //writeBrdPng( "brd-" + outfn );
+  writeBrdPng( brdoutfn );
 }
 
 

@@ -82,6 +82,11 @@ projectrecent:<userId> [hash]
 
 
 
+projectpic:<projectId> <hash>
+  "userId" : <userId>
+  "schPicId" : <schematicPicId>
+  "brdPicId" : <boardPicId>
+
 
 
 

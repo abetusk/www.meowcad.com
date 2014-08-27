@@ -662,6 +662,12 @@ def getPortfolios( userId ):
 
 ## --- picture functions
 
+def humanTime():
+  ts = time.time()
+  return datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+
+def secondTime():
+  return time.time()
 
 def createPic( picId, userId, clientToken ):
   db = redis.Redis()

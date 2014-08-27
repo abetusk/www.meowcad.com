@@ -59,11 +59,16 @@ def create_snapshot( userId,  projectId ):
   print ee
   sp.call( ee )
 
+  st = mew.secondTime()
+  ht = mew.humanTime()
+
   projpic = {}
   projpic["userId"] = userId
   projpic["projectId"] = projectId
   projpic["schPicId"] = str(schpicid)
   projpic["brdPicId"] = str(brdpicid)
+  projpic["stime"] = st
+  projpic["timestamp"] = ht
   db.hmset( "projectpic:" + str(projectId), projpic )
 
   proj = mew.getProject( projectId )
@@ -73,6 +78,9 @@ def create_snapshot( userId,  projectId ):
   pic["permission"] = proj["permission"]
   pic["userId"] = userId
   pic["clientToken"] = ""
+  pic["projectId"] = projectId
+  pic["stime"] = st
+  pic["timestamp"] = ht
   db.hmset( "pic:" + str(schpicid) , pic )
 
   pic = {}
@@ -80,6 +88,9 @@ def create_snapshot( userId,  projectId ):
   pic["permission"] = proj["permission"]
   pic["userId"] = userId
   pic["clientToken"] = ""
+  pic["projectId"] = projectId
+  pic["stime"] = st
+  pic["timestamp"] = ht
   db.hmset( "pic:" + str(brdpicid) , pic )
 
 def process_projects():

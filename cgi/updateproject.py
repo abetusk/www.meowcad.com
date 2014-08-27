@@ -37,7 +37,8 @@ projectId = form["projectId"].value
 if "permissionOption" not in form:
   cookie["message"] = "Permission option must be non-empty " 
   cookie["messageType"] = "error"
-  print "Location:manageproject?projectId=" + str(projectId)
+  #print "Location:manageproject?projectId=" + str(projectId)
+  print "Location:project?projectId=" + str(projectId)
   print cookie.output()
   print
   sys.exit(0)
@@ -63,7 +64,8 @@ else:
   cookie["message"] = "Project updated"
   cookie["messageType"] = "success"
 
-print "Location:manageproject?projectId=" + str(projectId)
+#print "Location:manageproject?projectId=" + str(projectId)
+print "Location:project?projectId=" + str(projectId)
 print cookie.output()
 print
 #print tmp_str

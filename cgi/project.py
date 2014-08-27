@@ -56,7 +56,7 @@ message,messageType = mew.processCookieMessage( cookie, cookie_hash )
 
 userId = cookie_hash["userId"]
 sessionId = cookie_hash["sessionId"]
-olioList = mew.getPortfolios( cookie_hash["userId"] )
+#olioList = mew.getPortfolios( cookie_hash["userId"] )
 userData = mew.getUser( userId )
 userName = userData["userName"]
 
@@ -66,8 +66,22 @@ nav = mew.processLoggedInNavTemplate( nav, str(userName), str(userData["type"]) 
 
 footer = mew.slurp_file("template/footer_template.html")
 analytics = mew.slurp_file("template/analytics_template.html")
+permission_pane = mew.slurp_file("template/project_manage_pane.html")
 
 tmp_str = template
+
+tmp_str = tmp_str.replace( "<!--PERMISSION_PANE-->", permission_pane )
+privateChecked = "checked"
+publicChecked = ""
+if project and ("permission" in project) and (project["permission"] == "world-read"):
+  privateChecked = ""
+  publicChecked = "checked"
+
+tmp_str = tmp_str.replace( "<!--PRIVATERADIO-->", 
+                          "<input id='private' type='radio' name='permissionOption' value='private' " + privateChecked + "> </input>" )
+tmp_str = tmp_str.replace( "<!--PUBLICRADIO-->", 
+                          "<input id='public' type='radio' name='permissionOption' value='public' " + publicChecked + " ></input>" )
+
 
 tmp_str = tmp_str.replace( "<!--PROJECT_HEART_COUNT-->", str( mew.getHeartCount( project["id"] ) ) )
 tmp_str = tmp_str.replace( "<!--PROJECT_COMMENT_COUNT-->", str( mew.getCommentCount( project["id"] ) ) )

@@ -41,10 +41,10 @@ def renderProjectTable( olioList ):
 
   return hs + "".join(tableProjectHTML) + he 
 
-def renderComponentAccordian( accid, userId ):
-  pass
+#######################
 
-  jjstr = mew.file_cascade( userId, None, "json/component_list_default.json" )
+def renderAccordian( json_url, accid, userId ):
+  jjstr = mew.file_cascade( userId, None, json_url )
   jj = {}
 
   try:
@@ -56,8 +56,25 @@ def renderComponentAccordian( accid, userId ):
   accordian = []
   count = 0
 
+  js_code = " <script> function load_group_details_" + accid + "(group_base_name, n) {"
+  js_code += """
+  console.log( group_base_name, n );
+  """
+  js_code += "} </script>"
+  accordian.append( js_code )
+
+  js_code = " <script> function load_details_" + accid + "(ele_id) {"
+  js_code += """  console.log(ele_id);
+  var ele = document.getElementById(ele_id);
+  ele.innerHTML = "blonk";
+  """
+  js_code += "} </script>"
+  accordian.append( js_code )
+
   accordian.append( "<div class='panel-group' id='" + accid + "'>" )
 
+  n=0
+  
   for x in jj:
     name = ""
     if "name" in x:
@@ -71,15 +88,17 @@ def renderComponentAccordian( accid, userId ):
     accordian.append( "<div class='panel panel-default'>" )
     accordian.append( "  <div class='panel-heading'>" )
     accordian.append( "    <h4 class='panel-title'>" )
-    accordian.append( "      <a class='accordian-toggle collapsed' data-toggle='collapse' data-parent='#" + 
-                     accid + "' href='#" + eleid +"'>" )
-    accordian.append( name )
+
+    hclick = " onclick='load_group_details_" + accid + "( \"" + accid + "_" + eleid + "\", " + str( len(x["list"]) ) + ");' "
+    accordian.append( "      <a class='accordian-toggle collapsed' data-toggle='collapse' data-parent='#" + accid + "' " + 
+                     " href='#" + eleid +"' name='" + accid + "' " + hclick + " >" )
+    accordian.append( cgi.escape( name ) )
     accordian.append( "      </a>" )
     accordian.append( "    </h4>" )
     accordian.append( "  </div>" )
     accordian.append( "</div>" )
 
-    accordian.append( "<div id='" + eleid + "' class='panel-collapse collapse'>" )
+    accordian.append( "<div id='" + eleid + "' name='" + accid + "' class='panel-collapse collapse'>" )
     accordian.append( "  <div class='panel-body'>" )
 
     accordian.append( "     <ul class='list-group'>" )
@@ -87,7 +106,25 @@ def renderComponentAccordian( accid, userId ):
     for li_ele in x["list"]:
       accordian.append( "  <li class='list-group-item'>" )
       accordian.append( "    <div class='row'>" )
-      accordian.append( "      <div class='col-xs-12'>" + li_ele["name"] + "</div>" )
+
+      accordian.append( "      <div class='col-xs-12'> " )
+
+      collapse_id = accid + "_" + eleid + "_" + str(n)
+      n += 1
+
+      btnclick = " onclick='load_details_" + accid + "(\"" + collapse_id + "\");' "
+
+      accordian.append( "<button name='" + accid + "' " + btnclick + " " +
+                       "type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#" + collapse_id +"'> " )
+      #accordian.append( "<a href='#" + collapse_id + "' class='accordian-toggle collapsed' data-toggle='collapse' > " )
+      accordian.append( cgi.escape( li_ele["name"] ) )
+      accordian.append( " </button>" )
+      #accordian.append( " </a>" )
+
+      accordian.append( " <div id='" + collapse_id + "' class='collapse' > foo bar baz </div> " )
+
+      accordian.append( " </div>" )
+
       accordian.append( "    </div>" )
       accordian.append( "  </li>" )
 
@@ -95,18 +132,12 @@ def renderComponentAccordian( accid, userId ):
     accordian.append( "  </div>" )
     accordian.append( "</div>" )
 
-    mew.log( str(x) )
-
   accordian.append( "</div>" )
 
   r = "\n".join( accordian )
-  mew.log(r)
-
   return r
 
-
-def renderModuleAccordian( userId ):
-  pass
+#####################
 
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
@@ -124,7 +155,9 @@ olioList = mew.getPortfolios( cookie_hash["userId"] )
 userData = mew.getUser( userId )
 userName = userData["userName"]
 
-componentLibraryAccordian = renderComponentAccordian( "componentaccordian", userId )
+#componentLibraryAccordian = renderComponentAccordian( "componentaccordian", userId )
+componentLibraryAccordian = renderAccordian( "json/component_list_default.json", "componentaccordian", userId )
+footprintLibraryAccordian = renderAccordian( "json/footprint_list_default.json", "footprintaccordian", userId )
 
 template = mew.slurp_file("template/portfolio.html")
 
@@ -140,6 +173,7 @@ tmp_str = template
 tmp_str = mew.replaceTemplateMessage( tmp_str, message, messageType )
 
 tmp_str = tmp_str.replace( "<!--ACCORDIAN_COMPONENTS-->", componentLibraryAccordian )
+tmp_str = tmp_str.replace( "<!--ACCORDIAN_MODULES-->",    footprintLibraryAccordian )
 
 projectTable = renderProjectTable( olioList )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )

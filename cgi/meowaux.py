@@ -10,6 +10,7 @@ import datetime
 import uuid
 import json
 import random
+import cgi
 
 ## -- file system and header (cookie) processing functions
 
@@ -784,5 +785,145 @@ def addEmailSignup( emailAddress ):
     return r
 
   return em
+
+#####################
+
+def renderAccordian( json_url, accid, userId, portfolioId = None ):
+  jjstr = file_cascade( userId, None, json_url )
+  jj = {}
+
+  try:
+    jj = json.loads(jjstr)
+  except(ee):
+    mew.log( "ERROR: (u " + str(userId) + ") " + str(ee)  )
+    return
+
+  accordian = []
+  count = 0
+
+  js_code = """<script> function utf8_to_b64( str ) {
+      return window.btoa(encodeURIComponent( escape( str )));
+    } </script>
+  """
+  accordian.append( js_code )
+
+  js_code = " <script> function load_group_details_" + accid + "(group_base_name, n) {"
+  js_code += """
+  console.log( group_base_name, n );
+  """
+  js_code += "} </script>"
+  accordian.append( js_code )
+
+
+  js_code = " <script> function load_details_" + accid + "_response(ele_id, dat) {"
+  js_code += """
+  console.log("response>>>");
+  console.log(ele_id);
+
+  var ele = document.getElementById( ele_id );
+
+  var img = document.createElement('img');
+  img.src = "data:image/png;base64," + utf8_to_b64(dat);
+
+  console.log( img.src );
+
+  ele.appendChild( img );
+  """
+  js_code += "} </script>"
+  accordian.append( js_code )
+
+
+  get_cred = ""
+  if userId:
+    get_cred = "&userId=" + str(userId)
+    if portfolioId:
+      get_cred += "&portfolioId=" + str(portfolioId)
+
+  js_code = " <script> function load_details_" + accid + "(ele_id, data) {"
+  js_code += """  console.log(ele_id, data);
+  var ele = document.getElementById(ele_id);
+
+  console.log( ">>>>>>>>>>>>>>>>>>>>>>>>>>>", ele_id, ele );
+  ele.innerHTML = "loading...";
+  $.ajax({
+    //url: "picSentry.py?id=" + encodeURIComponent(data) + '""" + get_cred + """',
+    url: "libmodmanager.py",
+    type: 'POST',
+    data: JSON.stringify( { "op" : "PIC", "location" : data } ),
+    //dataType: "json",
+    success: (function(xx) { console.log('a'); return function(data) { console.log('b'); load_details_""" + accid + """_response(xx, data); }; })( ele_id )  ,
+    error: function(jqxhr, status, err) { console.log("ERROR load_details_""" + accid + """:", jqxhr, status, err ); }
+  });
+
+  console.log('c');
+  """
+  js_code += "} </script>"
+  accordian.append( js_code )
+
+  accordian.append( "<div class='panel-group' id='" + accid + "'>" )
+
+  n=0
+
+  for x in jj:
+    name = ""
+    if "name" in x:
+      name = x["name"]
+
+    li = []
+
+    eleid = accid + "_" + str(count)
+    count+=1
+
+    accordian.append( "<div class='panel panel-default'>" )
+    accordian.append( "  <div class='panel-heading'>" )
+    accordian.append( "    <h4 class='panel-title'>" )
+
+    hclick = " onclick='load_group_details_" + accid + "( \"" + accid + "_" + eleid + "\", " + str( len(x["list"]) ) + ");' "
+    accordian.append( "      <a class='accordian-toggle collapsed' data-toggle='collapse' data-parent='#" + accid + "' " +
+                     " href='#" + eleid +"' name='" + accid + "' " + hclick + " >" )
+    accordian.append( cgi.escape( name ) )
+    accordian.append( "      </a>" )
+    accordian.append( "    </h4>" )
+    accordian.append( "  </div>" )
+    accordian.append( "</div>" )
+
+    accordian.append( "<div id='" + eleid + "' name='" + accid + "' class='panel-collapse collapse'>" )
+    accordian.append( "  <div class='panel-body'>" )
+
+    accordian.append( "     <ul class='list-group'>" )
+
+    for li_ele in x["list"]:
+      accordian.append( "  <li class='list-group-item'>" )
+      accordian.append( "    <div class='row'>" )
+
+      accordian.append( "      <div class='col-xs-12'> " )
+
+      collapse_id = accid + "_" + eleid + "_" + str(n)
+      n += 1
+
+      btnclick = " onclick='load_details_" + accid + "(\"" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
+
+      accordian.append( "<button name='" + accid + "' " + btnclick + " " +
+                       "type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#" + collapse_id +"'> " )
+      #accordian.append( "<a href='#" + collapse_id + "' class='accordian-toggle collapsed' data-toggle='collapse' > " )
+      accordian.append( cgi.escape( li_ele["name"] ) )
+      accordian.append( " </button>" )
+      #accordian.append( " </a>" )
+
+      accordian.append( " <div id='" + collapse_id + "' class='collapse' > foo bar baz </div> " )
+
+      accordian.append( " </div>" )
+
+      accordian.append( "    </div>" )
+      accordian.append( "  </li>" )
+
+    accordian.append( "     </ul>" )
+    accordian.append( "  </div>" )
+    accordian.append( "</div>" )
+
+  accordian.append( "</div>" )
+
+  r = "\n".join( accordian )
+  return r
 
 

@@ -220,6 +220,18 @@ elif op == "MOD_ELE":
     error_and_quit( "specify 'location'" )
   str_obj = mod_ele( userId, projectId, json_container )
 
+
+elif op == "PIC":
+  if "location" not in json_container:
+    error_and_quit( "specify 'location'" )
+
+  with open( "/var/www/img/ghost_big.png" ) as f:
+    print "Content-Type: image/png"
+    print
+    print f.read()
+  sys.exit(0)
+
+
 print "Content-Type: application/json; charset=utf-8"
 print
 print str_obj

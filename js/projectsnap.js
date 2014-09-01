@@ -78,9 +78,6 @@ global.g_component_cache = g_component_cache;
 global.g_footprint_cache = g_footprint_cache;
 
 
-bleepsix.fillRect( 200, 150, 100, 50, "rgb(255,255,136)" )
-
-
 if (verbose) { 
   console.log( "#projectId:", projectId, "w:", width, "h:", height, "schofn:", schoutfn,  "brdofn:", brdoutfn );
 }

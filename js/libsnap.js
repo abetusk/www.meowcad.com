@@ -18,10 +18,10 @@ if (argv.i) { inpJsonFn = argv.i; }
 var outfn = "out.png";
 if (argv.o) { outfn = argv.o; }
 
-var width = 100;
+var width = 200;
 if (argv.W) { width = argv.W; }
 
-var height = 100;
+var height = 200;
 if (argv.H) { height = argv.H; }
 
 var userId = undefined;
@@ -30,7 +30,7 @@ if (argv.u) { userId = argv.u; }
 var projectId = undefined;
 if (argv.p) { projectId = argv.u; }
 
-var verbose = true;
+var verbose = false;
 if (argv.v) { verbose = true; }
 
 if (!inpJsonFn) {
@@ -62,7 +62,7 @@ if (!realfn) {
 
 json_part = slurp.slurp_json( realfn );
 
-
+var transform = [[1,0],[0,-1]];
 
 var g_component_cache = {};
 var g_footprint_cache = {};
@@ -89,10 +89,22 @@ if (verbose) {
 }
 
 
-sch.addComponentData( json_part, 0, 0 );
+sch.addComponentData( json_part, 0, 0, transform );
 sch.drawSchematic( false );
 
+sch.find_component_bounding_box( sch.kicad_sch_json.element[0] );
+sch.drawSchematic( false );
+
+//console.log( sch.kicad_sch_json.element[0] );
+
 var bbox = sch.getSchematicBoundingBox();
+var cbbox = sch.kicad_sch_json.element[0].coarse_bounding_box ;
+
+if (cbbox[0][0] < bbox[0][0]) { bbox[0][0] = cbbox[0][0]; }
+if (cbbox[0][1] < bbox[0][1]) { bbox[0][1] = cbbox[0][1]; }
+
+if (cbbox[1][0] > bbox[1][0]) { bbox[1][0] = cbbox[1][0]; }
+if (cbbox[1][1] > bbox[1][1]) { bbox[1][1] = cbbox[1][1]; }
 
 var cx = (bbox[0][0] + bbox[1][0])/2.0;
 var cy = (bbox[0][1] + bbox[1][1])/2.0;
@@ -106,7 +118,7 @@ var viewmax = ( (width < height) ? height : width );
 var f = dmax / viewmax;
 if (f < 0.001) f = 0.1;
 
-var sch_fudge = 1.6;
+var sch_fudge = 1.1;
 f *= sch_fudge;
 
 g_painter.setView( cx, cy, 1/f );

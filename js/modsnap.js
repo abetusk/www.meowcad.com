@@ -18,10 +18,10 @@ if (argv.i) { inpJsonFn = argv.i; }
 var outfn = "out.png";
 if (argv.o) { outfn = argv.o; }
 
-var width = 100;
+var width = 200;
 if (argv.W) { width = argv.W; }
 
-var height = 100;
+var height = 200;
 if (argv.H) { height = argv.H; }
 
 var userId = undefined;
@@ -30,7 +30,7 @@ if (argv.u) { userId = argv.u; }
 var projectId = undefined;
 if (argv.p) { projectId = argv.u; }
 
-var verbose = true;
+var verbose = false;
 if (argv.v) { verbose = true; }
 
 if (!inpJsonFn) {
@@ -63,6 +63,23 @@ if (!realfn) {
 json_part = slurp.slurp_json( realfn );
 json_part.type = "module";
 
+if (!("angle" in json_part)) {
+  json_part.angle = 0;
+}
+
+for (var ind in json_part.pad) {
+  if (!( "angle" in json_part.pad[ind])) {
+    json_part.pad[ind].angle = 0;
+  }
+}
+
+for (var ind in json_part.text) {
+  if (!( "angle" in json_part.text[ind])) {
+    json_part.text[ind].angle = 0;
+  }
+}
+
+
 var g_component_cache = {};
 var g_footprint_cache = {};
 
@@ -94,8 +111,16 @@ brd.addFootprintData( json_part, 0, 0 );
 brd.drawBoard();
 
 var bbox = brd.getBoardBoundingBox();
+var cbbox = brd.kicad_brd_json.element[0].coarse_bounding_box ;
 
-console.log(bbox);
+if ( cbbox[0][0] < bbox[0][0] ) { bbox[0][0] = cbbox[0][0]; }
+if ( cbbox[0][1] < bbox[0][1] ) { bbox[0][1] = cbbox[0][1]; }
+
+if ( cbbox[1][0] > bbox[1][0] ) { bbox[1][0] = cbbox[1][0]; }
+if ( cbbox[1][1] > bbox[1][1] ) { bbox[1][1] = cbbox[1][1]; }
+
+//console.log( cbbox );
+//console.log(bbox);
 
 var cx = (bbox[0][0] + bbox[1][0])/2.0;
 var cy = (bbox[0][1] + bbox[1][1])/2.0;
@@ -109,11 +134,11 @@ var viewmax = ( (width < height) ? height : width );
 var f = dmax / viewmax;
 if (f < 0.001) f = 0.1;
 
-var brd_fudge = 1.2;
+var brd_fudge = 1.1;
 f *= brd_fudge;
 
 
-console.log( cx, cy, 1.0/f );
+//console.log( cx, cy, 1.0/f );
 
 g_painter.setView( cx, cy, 1.0/f );
 

@@ -852,7 +852,7 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
 
   js_code = " <script> function load_group_details_" + accid + "(group_base_name, n) {"
   js_code += """
-  console.log( group_base_name, n );
+  //console.log( group_base_name, n );
   """
   js_code += "} </script>"
   accordian.append( js_code )
@@ -865,18 +865,21 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
     if portfolioId:
       get_cred += "&portfolioId=" + str(portfolioId)
 
-  js_code = " <script> function load_details_" + accid + "(ele_img_id, data) {"
-  js_code += """  console.log(ele_img_id, data);
-  var ele_img = document.getElementById(ele_img_id);
+  js_code = " <script> function load_details_" + accid + "(ele_id, data) {"
+  js_code += """ 
+  var ele_img = document.getElementById("img_" + ele_id);
 
   b = basename_""" + accid + """( data );
   req = "/picModLibSentry.py?data=img/modlibsnap/" + encodeURI(b) + ".png";
-  console.log( "req:", req );
 
-  //var img = document.createElement('img');
-  //img.src = req;
-  //ele.appendChild( img );
   ele_img.src = req;
+
+  chev = document.getElementById("btn_chevron_" + ele_id);
+  if (chev.className.match( /chevron-right/ )) {
+    chev.className = "glyphicon glyphicon-chevron-down";
+  } else {
+    chev.className = "glyphicon glyphicon-chevron-right";
+  }
 
   """
   js_code += "} </script>"
@@ -901,7 +904,7 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
     accordian.append( "    <h4 class='panel-title'>" )
 
     hclick = " onclick='load_group_details_" + accid + "( \"" + accid + "_" + eleid + "\", " + str( len(x["list"]) ) + ");' "
-    accordian.append( "      <a class='accordian-toggle collapsed' data-toggle='collapse' data-parent='#" + accid + "' " +
+    accordian.append( "      <a class='accordion-toggle collapsed' data-toggle='collapse' data-parent='#" + accid + "' " +
                      " href='#" + eleid +"' name='" + accid + "' " + hclick + " >" )
     accordian.append( cgi.escape( name ) )
     accordian.append( "      </a>" )
@@ -923,12 +926,14 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
       collapse_id = accid + "_" + eleid + "_" + str(n)
       n += 1
 
-      #btnclick = " onclick='load_details_" + accid + "(\"" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
-      btnclick = " onclick='load_details_" + accid + "(\"img_" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
+      btnclick = " onclick='load_details_" + accid + "(\"" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
+      #btnclick = " onclick='load_details_" + accid + "(\"img_" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
 
       accordian.append( "<button name='" + accid + "' " + btnclick + " " +
-                       "type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#" + collapse_id +"'> " )
+                       "type='button' class='btn btn-default btn-xs accordion-toggle' data-toggle='collapse' data-target='#" + collapse_id +"'> " )
       #accordian.append( "<a href='#" + collapse_id + "' class='accordian-toggle collapsed' data-toggle='collapse' > " )
+
+      accordian.append( "<span id='btn_chevron_" + collapse_id + "' class='glyphicon glyphicon-chevron-right' style='margin-right:10px;' ></span>" )
       accordian.append( cgi.escape( li_ele["name"] ) )
       accordian.append( " </button>" )
       #accordian.append( " </a>" )

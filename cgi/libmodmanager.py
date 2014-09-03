@@ -67,24 +67,10 @@ import os.path
 
 cgitb.enable()
 
-##DEFAULT_DATA_LOCATION = "/var/www/json"
-#DEFAULT_DATA_LOCATION = "/var/www"
-#DEFAULT_COMP_LOCATION = "/var/www"
-#DEFAULT_MOD_LOCATION  = "/var/www"
-##DEFAULT_COMP_LOCATION = "/var/www/eeschema/json"
-##DEFAULT_MOD_LOCATION  = "/var/www/pcb/json"
-#
-#USR_BASE_LOCATION = "/home/meow/usr"
-#
-##########################
-#
-
 def log_line( l ):
   logf = open("/tmp/meow.log", "a")
   logf.write( l  + "\n")
   logf.close()
-
-
 
 def error_and_quit(err, notes = None):
   print "Content-Type: application/json; charset=utf-8"
@@ -96,19 +82,6 @@ def error_and_quit(err, notes = None):
   sys.exit(0)
 
 
-## http://stackoverflow.com/questions/3812849/how-to-check-whether-a-directory-is-a-sub-directory-of-another-directory
-##
-#def in_directory(fn, directory):
-#  #make both absolute    
-#  directory = os.path.join(os.path.realpath(directory), '')
-#  fn = os.path.realpath(fn)
-#
-#  #return true, if the common prefix of both is equal to directory
-#  #e.g. /a/b/c/d.rst and directory is /a/b, the common prefix is /a/b
-#  return os.path.commonprefix([fn , directory]) == directory
-
-
-
 def json_slurp_file(fn):
   data = "{ \"type\" : \"error\", \"reason\" : \"error\" }"
   try:
@@ -117,39 +90,6 @@ def json_slurp_file(fn):
   except Exception as ee:
     data = "{ \"type\" : \"error\", \"reason\" : \"" + str(ee) + "\" }"
   return data
-
-
-## return file if found, checking in the following order:
-##  - USR_BASE_LOCATION / <userId> / <projectId> / fn
-##  - USR_BASE_LOCATION / <userId> / fn
-##  - DEFAULT_DATA_LOCATION / FN
-##
-## return None if none found.
-##
-#def file_cascade( userId, projectId, fn ):
-#
-#  if (userId is not None) and (projectId is not None):
-#
-#    usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
-#    projDir = os.path.join( usrDir , str(projectId) )
-#    if in_directory( usrDir, USR_BASE_LOCATION ):
-#
-#      if in_directory( projDir, usrDir ):
-#        fullfn = os.path.join( projDir, fn )
-#
-#        if in_directory( fullfn, projDir ) and os.path.isfile( fullfn ):
-#          return json_slurp_file( fullfn )
-#
-#      fullfn = os.path.join( usrDir, fn )
-#      if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
-#        return json_slurp_file( fullfn )
-#
-#  fullfn = os.path.join( DEFAULT_DATA_LOCATION, fn )
-#
-#  if in_directory( fullfn, DEFAULT_DATA_LOCATION ) and os.path.isfile( fullfn ):
-#    return json_slurp_file( fullfn )
-#
-#  return "{ \"type\" : \"error\", \"reason\" : \"error\" }"
 
 
 def comp_loc( userId, projectId ):

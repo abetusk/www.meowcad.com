@@ -103,6 +103,36 @@ def file_cascade( userId, projectId, fn ):
 
   return "{ \"type\" : \"error\", \"reason\" : \"error\" }"
 
+####
+#
+def file_cascade_fn( userId, projectId, fn ):
+
+  data = { "type" : "success" }
+
+  if (userId is not None) and (projectId is not None):
+
+    usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
+    projDir = os.path.join( usrDir , str(projectId) )
+    if in_directory( usrDir, USR_BASE_LOCATION ):
+
+      if in_directory( projDir, usrDir ):
+        fullfn = os.path.join( projDir, fn )
+        if in_directory( fullfn, projDir ) and os.path.isfile( fullfn ):
+          data["filename"] = fullfn
+          return json.dumps( data )
+
+      fullfn = os.path.join( usrDir, fn )
+      if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
+        data["filename"] = fullfn
+        return json.dumps( data )
+
+  fullfn = os.path.join( DEFAULT_DATA_LOCATION, fn )
+  if in_directory( fullfn, DEFAULT_DATA_LOCATION ) and os.path.isfile( fullfn ):
+    data["filename"] = fullfn
+    return json.dumps( data )
+
+  return "{ \"type\" : \"error\", \"reason\" : \"error\" }"
+
 
 
 def getProjectPic( userId, projectId ):
@@ -788,8 +818,8 @@ def addEmailSignup( emailAddress ):
 
 #####################
 
-def renderAccordian( json_url, accid, userId, portfolioId = None ):
-  jjstr = file_cascade( userId, None, json_url )
+def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
+  jjstr = file_cascade( userId, portfolioId, json_url )
   jj = {}
 
   try:
@@ -800,6 +830,19 @@ def renderAccordian( json_url, accid, userId, portfolioId = None ):
 
   accordian = []
   count = 0
+
+  js_code = """<script>
+  /* http://stackoverflow.com/questions/3820381/need-a-basename-function-in-javascript
+     answered Sep 29 '10 at 9:44 by Nivas */
+  function basename_""" + accid + """(str)
+  {
+     var base = new String(str).substring(str.lastIndexOf('/') + 1); 
+      if(base.lastIndexOf(".") != -1)       
+          base = base.substring(0, base.lastIndexOf("."));
+     return base;
+  }
+  </script>"""
+  accordian.append( js_code )
 
   js_code = """<script> function utf8_to_b64( str ) {
       return window.btoa(encodeURIComponent( escape( str )));
@@ -815,23 +858,6 @@ def renderAccordian( json_url, accid, userId, portfolioId = None ):
   accordian.append( js_code )
 
 
-  js_code = " <script> function load_details_" + accid + "_response(ele_id, dat) {"
-  js_code += """
-  console.log("response>>>");
-  console.log(ele_id);
-
-  var ele = document.getElementById( ele_id );
-
-  var img = document.createElement('img');
-  img.src = "data:image/png;base64," + utf8_to_b64(dat);
-
-  console.log( img.src );
-
-  ele.appendChild( img );
-  """
-  js_code += "} </script>"
-  accordian.append( js_code )
-
 
   get_cred = ""
   if userId:
@@ -839,23 +865,19 @@ def renderAccordian( json_url, accid, userId, portfolioId = None ):
     if portfolioId:
       get_cred += "&portfolioId=" + str(portfolioId)
 
-  js_code = " <script> function load_details_" + accid + "(ele_id, data) {"
-  js_code += """  console.log(ele_id, data);
-  var ele = document.getElementById(ele_id);
+  js_code = " <script> function load_details_" + accid + "(ele_img_id, data) {"
+  js_code += """  console.log(ele_img_id, data);
+  var ele_img = document.getElementById(ele_img_id);
 
-  console.log( ">>>>>>>>>>>>>>>>>>>>>>>>>>>", ele_id, ele );
-  ele.innerHTML = "loading...";
-  $.ajax({
-    //url: "picSentry.py?id=" + encodeURIComponent(data) + '""" + get_cred + """',
-    url: "libmodmanager.py",
-    type: 'POST',
-    data: JSON.stringify( { "op" : "PIC", "location" : data } ),
-    //dataType: "json",
-    success: (function(xx) { console.log('a'); return function(data) { console.log('b'); load_details_""" + accid + """_response(xx, data); }; })( ele_id )  ,
-    error: function(jqxhr, status, err) { console.log("ERROR load_details_""" + accid + """:", jqxhr, status, err ); }
-  });
+  b = basename_""" + accid + """( data );
+  req = "/picModLibSentry.py?data=img/modlibsnap/" + encodeURI(b) + ".png";
+  console.log( "req:", req );
 
-  console.log('c');
+  //var img = document.createElement('img');
+  //img.src = req;
+  //ele.appendChild( img );
+  ele_img.src = req;
+
   """
   js_code += "} </script>"
   accordian.append( js_code )
@@ -901,7 +923,8 @@ def renderAccordian( json_url, accid, userId, portfolioId = None ):
       collapse_id = accid + "_" + eleid + "_" + str(n)
       n += 1
 
-      btnclick = " onclick='load_details_" + accid + "(\"" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
+      #btnclick = " onclick='load_details_" + accid + "(\"" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
+      btnclick = " onclick='load_details_" + accid + "(\"img_" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
 
       accordian.append( "<button name='" + accid + "' " + btnclick + " " +
                        "type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#" + collapse_id +"'> " )
@@ -910,7 +933,9 @@ def renderAccordian( json_url, accid, userId, portfolioId = None ):
       accordian.append( " </button>" )
       #accordian.append( " </a>" )
 
-      accordian.append( " <div id='" + collapse_id + "' class='collapse' > foo bar baz </div> " )
+      accordian.append( " <div id='" + collapse_id + "' class='collapse' >")
+      accordian.append(" <img style='width:100%; max-width:200px; opacity:0.95;' id='img_" + collapse_id + "' alt='blonk'></img> " )
+      accordian.append(" </div> " )
 
       accordian.append( " </div>" )
 

@@ -99,6 +99,20 @@ tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName), p
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )
 
+ame = userData["userName"]
+
+componentLibraryAccordian = mew.renderAccordian( "json/component_list_default.json",
+                                                 "componentaccordian",
+                                                 userId,  project["id"] )
+footprintLibraryAccordian = mew.renderAccordian( "json/footprint_list_default.json",
+                                                 "footprintaccordian",
+                                                 userId,  project["id"] )
+
+
+tmp_str = tmp_str.replace( "<!--ACCORDIAN_COMPONENTS-->", componentLibraryAccordian )
+tmp_str = tmp_str.replace( "<!--ACCORDIAN_MODULES-->",    footprintLibraryAccordian )
+
+
 aa = "<img class='img-rounded' "
 zz = "style='width:100%; border:1px solid gray;'></img>"
 

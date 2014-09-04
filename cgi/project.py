@@ -114,7 +114,7 @@ tmp_str = tmp_str.replace( "<!--ACCORDIAN_MODULES-->",    footprintLibraryAccord
 
 
 aa = "<img class='img-rounded' "
-zz = "style='width:100%; border:1px solid gray;'></img>"
+zz = "style='width:100%; border:1px solid gray; max-width: 350px; '></img>"
 
 picdata = mew.getProjectPic( userId, project["id"] )
 if picdata["type"] == "default":

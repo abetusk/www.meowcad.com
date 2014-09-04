@@ -921,25 +921,28 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
       accordian.append( "  <li class='list-group-item'>" )
       accordian.append( "    <div class='row'>" )
 
-      accordian.append( "      <div class='col-xs-12'> " )
+      accordian.append( "      <div class='col-sm-12'> " )
 
       collapse_id = accid + "_" + eleid + "_" + str(n)
       n += 1
 
       btnclick = " onclick='load_details_" + accid + "(\"" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
-      #btnclick = " onclick='load_details_" + accid + "(\"img_" + collapse_id + "\", \"" + cgi.escape( li_ele["data"] ) + "\" );' "
 
       accordian.append( "<button name='" + accid + "' " + btnclick + " " +
-                       "type='button' class='btn btn-default btn-xs accordion-toggle' data-toggle='collapse' data-target='#" + collapse_id +"'> " )
-      #accordian.append( "<a href='#" + collapse_id + "' class='accordian-toggle collapsed' data-toggle='collapse' > " )
+                       "type='button' class='btn btn-default btn-sm accordion-toggle btn-responsive' data-toggle='collapse' " + 
+                       " style='word-wrap:break-word; white-space:normal; ' " + 
+                       " data-target='#" + collapse_id +"' > " )
 
-      accordian.append( "<span id='btn_chevron_" + collapse_id + "' class='glyphicon glyphicon-chevron-right' style='margin-right:10px;' ></span>" )
+
+      accordian.append( "<span id='btn_chevron_" + collapse_id + "' " +
+                        " class='glyphicon glyphicon-chevron-right' style='margin-right:10px;' > ")
+      accordian.append( " </span>" )
       accordian.append( cgi.escape( li_ele["name"] ) )
       accordian.append( " </button>" )
-      #accordian.append( " </a>" )
 
-      accordian.append( " <div id='" + collapse_id + "' class='collapse' >")
-      accordian.append(" <img style='width:100%; max-width:200px; opacity:0.95;' id='img_" + collapse_id + "' alt='blonk'></img> " )
+      accordian.append( " <div id='" + collapse_id + "' class='collapse' style='text-align:center;' >")
+      accordian.append(" <img style='width:100%; max-width:200px; opacity:0.95; text-align:center; ' " + 
+                       " id='img_" + collapse_id + "' alt='...'></img> " )
       accordian.append(" </div> " )
 
       accordian.append( " </div>" )

@@ -315,8 +315,8 @@ function cancelReadme() {
             <li class='active'><a href='#PanelOverview' data-toggle='tab'>Overview</a></li>
             <!-- <li><a href='#PanelBOM' data-toggle='tab'>BOM</a></li> -->
             <!-- <li><a href='#PanelFiles' data-toggle='tab'>Files</a></li> -->
-            <li><a href='#PanelComponents' data-toggle='tab'>Library Components</a></li>
-            <li><a href='#PanelModules' data-toggle='tab'>Library Modules</a></li>
+            <li><a href='#PanelComponents' data-toggle='tab'>Components</a></li>
+            <li><a href='#PanelModules' data-toggle='tab'>Modules</a></li>
             <li><a href='#PanelManage' data-toggle='tab'>Manage</a></li>
 
           </ul>
@@ -487,10 +487,25 @@ function cancelReadme() {
             </div>
 
             <div class='tab-pane' id='PanelComponents'>
+
+              <div class='alert alert-info'>
+                <p style='text-align:center; margin-left:10px; margin-right:10px;' >
+                  Components here will override portfolio or global components.
+                </p>
+              </div>
+
+
               <!--ACCORDIAN_COMPONENTS-->
             </div>  <!-- panel -->
 
             <div class='tab-pane' id='PanelModules'>
+
+              <div class='alert alert-info'>
+                <p style='text-align:center; margin-left:10px; margin-right:10px;' >
+                  Modules here will override portfolio or global modules.
+                </p>
+              </div>
+
               <!--ACCORDIAN_MODULES-->
             </div>
 

@@ -24,15 +24,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeowCAD</title>
 
-
-    <!-- <link rel="stylesheet" type="text/css" href="bootstrap/css/pastel-stream.css" /> -->
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
 
     <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
     <link rel="stylesheet" type="text/css" href="/css/forms.css" />
     <link rel="stylesheet" type="text/css" href="/css/tables.css" />
 
-    <!-- <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> -->
     <script type="text/javascript" src="js/jquery.js"></script> 
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
@@ -42,6 +39,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         width: 100% !important;
         height: 450px !important;
       }
+
+      body { font-family: "Oswald", sans-serif; }
     </style>
 </head>
 
@@ -55,24 +54,32 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
             <div class='row'>
 
+              <!-- <div class='col-sm-1' style='text-align:center;' > </div> -->
+
               <div class='col-sm-4' style='text-align:center;' >
                 <!-- <img src='/img/kitty_head_blue_p512.png' style='width:100%; opacity:0.65;'> -->
-                <img src='/img/kitty_head_light_p512.png' style='width:100%; opacity:0.9;'>
+                <img src='/img/kitty_head_light_p512.png' style='width:100%; opacity:0.9; max-width: 350px; ' >
               </div>
 
-              <div class='col-sm-8' style='text-align:center;' >
+              <div class='col-sm-1' style='text-align:center;' > </div>
+
+              <div class='col-sm-7' style='text-align:center;' >
                 <h1> MeowCAD </h1>
                 <p style='float:left;' > 
                   Online design 
                   for your electronic schematic and printed 
-                  circuit boards!</p>
+                  circuit boards!
+                </p>
 
-                  <br/>
-                  <br/>
+                <br/>
+                <br/>
 
                 <form role='form' action='/register' method='POST' >
 
                   <div class='form-group' style='width:80%;' >
+
+                    <br/>
+
                     <input name='username' size='20' style='margin-bottom:5px;' type="text" class="form-control" placeholder="Username">
                     </input>
                     <input name='email' size='20' style='margin-bottom:5px;' type="text" class="form-control" placeholder="Email (optional)">
@@ -90,11 +97,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
                     <!-- <button class='btn btn-warning' type='submit' style='float:right;'>Register!</button> -->
                     <button class='btn btn-warning' type='submit' style='float:left;'  >Register!</button>
+
                   </div>
 
                 </form>
 
               </div>
+
 
             </div>
 

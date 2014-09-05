@@ -899,7 +899,7 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
     eleid = accid + "_" + str(count)
     count+=1
 
-    accordian.append( "<div class='panel panel-default'>" )
+    accordian.append( "<div class='panel panel-default' style='margin:10px 10px;' >" )
     accordian.append( "  <div class='panel-heading'>" )
     accordian.append( "    <h4 class='panel-title'>" )
 

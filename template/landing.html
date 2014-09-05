@@ -26,9 +26,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
 
+    <!--
     <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
     <link rel="stylesheet" type="text/css" href="/css/forms.css" />
     <link rel="stylesheet" type="text/css" href="/css/tables.css" />
+-->
+
+    <!--
+    <script type="text/javascript" src="/js/lib/numeric.js"></script> 
+    <script type="text/javascript" src="/js/core/bleepsixRender.js"></script> 
+    <script type="text/javascript" src="/bg.js"></script> 
+    -->
+
+    <script type="text/javascript" src="js/meowmeow.js"></script> 
 
     <script type="text/javascript" src="js/jquery.js"></script> 
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
@@ -42,6 +52,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
       body { font-family: "Oswald", sans-serif; }
     </style>
+
+    <script>
+      $(document).ready( function() {
+        meowmeow();
+      });
+    </script>
+
+
 </head>
 
 <body>
@@ -50,7 +68,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <!--NAVBAR_FLUSH-->
 
 
-          <div class='jumbotron' style="background-image: url('/img/bright_squares/bright_squares.png'); ;">
+<div>
+
+  <!--
+            <canvas id='bg_canvas' width='1000' height='1000'
+              style='position:absolute; left:0 top:0 z-index:-1; overflow:hidden;'
+              tabindex='0'></canvas>
+-->
+
+
+  <div class='jumbotron' style="background-image: url('/img/bright_squares/bright_squares.png'); ;" id='jumbotron' >
+    <!-- <div class='jumbotron' id='jumbotron'> -->
+
+
+
 
             <div class='row'>
 
@@ -107,7 +138,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
             </div>
 
-          </div>
+          </div> <!-- jumbotron -->
+
+        </div> <!-- canvas div -->
 
 
   <div class="container">
@@ -286,6 +319,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   <!--ANALYTICS-->
 
 
+  <!-- <script> bg_init(); </script> -->
 
 </body>
 </html>

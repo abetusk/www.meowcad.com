@@ -71,6 +71,7 @@ footprintLibraryAccordian = mew.renderAccordian( "json/footprint_list_default.js
 template = mew.slurp_file("template/portfolio.html")
 
 createproj = mew.slurp_file("template/portfolio_create_form.html")
+importform = mew.slurp_file("template/portfolio_import_form.html")
 
 nav = mew.slurp_file("template/navbar_template.html")
 nav = mew.processLoggedInNavTemplate( nav, str(userName), str(userData["type"]) )
@@ -90,6 +91,7 @@ tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) 
 
 tmp_str = tmp_str.replace( "<!--PROJECT_TABLE-->", projectTable )
 tmp_str = tmp_str.replace( "<!--PROJECT_CREATE_FORM-->", createproj )
+tmp_str = tmp_str.replace( "<!--PROJECT_IMPORT_FORM-->", importform )
 
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )

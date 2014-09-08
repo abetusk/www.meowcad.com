@@ -33,8 +33,55 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <link rel="stylesheet" type="text/css" href="/css/tables.css" />
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
 
+    <link rel="stylesheet" type="text/css" href="/css/uploadfile.css" />
+
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+
+    <!-- <script type="text/javascript" src="/js/fileHelper.js"></script> -->
+    <script type='text/javascript' src='/js/jquery.uploadfile.js'></script>
+
+    <script>
+
+    $(document).ready( function() {
+
+      console.log("...");
+
+      $("#multipleupload").uploadFile({
+        url:"libmodImport.py",
+        multiple:true,
+        fileName:"fileData",
+        //showStatusAfterSuccess:false,
+        onSubmit:function(files)
+        {
+          $("#eventsmessage").html($("#eventsmessage").html()+"<br/>Submitting:"+JSON.stringify(files));
+
+          console.log("submit");
+        },
+        onSuccess:function(files,data,xhr)
+        {
+          $("#eventsmessage").html($("#eventsmessage").html()+"<br/>Success for: "+JSON.stringify(data));
+
+          console.log("success");
+          
+        },
+        afterUploadAll:function()
+        {
+          $("#eventsmessage").html($("#eventsmessage").html()+"<br/>All files are uploaded");
+          //$("#eventsmessage").html("<<br/>All files are uploaded");
+          
+          console.log("done?");
+        },
+        onError: function(files,status,errMsg)
+        {
+          $("#eventsmessage").html($("#eventsmessage").html()+"<br/>Error for: "+JSON.stringify(files));
+        }
+      });
+
+    });
+
+    </script>
+
 </head>
 <body>
 

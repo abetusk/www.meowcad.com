@@ -833,7 +833,10 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
 
   js_code = """<script>
   /* http://stackoverflow.com/questions/3820381/need-a-basename-function-in-javascript
-     answered Sep 29 '10 at 9:44 by Nivas */
+     answered Sep 29 '10 at 9:44 by Nivas 
+     user contributions licensed under cc by-sa 3.0
+  */
+
   function basename_""" + accid + """(str)
   {
      var base = new String(str).substring(str.lastIndexOf('/') + 1); 
@@ -841,6 +844,13 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
           base = base.substring(0, base.lastIndexOf("."));
      return base;
   }
+
+  function dirname_""" + accid + """(str)
+  {
+     var base = new String(str).substring(0, str.lastIndexOf('/') ); 
+     return base;
+  }
+
   </script>"""
   accordian.append( js_code )
 
@@ -869,8 +879,10 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
   js_code += """ 
   var ele_img = document.getElementById("img_" + ele_id);
 
+  d = dirname_""" + accid + """( data );
   b = basename_""" + accid + """( data );
   req = "/picModLibSentry.py?data=img/modlibsnap/" + encodeURI(b) + ".png";
+  // req = "/picModLibSentry.py?data=" + encodeURI(d) + "/" + encodeURI(b) + ".png";
 
   ele_img.src = req;
 

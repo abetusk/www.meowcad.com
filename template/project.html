@@ -33,6 +33,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
 
 
+    <script type="text/javascript" src="/js/meowmeow.js"></script>
+
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
 
@@ -68,6 +70,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 var g_project = {};
 
 $(document).ready( function() {
+
+  meowmeow();
 
   var url = document.location.toString();
   var m = url.match(/^https?:\/\/\w+/ );

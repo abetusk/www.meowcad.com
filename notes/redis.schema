@@ -135,11 +135,26 @@ brd:<boardId>:<ind> [hash]
 emailSignups [set]
   <emailId>
 
-email:<emailId>
+email:<emailId> [hash]
   "id" : <emailId>
   "email" : <email>
   "date" : <datetime>
   "timestamp" : <secondsSinceEpoch>
+
+
+
+importq [list]
+  <importqId>
+  
+importq:<importqId> [hash]
+  "id" : <queueId>
+  "userId" : <userId>
+  "sessionId" : <sessionId>
+  "projectId" : <projectId>
+  "stime" : <secondTimeStamp>
+  "timestamp" : <humanReadableTimeStamp>
+  "fileUUID" : <file_uuid>
+
 
 -----
 By convention, everything ending with "Id" is a uuid.

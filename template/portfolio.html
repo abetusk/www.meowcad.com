@@ -35,6 +35,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     <link rel="stylesheet" type="text/css" href="/css/uploadfile.css" />
 
+    <script type="text/javascript" src="/js/meowmeow.js"></script>
+
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
 
@@ -45,12 +47,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     $(document).ready( function() {
 
-      console.log("...");
+      meowmeow();
 
+      // Drag and drop (and click to select) upload file functionality.
+      //
       $("#multipleupload").uploadFile({
         url:"libmodImport.py",
         multiple:true,
         fileName:"fileData",
+
+        formData: { "type" : "portfolio" },
+
         //showStatusAfterSuccess:false,
         onSubmit:function(files)
         {
@@ -89,7 +96,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   <div class="container">
 
-
       <div class='row'>
 
         <div class='col-sm-4'>
@@ -102,9 +108,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           <h3 style='text-align:center; margin-bottom:25px;'>Portfolio</h3>
         </div>
 
-        <div class='col-sm-4'>
-        </div>
-
+        <div class='col-sm-4'></div>
 
       </div>
 
@@ -168,12 +172,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 </div>
 
                 <div class='tab-pane' id='PanelImport'>
-
                   <!--PROJECT_IMPORT_FORM-->
-
-
                 </div>
-
 
               </div>
 
@@ -181,13 +181,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
           </div>
         </div>
 
-
         <!--FOOTER-->
 
     </div> <!-- container -->
 
-
-
-</body>
+  </body>
 </html>
 

@@ -1,4 +1,24 @@
 #!/usr/bin/python
+#
+# This will uncompress (if need be) the input,
+# process it to find the KiCAD library and/or module
+# fileas, generate their JSON MeowCAD counterparts
+# and put it into the destination location.
+#
+# This program will generate the corresponding .mod or .lib
+# files, as appropriate, in the directory:
+#
+# <out_dir>/(eeschema|pcb)/json/<name>/<part>.json
+#
+# depending on type.
+#
+# This will also generate files of the form:
+#
+# <UUID>-(footprint|component)_(location|list).json
+#
+# where appropriate that hold the dropdown json list
+# information and the location information.
+#
 
 import re
 import sys
@@ -24,18 +44,11 @@ MOD_ELE_LIST_JSON = {}
 
 sp.call(" mkdir -p " + TMP_DIR, shell=True  )
 
-#libjson_exec = "/home/meow/pykicad/libjson.py"
-#libsnap_exec = "/home/meow/www.meowcad.com/js/libsnap.js"
-#
-#modjson_exec = "/home/meow/pykicad/modjson.py"
-#libsnap_exec = "/home/meow/www.meowcad.com/js/modsnap.js"
+libjson_exec = "/home/meow/pykicad/libjson.py"
+libsnap_exec = "/home/meow/www.meowcad.com/js/libsnap.js"
 
-libjson_exec = "/home/abram/prog/pykicad/libjson.py"
-libsnap_exec = "/home/abram/prog/www.meowcad.com/js/libsnap.js"
-
-modjson_exec = "/home/abram/prog/pykicad/modjson.py"
-libsnap_exec = "/home/abram/prog/www.meowcad.com/js/modsnap.js"
-
+modjson_exec = "/home/meow/pykicad/modjson.py"
+libsnap_exec = "/home/meow/www.meowcad.com/js/modsnap.js"
 
 def kicad_magic( fn ):
   f = open(fn)
@@ -183,7 +196,8 @@ def process_dir( base_dir ):
 def process_file( inp_fn, recur=0, processed={} ):
 
   if recur==3:
-    print "maximum recursion reached, stopping"
+    if g_verbse_flag:
+      print "# maximum recursion reached, stopping"
     return
 
   typ = magic.from_file( inp_fn, mime=True )
@@ -250,18 +264,26 @@ if len(LIB_LOC_JSON) > 0:
   floc.write( json.dumps( LIB_LOC_JSON, indent=2 ) )
   floc.close()
 
+  print UUID + "_component_location.json"
+
 if len(LIB_ELE_LIST_JSON) > 0:
   flist = open( os.path.join( out_dir, "json", UUID + "_component_list.json" ), "w" )
   flist.write( json.dumps( LIB_ELE_LIST_JSON, indent=2 ) )
   flist.close()
+
+  print UUID + "_component_list.json"
 
 if len(MOD_LOC_JSON) > 0:
   floc = open( os.path.join( out_dir, "json", UUID + "_footprint_location.json" ), "w" )
   floc.write( json.dumps( MOD_LOC_JSON, indent=2 ) )
   floc.close()
 
+  print UUID + "_footprint_location.json"
+
 if len(MOD_ELE_LIST_JSON) > 0:
   flist = open( os.path.join( out_dir, "json", UUID + "_footprint_list.json" ), "w" )
   flist.write( json.dumps( MOD_ELE_LIST_JSON, indent=2 ) )
   flist.close()
+
+  print UUID + "_footprint_list.json"
 

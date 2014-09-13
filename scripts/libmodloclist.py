@@ -35,10 +35,18 @@ if len(sys.argv) < 2:
 
 base = sys.argv[1]
 
-#for fn in os.listdir( base + "/json" ):
+if len(base)==0:
+  print "provide input base directory"
+  sys.exit(1)
+
+if base[ len(base)-1 ] != '/':
+  base += "/"
+
+processed_fn = []
+
 for fn in os.listdir( base ):
+
   if fn.endswith("_component_location.json"):
-    #f = open(base + "/json/" + fn)
     f = open(base + fn)
     x = json.load(f)
     f.close()
@@ -46,9 +54,10 @@ for fn in os.listdir( base ):
     for k in x:
       comp_loc[k] = x[k]
 
+    processed_fn.append( base + "/" + fn )
+
   if fn.endswith("_component_list.json"):
 
-    #f = open( base + "/json/" + fn)
     f = open( base + fn)
     x = json.load(f);
     f.close()
@@ -56,9 +65,10 @@ for fn in os.listdir( base ):
     for k in x:
       comp_lst.append( x[k] )
 
+    processed_fn.append( base + "/" + fn )
+
   if fn.endswith("_footprint_location.json"):
 
-    #f = open(base + "/json/" + fn)
     f = open(base + fn)
     x = json.load(f)
     f.close()
@@ -66,10 +76,10 @@ for fn in os.listdir( base ):
     for k in x:
       foot_loc[k] = x[k]
 
+    processed_fn.append( base + "/" + fn )
 
   if fn.endswith("_footprint_list.json"):
 
-    #f = open( base + "/json/" + fn)
     f = open( base + fn)
     x = json.load(f);
     f.close()
@@ -77,6 +87,7 @@ for fn in os.listdir( base ):
     for k in x:
       foot_lst.append( x[k] )
 
+    processed_fn.append( base + "/" + fn )
 
 for i,v in enumerate(comp_lst):
   comp_lst[i]["list"] = sorted( comp_lst[i]["list"], key=get_name )
@@ -107,4 +118,8 @@ f = open( base + "/footprint_list_default.json", "w" )
 f.write( json.dumps( foot_lst, indent=2 ) )
 f.close()
 
+sp.call(" mkdir -p " + base + "/.store", shell=True )
+for fn in processed_fn:
+  bn = os.path.basename( fn )
+  os.rename( fn, base + "/.store/" + bn )
 

@@ -68,7 +68,7 @@ function load_full_cache( cache, location_file, userId, projectId )
       cache[ x ] = slurp_json(fn);
       //console.log(fn, x, g_component_cache[x] );
     } else {
-      console.log("# element not found >>>", x, loc_jons[x].location);
+      console.log("# element not found >>>", x, loc_json[x].location, "u:" + userId, "p:" + projectId, "location:", decode_loc);
     }
   }
 

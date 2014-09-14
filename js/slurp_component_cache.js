@@ -62,7 +62,10 @@ function load_full_cache( cache, location_file, userId, projectId )
 
   var loc_json = slurp_json( loc_fn );
   for (var x in loc_json) {
+
     decode_loc = decodeURIComponent( loc_json[x].location );
+    //decode_loc = loc_json[x].location ;
+
     var fn = file_cascade( decode_loc, userId, projectId );
     if (fn) {
       cache[ x ] = slurp_json(fn);

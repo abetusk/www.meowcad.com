@@ -84,7 +84,7 @@ var g_component_cache = {};
 var g_footprint_cache = {};
 
 //slurp.load_full_cache( g_component_cache, "json/component_location.json", userId, projectId );
-slurp.load_full_cache( g_footprint_cache, "json/footprint_location.json", userId, projectId );
+//slurp.load_full_cache( g_footprint_cache, "json/footprint_location.json", userId, projectId );
 
 //for (var x in g_component_cache ) {
 //  sch.find_component_bounding_box( g_component_cache[x] );

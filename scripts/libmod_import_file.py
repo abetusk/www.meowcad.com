@@ -116,6 +116,12 @@ if g_verbose_flag:
 ####
 #
 
+# Process a single .mod or .lib file.
+# inp_fn is the .mod or .lib.  The type of file
+# is figured out by a call to kicad_magic above.
+#
+# out_name is the name of the library.
+#
 def process_modlib( inp_fn, out_name ):
 
   t = kicad_magic( inp_fn )
@@ -153,9 +159,6 @@ def process_modlib( inp_fn, out_name ):
 
     except Exception,e:
       print "modjson failed:", str(e)
-
-
-
 
   if ktype == "mod":
     #mod_dir = os.path.join( TMP_DIR, "pcb", "json", fin_rel_dir )
@@ -210,6 +213,21 @@ def process_dir( base_dir, out_name  ):
   return r
 
 
+# We only allow simple files (text), tar'd files,
+# bz2, tar.bz2, gz, tar.gz and zip files.
+# Whichever one of the previous list it is, it gets
+# decompressed into the 'SRC_DIR' directory (in /tmp/UUID)
+# and is then processed by either `process_dir` or
+# `process_modlib`, depending on which is appropriate.
+#
+# Whatever the input, the resultant files in SRC_DIR are
+# walked to find the lib/mod and then converted and put
+# into DST_DIR/(pcb|eeschema)/json/<nice_name> .
+#
+# This function passes back an array of 'cascade' names
+# (for example, 'eeschema/json/MyLibrary').
+#
+#
 def process_file( inp_fn, nice_name  ):
 
   typ = magic.from_file( inp_fn, mime=True )
@@ -292,72 +310,14 @@ def process_file( inp_fn, nice_name  ):
   return []
 
 
-def process_file_old( inp_fn, nice_fn = None, recur=0, processed={} ):
-
-  if recur==3:
-    if g_verbse_flag:
-      print "# maximum recursion reached, stopping"
-    return
-
-  typ = magic.from_file( inp_fn, mime=True )
-  app,mtype = typ.split("/")
-
-  if g_verbose_flag:
-    print "#", typ, app, mtype
-
-  if mtype == "gzip":
-    if g_verbose_flag: print "# gzip"
-
-    bn = os.path.splitext( os.path.basename( inp_fn ) )[0]
-    cmd = "gunzip -c " + inp_fn + " > " + TMP_DIR  + "/" + bn
-    x = sp.call( cmd, shell=True )
-    process_file( TMP_DIR + "/" + bn, nice_fn, recur+1 )
-
-  elif mtype == "zip":
-    if g_verbose_flag: print "# zip"
-
-    cmd = [ "unzip", "-q", inp_fn , "-d", TMP_DIR ]
-    x = sp.call( cmd )
-    process_dir( TMP_DIR )
-
-  elif mtype == "x-bzip2":
-    if g_verbose_flag: print "# bzip2"
-
-    bn = os.path.splitext( os.path.basename( inp_fn ) )[0]
-    cmd = "bunzip2 -c " + inp_fn + " > " + TMP_DIR  + "/" + bn
-    x = sp.call( cmd, shell=True )
-    process_file( TMP_DIR + "/" + bn, nice_fn, recur+1 )
-
-  elif mtype == "x-tar":
-    if g_verbose_flag: print "# x-tar"
-
-    bn = os.path.splitext( os.path.basename( inp_fn ) )[0]
-    cmd = "tar xC " + TMP_DIR + " -f " + inp_fn 
-    x = sp.call( cmd, shell=True )
-    os.remove( inp_fn )
-    process_dir( TMP_DIR )
-
-
-  elif mtype == "directory":
-    if g_verbose_flag: print "# directory"
-
-    cmd = [ "mv", inp_fn, TMP_DIR ]
-    sp.call( [ "mv", inp_fn, TMP_DIR ] )
-
-    process_dir( TMP_DIR )
-
-  elif app == "text":
-    if g_verbose_flag: print "# text"
-
-    process_modlib( TMP_DIR, inp_fn, nice_fn )
-
-
-
 src_dirs = process_file( inp_fn, nice_modlib_name )
 
 if g_verbose_flag:
   print "got:", src_dirs
 
+# Go through each returned item, remove the previous version
+# in the destination, if present, and copy over the new version.
+#
 if src_dirs > 0:
 
   for src_dir in src_dirs:
@@ -372,8 +332,12 @@ if src_dirs > 0:
     sp.call( "rm -rf " + stale_out_dir, shell=True ) 
     sp.call( "cp -R " + DST_DIR + "/* " + out_dir , shell=True )
 
+# Clean up after ourselves
+#
 shutil.rmtree( TMP_DIR )
 
+# Make our directory to hold list and location json files
+#
 sp.check_call( [ "mkdir", "-p", os.path.join( out_dir, "json" ) ] )
 
 

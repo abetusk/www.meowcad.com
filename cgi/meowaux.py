@@ -916,6 +916,14 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
   js_code += "} </script>"
   accordian.append( js_code )
 
+  js_code = "<script> function load_err_pic( ele_id ) {"
+  js_code += """
+  var ele_img = document.getElementById( "img_" + ele_id );
+  ele_img.src = "/img/ghost_alt_big.png";
+  """
+  js_code += "} </script>"
+  accordian.append( js_code )
+
   accordian.append( "<div class='panel-group' id='" + accid + "'>" )
 
   n=0
@@ -972,7 +980,7 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
       accordian.append( " </button>" )
 
       accordian.append( " <div id='" + collapse_id + "' class='collapse' style='text-align:center;' >")
-      accordian.append(" <img style='width:100%; max-width:200px; opacity:0.95; text-align:center; ' " + 
+      accordian.append(" <img onerror='load_err_pic(\"" + collapse_id + "\"); ' style='width:100%; max-width:200px; opacity:0.95; text-align:center; ' " + 
                        " id='img_" + collapse_id + "' alt='...'></img> " )
       accordian.append(" </div> " )
 

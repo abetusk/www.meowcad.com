@@ -381,9 +381,13 @@
 
       <div class='container-fluid'>
         <div class='row'>
-          <div class='col-xs-4'> </div>
-          <div class='col-xs-4'> <h3 style='text-align:center; margin-bottom:25px;'>Snapshot</h3> </div>
-          <div class='col-xs-4'> </div>
+          <div class='col-sm-4'>
+            <h3 style='text-align:center;'>
+              <i class='fa fa-camera' style='opacity:0.5;' ></i>
+            </h3>
+          </div>
+          <div class='col-sm-4'> <h3 style='text-align:center; margin-bottom:25px;'>Snapshot</h3> </div>
+          <div class='col-sm-4'> </div>
         </div>
       </div>
 
@@ -415,7 +419,7 @@
                 id='lockButton' 
                 name='on' 
                 value='on' 
-                style='display:none;' 
+                style='display:none; margin-bottom:10px;' 
                 class="btn btn-danger"
                 onclick='sendLockMessage();' >
                 <i class='fa fa-lock'></i>
@@ -430,14 +434,14 @@
                 id='unlockButton' 
                 name='off' 
                 value='off' 
-                style='display:none;' 
+                style='display:none; margin-bottom:10px;' 
                 class='btn btn-default'
                 onclick='sendUnlockMessage();' >
                 <i class='fa fa-unlock-alt'></i>
                 Unlock</button>
             </div>
 
-            <div class='col-sm-6' style='text-align:center;' >
+            <div class='col-sm-6' style='text-align:center; margin-bottom:10px; ' >
               <div id='lockedMessage' style='display:none;' >fetching...</div>
             </div>
 

@@ -96,8 +96,16 @@ def file_cascade( userId, projectId, fn ):
       if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
         return json_slurp_file( fullfn )
 
-  fullfn = os.path.join( DEFAULT_DATA_LOCATION, fn )
+  if (userId is not None) :
 
+    usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
+    if in_directory( usrDir, USR_BASE_LOCATION ):
+
+      fullfn = os.path.join( usrDir, fn )
+      if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
+        return json_slurp_file( fullfn )
+
+  fullfn = os.path.join( DEFAULT_DATA_LOCATION, fn )
   if in_directory( fullfn, DEFAULT_DATA_LOCATION ) and os.path.isfile( fullfn ):
     return json_slurp_file( fullfn )
 
@@ -120,6 +128,16 @@ def file_cascade_fn( userId, projectId, fn ):
         if in_directory( fullfn, projDir ) and os.path.isfile( fullfn ):
           data["filename"] = fullfn
           return json.dumps( data )
+
+      fullfn = os.path.join( usrDir, fn )
+      if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
+        data["filename"] = fullfn
+        return json.dumps( data )
+
+  if (userId is not None) :
+
+    usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
+    if in_directory( usrDir, USR_BASE_LOCATION ):
 
       fullfn = os.path.join( usrDir, fn )
       if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
@@ -881,8 +899,9 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
 
   d = dirname_""" + accid + """( data );
   b = basename_""" + accid + """( data );
-  req = "/picModLibSentry.py?data=img/modlibsnap/" + encodeURI(b) + ".png";
-  // req = "/picModLibSentry.py?data=" + encodeURI(d) + "/" + encodeURI(b) + ".png";
+  d = d.replace( /\/json\//, "/png/" );
+  //req = "/picModLibSentry.py?data=img/modlibsnap/" + encodeURI(b) + ".png";
+  req = "/picModLibSentry.py?data=" + encodeURI(d) + "/" + encodeURI(b) + ".png";
 
   ele_img.src = req;
 

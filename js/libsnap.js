@@ -70,12 +70,15 @@ var g_footprint_cache = {};
 //slurp.load_full_cache( g_component_cache, "json/component_location.json", userId, projectId );
 //slurp.load_full_cache( g_footprint_cache, "json/footprint_location.json", userId, projectId );
 
+g_component_cache[ json_part.name ] = json_part;
+
 for (var x in g_component_cache ) {
   sch.find_component_bounding_box( g_component_cache[x] );
 }
 
 //var hershey_ascii_json = slurp.slurp_json( "/var/www/json/utf8_hershey_ascii.json" );
 //brd._load_hershey_ascii_font( hershey_ascii_json );
+
 
 if (verbose) { console.log("# load done"); }
 

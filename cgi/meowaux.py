@@ -231,6 +231,24 @@ def breadcrumb( username=None, projectName=None, projectId=None ):
   return prefix + s + suffix
 
 
+def loggedOutNavTemplate( nav_template ):
+  xx = """
+  <ul class='nav navbar-nav' style='float:right; margin-top:7px; margin-right:5px; ' >
+    <li>
+
+      <form action='/login' style='display:inline;' >
+        <button class='btn btn-success' type='submit'>Log in</button>
+      </form>
+
+      <form action='/signup' style='display:inline;' >
+        <button class='btn btn-warning' type='submit'>Sign up!</button>
+      </form>
+
+    </li>
+  </ul>
+  """
+  return nav_template.replace( "<!--NAVBAR_USER_CONTEXT-->", xx )
+
 
 def processLoggedInNavTemplate( nav_template, userName, userType ):
 

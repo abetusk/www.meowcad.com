@@ -1027,3 +1027,56 @@ def queueImport( userId, sessionId, projectId, file_uuid, file_name = None  ):
 
   return qid
 
+
+# just return everything for now
+#
+def getExplorePortfolios( userId, start, end ):
+  db = redis.Redis()
+
+  projs = db.smembers( "projectpool" )
+
+  r_proj = []
+
+  for proj in projs:
+    p = db.hgetall( "project:" + str(proj) )
+    if p["active"] != "1": continue
+    #if p["userId"] == userId: continue
+    if p["permission"] == "world-read":
+      r_proj.append( p )
+
+  return r_proj
+
+
+def constructExploreHTMLList( userId, start, end ):
+
+  projs = getExplorePortfolios( userId, start, end )
+
+  table_cols = [ "Project", "Owner", "&nbsp;"  ]
+
+  tableProjectHTML = [ "<thead><tr><th>" +
+                      "</th><th style='text-align:center;' >".join( table_cols ) +
+                      "</th></tr></thead>" ]
+
+  for projectDat in projs:
+    projectId = str(projectDat["id"])
+    nam = projectDat["name"]
+
+    bbs = "<button type='button' class='btn btn-default btn-xs'>"
+    bbe = "</button>"
+
+    x = [ "<a href='project?projectId=" + projectId + "'>" + nam + "</a>",
+          projectDat["userId"], 
+          "<a href='#'><i class='fa fa-cloud-download fa-lg'></i></img></a>" ]
+
+    trs = "<tr> <td style='word-break:break-all;' > "
+    tre = "</td> </tr>"
+    tableProjectHTML.append( trs +
+                             "</td> <td style='word-break:break-word; text-align:center; ' >".join(x) +
+                             tre )
+
+  hs = "<table class='table table-striped table-bordered table-condensed' >\n"
+  he = "</tbody></table>\n"
+
+  return hs + "\n".join( tableProjectHTML ) + he
+
+

@@ -27,25 +27,34 @@ def process_imports():
 
     userId = h["userId"]
     fileId = h["fileUUID"]
+    fileName = h["fileName"]
 
     if h["type"] == "portfolio":
 
       try:
 
         if verbose:
-          print "libmodimport_d>> processing", fileId, userId
+          print "libmod_import_d>> processing", fileId, userId, fileName
 
-        lmi_out = sp.check_output( [ "./libmodimport.py", 
+        # Convert from KiCAD to MeowCAD json
+        #
+        lmi_out = sp.check_output( [ "./libmod_import_file.py", 
                          "-i", ODIR + "/stage/" + fileId, 
-                         "-o", ODIR + "/usr/" + userId ] )
+                         "-o", ODIR + "/usr/" + userId,
+                         "--name", fileName ] )
 
+        # Create the location and list files
+        #
         lmll_out = sp.check_output( [ "./libmodloclist.py",
-                                      ODIR + "/usr/" + userId + "/json/" ] )
+                                      "-u", userId,
+                                      "-D", ODIR + "/usr/" + userId + "/json/" ] )
 
         processed_loclist_fn = lmi_out.split("\n")
 
         tmpid = str( uuid.uuid4() )
 
+        # Create the queue file
+        #
         tmpfn = os.path.join( "/tmp", tmpid )
         tmpfp = open( tmpfn , "w" )
         for fn in processed_loclist_fn:
@@ -54,9 +63,14 @@ def process_imports():
           tmpfp.write( ",".join( [ fileId, fqfn, userId, "" ] ) + "\n" )
         tmpfp.close()
 
+        # And place it so the snap daemon can process it
+        #
         os.rename( tmpfn, os.path.join( LIBMOD_SNAP_QUEUE_DIR, fileId + ".q" ) )
 
+        # Get the next queue id from the database
+        #
         qid = db.lpop( "importq" )
+
       except Exception,ee:
         print "libmodimport_d error:", str(ee)
         return None

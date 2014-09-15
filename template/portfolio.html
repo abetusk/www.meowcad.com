@@ -41,9 +41,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
 
     <!-- <script type="text/javascript" src="/js/fileHelper.js"></script> -->
+    <script type='text/javascript' src='/js/jquery.form.js'></script>
     <script type='text/javascript' src='/js/jquery.uploadfile.js'></script>
 
     <script>
+
+    var g_form_data = { "type" : "portfolio" };
 
     $(document).ready( function() {
 
@@ -53,12 +56,48 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       //
       $("#multipleupload").uploadFile({
         url:"libmodImport.py",
-        multiple:true,
+
+        // "FIXING" IT
+        //multiple:true,
+        multiple: false,
+
         fileName:"fileData",
 
-        formData: { "type" : "portfolio" },
+        //formData: { "type" : "portfolio" },
+        formData: g_form_data,
+        //fileData: { "type" : "portfolio" },
 
         //showStatusAfterSuccess:false,
+        onSelect:function(files)
+        {
+
+          //THIS IS COMPLETELY FUCKING IDIOTIC
+          // file upload doesn't have a 'feature' to specify the
+          // file name uploaded.  This will set the global variable,
+          // but will be re-used if multiple files get uploaded.
+          // Instead, if there are multiple files uploaded,
+          // then specifying the file array in the options variable
+          // in jquery.fileupload.js will go through to the server
+          // cgi script BUT ONLY IF THERE ARE MULTIPLE FILES FOR SOME
+          // REASON.  So I have to make a fucking work around for this
+          // fucking idiocy by fucking forcing the fucking file here,
+          // in addition to stuffing it on the jqery.uploadfile end
+          // and have the server fucking figure it out on the fucking
+          // back end.  FUCKING FUCK!!!
+          //
+          // GOD DAMN IS THIS FUCKING STUPID
+          //
+          // AAAAAAAAAAAAAND NOPE!  Cause who fucking knows what's going on.
+          // The "fix" is to allow only single file upload and be sure 
+          // to reach around our ass and grab our elbow by setting the
+          // FORCEDFILE field here.
+          // 
+          g_form_data["FORCEDFILE"] = files[0]["name"];
+
+          console.log( g_form_data["FORCEDFILE"] )
+
+          return true;
+        },
         onSubmit:function(files)
         {
           $("#eventsmessage").html($("#eventsmessage").html()+"<br/>Submitting:"+JSON.stringify(files));

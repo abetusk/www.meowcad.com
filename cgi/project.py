@@ -31,6 +31,9 @@ def renderModuleAccordian( ):
 #
 ##
 
+cookie = Cookie.SimpleCookie()
+cookie_hash = mew.getCookieHash( os.environ )
+
 form = cgi.FieldStorage()
 project = {}
 if "projectId" in form:
@@ -44,8 +47,6 @@ else:
   sys.exit(0)
 
 
-cookie = Cookie.SimpleCookie()
-cookie_hash = mew.getCookieHash( os.environ )
 if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
   print "Location:login"

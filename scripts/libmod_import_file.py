@@ -97,7 +97,11 @@ if g_verbose_flag:
 # If we don't have a nice name, take it from the file provided
 #
 if nice_modlib_name is None:
-  nice_modlib_name = os.path.splitext( os.path.splitext( os.path.basename( inp_fn ) )[0] )[0]
+  nice_modlib_name = inp_fn
+
+# Strip out extensions to try and get a nicer base name
+#
+nice_modlib_name = os.path.splitext( os.path.splitext( os.path.basename( nice_modlib_name) )[0] )[0]
 
 # Make sure it's safe
 #
@@ -142,7 +146,7 @@ def process_modlib( inp_fn, out_name ):
       for name_loc in liblist:
         v = name_loc.split(' ')
         if len(v) < 2: continue
-        name,loc = v[0], v[1][len(TMP_DIR)+1:]
+        name,loc = v[0], v[1][len(DST_DIR)+1:]
         LIB_LOC_JSON[ name ] = { "name" : name, "location" : loc }
 
         list_ele = { "id" : name, "name" : name, "data" : loc, "type" : "element" }
@@ -172,7 +176,7 @@ def process_modlib( inp_fn, out_name ):
       for name_loc in modlist:
         v = name_loc.split(' ')
         if len(v) < 2: continue
-        name,loc = v[0], v[1][len(TMP_DIR)+1:]
+        name,loc = v[0], v[1][len(DST_DIR)+1:]
         MOD_LOC_JSON[ name ] = { "name" : name, "location" : loc }
 
         list_ele = { "id" : name, "name" : name, "data" : loc, "type" : "element" }
@@ -334,7 +338,7 @@ if src_dirs > 0:
 
 # Clean up after ourselves
 #
-shutil.rmtree( TMP_DIR )
+#shutil.rmtree( TMP_DIR )
 
 # Make our directory to hold list and location json files
 #

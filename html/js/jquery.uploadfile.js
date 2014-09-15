@@ -25,9 +25,11 @@
  */
 
 (function ($) {
+    /*
     if($.fn.ajaxForm == undefined) {
         $.getScript(("https:" == document.location.protocol ? "https://" : "http://") + "malsup.github.io/jquery.form.js");
     }
+    */
     var feature = {};
     feature.fileapi = $("<input type='file'/>").get(0).files !== undefined;
     feature.formdata = window.FormData !== undefined;
@@ -584,6 +586,7 @@
                 formData: s.fileData,
                 dataType: s.returnType,
                 beforeSubmit: function (formData, $form, options) {
+
                     if(s.onSubmit.call(this, fileArray) != false) {
                         var dynData = s.dynamicFormData();
                         if(dynData) {
@@ -591,12 +594,18 @@
                             if(sData) {
                                 for(var j = 0; j < sData.length; j++) {
                                     if(sData[j]) {
-                                        if(s.fileData != undefined) options.formData.append(sData[j][0], sData[j][1]);
-                                        else options.data[sData[j][0]] = sData[j][1];
+                                        if(s.fileData != undefined) {
+                                          options.formData.append(sData[j][0], sData[j][1]);
+                                        }
+                                        else {
+                                          options.data[sData[j][0]] = sData[j][1];
+                                        }
+
                                     }
                                 }
                             }
                         }
+
                         obj.tCounter += fileArray.length;
                         //window.setTimeout(checkPendingUploads, 1000); //not so critical
                         checkPendingUploads();
@@ -615,7 +624,6 @@
                     return false;
                 },
                 beforeSend: function (xhr, o) {
-
                     pd.progressDiv.show();
                     pd.cancel.hide();
                     pd.done.hide();
@@ -672,6 +680,7 @@
 
                     pd.abort.hide();
                     s.onSuccess.call(this, fileArray, data, xhr, pd);
+
                     if(s.showStatusAfterSuccess) {
                         if(s.showDone) {
                             pd.done.show();
@@ -732,6 +741,12 @@
 
                 }
             };
+
+            //DOESN'T WORK ON SINGLE FILES
+            // YES, fileArray IS POPULATED, YES, options.data["fileNames"] IS SET
+            // BUT FUCKED IF I CAN FIGURE OUT WHY IT'S GETT WHACKED OUT BEFORE
+            // TRANSMISSION.
+            options.data["fileNames"] = fileArray[0];
 
             if(s.showPreview && file != null) {
                 if(file.type.toLowerCase().split("/").shift() == "image") getSrcToPreview(file, pd.preview);

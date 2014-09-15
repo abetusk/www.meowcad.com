@@ -14,13 +14,14 @@ import os
 
 cgitb.enable();
 
-schjson_exec = "/home/meow/pykicad/libmodconverter.py"
 staging_base = "/home/meow/stage"
 
 u_id = -1
 
+
 print "Content-Type: application/json"
 print
+
 
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
@@ -34,12 +35,14 @@ def log_line(s):
   flog.write( s )
   flog.close()
 
+
 form = cgi.FieldStorage()
 
 if "fileData" not in form:
-  print "{ \"type\" : \"error\", \"message\" : \"'fileName' not in form\" }"
+  print "{ \"type\" : \"error\", \"message\" : \"'fileData' not in form\" }"
   sys.exit(0)
 
+projectId = None
 if "projectId" in form:
   #log_line( "got project " + str(form.getvalue("projectId")) + "\n" )
   pass
@@ -57,7 +60,19 @@ if "fileData" in form:
   f.write( form.getvalue('fileData') )
   f.close()
 
-  qid = mew.queueImport( cookie_hash["userId"], cookie_hash["sessionId"], None, str(u_id) )
+  fileName = str(u_id)
+  #if "fileName" in form:
+  #  fileName = form["fileName"].value
+
+  ## FUCKING STUPIDITY.
+  # RIP OUT THAT FUCKING JQUERY.UPLOADFILE.JS AS SOON
+  # AS FUCKING POSSIBLE
+  #if "fileNames" in form:
+  #  fileName = str(form.getvalue("fileNames"))
+  if "FORCEDFILE" in form:
+    fileName = str(form.getvalue("FORCEDFILE"))
+
+  qid = mew.queueImport( cookie_hash["userId"], cookie_hash["sessionId"], projectId, str(u_id), fileName )
 
   try:
     print "{ \"type\" : \"success\", \"message\" : \"" + str(u_id) + "\", \"queueId\": \"" + qid + "\"  }"

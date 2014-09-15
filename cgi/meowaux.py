@@ -999,11 +999,14 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
   return r
 
 
-def queueImport( userId, sessionId, projectId, file_uuid ):
+def queueImport( userId, sessionId, projectId, file_uuid, file_name = None  ):
   db = redis.Redis()
   ts = time.time()
 
   qid = str(uuid.uuid4())
+
+  if file_name is None:
+    file_name = file_uuid
 
   qf = {}
   qf["id"] = qid
@@ -1017,6 +1020,7 @@ def queueImport( userId, sessionId, projectId, file_uuid ):
   qf["stime"] = ts
   qf["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
   qf["fileUUID"] = file_uuid
+  qf["fileName"] = file_name
   db.hmset( "importq:" + qid, qf )
 
   db.rpush( "importq", qid )

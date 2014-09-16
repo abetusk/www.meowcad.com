@@ -33,8 +33,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
 
 
-    <script type="text/javascript" src="/js/meowmeow.js"></script>
-
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
 
@@ -102,22 +100,18 @@ $(document).ready( function() {
       g_project[ "projectId" ] = m.split( '/' )[2];
     }
   }
-
-  meowmeow();
   
   if ( typeof $('textarea') !== 'undefined') { 
     $('textarea').autosize(); 
   }
 
   var ele = document.getElementById("projectName");
-  if (typeof ele !== "undefined") {
+  if (ele && (typeof ele !== "undefined")) {
     g_project[ "projectName" ] = ele.value;
   }
   else {
     g_project[ "projectName" ] = "yesIReallyWantToDeleteThisProject";
   }
-
-  console.log("name:", g_project["projectName"] );
 
   $("#confirmProjectDeleteName").keyup( function(ev) {
     //var v = $("#confirmProjectDeleteName").value
@@ -271,11 +265,11 @@ function cancelReadme() {
 
         <div class='col-sm-3' style='text-align:center; margin-bottom:5px;' >
 
-          <a href='A' style='margin-bottom:10px;' ><span class='glyphicon glyphicon-heart'></span></a> <!--PROJECT_HEART_COUNT-->
+          <a href='#' style='margin-bottom:10px;' ><span class='glyphicon glyphicon-heart'></span></a> <!--PROJECT_HEART_COUNT-->
               &nbsp; &nbsp;
-          <a href='A' style='margin-bottom:10px;'  ><span class='glyphicon glyphicon-comment'></span></a> <!--PROJECT_COMMENT_COUNT-->
+          <a href='#' style='margin-bottom:10px;'  ><span class='glyphicon glyphicon-comment'></span></a> <!--PROJECT_COMMENT_COUNT-->
               &nbsp; &nbsp;
-          <a href='A' style='margin-bottom:10px;' ><span class='glyphicon glyphicon-download'></span></a> <!--PROJECT_DOWNLOAD_COUNT-->
+          <a href='#' style='margin-bottom:10px;' ><span class='glyphicon glyphicon-download'></span></a> <!--PROJECT_DOWNLOAD_COUNT-->
 
         </div>
 
@@ -321,7 +315,11 @@ function cancelReadme() {
             <!-- <li><a href='#PanelFiles' data-toggle='tab'>Files</a></li> -->
             <li><a href='#PanelComponents' data-toggle='tab'>Components</a></li>
             <li><a href='#PanelModules' data-toggle='tab'>Modules</a></li>
+
+            <!--
             <li><a href='#PanelManage' data-toggle='tab'>Manage</a></li>
+            -->
+            <!--PERMISSION_PANE_HEADER-->
 
           </ul>
 

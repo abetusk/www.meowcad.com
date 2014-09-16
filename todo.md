@@ -12,8 +12,10 @@ TODO
     * and schematics
     * and boards
   - README.md for project needs to read and saved
+    * disable updates for visitors
   - 'Like' feature
   - Project library module/componet import
   - Need to refresh accordian after finishing import
   - Replace file upload widget
+  - Allow for project upload
 

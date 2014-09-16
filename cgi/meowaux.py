@@ -159,9 +159,27 @@ def getProjectPic( userId, projectId ):
   proj = db.hgetall( "project:" + str(projectId) )
 
   projpic = db.hgetall( "projectpic:" + str(projectId) )
-  if projpic:
-    projpic["type"] = "project"
-    return projpic
+  if projpic :
+
+    proj = db.hgetall( "project:" + str(projectId) )
+    if (proj["permission"] == "world-read") or (proj["userId"] == userId):
+
+      schpic = db.hgetall( "pic:" + projpic["schPicId"] )
+      if schpic["permission"] != "world-read":
+        projpic["schPicId"] = "/img/sch-proj-default.png"
+        projpic["brdPicId"] = "/img/brd-proj-default.png"
+        projpic["type"] = "default"
+        return projpic
+
+      brdpic = db.hgetall( "pic:" + projpic["brdPicId"] )
+      if brdpic["permission"] != "world-read":
+        projpic["schPicId"] = "/img/sch-proj-default.png"
+        projpic["brdPicId"] = "/img/brd-proj-default.png"
+        projpic["type"] = "default"
+        return projpic
+
+      projpic["type"] = "project"
+      return projpic
 
   projpic["schPicId"] = "/img/sch-proj-default.png"
   projpic["brdPicId"] = "/img/brd-proj-default.png"
@@ -498,6 +516,28 @@ def userPasswordTest( userId, testpass ):
   if obj["passwordHash"] == testhashPassword:
     return True
   return False
+
+def getProjectUserName( projectId ):
+  db = redis.Redis()
+
+  p = db.hgetall( "project:" + str(projectId) )
+  if not p:
+    return None
+  uid = p["userId"]
+
+  u = db.hgetall( "user:" + str(uid) )
+  if not u:
+    return None
+  return u["userName"]
+
+def getProjectUserId( projectId ):
+  db = redis.Redis()
+
+  p = db.hgetall( "project:" + str(projectId) )
+  if not p:
+    return None
+  uid = p["userId"]
+  return uid
 
 
 def getUser( userId ):
@@ -1051,6 +1091,8 @@ def queueImport( userId, sessionId, projectId, file_uuid, file_name = None  ):
 def getExplorePortfolios( userId, start, end ):
   db = redis.Redis()
 
+  username_h = {}
+
   projs = db.smembers( "projectpool" )
 
   r_proj = []
@@ -1060,7 +1102,14 @@ def getExplorePortfolios( userId, start, end ):
     if p["active"] != "1": continue
     #if p["userId"] == userId: continue
     if p["permission"] == "world-read":
+
+      if not (p["userId"] in username_h):
+        u = db.hgetall( "user:" + str(p["userId"]) )
+        username_h[ p["userId"] ] = u["userName"]
+
+      p["userName"] = username_h[ p["userId"] ]
       r_proj.append( p )
+
 
   return r_proj
 
@@ -1083,7 +1132,8 @@ def constructExploreHTMLList( userId, start, end ):
     bbe = "</button>"
 
     x = [ "<a href='project?projectId=" + projectId + "'>" + nam + "</a>",
-          projectDat["userId"], 
+          #projectDat["userId"], 
+          projectDat["userName"], 
           "<a href='#'><i class='fa fa-cloud-download fa-lg'></i></img></a>" ]
 
     trs = "<tr> <td style='word-break:break-all;' > "

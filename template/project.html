@@ -228,10 +228,58 @@ function cancelReadme() {
   buttonViz( true, false, false );
 }
 
+
+//---------------------
+
+      function initiateDownload( json_container )
+      {
+        var msg_type = json_container["type"];
+        if (msg_type != "id")
+        {
+          console.log("error, expected id, got: " + msg_type);
+          console.log(json_container);
+          return;
+        }
+
+        // fiddle with iframe to send a download request
+        //
+        var id = json_container["id"];
+        var ifrm = document.getElementById( "downloadFrame" );
+        //ifrm.src = "bleepsixDownloadManager.py?id=" + id;
+
+        url = "bleepsixDownloadManager.py?id=" + id;
+        if ("name" in json_container)
+        {
+          url += '&name=' + json_container["name"]
+        }
+        ifrm.src = url;
+      }
+
+
+      function downloadProject( )
+      {
+        //var form_data = { "projectId" : "b9e179db-9102-4507-836e-abf7e1373494" };
+        var form_data = { "projectId" : g_project["projectId"] }
+
+        console.log(form_data);
+
+        $.ajax({
+          url: "downloadProject.py",
+          type: 'POST',
+          data: form_data,
+          success: initiateDownload,
+          error: function(jqxhr, status, err) { console.log(jqxhr); console.log(status); console.log(err); }
+
+          });
+      }
+
+
     </script>
 
 </head>
 <body>
+
+  <iframe id='downloadFrame' style='display:none'></iframe>
 
   <!--NAVBAR-->
 
@@ -290,7 +338,7 @@ function cancelReadme() {
         </div>
         <div class='col-sm-3' style='text-align:center; margin-bottom:5px;' >
 
-          <button type='button' class='btn btn-default' onclick='fetchdownload();' >
+          <button type='button' class='btn btn-default' onclick='downloadProject();' >
             <i class='fa fa-cloud-download'></i>
             Download
           </button>

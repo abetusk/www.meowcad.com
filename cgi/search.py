@@ -41,10 +41,11 @@ if loggedInFlag:
   unamestr = "["  + str(userName) + "]"
 
   if userData["type"] == "anonymous":
-    print "Location:/register"
-    print cookie.output()
-    print
-    sys.exit(0)
+    unamestr = "["  + str(userName) + "]"
+    #print "Location:/register"
+    #print cookie.output()
+    #print
+    #sys.exit(0)
 
 
 if loggedInFlag:

@@ -18,7 +18,9 @@ cgitb.enable()
 
 
 
-def renderProjectTable( olioList ):
+
+
+def renderProjectTable( olioList, publicOnlyFlag = True ):
   tableProjectHTML = [ "<thead><tr><th>" + "</th><th style='text-align:center;' >".join( [ "Project",
                                         "&nbsp;", "&nbsp;", "Access", "&nbsp;" ] ) + "</th></tr></thead>" ]
   for projectDat in olioList:
@@ -27,6 +29,9 @@ def renderProjectTable( olioList ):
       perm = "<i class='fa fa-heart'></i> " + projectDat["permission"] 
     else:
       perm = "<i class='fa fa-lock'></i> " + "private"
+
+      if publicOnlyFlag:
+        continue
 
     nam = projectDat["name"]
 
@@ -49,21 +54,36 @@ def renderProjectTable( olioList ):
 
   return hs + "".join( tableProjectHTML ) + he
 
+authenticatedFlag = False
+
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
 if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
-  print "Location:login"
-  print
-  sys.exit(0)
+  authenticatedFlag = True
+  #print "Location:login"
+  #print
+  #sys.exit(0)
 
 message,messageType = mew.processCookieMessage( cookie, cookie_hash )
 
+
+viewUserId = cookie_hash["userId"]
 userId = cookie_hash["userId"]
+
+form = cgi.FieldStorage()
+if "userId" in form:
+  viewUserId = str(form["userId"].value)
+
+
+#userId = cookie_hash["userId"]
 sessionId = cookie_hash["sessionId"]
-olioList = mew.getPortfolios( cookie_hash["userId"] )
+#olioList = mew.getPortfolios( cookie_hash["userId"] )
+olioList = mew.getPortfolios( viewUserId )
 userData = mew.getUser( userId )
 userName = userData["userName"]
+if userData["type"] == "anonymous":
+  userName = "anonymous"
 
 componentLibraryAccordian = mew.renderAccordian( "json/component_list_default.json", "componentaccordian", userId )
 footprintLibraryAccordian = mew.renderAccordian( "json/footprint_list_default.json", "footprintaccordian", userId )
@@ -85,12 +105,21 @@ tmp_str = mew.replaceTemplateMessage( tmp_str, message, messageType )
 tmp_str = tmp_str.replace( "<!--ACCORDIAN_COMPONENTS-->", componentLibraryAccordian )
 tmp_str = tmp_str.replace( "<!--ACCORDIAN_MODULES-->",    footprintLibraryAccordian )
 
-projectTable = renderProjectTable( olioList )
+publicOnlyFlag = True
+if viewUserId == userId:
+  publicOnlyFlag = False
+
+projectTable = renderProjectTable( olioList, publicOnlyFlag  )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
 tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) )
 
 tmp_str = tmp_str.replace( "<!--PROJECT_TABLE-->", projectTable )
-tmp_str = tmp_str.replace( "<!--PROJECT_CREATE_FORM-->", createproj )
+
+if userData["type"] != "anonymous":
+  tmp_str = tmp_str.replace( "<!--PROJECT_CREATE_FORM_HEADER-->", 
+                             "<li><a href='#PanelProjectCreate' data-toggle='tab'>New</a></li>" )
+  tmp_str = tmp_str.replace( "<!--PROJECT_CREATE_FORM-->", createproj )
+
 tmp_str = tmp_str.replace( "<!--PROJECT_IMPORT_FORM-->", importform )
 
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )

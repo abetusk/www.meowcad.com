@@ -961,7 +961,11 @@ def renderAccordian( json_url, accid, userId = None, portfolioId = None ):
   b = basename_""" + accid + """( data );
   d = d.replace( /\/json\//, "/png/" );
   //req = "/picModLibSentry.py?data=img/modlibsnap/" + encodeURI(b) + ".png";
-  req = "/picModLibSentry.py?data=" + encodeURI(d) + "/" + encodeURI(b) + ".png";
+  //req = "/picModLibSentry.py?data=" + encodeURI(d) + "/" + encodeURI(b) + ".png";
+  req = "/picModLibSentry.py?data=" + encodeURI(d) + "/" + b + ".png";
+
+//DEBUG
+console.log("sending", req );
 
   ele_img.src = req;
 

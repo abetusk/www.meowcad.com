@@ -229,13 +229,15 @@ def expireCookie( cookie, val ):
 
 def breadcrumb( username=None, projectName=None, projectId=None ):
   prefix = """
-  <div class='col-lg-12'>
-    <ul class='breadcrumb' >
-      <li> <a href='/portfolio'>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <ul class='breadcrumb' >
+        <li> <a href='/portfolio'>
   """
   suffix = """
-  </a>  </li>
-    </ul>
+    </a>  </li>
+      </ul>
+    </div>
   </div>
   """
 

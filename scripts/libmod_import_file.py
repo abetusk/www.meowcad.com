@@ -31,6 +31,7 @@ import os.path
 import shutil
 from signal import signal, SIGPIPE, SIG_DFL
 
+#g_verbose_flag = True
 g_verbose_flag = False
 
 UUID = str(uuid.uuid4())
@@ -129,6 +130,7 @@ if g_verbose_flag:
 def process_modlib( inp_fn, out_name ):
 
   t = kicad_magic( inp_fn )
+
   if t == "unknown": 
     return
 
@@ -206,6 +208,8 @@ def process_dir( base_dir, out_name  ):
       abs_fn = os.path.join( root, f )
 
       t = kicad_magic( abs_fn )
+
+
       if t == "unknown": 
         os.remove( abs_fn )
         continue
@@ -305,7 +309,8 @@ def process_file( inp_fn, nice_name  ):
 
     return process_dir( inp_fn, nice_name )
 
-  elif app == "text" and mtype == "plain":
+  #elif app == "text" and mtype == "plain":
+  else:
     if g_verbose_flag:
       print "text plain"
 
@@ -339,6 +344,7 @@ if src_dirs > 0:
 # Clean up after ourselves
 #
 #shutil.rmtree( TMP_DIR )
+
 
 # Make our directory to hold list and location json files
 #

@@ -17,6 +17,7 @@ g_fn = "./project_event_hash.list"
 g_snapdir = "/home/abram/prog/www.meowcad.com/js"
 g_snapexec = "projectsnap.js"
 
+USRBASE = "/home/meow/usr"
 FILEPATH = "/home/meow/stage"
 
 sleepy = 1
@@ -52,8 +53,13 @@ def create_snapshot( userId,  projectId ):
   schpicid = uuid.uuid4()
   brdpicid = uuid.uuid4()
 
-  schfn = FILEPATH + "/" + str(schpicid)
-  brdfn = FILEPATH + "/" + str(brdpicid)
+  #schfn = FILEPATH + "/" + str(schpicid)
+  #brdfn = FILEPATH + "/" + str(brdpicid)
+
+  sp.call( [ "mkdir", "-p", os.path.join( USRBASE, userId, projectId, "img" ) ] )
+
+  schfn = os.path.join( USRBASE, userId, projectId, "img", str(schpicid) )
+  brdfn = os.path.join( USRBASE, userId, projectId, "img", str(brdpicid) )
 
   ee = [ "node", ex, "-p", projectId, "-u", userId, "-s", schfn, "-b", brdfn ] 
   print ee

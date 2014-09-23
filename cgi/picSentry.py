@@ -15,9 +15,15 @@ cgitb.enable();
 
 FILEBASE = "/home/meow/stage"
 
-g_debug = False
+#print "Content-Type: text/html"
+#print
+
+#g_debug = False
+g_debug = True
+
 def log_line( l ):
-  logf = open("/home/meow/picsentry.log", "a")
+  #logf = open("/home/meow/picsentry.log", "a")
+  logf = open("/tmp/picsentry.log", "a")
   logf.write( l  + "\n")
   logf.close()
 

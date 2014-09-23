@@ -164,8 +164,8 @@ zz = "style='width:100%; border:1px solid gray; max-width: 350px; '></img>"
 
 picdata = mew.getProjectPic( userId, project["id"] )
 if picdata["type"] == "default":
-  tmp_str = tmp_str.replace( "<!--SCHPIC-->", aa + "src='" + picdata["schPicId"] + "' " + zz )
-  tmp_str = tmp_str.replace( "<!--BRDPIC-->", aa + "src='" + picdata["brdPicId"] + "' " + zz )
+  tmp_str = tmp_str.replace( "<!--SCHPIC-->", aa + "src='picSentry.py?id=" + picdata["schPicId"] + "' " + zz )
+  tmp_str = tmp_str.replace( "<!--BRDPIC-->", aa + "src='picSentry.py?id=" + picdata["brdPicId"] + "' " + zz )
 
 else:
 

@@ -156,36 +156,47 @@ def file_cascade_fn( userId, projectId, fn ):
 def getProjectPic( userId, projectId ):
   db = redis.Redis()
 
+  rprojpic = {}
+  rprojpic["schPicId"] = "/img/sch-proj-default.png"
+  rprojpic["brdPicId"] = "/img/brd-proj-default.png"
+  rprojpic["type"] = "error"
+
   proj = db.hgetall( "project:" + str(projectId) )
+  if not proj:
+    return rprojpic
 
-  projpic = db.hgetall( "projectpic:" + str(projectId) )
-  if projpic :
+  qprojpic = db.hgetall( "projectpic:" + str(projectId) )
+  if qprojpic:
 
-    proj = db.hgetall( "project:" + str(projectId) )
-    if (proj["permission"] == "world-read") or (proj["userId"] == userId):
+    if proj["userId"] == userId:
+      rprojpic["schPicId"] = qprojpic["schPicId"]
+      rprojpic["brdPicId"] = qprojpic["brdPicId"]
+      rprojpic["type"] = "default"
+      return rprojpic
 
-      schpic = db.hgetall( "pic:" + projpic["schPicId"] )
+    if proj["permission"] == "world-read":
+
+      schpic = db.hgetall( "pic:" + qprojpic["schPicId"] )
       if schpic["permission"] != "world-read":
-        projpic["schPicId"] = "/img/sch-proj-default.png"
-        projpic["brdPicId"] = "/img/brd-proj-default.png"
-        projpic["type"] = "default"
-        return projpic
+        rprojpic["schPicId"] = "/img/sch-proj-default.png"
+        rprojpic["brdPicId"] = "/img/brd-proj-default.png"
+        rprojpic["type"] = "default"
+        return rprojpic
 
-      brdpic = db.hgetall( "pic:" + projpic["brdPicId"] )
+      brdpic = db.hgetall( "pic:" + qprojpic["brdPicId"] )
       if brdpic["permission"] != "world-read":
-        projpic["schPicId"] = "/img/sch-proj-default.png"
-        projpic["brdPicId"] = "/img/brd-proj-default.png"
-        projpic["type"] = "default"
-        return projpic
+        rprojpic["schPicId"] = "/img/sch-proj-default.png"
+        rprojpic["brdPicId"] = "/img/brd-proj-default.png"
+        rprojpic["type"] = "default"
+        return rprojpic
 
-      projpic["type"] = "project"
-      return projpic
+      rprojpic["schPicId"] = qprojpic["schPicId"]
+      rprojpic["brdPicId"] = qprojpic["brdPicId"]
+      rprojpic["type"] = "project"
+      return rprojpic
 
-  projpic["schPicId"] = "/img/sch-proj-default.png"
-  projpic["brdPicId"] = "/img/brd-proj-default.png"
-  projpic["type"] = "default"
-
-  return projpic
+  rprojpic["type"] = "default"
+  return rprojpic
 
 def getCookieHash( environ ):
   cookie_hash = {}

@@ -178,6 +178,12 @@ def activateuser(userid):
 
   db.hset( "user:" + str(userid), "active", "1" )
 
+def setuserpassword(userid, password):
+  if userid is None :
+    print "provide userid"
+    return
+
+  mew.setUserPassword( userid, password )
 
 def showhelp():
   print "  feedback"
@@ -189,6 +195,7 @@ def showhelp():
   print "  signups"
   print
   print "  adduser <user> <pass>"
+  print "  passuser <id> <pass>"
   print "  deluser <id>"
   print "  activateuser <id>"
   print
@@ -219,6 +226,9 @@ elif op == "signups":
 
 elif op == "adduser":
   adduser(x, y)
+
+elif op == "passuser":
+  setuserpassword(x, y)
 
 elif op == "deluser":
   deluser(x)

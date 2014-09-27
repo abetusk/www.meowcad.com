@@ -166,12 +166,10 @@ zz = "style='width:100%; border:1px solid gray; max-width: 350px; '></img>"
 
 picdata = mew.getProjectPic( userId, project["id"] )
 if picdata["type"] == "default":
-  #tmp_str = tmp_str.replace( "<!--SCHPIC-->", aa + "src='picSentry.py?id=" + picdata["schPicId"] + "' " + zz )
-  #tmp_str = tmp_str.replace( "<!--BRDPIC-->", aa + "src='picSentry.py?id=" + picdata["brdPicId"] + "' " + zz )
-
   extra = ""
   if authorizedFlag:
     extra = "&userId=" + userId + "&projectId=" + projectId
+
   tmp_str = tmp_str.replace( "<!--SCHPIC-->", aa + "src='mewpng?f=img/" + picdata["schPicId"] + extra + "' " + zz )
   tmp_str = tmp_str.replace( "<!--BRDPIC-->", aa + "src='mewpng?f=img/" + picdata["brdPicId"] + extra + "' " + zz )
 
@@ -180,17 +178,12 @@ else:
   if authorizedFlag:
     tmp_str = tmp_str.replace( "<!--SCHPIC-->",
             aa +
-            #"src='picSentry.py?id=" + picdata["schPicId"] +
-            #"&userId=" + userId +
-            #"&sessionId=" + sessionId +
             "src='mewpng?f=img/" + picdata["schPicId"] +
             "&userId=" + projectUserId +
             "&projectId=" + projectId +
             "' " + zz )
+
     tmp_str = tmp_str.replace( "<!--BRDPIC-->",
-            #aa + "src='picSentry.py?id=" + picdata["brdPicId"] +
-            #"&userId=" + userId +
-            #"&sessionId=" + sessionId +
             "src='mewpng?f=img/" + picdata["brdPicId"] +
             "&userId=" + projectUserId +
             "&projectId=" + projectId +
@@ -199,14 +192,13 @@ else:
   else:
     tmp_str = tmp_str.replace( "<!--SCHPIC-->",
             aa +
-            #"src='picSentry.py?id=" + picdata["schPicId"] +
             "src='mewpng?f=img/" + picdata["schPicId"] +
             "&userId=" + projectUserId +
             "&projectId=" + projectId +
             "' " + zz )
+
     tmp_str = tmp_str.replace( "<!--BRDPIC-->",
             aa +
-            #"src='picSentry.py?id=" + picdata["brdPicId"] +
             "src='mewpng?f=img/" + picdata["brdPicId"] +
             "&userId=" + projectUserId +
             "&projectId=" + projectId +

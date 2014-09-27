@@ -11,6 +11,9 @@ cgitb.enable()
 stickyUsername = ""
 stickyEmail = ""
 
+#print "Content-type: text/html; charset=utf-8;"
+#print
+
 def processSignup( ch, cook_hash ):
 
   if "username" not in ch: return False, "badusername", "Please provide a username"
@@ -95,6 +98,20 @@ if os.environ['REQUEST_METHOD'] == 'POST':
   for k in form:
     h[k] = form[k].value
 
+  if "type" in h and h["type"] == "clear":
+    mew.expireCookie( cookie, "signup_username" )
+    mew.expireCookie( cookie, "userName" )
+    mew.expireCookie( cookie, "userId" )
+    mew.expireCookie( cookie, "sessionId" )
+    mew.expireCookie( cookie, "recentProjectId" )
+    cookie["message"] = "Anonymous Session Cleared!"
+    cookie["messageType"] = "success"
+    print "Location:register"
+    print cookie.output()
+    print
+    sys.exit(0)
+
+
   v,typ,x = processSignup(h, cookie_hash)
 
   if v:
@@ -160,7 +177,9 @@ if not loggedInFlag:
 
 footer = mew.slurp_file("template/footer_template.html")
 analytics = mew.slurp_file("template/analytics_template.html")
+clear_workspace = mew.slurp_file("template/register_anonymous_logout.html")
 
+anonymousFlag = False
 if loggedInFlag:
   userData = mew.getUser( cookie_hash["userId"] )
   userName = userData["userName"]
@@ -168,6 +187,7 @@ if loggedInFlag:
 
   if userData["type"] == "anonymous":
     unamestr = "&lt; " + str(userName) + " &gt;"
+    anonymousFlag = True
   else:
     print "Location:portfolio"
     print cookie.output()
@@ -187,6 +207,9 @@ tmp_str = mew.replaceTemplateMessage( template, msg, msgType )
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )
+
+if anonymousFlag:
+  tmp_str = tmp_str.replace( "<!--ANONYMOUS_LOGOUT_PANEL-->", clear_workspace )
 
 if "signup_username" in cookie_hash:
   tmp_str = tmp_str.replace( "<!--STICKY_USERNAME-->", 

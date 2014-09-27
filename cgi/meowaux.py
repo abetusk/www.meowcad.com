@@ -157,8 +157,8 @@ def getProjectPic( userId, projectId ):
   db = redis.Redis()
 
   rprojpic = {}
-  rprojpic["schPicId"] = "/img/sch-proj-default.png"
-  rprojpic["brdPicId"] = "/img/brd-proj-default.png"
+  rprojpic["schPicId"] = "sch-proj-default.png"
+  rprojpic["brdPicId"] = "brd-proj-default.png"
   rprojpic["type"] = "error"
 
   proj = db.hgetall( "project:" + str(projectId) )
@@ -178,15 +178,15 @@ def getProjectPic( userId, projectId ):
 
       schpic = db.hgetall( "pic:" + qprojpic["schPicId"] )
       if schpic["permission"] != "world-read":
-        rprojpic["schPicId"] = "/img/sch-proj-default.png"
-        rprojpic["brdPicId"] = "/img/brd-proj-default.png"
+        rprojpic["schPicId"] = "sch-proj-default.png"
+        rprojpic["brdPicId"] = "brd-proj-default.png"
         rprojpic["type"] = "default"
         return rprojpic
 
       brdpic = db.hgetall( "pic:" + qprojpic["brdPicId"] )
       if brdpic["permission"] != "world-read":
-        rprojpic["schPicId"] = "/img/sch-proj-default.png"
-        rprojpic["brdPicId"] = "/img/brd-proj-default.png"
+        rprojpic["schPicId"] = "sch-proj-default.png"
+        rprojpic["brdPicId"] = "brd-proj-default.png"
         rprojpic["type"] = "default"
         return rprojpic
 

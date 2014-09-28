@@ -24,7 +24,7 @@ TODO
 
   2014-09-27 to 2014-09-28:
 
-  - anonymous logout
+  - ~~anonymous logout~~
   - file name for download
   - readme
   - ~~project snapshot viewing for non-owned projects~~

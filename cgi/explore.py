@@ -7,6 +7,9 @@ import Cookie
 import meowaux as mew
 cgitb.enable()
 
+#print "Content-type: text/html; charset=utf-8;"
+#print
+
 
 h = {}
 form = cgi.FieldStorage()
@@ -58,7 +61,7 @@ tmp_str = template
 tmp_str = mew.replaceTemplateMessage( tmp_str , msg, msgType )
 
 if loggedInFlag:
-  tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) )
+  tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName), str(userId) ) )
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )

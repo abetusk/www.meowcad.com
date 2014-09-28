@@ -143,9 +143,12 @@ tmp_str = tmp_str.replace( "<!--PROJECT_HEART_COUNT-->", str( mew.getHeartCount(
 tmp_str = tmp_str.replace( "<!--PROJECT_COMMENT_COUNT-->", str( mew.getCommentCount( project["id"] ) ) )
 tmp_str = tmp_str.replace( "<!--PROJECT_DOWNLOAD_COUNT-->", str( mew.getDownloadCount( project["id"] ) ) )
 
+descr = cgi.escape( str( project["shortDescription"] ) )
+tmp_str = tmp_str.replace( "<!--PROJECT_SHORT_DESCRIPTION-->", descr )
+
 tmp_str = mew.replaceTemplateMessage( tmp_str, message, messageType )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
-tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(projectUserName), project["name"], project["id"]) )
+tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(projectUserName), projectUserId, project["name"], project["id"]) )
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )
 

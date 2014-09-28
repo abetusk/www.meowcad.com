@@ -161,7 +161,8 @@ def getProjectPic( userId, projectId ):
   rprojpic["brdPicId"] = "brd-proj-default.png"
   rprojpic["type"] = "error"
 
-  proj = db.hgetall( "project:" + str(projectId) )
+  #proj = db.hgetall( "project:" + str(projectId) )
+  proj = getProject( str(projectId) )
   if not proj:
     return rprojpic
 
@@ -238,13 +239,14 @@ def expireCookie( cookie, val ):
   cookie[val] = ""
   cookie[val]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
 
-def breadcrumb( username=None, projectName=None, projectId=None ):
+def breadcrumb( username=None, userId=None, projectName=None, projectId=None ):
   prefix = """
   <div class='row'>
     <div class='col-lg-12'>
       <ul class='breadcrumb' >
-        <li> <a href='/portfolio'>
+      <li>
   """
+        #<li> <a href='/portfolio'>
   suffix = """
     </a>  </li>
       </ul>
@@ -254,8 +256,9 @@ def breadcrumb( username=None, projectName=None, projectId=None ):
 
   s = ""
 
-  if username is not None:
-    s += username
+  if (username is not None) and (userId is not None):
+    #s += username
+    s += "<a href='/portfolio?userId=" + str(userId) + "'>" + username
     if (projectName is not None) and (projectId is not None):
       s += "</a></li> <li><a href='/project?projectId=" + str(projectId) + "'>" + str(projectName)
 
@@ -533,7 +536,8 @@ def userPasswordTest( userId, testpass ):
 def getProjectUserName( projectId ):
   db = redis.Redis()
 
-  p = db.hgetall( "project:" + str(projectId) )
+  #p = db.hgetall( "project:" + str(projectId) )
+  p = getProject( str(projectId) )
   if not p:
     return None
   uid = p["userId"]
@@ -546,7 +550,8 @@ def getProjectUserName( projectId ):
 def getProjectUserId( projectId ):
   db = redis.Redis()
 
-  p = db.hgetall( "project:" + str(projectId) )
+  #p = db.hgetall( "project:" + str(projectId) )
+  p = getProject( str(projectId) )
   if not p:
     return None
   uid = p["userId"]
@@ -736,6 +741,17 @@ def createProject( userId, projectName, permission ):
 
   return proj
 
+def updateProjectShortDescription( userId, projectId, descr ):
+  db = redis.Redis()
+  proj = getProject( str(projectId) )
+
+  if not proj: return None
+  if proj["userId"] != str(userId): return None
+
+  return db.hset( "project:" + str(projectId), "shortDescription", descr )
+
+
+
 def updateProjectPermission( userId, projectId, perm ):
   db = redis.Redis()
 
@@ -745,7 +761,8 @@ def updateProjectPermission( userId, projectId, perm ):
   elif perm == "user":
     p = "user"
 
-  proj = db.hgetall( "project:" + str(projectId) )
+  #proj = db.hgetall( "project:" + str(projectId) )
+  proj = getProject( str(projectId) )
 
   if not proj:
     return None
@@ -757,7 +774,14 @@ def updateProjectPermission( userId, projectId, perm ):
 
 def getProject( projectId ):
   db = redis.Redis()
-  return db.hgetall( "project:" + str(projectId) )
+
+  proj = db.hgetall( "project:" + str(projectId) )
+  if "shortDescription" not in proj:
+    proj["shortDescription"] = ""
+
+  return proj
+
+ 
 
 def getProjectSnapshot( projectId ):
   db = redis.Redis()
@@ -767,7 +791,8 @@ def getProjectSnapshot( projectId ):
 def deleteProject( userId, projectId ):
   db = redis.Redis()
 
-  proj = db.hgetall( "project:" + str(projectId) )
+  #proj = db.hgetall( "project:" + str(projectId) )
+  proj = getProject( str(projectId) )
   if not proj:
     return None
 
@@ -811,7 +836,8 @@ def getAllProjects( ):
   projects = []
 
   for projId in pool:
-    proj = db.hgetall( "project:" + projId )
+    #proj = db.hgetall( "project:" + projId )
+    proj = getProject( projId )
 
     if proj and proj["active"] == "1" and proj["permission"] == "world-read":
       user = db.hgetall( "user:" + proj["userId"] )
@@ -823,7 +849,7 @@ def getAllProjects( ):
 
 
 
-def getPortfolios( userId ):
+def getPortfolios( userId, includePrivateProjects = False ):
   db = redis.Redis()
 
   olios = []
@@ -837,9 +863,19 @@ def getPortfolios( userId ):
     proj["json_sch"] = snap["json_sch"];
     proj["json_brd"] = snap["json_brd"];
 
+    if not includePrivateProjects:
+      if proj["permission"] != "world-read":
+        continue
+
+    u = getUser( proj["userId"] )
+    proj["userName"] = u["userName"]
+
+
     if ("active" in proj) and (str(proj["active"]) == "1"):
       olios.append( proj )
     #olios[str(projectId)] = getProject(projectId)
+
+
 
   return olios
 
@@ -1115,7 +1151,9 @@ def getExplorePortfolios( userId, start, end ):
   r_proj = []
 
   for proj in projs:
-    p = db.hgetall( "project:" + str(proj) )
+    #p = db.hgetall( "project:" + str(proj) )
+    p = getProject( str(proj) )
+
     if p["active"] != "1": continue
     #if p["userId"] == userId: continue
     if p["permission"] == "world-read":
@@ -1134,6 +1172,78 @@ def getExplorePortfolios( userId, start, end ):
 def constructExploreHTMLList( userId, start, end ):
 
   projs = getExplorePortfolios( userId, start, end )
+
+  return constructProjectListTable( projs, start, end )
+
+
+#def constructExploreHTMLList( userId, start = 0, end = 10 ):
+def constructProjectListTable( projs, start = 0, end = 10 ):
+
+  table_cols = [ "Project", "Description", "Sch", "Brd", "DL" ]
+  table_cols_sz = [ "4", "5", "1", "1", "1" ]
+
+  tableProjectHTML = [ ]
+
+#  tableProjectHTML = [ "<div><div class='panel-body'> <div class='row'> "]
+#  for k,v in enumerate( table_cols ):
+#    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[k] + "'>" +
+#                             table_cols[k] +
+#                             "</div>" )
+#  tableProjectHTML.append( " </row> </div></div> " )
+
+  bbs =  "<button type='button' class='btn btn-default btn-xs'>"
+  bbe = "</button>"
+
+  bbs_sm =  "<button type='button' class='btn btn-default btn-sm'>"
+  bbe_sm = "</button>"
+
+  for p in projs:
+
+    tableProjectHTML.append( "<div class='panel panel-default'> " )
+    tableProjectHTML.append( "<div class='panel-body'> <div class='row'> " )
+
+
+    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[0] + "'>" )
+    tableProjectHTML.append( "<a href='portfolio?userId=" + p["userId"] + "'>" + p["userName"] + "</a>" )
+    tableProjectHTML.append( " / " )
+    tableProjectHTML.append( "<a href='project?projectId=" + p["id"] + "'>" + p["name"] + "</a>" )
+    tableProjectHTML.append( "</div>" )
+
+
+    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[1] + "'>" )
+    tableProjectHTML.append( p["shortDescription"] )
+    tableProjectHTML.append( "</div>" )
+
+
+    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "'>" )
+    tableProjectHTML.append(  "<a href='sch?project=" + p["id"] + "' >" +
+                              bbs + "<img src='/img/alignment-unalign.svg' width='20px' /><br/>sch" + bbe + "</a>" )
+    tableProjectHTML.append( "</div>" )
+
+
+    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "'>" )
+    tableProjectHTML.append(  "<a href='brd?project=" + p["id"] + "' >" +
+                              bbs + "<img src='/img/circuit-board.svg' width='20px' /><br/>brd" + bbe + "</a>" )
+    tableProjectHTML.append( "</div>" )
+
+
+    action = "onclick='downloadProject(\"" + p["id"] + "\");'"
+
+    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "'>" )
+    tableProjectHTML.append( "<a href='#' " + action + " >" )
+    tableProjectHTML.append( bbs_sm )
+    tableProjectHTML.append( "<i class='fa fa-cloud-download fa-lg'></i></img>")
+    tableProjectHTML.append( bbe_sm )
+    tableProjectHTML.append( "</a>" )
+    tableProjectHTML.append( "</div>" )
+
+
+    tableProjectHTML.append( "</div></div></div>" )
+
+  return "\n".join( tableProjectHTML )
+
+  ###
+
 
   table_cols = [ "Project", "Owner", "&nbsp;"  ]
 

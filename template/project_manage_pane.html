@@ -1,11 +1,9 @@
 
 <script>
 function deleteProject() {
-  console.log("...");
   var ele = document.getElementById('confirmProjectDeleteName');
   console.log(ele);
-  console.log("replacing to /deleteproject?projectId=" + g_project["projectId"] );
-
+  //console.log("replacing to /deleteproject?projectId=" + g_project["projectId"] );
   window.location.replace( "/deleteproject?projectId=" + g_project["projectId"] );
 }
 </script>
@@ -14,7 +12,48 @@ function deleteProject() {
 
               <div class='panel panel-default'>
                 <div class='panel-heading'>
-                  Permissions
+                  <b>Short Description</b>
+                </div>
+
+                <div class='panel-body'>
+
+                  <p>
+                  Provide a short description of your project.  If the project is public,
+                  this is what will appear when others explore and search.
+                  </p>
+
+                  <br/>
+
+                  <form class='form-group' action='updateproject' method='POST'>
+
+                    <fieldset>
+                      <div class='form-group'>
+
+                        <textarea name='shortDescription' id='shortDescription' class='form-control' rows='3'></textarea>
+
+                      </div>
+                    </fieldset>
+
+
+                    <fieldset>
+                      <div class='form-group' style='margin-left:10px;' >
+                        <button id='updateButton' class='btn btn-primary'>Update Project</button>
+                      </div>
+                    </fieldset>
+
+                    <!--PROJECTID_HIDDEN_INPUT-->
+                    <!-- <input type='hidden' id='permissionOption' name='permissionOption'></input> -->
+
+                  </form>
+
+                </div>
+              </div>
+
+              <br />
+
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <b>Permissions</b>
                 </div>
 
                 <div class='panel-body'>
@@ -57,13 +96,95 @@ function deleteProject() {
               </div>
 
               <br />
+
+
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <b>License</b>
+
+                </div>
+
+                <div class='panel-body'>
+                  <p>
+                  Please select the license under which the artwork and associated
+                  design files are under.
+                  <br/>
+
+                  Free accounts on this site that have projects made public
+                  must have all artwork must be under a permissive license.
+                  <br/>
+
+                  Upgraded accounts have the option to keep projects and artwork
+                  under more restrictive licenses.
+                  </p>
+
+
+                  <form class='form-group' action='updateproject' method='POST'>
+
+                    <fieldset>
+                      <div class='form-group'>
+
+                        <label for='ccbysa' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' checked>
+                          CC-BY-SA
+                          (<a href='http://creativecommons.org/licenses/by-sa/4.0/'>
+                            <small><small>by attribution, share alike</small></small>
+                           </a>)
+                        </label>
+
+                        <label for='ccby' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' >
+                          CC-BY 
+                          (<a href='http://creativecommons.org/licenses/by/4.0/'>
+                            <small><small>by attribution</small></small>
+                           </a>)
+                        </label>
+
+                        <label for='cc0' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' >
+                          CC0
+                          (<a href='http://creativecommons.org/about/cc0'>
+                            <small><small>public domain</small></small>
+                          </a>)
+                        </label>
+
+
+                        <label for='copyright' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' disabled>
+                          <span style='opacity:0.3;' >Copyright</span>
+                        </label>
+
+                        <label for='copyrightother' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' disabled>
+                          <span style='opacity:0.3;' >Other</span>
+                        </label>
+
+                      </div>
+                    </fieldset>
+
+
+                    <fieldset>
+                      <div class='form-group' style='margin-left:10px;' >
+                        <button id='updateButtonLicense' class='btn btn-primary'>Update Project</button>
+                      </div>
+                    </fieldset>
+
+                    <!--PROJECTID_HIDDEN_INPUT_PERMISSION-->
+                    <!-- <input type='hidden' id='permissionOption' name='permissionOption'></input> -->
+
+                  </form>
+
+                </div>
+              </div>
+
+              <br />
               <br />
               <br />
               <br />
 
               <div class='panel panel-danger'>
 
-                <div class='panel-heading'> Danger Zone </div>
+                <div class='panel-heading'> <b>Danger Zone</b> </div>
 
                   <div class='panel-body'>
 

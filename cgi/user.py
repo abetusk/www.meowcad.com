@@ -115,7 +115,7 @@ nav = mew.processLoggedInNavTemplate( nav, userData["userName"], userData["type"
 tmp_str = template
 
 tmp_str = mew.replaceTemplateMessage( tmp_str , msg, msgType )
-tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) )
+tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName), userId ) )
 
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )

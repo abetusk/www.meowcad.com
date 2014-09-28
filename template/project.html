@@ -306,7 +306,14 @@ function cancelReadme() {
     </div>
 
 
+
     <!--BREADCRUMB-->
+
+    <div class='row' style='margin-bottom:20px; margin-left:5px;'>
+      <div class='col-lg-12'>
+        <!--PROJECT_SHORT_DESCRIPTION-->
+      </div>
+    </div>
 
     <div class='container-fluid'>
       <div class='row'>
@@ -352,6 +359,7 @@ function cancelReadme() {
 
 
     <!--PROJECT_README-->
+
     <div class='row' style='margin-top:10px;'>
       <div class='col-lg-12' >
         <div class='panel panel-default'>
@@ -382,15 +390,18 @@ function cancelReadme() {
 
                 <div class='col-sm-6' style='text-align:center;' >
                   <div id='schematicSnapshot' style='margin-bottom:10px; margin-top:10px;' >
-                    <!-- <img class='img-rounded' src='/img/sch_snapshot.png' style='width:100%; border:1px solid gray;' ></img>
--->
+                    <!--
+                    <img class='img-rounded' src='/img/sch_snapshot.png' style='width:100%; border:1px solid gray;' ></img>
+                    -->
+
                     <!--SCHPIC-->
                   </div>
 
                   <div>
                     <button id='schematicSnapshotButton' type='button' class='btn btn-info' onclick='gotosch();' >
-                      <i class='fa fa-pencil'></i>
-                      Edit Schematic
+                      <!-- <i class='fa fa-pencil'></i> -->
+                      <i class='fa fa-share'></i>
+                      Goto Schematic
                     </button>
                   </div>
                 </div>
@@ -404,8 +415,9 @@ function cancelReadme() {
 
                   <div>
                     <button id='boardSnapshotButton' type='button' class='btn btn-info' onclick='gotobrd();' >
-                      <i class='fa fa-pencil'></i>
-                      Edit Board
+                      <!-- <i class='fa fa-pencil'></i> -->
+                      <i class='fa fa-share'></i>
+                      Goto Board
                     </button>
                   </div>
                 </div>
@@ -417,9 +429,9 @@ function cancelReadme() {
               <br />
               <br />
 
+              <!--
 
               <div id='readme' >
-                <!-- <img src='/img/ghost_big.png'></img> -->
                 The readme for this project...
               </div>
 
@@ -455,6 +467,10 @@ function cancelReadme() {
                 </div>
 
               </div>
+
+              -->
+
+
             </div>
 
             <div class='tab-pane' id='PanelBOM'>

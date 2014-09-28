@@ -8,6 +8,7 @@ import Cookie
 cgitb.enable()
 
 
+### DEBUG
 #print "Content-type: text/html; charset=utf-8;"
 #print
 
@@ -32,41 +33,74 @@ if "projectId" not in form:
   print
   sys.exit(0)
 
+
 projectId = form["projectId"].value
 
-if "permissionOption" not in form:
-  cookie["message"] = "Permission option must be non-empty " 
-  cookie["messageType"] = "error"
-  #print "Location:manageproject?projectId=" + str(projectId)
+if "shortDescription" in form:
+  descr = form["shortDescription"].value
+
+  userId = cookie_hash["userId"]
+
+  r = mew.updateProjectShortDescription( userId, projectId, descr ) 
+
+  if r is None:
+    cookie["message"] = "Error occured"
+    cookie["messageType"] = "error"
+  else:
+    cookie["message"] = "Project updated"
+    cookie["messageType"] = "success"
+
   print "Location:project?projectId=" + str(projectId)
   print cookie.output()
   print
   sys.exit(0)
 
-formPerm = form["permissionOption"].value
+#if "permissionOption" not in form:
+#  cookie["message"] = "Permission option must be non-empty " 
+#  cookie["messageType"] = "error"
+#  #print "Location:manageproject?projectId=" + str(projectId)
+#  print "Location:project?projectId=" + str(projectId)
+#  print cookie.output()
+#  print
+#  sys.exit(0)
 
-perm = "none"
-if formPerm == "public":
-  perm = "world-read"
-elif formPerm == "private":
-  perm = "user"
+if "permissionOption" in form:
 
-userId = cookie_hash["userId"]
-userData = mew.getUser( userId )
-userName = userData["userName"]
+  formPerm = form["permissionOption"].value
 
-r = mew.updateProjectPermission( userId, projectId, perm ) 
+  perm = "none"
+  if formPerm == "public":
+    perm = "world-read"
+  elif formPerm == "private":
+    perm = "user"
 
-if mew.updateProjectPermission( userId, projectId, perm ) is None:
-  cookie["message"] = "Error occured"
-  cookie["messageType"] = "error"
-else:
-  cookie["message"] = "Project updated"
-  cookie["messageType"] = "success"
+  userId = cookie_hash["userId"]
+  userData = mew.getUser( userId )
+  userName = userData["userName"]
 
-#print "Location:manageproject?projectId=" + str(projectId)
-print "Location:project?projectId=" + str(projectId)
-print cookie.output()
-print
-#print tmp_str
+  userData = mew.getUser( userId )
 
+  #if userData["type"] == "user":
+  if True:
+
+    r = mew.updateProjectPermission( userId, projectId, perm ) 
+
+    #if mew.updateProjectPermission( userId, projectId, perm ) is None:
+    if r is None:
+      cookie["message"] = "Error occured"
+      cookie["messageType"] = "error"
+    else:
+      cookie["message"] = "Project updated"
+      cookie["messageType"] = "success"
+
+  else:
+    cookie["message"] = "Anonymous users cannot update project permissions"
+    cookie["messageType"] = "error"
+
+  #print "Location:manageproject?projectId=" + str(projectId)
+  print "Location:project?projectId=" + str(projectId)
+  print cookie.output()
+  print
+  #print tmp_str
+
+  sys.exit(0)

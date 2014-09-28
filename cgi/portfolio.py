@@ -18,9 +18,27 @@ cgitb.enable()
 
 
 
-
-
 def renderProjectTable( olioList, publicOnlyFlag = True ):
+
+
+  return mew.constructProjectListTable( olioList )
+
+
+  table_cols = [ "Project", "Description", "Sch", "Brd", "DL" ]
+  table_cols_sz = [ "4", "5", "1", "1", "1" ]
+
+  bbs =  "<button type='button' class='btn btn-default btn-xs'>"
+  bbe = "</button>"
+
+  bbs_sm =  "<button type='button' class='btn btn-default btn-sm'>"
+  bbe_sm = "</button>"
+
+  tableProjectHTML = [ ]
+
+
+
+
+
   tableProjectHTML = [ "<thead><tr><th>" + "</th><th style='text-align:center;' >".join( [ "Project",
                                         "&nbsp;", "&nbsp;", "Access", "&nbsp;" ] ) + "</th></tr></thead>" ]
   for projectDat in olioList:
@@ -56,36 +74,61 @@ def renderProjectTable( olioList, publicOnlyFlag = True ):
 
   return hs + "".join( tableProjectHTML ) + he
 
-authenticatedFlag = False
 
+authenticatedFlag = False
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
-if ( ("userId" not in cookie_hash) or ("sessionId" not in cookie_hash)  or
-     (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 0) ):
+if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
+     (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) != 0) ):
   authenticatedFlag = True
-  #print "Location:login"
-  #print
-  #sys.exit(0)
 
 message,messageType = mew.processCookieMessage( cookie, cookie_hash )
 
 
-viewUserId = cookie_hash["userId"]
-userId = cookie_hash["userId"]
+viewUserId = None
+if "userId" in cookie_hash:
+  viewUserId = cookie_hash["userId"]
+userId = None
+if "userId" in cookie_hash:
+  userId = cookie_hash["userId"]
 
 form = cgi.FieldStorage()
 if "userId" in form:
   viewUserId = str(form["userId"].value)
 
 
+if viewUserId is None:
+  #cookie["message"] = "We're sorry, we couldn't find that user!"
+  #cookie["messageType"] = "error"
+  print "Location:missing"
+  print cookie.output()
+  print
+  sys.exit(0)
+
+viewUserData = mew.getUser( viewUserId )
+viewUserName = viewUserData["userName"]
+
 #userId = cookie_hash["userId"]
-sessionId = cookie_hash["sessionId"]
+sessionId = None
+if "sessionId" in cookie_hash:
+  sessionId = cookie_hash["sessionId"]
+
 #olioList = mew.getPortfolios( cookie_hash["userId"] )
-olioList = mew.getPortfolios( viewUserId )
-userData = mew.getUser( userId )
-userName = userData["userName"]
-if userData["type"] == "anonymous":
-  userName = "anonymous"
+
+viewPrivate = False
+if authenticatedFlag and viewUserId == userId:
+  viewPrivate = True
+olioList = mew.getPortfolios( viewUserId, viewPrivate )
+
+userType = None
+userName = None
+
+if userId is not None:
+  userData = mew.getUser( userId )
+  userName = userData["userName"]
+  if userData["type"] == "anonymous":
+    userName = "anonymous"
+  userType = userData["type"]
 
 componentLibraryAccordian = mew.renderAccordian( "json/component_list_default.json", "componentaccordian", userId )
 footprintLibraryAccordian = mew.renderAccordian( "json/footprint_list_default.json", "footprintaccordian", userId )
@@ -96,7 +139,12 @@ createproj = mew.slurp_file("template/portfolio_create_form.html")
 importform = mew.slurp_file("template/portfolio_import_form.html")
 
 nav = mew.slurp_file("template/navbar_template.html")
-nav = mew.processLoggedInNavTemplate( nav, str(userName), str(userData["type"]) )
+#nav = mew.processLoggedInNavTemplate( nav, str(userName), str(userData["type"]) )
+
+if userType is not None:
+  nav = mew.processLoggedInNavTemplate( nav, str(userName), str(userType) )
+else:
+  nav = mew.loggedOutNavTemplate( nav )
 
 footer = mew.slurp_file("template/footer_template.html")
 analytics = mew.slurp_file("template/analytics_template.html")
@@ -113,16 +161,21 @@ if viewUserId == userId:
 
 projectTable = renderProjectTable( olioList, publicOnlyFlag  )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
-tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) )
+#tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) )
+tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(viewUserName), str(viewUserId) ) )
 
 tmp_str = tmp_str.replace( "<!--PROJECT_TABLE-->", projectTable )
 
-if userData["type"] != "anonymous":
+#if userData["type"] != "anonymous":
+#if userType != "anonymous":
+if userType is not None and userType == "user":
   tmp_str = tmp_str.replace( "<!--PROJECT_CREATE_FORM_HEADER-->", 
                              "<li><a href='#PanelProjectCreate' data-toggle='tab'>New</a></li>" )
   tmp_str = tmp_str.replace( "<!--PROJECT_CREATE_FORM-->", createproj )
 
-tmp_str = tmp_str.replace( "<!--PROJECT_IMPORT_FORM-->", importform )
+  tmp_str = tmp_str.replace( "<!--PROJECT_IMPORT_FORM_HEADER-->",
+                             "<li><a href='#PanelImport' data-toggle='tab'>Import</a></li>" )
+  tmp_str = tmp_str.replace( "<!--PROJECT_IMPORT_FORM-->", importform )
 
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )

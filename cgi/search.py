@@ -34,9 +34,11 @@ footer = mew.slurp_file("template/footer_template.html")
 analytics = mew.slurp_file("template/analytics_template.html")
 
 userData = {}
+userId = None
 if loggedInFlag:
   userData = mew.getUser( cookie_hash["userId"] )
   userName = userData["userName"]
+  userId = userData["id"]
 
   unamestr = "["  + str(userName) + "]"
 
@@ -58,7 +60,7 @@ tmp_str = template
 tmp_str = mew.replaceTemplateMessage( tmp_str , msg, msgType )
 
 if loggedInFlag:
-  tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) )
+  tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName), userId ) )
 tmp_str = tmp_str.replace( "<!--FOOTER-->", footer )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
 tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )

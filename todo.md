@@ -28,7 +28,7 @@ TODO
   - file name for download
   - readme
   - ~~project snapshot viewing for non-owned projects~~
-  - sch/brd viewing for non-owned projects
+  - ~~sch/brd viewing for non-owned projects~~
   - sch/brd cloning
   - likes
   - downloads

@@ -132,17 +132,31 @@ userId = None
 sessionId = None
 projectId = None
 
-if ( ( "userId" in json_container ) and
-     ( "sessionId" in json_container) ):
+if "projectId" in json_container:
+  projectId = json_container["projectId"]
 
-  userId = json_container["userId"]
-  sessionId = json_container["sessionId"]
+  p = mew.getProject( projectId )
+  if p["permission"] == "world-read":
+    userId = p["userId"]
+  elif ( ("sessionId" in json_container) and
+         (userId == p["userId"] ) and
+          mew.authenticateSession( userId, sessionId ) ):
+    userId = p["userId"]
 
-  if "projectId" in json_container:
-    projectId = json_container["projectId"]
-  
-  if not mew.authenticateSession( userId, sessionId ):
-    error_and_quit( "authentication error" )
+
+#if ( ( "userId" in json_container ) and
+#     ( "sessionId" in json_container) ):
+#
+#  userId = json_container["userId"]
+#  sessionId = json_container["sessionId"]
+#
+#  if "projectId" in json_container:
+#    projectId = json_container["projectId"]
+#
+#  if not mew.authenticateSession( userId, sessionId ):
+#    error_and_quit( "authentication error" )
+
+
 
 str_obj = "{ \"type\" : \"error\", \"message\":\"invalid op\" }"
 if op   == "COMP_LOC":      str_obj = comp_loc( userId, projectId )

@@ -34,6 +34,8 @@ def log( s ):
   f.write( str(s) + "\n" )
   f.close()
 
+def safe_str( s ):
+  return re.sub( '[^a-zA-Z-_%]', '', s )
 
 def slurp_file(fn):
   f = open(fn, "r")

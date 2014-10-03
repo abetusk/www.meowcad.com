@@ -119,7 +119,8 @@ def readyProjectZipfile( json_message ):
     error_and_quit(e, "...")
 
 
-  obj = { "type": "id", "id" : str(zip_uid), "notes" : "zip project file", "name" : "project.zip"  }
+  obj = { "type": "id", "id" : str(zip_uid), "notes" : "zip project file",
+          "name" : json_message["name"] }
   return obj
 
 
@@ -144,9 +145,9 @@ if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash) and
     if "projectId" in fields:
       projectId = fields["projectId"].value
 
-log_line( "u: " + str(userId) )
-log_line( "s: " + str(sessionId) )
-log_line( "p: " + str(projectId) )
+#log_line( "u: " + str(userId) )
+#log_line( "s: " + str(sessionId) )
+#log_line( "p: " + str(projectId) )
 
 if projectId is None:
 
@@ -167,7 +168,8 @@ json_container = {}
 try:
   snapshot = mew.getProjectSnapshot( projectId )
   json_container = { "board" : json.loads(snapshot["json_brd"]), 
-                     "schematic" : json.loads(snapshot["json_sch"]) }
+                     "schematic" : json.loads(snapshot["json_sch"]),
+                     "name" : mew.safe_str( proj["name"] ) + ".zip"  }
 except Exception as e:
 
   log_line( "----> loads error: " + str(e) )

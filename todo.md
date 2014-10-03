@@ -25,11 +25,17 @@ TODO
   2014-09-27 to 2014-09-28:
 
   - ~~anonymous logout~~
-  - file name for download
+  - ~~file name for download~~
   - readme
   - ~~project snapshot viewing for non-owned projects~~
   - ~~sch/brd viewing for non-owned projects~~
   - sch/brd cloning
   - likes
-  - downloads
+  - ~~downloads~~
+
+
+  2014-10-02 to 2014-10-05
+
+  - quirks
+  - footprint editor
 

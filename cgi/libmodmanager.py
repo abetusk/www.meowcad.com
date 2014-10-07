@@ -132,16 +132,21 @@ userId = None
 sessionId = None
 projectId = None
 
+if ( ("userId" in json_container) and ("sessionId" in json_container) ):
+  if mew.authenticateSession( json_container["userId"], json_container["sessionId"] ):
+    userId = json_container["userId"]
+    sessionId = json_container["sessionId"]
+
 if "projectId" in json_container:
   projectId = json_container["projectId"]
-
   p = mew.getProject( projectId )
   if p["permission"] == "world-read":
     userId = p["userId"]
-  elif ( ("sessionId" in json_container) and
-         (userId == p["userId"] ) and
-          mew.authenticateSession( userId, sessionId ) ):
-    userId = p["userId"]
+
+#  elif ( ("sessionId" in json_container) and
+#         (userId == p["userId"] ) and
+#          mew.authenticateSession( userId, sessionId ) ):
+#    userId = p["userId"]
 
 
 #if ( ( "userId" in json_container ) and

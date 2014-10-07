@@ -85,11 +85,10 @@ def file_cascade( userId, projectId, fn ):
   if (userId is not None) and (projectId is not None):
     usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
     projDir = os.path.join( usrDir , str(projectId) )
-    if in_directory( usrDir, USR_BASE_LOCATION ):
 
+    if in_directory( usrDir, USR_BASE_LOCATION ):
       if in_directory( projDir, usrDir ):
         fullfn = os.path.join( projDir, fn )
-
         if in_directory( fullfn, projDir ) and os.path.isfile( fullfn ):
           return json_slurp_file( fullfn )
 
@@ -100,6 +99,7 @@ def file_cascade( userId, projectId, fn ):
   if (userId is not None) :
     usrDir = os.path.join( USR_BASE_LOCATION, str(userId) )
     if in_directory( usrDir, USR_BASE_LOCATION ):
+
       fullfn = os.path.join( usrDir, fn )
       if in_directory( fullfn, usrDir ) and os.path.isfile( fullfn ):
         return json_slurp_file( fullfn )

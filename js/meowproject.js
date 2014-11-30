@@ -458,7 +458,12 @@ module.exports = {
         };
 
 
-        var schematic_data = { element: [] };
+        var schematic_data = {
+          element: [],
+          component_lib : {},
+          net_pin_id_map : {}
+        };
+
         var board_data = { 
           element: [], 
           equipot: [ { net_name : "", net_number : 0 }],  
@@ -473,7 +478,7 @@ module.exports = {
               schematicData : JSON.stringify( schematic_data ),
               boardData : JSON.stringify( board_data ),
 
-          /*
+              /*
               schematicData : "{ \"element\" : [] }",
               boardData : "{ \"element\" : [], \"equipot\" : [], " + 
                     " \"equipot\" : [ { \"net_name\" : \"\", \"net_number\" : 0 }], " + 

@@ -716,7 +716,7 @@ def createProject( userId, projectName, permission ):
   netClass = {}
   netClass["Default"] = defNetClass 
 
-  schData = { "element" : [] }
+  schData = { "element" : [], "component_lib" :{}, "net_pin_id_map":{} }
   schData_s = json.dumps( schData )
 
   brdData = { "units": "deci-mils", "element" : [], "equipot" : [ { "net_name" : "", "net_number" : 0 } ], "net_class" : netClass }

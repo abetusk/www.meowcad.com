@@ -277,7 +277,7 @@ module.exports = {
     //var schName  = randomName(json_words.word, 3) ;
     //var brdName  = randomName(json_words.word, 3) ;
 
-    var blankSch = "{ \"element\":[] }";
+    var blankSch = "{ \"element\":[], \"component_lib\":{}, \"net_pin_id_map\":{} }";
     var blankBrd = "{ \"element\":[], " + 
                     " \"equipot\" : [ { \"net_name\" : \"\", \"net_number\" : 0 }], " + 
                     " \"units\" : \"deci-mils\"  }";

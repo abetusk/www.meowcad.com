@@ -18,7 +18,8 @@
 
 	<Directory /var/www/>
 
-		Options -Indexes FollowSymLinks MultiViews
+		Options -Indexes
+        Options FollowSymLinks MultiViews
 		#Options -Indexes FollowSymLinks 
 
 		AllowOverride None

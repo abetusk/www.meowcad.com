@@ -20,6 +20,7 @@ jsonbrd_exec = "/home/meow/pykicad/jsonbrd.py"
 
 brdgrb_exec = "/home/meow/pykicad/brdgerber.py"
 grbngc_exec = "/home/meow/bin/gbl2ngc"
+drlngc_exec = "/home/meow/bin/drl2ngc"
 font_file = "/home/meow/pykicad/aux/hershey_ascii.json"
 
 staging_base = "/home/meow/stage"
@@ -90,10 +91,15 @@ def readyProjectZipfile( json_message ):
       gerber_uid, gerber_fn = dumpToFile( grbr )
       gerber_files.append( { "id": gerber_uid , "filename" : gerber_fn, "layer" : layer } )
 
-      radius_decithou = "0.002"
-      gcode = sp.check_output( [ grbngc_exec, "--radius", radius_decithou, "--input", gerber_fn  ] )
-      gcode_uid, gcode_fn = dumpToFile( gcode )
-      gcode_files.append( { "id" : gcode_uid, "filename" : gcode_fn, "layer" : layer } )
+      if layer >= 0:
+        radius_decithou = "0.002"
+        gcode = sp.check_output( [ grbngc_exec, "--radius", radius_decithou, "--input", gerber_fn  ] )
+        gcode_uid, gcode_fn = dumpToFile( gcode )
+        gcode_files.append( { "id" : gcode_uid, "filename" : gcode_fn, "layer" : layer } )
+      else:
+        gcode = sp.check_output( [ drlngc_exec, "--input", gerber_fn  ] )
+        gcode_uid, gcode_fn = dumpToFile( gcode )
+        gcode_files.append( { "id" : gcode_uid, "filename" : gcode_fn, "layer" : layer } )
 
     projname = "project"
 

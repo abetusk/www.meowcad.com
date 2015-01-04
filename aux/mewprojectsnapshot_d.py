@@ -14,7 +14,7 @@ db = redis.Redis()
 
 last_project_event_h = {}
 g_fn = "./project_event_hash.list"
-g_snapdir = "/home/abram/prog/www.meowcad.com/js"
+g_snapdir = "/home/meow/www.meowcad.com/js"
 g_snapexec = "projectsnap.js"
 
 USRBASE = "/home/meow/usr"

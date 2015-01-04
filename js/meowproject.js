@@ -508,6 +508,8 @@ module.exports = {
 
         console.log("newproject created");
 
+        m.db.sadd( "projectpool", projId );
+
 
         m.socket.emit("newproject", {
                 type:"response",

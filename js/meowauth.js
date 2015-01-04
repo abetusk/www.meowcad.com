@@ -322,6 +322,8 @@ module.exports = {
           json_brd : blankBrd 
         });
 
+    m.db.sadd( "projectpool", projId );
+
     var eventId = guid();
 
     var op = { type : "snapshot", source : "none", destination : "none" };

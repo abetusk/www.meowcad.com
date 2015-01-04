@@ -5,6 +5,7 @@ RUN apt-get install -y git apache2 haproxy \
   nodejs npm gcc g++ python \
   redis-server redis-tools python-redis \
   imagemagick python-numpy libboost-thread-dev libjpeg-dev libcairo2-dev \
+  unzip wget \
   telnet vim
 
 # Enable apahce2 settings and setup 'meow' user with password 'mewmew'.
@@ -13,6 +14,27 @@ RUN a2enmod rewrite
 RUN a2enmod cgi
 RUN useradd -m meow
 RUN echo 'meow:mewmew' | chpasswd
+
+# We have to first install mysqld.
+# Note: When running on my host system, I had to issue the following commands
+#  to get mysql to start as a service:
+#
+# sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
+# sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
+#
+# see:
+#   http://stackoverflow.com/questions/22473830/docker-and-mysql-libz-so-1-cannot-open-shared-object-file-permission-denied
+#   https://github.com/docker/docker/issues/5430
+#
+RUN export DEBIAN_FRONTEND=noninteractive ; apt-get -q -y install mysql-server
+RUN service mysql start ; mysqladmin -u root password mewmew
+
+# Next intall Piwik
+#
+RUN mkdir -p /var/www/analytics ; cd /var/www/analytics ; \
+  wget http://builds.piwik.org/piwik.zip ; \
+  unzip piwik.zip
+
 
 # Grab git repos
 #  - bleepsix holds the JavaScript editors

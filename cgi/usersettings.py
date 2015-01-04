@@ -30,6 +30,10 @@ tmp_str = template.replace("<!--USER-->", userName )
 tmp_str = tmp_str.replace("<!--USERID-->", userId )
 tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
 tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", mew.userIndicatorString( userId, userName ) )
+
+analytics = mew.slurp_file("template/analytics_template.html")
+tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics)
+
 tmp_str = mew.replaceTemplateMessage( tmp_str, message, messageType )
 
 print "Content-Type: text/html;charset=utf-8"

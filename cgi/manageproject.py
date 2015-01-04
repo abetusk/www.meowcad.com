@@ -99,6 +99,10 @@ else:
 
 tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template.html") )
 
+analytics = mew.slurp_file("template/analytics_template.html")
+tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics)
+
+
 print "Content-Type: text/html;charset=utf-8"
 print cookie.output()
 print

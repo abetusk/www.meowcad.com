@@ -34,6 +34,9 @@ tmp_str = tmp_str.replace( "<!--LEFT-->", mew.slurp_file("template/left_template
 tmp_str = tmp_str.replace( "<!--USERINDICATOR-->", mew.userIndicatorString( userId, userName ) )
 tmp_str = tmp_str.replace("<!--MESSAGE-->", mew.message( message ) )
 
+analytics = mew.slurp_file("template/analytics_template.html")
+tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics)
+
 
 
 

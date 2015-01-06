@@ -1180,7 +1180,8 @@ def constructExploreHTMLList( userId, start, end ):
 
   projs = getExplorePortfolios( userId, start, end )
 
-  return constructProjectListTable( projs, start, end )
+  #return constructProjectListTable( projs, start, end )
+  return constructViewProjectListTable( projs, start, end )
 
 
 def _constructProjectListTable( projs, start = 0, end = 10, schlink = "sch", brdlink = "brd"  ):

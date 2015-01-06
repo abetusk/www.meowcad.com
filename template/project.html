@@ -150,6 +150,14 @@ function gotobrd() {
   window.location.href = "/brd?project=" + g_project["projectId"];
 }
 
+function gotoviewsch() {
+  window.location.href = "/view_sch?project=" + g_project["projectId"];
+}
+
+function gotoviewbrd() {
+  window.location.href = "/view_pcb?project=" + g_project["projectId"];
+}
+
 function fetchdownload() {
   console.log("fetch download", g_project["projectId"] );
 }
@@ -331,18 +339,6 @@ function cancelReadme() {
 
         <div class='col-sm-6' style='text-align:center; margin-bottom:5px;' >
        
-          <!--
-          <button type='button' class='btn btn-default' onclick='gotosch();' >
-            <i class='fa fa-toggle-right'></i>
-            Schematic
-          </button>
-
-          <button type='button' class='btn btn-default' onclick='gotobrd();' >
-            <i class='fa fa-arrow-circle-right'></i>
-            Board
-          </button>
-          -->
-
         </div>
         <div class='col-sm-3' style='text-align:center; margin-bottom:5px;' >
 
@@ -399,7 +395,8 @@ function cancelReadme() {
                   </div>
 
                   <div>
-                    <button id='schematicSnapshotButton' type='button' class='btn btn-info' onclick='gotosch();' >
+                    <!-- <button id='schematicSnapshotButton' type='button' class='btn btn-info' onclick='gotosch();' > -->
+                    <button id='schematicSnapshotButton' type='button' class='btn btn-info' onclick='<!--JS_SCH-->' >
                       <!-- <i class='fa fa-pencil'></i> -->
                       <i class='fa fa-share'></i>
                       Goto Schematic
@@ -415,7 +412,8 @@ function cancelReadme() {
                   </div>
 
                   <div>
-                    <button id='boardSnapshotButton' type='button' class='btn btn-info' onclick='gotobrd();' >
+                    <!-- <button id='boardSnapshotButton' type='button' class='btn btn-info' onclick='gotobrd();' > -->
+                    <button id='boardSnapshotButton' type='button' class='btn btn-info' onclick='<!--JS_BRD-->' >
                       <!-- <i class='fa fa-pencil'></i> -->
                       <i class='fa fa-share'></i>
                       Goto Board

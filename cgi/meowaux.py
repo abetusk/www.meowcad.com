@@ -1183,20 +1183,12 @@ def constructExploreHTMLList( userId, start, end ):
   return constructProjectListTable( projs, start, end )
 
 
-#def constructExploreHTMLList( userId, start = 0, end = 10 ):
-def constructProjectListTable( projs, start = 0, end = 10 ):
+def _constructProjectListTable( projs, start = 0, end = 10, schlink = "sch", brdlink = "brd"  ):
 
   table_cols = [ "Project", "Description", "Sch", "Brd", "DL" ]
   table_cols_sz = [ "4", "5", "1", "1", "1" ]
 
   tableProjectHTML = [ ]
-
-#  tableProjectHTML = [ "<div><div class='panel-body'> <div class='row'> "]
-#  for k,v in enumerate( table_cols ):
-#    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[k] + "'>" +
-#                             table_cols[k] +
-#                             "</div>" )
-#  tableProjectHTML.append( " </row> </div></div> " )
 
   bbs =  "<button type='button' class='btn btn-default btn-xs'>"
   bbe = "</button>"
@@ -1223,13 +1215,15 @@ def constructProjectListTable( projs, start = 0, end = 10 ):
 
 
     tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "'>" )
-    tableProjectHTML.append(  "<a href='sch?project=" + p["id"] + "' >" +
+    #tableProjectHTML.append(  "<a href='sch?project=" + p["id"] + "' >" +
+    tableProjectHTML.append(  "<a href='" + schlink + "?project=" + p["id"] + "' >" +
                               bbs + "<img src='/img/alignment-unalign.svg' width='20px' /><br/>sch" + bbe + "</a>" )
     tableProjectHTML.append( "</div>" )
 
 
     tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "'>" )
-    tableProjectHTML.append(  "<a href='brd?project=" + p["id"] + "' >" +
+    #tableProjectHTML.append(  "<a href='brd?project=" + p["id"] + "' >" +
+    tableProjectHTML.append(  "<a href='" + brdlink + "?project=" + p["id"] + "' >" +
                               bbs + "<img src='/img/circuit-board.svg' width='20px' /><br/>brd" + bbe + "</a>" )
     tableProjectHTML.append( "</div>" )
 
@@ -1281,4 +1275,10 @@ def constructProjectListTable( projs, start = 0, end = 10 ):
 
   return hs + "\n".join( tableProjectHTML ) + he
 
+
+def constructProjectListTable( projs, start = 0, end = 10 ):
+  return _constructProjectListTable( projs, start, end, "sch", "brd" )
+
+def constructViewProjectListTable( projs, start = 0, end = 10 ):
+  return _constructProjectListTable( projs, start, end, "view_sch", "view_pcb" ) 
 

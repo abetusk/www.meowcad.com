@@ -19,60 +19,10 @@ cgitb.enable()
 
 
 def renderProjectTable( olioList, publicOnlyFlag = True ):
-
-
+  if publicOnlyFlag:
+    return mew.constructViewProjectListTable( olioList )
   return mew.constructProjectListTable( olioList )
 
-
-  table_cols = [ "Project", "Description", "Sch", "Brd", "DL" ]
-  table_cols_sz = [ "4", "5", "1", "1", "1" ]
-
-  bbs =  "<button type='button' class='btn btn-default btn-xs'>"
-  bbe = "</button>"
-
-  bbs_sm =  "<button type='button' class='btn btn-default btn-sm'>"
-  bbe_sm = "</button>"
-
-  tableProjectHTML = [ ]
-
-
-
-
-
-  tableProjectHTML = [ "<thead><tr><th>" + "</th><th style='text-align:center;' >".join( [ "Project",
-                                        "&nbsp;", "&nbsp;", "Access", "&nbsp;" ] ) + "</th></tr></thead>" ]
-  for projectDat in olioList:
-    projectId = projectDat["id"]
-    if projectDat["permission"] == "world-read":
-      perm = "<i class='fa fa-heart'></i> " + projectDat["permission"] 
-    else:
-      perm = "<i class='fa fa-lock'></i> " + "private"
-
-      if publicOnlyFlag:
-        continue
-
-    nam = projectDat["name"]
-
-    bbs = "<button type='button' class='btn btn-default btn-xs'>"
-    bbe = "</button>"
-
-    action = "onclick='downloadProject(\"" + projectDat["id"] + "\");'"
-
-    x = [ "<a href='project?projectId=" + str(projectDat["id"]) + "'>" + nam + "</a>",
-          "<a href='sch?project=" + projectDat["id"] + "' >" +
-              bbs + "<img src='/img/alignment-unalign.svg' width='20px' /><br/>sch" + bbe + "</a>",
-          "<a href='brd?project=" + projectDat["id"] + "' >" +
-              bbs + "<img src='/img/circuit-board.svg' width='20px' /><br/>brd" + bbe + "</a>",
-          perm, "<a href='#' " + action + " ><i class='fa fa-cloud-download fa-lg'></i></img></a>" ]
-
-    trs = "<tr> <td style='word-break:break-all;' > "
-    tre = "</td> </tr>"
-    tableProjectHTML.append( trs  + "</td> <td style='word-break:break-word; text-align:center; ' >".join(x) + tre )
-
-  hs = "<table class='table table-striped table-bordered table-condensed' >"
-  he = "</tbody></table>"
-
-  return hs + "".join( tableProjectHTML ) + he
 
 
 authenticatedFlag = False

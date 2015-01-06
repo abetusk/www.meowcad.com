@@ -172,6 +172,11 @@ if picdata["type"] == "default":
   extra = ""
   if authorizedFlag:
     extra = "&userId=" + userId + "&projectId=" + projectId
+    tmp_str = tmp_str.replace( "<!--JS_SCH-->", "gotosch();" )
+    tmp_str = tmp_str.replace( "<!--JS_BRD-->", "gotobrd();" )
+  else:
+    tmp_str = tmp_str.replace( "<!--JS_SCH-->", "gotoviewsch();" )
+    tmp_str = tmp_str.replace( "<!--JS_BRD-->", "gotoviewbrd();" )
 
   tmp_str = tmp_str.replace( "<!--SCHPIC-->", aa + "src='mewpng?f=img/" + picdata["schPicId"] + extra + "' " + zz )
   tmp_str = tmp_str.replace( "<!--BRDPIC-->", aa + "src='mewpng?f=img/" + picdata["brdPicId"] + extra + "' " + zz )
@@ -192,6 +197,9 @@ else:
             "&projectId=" + projectId +
             "' " + zz )
 
+    tmp_str = tmp_str.replace( "<!--JS_SCH-->", "gotosch();" )
+    tmp_str = tmp_str.replace( "<!--JS_BRD-->", "gotobrd();" )
+
   else:
     tmp_str = tmp_str.replace( "<!--SCHPIC-->",
             aa +
@@ -206,6 +214,9 @@ else:
             "&userId=" + projectUserId +
             "&projectId=" + projectId +
             "' " + zz )
+
+    tmp_str = tmp_str.replace( "<!--JS_SCH-->", "gotoviewsch();" )
+    tmp_str = tmp_str.replace( "<!--JS_BRD-->", "gotoviewbrd();" )
 
 print "Content-Type: text/html;charset=utf-8"
 print cookie.output()

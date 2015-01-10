@@ -108,6 +108,7 @@ def process_imports():
 
     print mew.humanTime(), fqfn_queue_file, os.path.join( LIBMOD_SNAP_QUEUE_DIR, ".store", qfn )
 
+    sp.check_call( [ "mkdir", "-p", os.path.join( LIBMOD_SNAP_QUEUE_DIR, ".store" ) ] )
     os.rename( fqfn_queue_file, os.path.join( LIBMOD_SNAP_QUEUE_DIR, ".store", qfn ) )
 
   # for listdir

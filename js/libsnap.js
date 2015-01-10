@@ -86,6 +86,7 @@ global.g_painter = bleepsix;
 global.g_component_cache = g_component_cache;
 global.g_footprint_cache = g_footprint_cache;
 
+sch.kicad_sch_json.component_lib = g_component_cache;
 
 if (verbose) { 
   console.log( "#projectId:", projectId, "w:", width, "h:", height );

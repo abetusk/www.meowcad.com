@@ -491,7 +491,7 @@ def addemail( userId, email ):
   obj["userId"] = str(userId)
   obj["email"] = str(email)
   obj["stime"] = ts
-  obj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+  obj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S.%f')
   db.hmset( "useremail:" + str(useremailid), obj )
 
   db.sadd( "useremail:" + str(userId), str(useremailid) )
@@ -513,7 +513,7 @@ def feedback( userId, email, feedback ):
   obj["userId"] = str(userId)
   obj["email"] = str(email)
   obj["stime"] = ts
-  obj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+  obj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S.%f')
   db.hmset( "feedback:" + feedbackId, obj )
 
   db.sadd( "feedbackpool", feedbackId )
@@ -634,7 +634,7 @@ def createUser( userName, password ):
   user["userName"] = str(userName)
   user["type"] = "user"
   user["stime"] = ts
-  user["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+  user["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S.%f')
   r = db.hmset( "user:" + userId, user );
 
   db.sadd( "userpool", userId )
@@ -692,7 +692,7 @@ def createProject( userId, projectName, permission ):
   proj["name"] = str(projectName)
   proj["active"] = "1"
   proj["stime"] = ts
-  proj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+  proj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S.%f')
 
   if str(permission) == "world-read":
     proj["permission"] = "world-read"
@@ -891,7 +891,7 @@ def getPortfolios( userId, includePrivateProjects = False ):
 
 def humanTime():
   ts = time.time()
-  return datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+  return datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S.%f')
 
 def secondTime():
   return time.time()
@@ -912,7 +912,7 @@ def createPic( picId, userId, clientToken ):
   pic["permission"] = picPermission
   pic["clientToken"] = str(clientToken)
   pic["stime"] = ts
-  pic["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+  pic["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S.%f')
   db.hmset( "pic:" + str(picId), pic )
 
   msg = {}
@@ -1136,7 +1136,7 @@ def queueImport( userId, sessionId, projectId, file_uuid, file_name = None  ):
   else:
     qf["type"] = "portfolio"
   qf["stime"] = ts
-  qf["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+  qf["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S.%f')
   qf["fileUUID"] = file_uuid
   qf["fileName"] = file_name
   db.hmset( "importq:" + qid, qf )

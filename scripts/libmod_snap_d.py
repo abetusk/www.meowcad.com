@@ -39,7 +39,7 @@ def process_imports():
   for qfn in qfns:
 
     if verbose:
-      print "libmod_snap_d>> processing", qfn
+      print mew.humanTime(), "libmod_snap_d>> processing", qfn
 
     fqfn_queue_file = os.path.join( LIBMOD_SNAP_QUEUE_DIR, qfn )
 
@@ -47,7 +47,7 @@ def process_imports():
     for line in fp:
 
       if verbose:
-        print "libmod_snap_d>>>", line
+        print mew.humanTime(), "libmod_snap_d>>>", line
 
       if line[0] == '#': continue
       line = line.rstrip()
@@ -57,7 +57,7 @@ def process_imports():
         if len(fn)==0: continue
 
         if verbose:
-          print "libmod_snap_d>>>>", fn
+          print mew.humanTime(), "libmod_snap_d>>>>", fn
 
         base_fqfn = os.path.join( ODIR, "usr", userId )
         if len(portfolioId) > 0:
@@ -77,7 +77,7 @@ def process_imports():
               png_fn = re.sub( "/json/", "/png/", png_fn )
 
               if verbose:
-                print "libmod_snap_d>>>> snap:", libname, loc, png_fn
+                print mew.humanTime(), "libmod_snap_d>>>> snap:", libname, loc, png_fn
 
               exec_snap = ""
               if fqfn.endswith("_component_list.json"):
@@ -97,7 +97,7 @@ def process_imports():
                                "-o", os.path.join( base_fqfn, png_fn) ], env=myenv )
 
       except Exception,ee:
-        print "libmod_snap_d error:", str(ee)
+        print mew.humanTime(), "libmod_snap_d error:", str(ee)
         return None
 
       pass
@@ -106,7 +106,7 @@ def process_imports():
     pass
     fp.close()
 
-    print fqfn_queue_file, os.path.join( LIBMOD_SNAP_QUEUE_DIR, ".store", qfn )
+    print mew.humanTime(), fqfn_queue_file, os.path.join( LIBMOD_SNAP_QUEUE_DIR, ".store", qfn )
 
     os.rename( fqfn_queue_file, os.path.join( LIBMOD_SNAP_QUEUE_DIR, ".store", qfn ) )
 
@@ -114,7 +114,7 @@ def process_imports():
   pass
 
 while True:
-  print ">"
+  print mew.humanTime(), ">"
 
   process_imports()
   time.sleep(sleepy)

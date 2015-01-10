@@ -34,7 +34,7 @@ def process_imports():
       try:
 
         if verbose:
-          print "libmod_import_d>> processing", fileId, userId, fileName
+          print mew.humanTime(), "libmod_import_d>> processing", fileId, userId, fileName
 
         # Convert from KiCAD to MeowCAD json
         #
@@ -72,13 +72,13 @@ def process_imports():
         qid = db.lpop( "importq" )
 
       except Exception,ee:
-        print "libmodimport_d error:", str(ee)
+        print mew.humanTime(), "libmodimport_d error:", str(ee)
         return None
 
 
 while True:
   if verbose:
-    print ">"
+    print mew.humanTime(), ">"
 
   process_imports()
   time.sleep(sleepy)

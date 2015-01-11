@@ -34,7 +34,10 @@ RUN su meow -c " cd /home/meow ; \
   chmod a+rwx stage ; \
   cd /home/meow/weakpwh ; ./cmp.sh ; \
   cd /home/meow/gbl2ngc/src ; ./cmp.sh ; \
-  cd /home/meow/bin ; ln -s /home/meow/gbl2ngc/src/gbl2ngc . ; ln -s /home/meow/gbl2ngc/scripts/drl2ngc.py ./drl2ngc ; \
+  cd /home/meow/bin ; \
+  ln -s /home/meow/gbl2ngc/src/gbl2ngc . ; \
+  ln -s /home/meow/weakpwh/weakpwh . ; \
+  ln -s /home/meow/gbl2ngc/scripts/drl2ngc.py ./drl2ngc ; \
   cd /home/meow/www.meowcad.com/scripts ; ln -s ../cgi/meowaux.py . ; \
   cd /home/meow/www.meowcad.com/aux ; ln -s ../cgi/meowaux.py . "
 

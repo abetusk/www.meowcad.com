@@ -25,7 +25,7 @@ if (argv.h) {
 var inpJsonFn;
 if (argv.i) { inpJsonFn = argv.i; }
 
-var local_file = false
+var local_file = false;
 if (argv.I) { local_file = true; }
 
 var outfn = "out.png";

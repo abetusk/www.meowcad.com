@@ -1,9 +1,11 @@
 /* Take a picture of a JSON library element */
 
-var argv = require("yargs")
+var yargs = require("yargs");
+var argv = yargs
            .usage("$0 -i json_file [-W width] [-H height] [-o out_png] [-u userId] [-p projectId] [-v]")
-           .demand("i")
+           //.demand("i")
            .describe("i json_file", "JSON module file to render")
+           .describe("I local_json_file", "JSON library file to render (local file)")
            .describe("W width", "Width")
            .describe("H height", "Height")
            .describe("u userId", "User ID")
@@ -14,6 +16,9 @@ var argv = require("yargs")
 
 var inpJsonFn;
 if (argv.i) { inpJsonFn = argv.i; }
+
+var local_file = false;
+if (argv.I) { local_file = true; }
 
 var outfn = "out.png";
 if (argv.o) { outfn = argv.o; }
@@ -33,8 +38,9 @@ if (argv.p) { projectId = argv.u; }
 var verbose = false;
 if (argv.v) { verbose = true; }
 
-if (!inpJsonFn) {
+if ((!local_file) && (!inpJsonFn)) {
   console.log("please provide an input JSON file");
+  console.log(yargs.help());
   process.exit(1);
 }
 
@@ -55,6 +61,7 @@ var brd = new brd6();
 
 
 var realfn = slurp.file_cascade( inpJsonFn, userId, projectId );
+if (local_file) { realfn = argv.I; }
 if (!realfn) {
   console.log("could not find", inpJsonFn );
   process.exit();

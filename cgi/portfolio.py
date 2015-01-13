@@ -17,7 +17,6 @@ cgitb.enable()
 #print
 
 
-
 def renderProjectTable( olioList, publicOnlyFlag = True ):
   if publicOnlyFlag:
     return mew.constructViewProjectListTable( olioList )
@@ -48,14 +47,20 @@ if "userId" in form:
 
 
 if viewUserId is None:
-  #cookie["message"] = "We're sorry, we couldn't find that user!"
-  #cookie["messageType"] = "error"
   print "Location:missing"
   print cookie.output()
   print
   sys.exit(0)
 
 viewUserData = mew.getUser( viewUserId )
+
+if viewUserId is None or "userName" not in viewUserData:
+  print "Location:missing"
+  print cookie.output()
+  print
+  sys.exit(0)
+
+
 viewUserName = viewUserData["userName"]
 
 #userId = cookie_hash["userId"]

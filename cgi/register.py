@@ -39,7 +39,7 @@ def processSignup( ch, cook_hash ):
   if ("userId" in cook_hash):
     u = mew.getUser( cook_hash["userId"] )
 
-    if str(u["type"]) == "anonymous":
+    if (u is not None) and ("type" in u) and (str(u["type"]) == "anonymous"):
       user["id"] = cook_hash["userId"]
       mew.transferUser( cook_hash["userId"], username, password )
       retStr = "anonymous"

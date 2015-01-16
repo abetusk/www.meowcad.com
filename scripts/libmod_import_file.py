@@ -140,7 +140,7 @@ def process_modlib( inp_fn, out_name ):
   if ktype == "lib":
     #lib_dir = os.path.join( TMP_DIR, "eeschema", "json", fin_rel_dir )
     lib_dir = os.path.join( DST_DIR, "eeschema", "json", fin_rel_dir )
-    sp.call(" mkdir -p " + lib_dir , shell=True  )
+    sp.call( [ "mkdir", "-p", lib_dir ] )
     try:
       liblist_str = sp.check_output( [ libjson_exec, inp_fn, lib_dir + "/" ] )
 
@@ -169,7 +169,7 @@ def process_modlib( inp_fn, out_name ):
   if ktype == "mod":
     #mod_dir = os.path.join( TMP_DIR, "pcb", "json", fin_rel_dir )
     mod_dir = os.path.join( DST_DIR, "pcb", "json", fin_rel_dir )
-    sp.call(" mkdir -p " + mod_dir  , shell=True  )
+    sp.call( ["mkdir", "-p", mod_dir ] )
 
     try:
       modlist_str = sp.check_output( [ modjson_exec, inp_fn, mod_dir + "/" ] )
@@ -338,7 +338,8 @@ if src_dirs > 0:
     if g_verbose_flag:
       print "rm -rf", stale_out_dir
 
-    sp.call( "rm -rf " + stale_out_dir, shell=True ) 
+    sp.call( [ "rm", "-rf", stale_out_dir ] )
+    sp.call( [ "mkdir", "-p", out_dir ] )
     sp.call( "cp -R " + DST_DIR + "/* " + out_dir , shell=True )
 
 # Clean up after ourselves

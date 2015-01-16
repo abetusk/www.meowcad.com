@@ -44,15 +44,16 @@ project = {}
 if "projectId" in form:
   project = mew.getProject( str(form["projectId"].value) )
 
-projectId = project["id"]
 
-if not project:
+if not project or ("id" not in project):
   cookie["message"] = "We're sorry, we couldn't find that project!"
   cookie["messageType"] = "error"
   print "Location:login"
   print cookie.output()
   print
   sys.exit(0)
+
+projectId = project["id"]
 
 userId = None
 userName = None

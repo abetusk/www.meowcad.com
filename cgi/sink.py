@@ -11,8 +11,8 @@ signup="""
 <ul class='nav navbar-nav' style='float:right; margin-top:7px;' >
   <li>
 
-    <form action='/signup' style='display:inline;' method='POST' >
-      <button class='btn btn-warning' type='submit'>Sign up!</button>
+    <form action='/register' style='display:inline;' method='POST' >
+      <button class='btn btn-warning' type='submit'>Register!</button>
     </form>
 
   </li>
@@ -29,8 +29,8 @@ login_signup_nav="""
       <button class='btn btn-success' type='submit'>Log in</button>
     </form>
 
-    <form action='/signup' style='display:inline;' >
-      <button class='btn btn-warning' type='submit'>Sign up!</button>
+    <form action='/register' style='display:inline;' >
+      <button class='btn btn-warning' type='submit'>Register!</button>
     </form>
 
   </li>
@@ -58,7 +58,8 @@ if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
 
 message,messageType = mew.processCookieMessage( cookie, cookie_hash )
 
-messageTitle = "&nbsp;"
+#messageTitle = "&nbsp;"
+messageTitle = "Notice!"
 if len(message)==0:
   message = "<p style='text-align:center;'><img src='/img/icecream.png' style='opacity:0.5;' width='50%' ></img></p>"
 

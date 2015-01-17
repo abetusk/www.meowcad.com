@@ -90,16 +90,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             </p>
             <br />
 
-            <form class='form-horizontal' style='margin-left:10px; margin-right:10px;' action='/forgot' method='POST'>
+            <form class='form-horizontal' style='margin-left:10px; margin-right:10px;' action='/sendforgot' method='POST'>
 
               <div class='form-group' id='userDiv'>
                 <label >Username or Email </label>
-                <input id='user' type="text" class='form-control' placeholder="Username or Email">
+                <input id='user' name='email' type="text" class='form-control' placeholder="Username or Email">
               </div>
 
               <div class='form-group' id='noteDiv'>
                 <label >Message <small>(optional)</small> </label>
-                <textarea id='note' class='form-control' rows='5' > </textarea>
+                <textarea id='note' class='form-control' name='message' rows='5' > </textarea>
               </div>
 
               <div class='form-group' >

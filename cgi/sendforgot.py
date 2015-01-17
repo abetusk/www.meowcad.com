@@ -12,46 +12,39 @@ cgitb.enable()
 #print
 
 
-
 cookie = Cookie.SimpleCookie()
 cookie_hash = mew.getCookieHash( os.environ )
 
-loggedInFlag = False
 if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash)  and
      (mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 1) ):
-  loggedInFlag = True
-
-
-form = cgi.FieldStorage()
-if "feedback" not in form:
-  cookie["message"] = "Please provide feedback text" 
-  cookie["messageType"] = "error"
-  print "Location:feedback"
+  print "Location:portfolio"
   print cookie.output()
   print
   sys.exit(0)
 
 email = ""
-if "email" in form:
-  email = form["email"].value
 
+form = cgi.FieldStorage()
+if "email" not in form:
+  cookie["message"] = "Please provide username or email" 
+  cookie["messageType"] = "error"
+  print "Location:forgot"
+  print cookie.output()
+  print
+  sys.exit(0)
 
-userId = -1
-if loggedInFlag:
-  userId = cookie_hash["userId"]
+email = form["email"].value
+message = ""
+if "message" in form:
+  message = form["message"].value
 
-feedback = form["feedback"].value
-
-r = mew.feedback( userId, email, feedback )
+r = mew.passwordreset( email, message )
 
 if r:
-  cookie["message"] = "Thank you!  Your feedback has been sent!"
+  cookie["message"] = "Your password reset request has been sent.  Please keep an eye out in or mailbox for the email with instructions on how to reset your password."
   cookie["messageType"] = "success"
 
-  if loggedInFlag:
-    print "Location:portfolio"
-  else:
-    print "Location:signup"
+  print "Location:sink"
   print cookie.output()
   print
 

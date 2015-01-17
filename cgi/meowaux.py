@@ -497,6 +497,23 @@ def addemail( userId, email ):
   db.sadd( "useremail:" + str(userId), str(useremailid) )
 
 
+def passwordreset( email, message ):
+  db = redis.Redis()
+
+  pwresetId = str(uuid.uuid4())
+
+  ts = time.time()
+  obj = {}
+  obj["id"] = pwresetId
+  obj["text"] = str(message)
+  obj["email"] = str(email)
+  obj["stime"] = ts
+  obj["timestamp"] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S.%f')
+  db.hmset( "passwordreset:" + pwresetId, obj )
+  db.sadd( "passwordresetpool", pwresetId )
+  return True
+
+
 def feedback( userId, email, feedback ):
   db = redis.Redis()
 

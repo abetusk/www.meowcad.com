@@ -32,11 +32,37 @@ def portfolio( userId ):
   olio = mew.getPortfolios( userId )
   for proj in olio:
     print
-    print 
+    print
     for x in proj:
       print str(x) + ":", proj[x]
 
   print
+
+def passwordreset():
+  """Print all passwordreset entries"""
+
+  db = redis.Redis()
+
+  fbp = db.smembers( "passwordresetpool" )
+  if not fbp: return
+
+  print
+
+  for a in fbp:
+    fb = db.hgetall( "passwordreset:" + str(a) )
+
+    email = fb["email"]
+    tim = fb["timestamp"]
+    txt = fb["text"]
+
+    print ">>>"
+    print "datetime:", tim
+    print "email:", email
+    print "text:>"
+    print txt
+    print
+    print
+
 
 def feedback():
   """Print all feedback entries"""
@@ -44,9 +70,9 @@ def feedback():
   db = redis.Redis()
 
   fbp = db.smembers( "feedbackpool" )
-  if not fbp: return 
+  if not fbp: return
 
-  print 
+  print
 
   for a in fbp:
     fb = db.hgetall( "feedback:" + str(a) )
@@ -65,7 +91,7 @@ def feedback():
     print "email:", email
     print "text:>"
     print txt
-    print 
+    print
     print
 
 
@@ -105,15 +131,15 @@ def users( flag ):
     print "user:", userDat["userName"], userid
     print "status:", act, "(" + str(userDat["active"]) + ")"
     print "type:", userDat["type"]
-    print 
-    print 
+    print
+    print
 
 def sessions():
   db = redis.Redis()
 
   sess = db.smembers( "sesspool" )
 
-  print 
+  print
 
   for sessid in sess:
 
@@ -127,15 +153,15 @@ def sessions():
     print "sessionId:", sessid
     print "status:", act, "(" + str(s["active"]) + ")"
     print "user:", userDat["userName"], userDat["id"]
-    print 
-    print 
+    print
+    print
 
 def signups():
   db = redis.Redis()
 
   sups = db.smembers( "emailSignups" )
 
-  print 
+  print
 
   for sup in sups:
 
@@ -144,8 +170,8 @@ def signups():
     print "id:", sup
     print "datetime:", s["date"]
     print "email:", s["email"]
-    print 
-    print 
+    print
+    print
 
 def adduser(username, password):
   if username is None or password is None:
@@ -169,7 +195,7 @@ def activateuser(userid):
   if userid is None :
     print "provide userid"
     return
-  
+
   db = redis.Redis()
   userDat = db.hgetall( "user:" + str(userid) )
   if "id" not in userDat:
@@ -187,6 +213,7 @@ def setuserpassword(userid, password):
 
 def showhelp():
   print "  feedback"
+  print "  passwordreset"
   print "  users [all|anonymous]"
   print "  portfolio <userId>"
   print "  user <userId>"
@@ -213,6 +240,9 @@ if len(sys.argv) > 2:
     y = str(sys.argv[3])
 
 if op == "feedback":
+  feedback()
+
+elif op == "passwordreset":
   feedback()
 
 elif op == "users":

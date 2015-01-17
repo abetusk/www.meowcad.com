@@ -104,3 +104,13 @@ if "permissionOption" in form:
   #print tmp_str
 
   sys.exit(0)
+
+
+cookie["message"] = "Nothing to update"
+cookie["messageType"] = "error"
+
+print "Location:project?projectId=" + str(projectId)
+print cookie.output()
+print
+sys.exit(0)
+

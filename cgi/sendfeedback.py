@@ -51,7 +51,7 @@ if r:
   if loggedInFlag:
     print "Location:portfolio"
   else:
-    print "Location:signup"
+    print "Location:register"
   print cookie.output()
   print
 

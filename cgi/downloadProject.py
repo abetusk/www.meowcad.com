@@ -122,7 +122,8 @@ def readyProjectZipfile( json_message ):
     z.close()
 
   except Exception as e:
-    error_and_quit(e, "...")
+    log_line( "ERROR: " + str(e) )
+    error_and_quit()
 
 
   obj = { "type": "id", "id" : str(zip_uid), "notes" : "zip project file",

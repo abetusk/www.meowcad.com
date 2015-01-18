@@ -243,7 +243,7 @@ if op == "feedback":
   feedback()
 
 elif op == "passwordreset":
-  feedback()
+  passwordreset()
 
 elif op == "users":
   users( x )

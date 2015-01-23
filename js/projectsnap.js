@@ -56,6 +56,8 @@ var Bleepsix = require( "../../bleepsix/js/core/bleepsixRender.js" ),
 var sch = new sch6();
 var brd = new brd6();
 
+brd.flag_draw_ratsnest = false;
+
 var g_component_cache = {};
 var g_footprint_cache = {};
 

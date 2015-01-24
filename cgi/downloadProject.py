@@ -82,12 +82,36 @@ def readyProjectZipfile( json_message ):
 
     # Go through relevant layers and create gerber and gcode files for each
     #
-    layers = { -1: ".drl", 0 : "-B_Cu.gbl", 15 : "-F_Cu.gtl", 20 : "-B_SilkS.gbo", 21 : "-F_SilkS.gto", 28 : "-Edge_Cuts.gbr" }
+    ## from http://en.wikibooks.org/wiki/Kicad/file_formats
+    ##
+    ## 0 Back - Solder
+    ## 1 Inner-B, 2 Inner_frent (?)
+    ## 3-14 Inner
+    ## 15 Component-F
+    ## 16 Adhestive/glue-B, 17 Adhestive/glue-F
+    ## 18 Solder Paste-B, 19 Solder Paste-F
+    ## 20 SilkScreen-B, 21 SilkScreen-F
+    ## 22 SolderMask-B, 23 SolderMask-F
+    ## 24 Drawings
+    ## 25 Comments
+    ## 26 ECO1, 27 ECO2
+    ## 28 Edge Cuts
+    #
+    #layers = { -1: ".drl", 0 : "-B_Cu.gbl", 15 : "-F_Cu.gtl", 20 : "-B_SilkS.gbo", 21 : "-F_SilkS.gto", 28 : "-Edge_Cuts.gbr" }
+    layers = { -1: ".drl",
+                0 : "-B_Cu.gbl",
+                15 : "-F_Cu.gtl",
+                20 : "-B_SilkS.gbo",
+                21 : "-F_SilkS.gto",
+                22 : "-B_SolderM.gbs",
+                23 : "-F_SolderM.gts",
+                28 : "-Edge_Cuts.gbr" }
     gerber_files = []
     gcode_files = []
     for layer in layers:
 
-      grbr = sp.check_output( [brdgrb_exec, str(brd_fn), str(layer), str(font_file) ] )
+      #grbr = sp.check_output( [brdgrb_exec, str(brd_fn), str(layer), str(font_file) ] )
+      grbr = sp.check_output( [brdgrb_exec, "-i", str(brd_fn), "-L", str(layer), "-F", str(font_file) ] )
       gerber_uid, gerber_fn = dumpToFile( grbr )
       gerber_files.append( { "id": gerber_uid , "filename" : gerber_fn, "layer" : layer } )
 

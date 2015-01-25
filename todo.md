@@ -39,3 +39,25 @@ TODO
   - quirks
   - footprint editor
 
+
+  2015-01-23
+
+  Suggestions:
+  1) show your latest, most complex circuits you can handle here for the "try it"
+     samples... and put snapshots of these on landing page.
+
+  2) rearrange the page a bit, because if you have a small screen, you don't even
+     see the "try it" stuff at the bottom
+     (possibly by making the Register stuff a little smaller, or something)
+
+  ~~definitely fix the auto centering thing when you start editing~~
+
+  anonymous users should still be dumped into the landing page.
+  The anony landing page should have a link to 'projects' where they
+  can further do stuff logged in anonymously.
+
+  ~~Portfolio "Portfolio" tab -> "Projects" tab~~
+  ~~project names should not include the username (for your own projects)~~
+  thumbnails on portfolio list
+
+

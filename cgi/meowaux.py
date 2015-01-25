@@ -1221,8 +1221,8 @@ def _constructProjectListTable( projs, start = 0, end = 10, schlink = "sch", brd
 
 
     tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[0] + "'>" )
-    tableProjectHTML.append( "<a href='portfolio?userId=" + p["userId"] + "'>" + p["userName"] + "</a>" )
-    tableProjectHTML.append( " / " )
+    #tableProjectHTML.append( "<a href='portfolio?userId=" + p["userId"] + "'>" + p["userName"] + "</a>" )
+    #tableProjectHTML.append( " / " )
     tableProjectHTML.append( "<a href='project?projectId=" + p["id"] + "'>" + p["name"] + "</a>" )
     tableProjectHTML.append( "</div>" )
 

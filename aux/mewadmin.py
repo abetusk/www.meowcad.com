@@ -10,12 +10,36 @@ import json
 import meowaux as mew
 
 def project( projectId ):
-  """Get user information"""
+  """Get project information"""
 
   u = mew.getProject( projectId )
   for x in u:
     print str(x) + ":", u[x]
   print
+
+def projectsnapshot( projectId ):
+  """Get projectsnapshot information"""
+
+  db = redis.Redis()
+
+  s = db.hgetall( "projectsnapshot:" + str(projectId) )
+  print(s)
+  print
+
+def loadprojectsnapshot( projectId, fn ):
+  """Force a projects snapshot into database"""
+
+  with open(fn, 'r') as fp:
+    z = fp.read()
+  s = json.loads(z)
+
+  json_sch = json.dumps( s["json_sch"] )
+  json_brd = json.dumps( s["json_brd"] )
+
+  db = redis.Redis()
+  db.hset( "projectsnapshot:" + projectId, "id", projectId )
+  db.hset( "projectsnapshot:" + projectId, "json_sch", json_sch )
+  db.hset( "projectsnapshot:" + projectId, "json_brd", json_brd )
 
 
 def user( userId ):
@@ -218,6 +242,8 @@ def showhelp():
   print "  portfolio <userId>"
   print "  user <userId>"
   print "  project <projectId>"
+  print "  projectsnapshot <projectId>"
+  print "  loadprojectsnapshot <projectId> <fn>"
   print "  sessions"
   print "  signups"
   print
@@ -274,6 +300,12 @@ elif op == "user":
 
 elif op == "project":
   project(x)
+
+elif op == "projectsnapshot":
+  projectsnapshot(x)
+
+elif op == "loadprojectsnapshot":
+  loadprojectsnapshot(x, y)
 
 elif op == "help":
   showhelp()

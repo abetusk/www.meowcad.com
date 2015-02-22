@@ -98,7 +98,7 @@ projectrecent:<userId>
   "brd" : <boardId>
 
 
-sch:<schematicId> [hash]
+sch:<schematicId> [hash] -- deprecated
   "id" : <schematicId>
   "userId" : <userId>
   "projectId" : <projectId>
@@ -106,18 +106,21 @@ sch:<schematicId> [hash]
   "ind" : <lastInd>
   "active" : ("0"|"1")
 
-sch:<schematicId>:snapshot [hash]
+sch:<schematicId>:snapshot [hash] -- deprecated
+  "data": <schematicData>
+
+sch:<schematicId>:snapshot [hash] -- deprecated
   "data": <schematicData>
 
 
-sch:<schematicId>:<ind> [hash]
+sch:<schematicId>:<ind> [hash] -- deprecated
   "type" : (delta|flush)
   "action" : (add|remove|update)
   "data" : <json_string>
 
 
 
-brd:<boardId> [hash]
+brd:<boardId> [hash] -- deprecated
   "id" : <boardId>
   "userId" : <userId>
   "projectId" : <projectId>
@@ -125,7 +128,7 @@ brd:<boardId> [hash]
   "ind" : <lastInd>
   "active" : ("0"|"1")
 
-brd:<boardId>:<ind> [hash]
+brd:<boardId>:<ind> [hash] -- deprecated
   "type" : (delta|flush)
   "action" : (add|remove|update)
   "data" : <json_string>

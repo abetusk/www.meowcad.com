@@ -41,6 +41,20 @@ def loadprojectsnapshot( projectId, fn ):
   db.hset( "projectsnapshot:" + projectId, "json_sch", json_sch )
   db.hset( "projectsnapshot:" + projectId, "json_brd", json_brd )
 
+def pullprojectsnapshot( projectId, fn ):
+  """Force a projects snapshot into database"""
+
+  db = redis.Redis()
+  p = db.hgetall( "projectsnapshot:" + projectId )
+  json_sch = json.loads( p["json_sch"] )
+  json_brd = json.loads( p["json_brd"] )
+
+  j = {}
+  j["json_sch"] = json_sch
+  j["json_brd"] = json_brd
+
+  with open(fn, 'w') as fp:
+    fp.write( json.dumps(j) )
 
 def user( userId ):
   """Get user information"""
@@ -306,6 +320,9 @@ elif op == "projectsnapshot":
 
 elif op == "loadprojectsnapshot":
   loadprojectsnapshot(x, y)
+
+elif op == "pullprojectsnapshot":
+  pullprojectsnapshot(x, y)
 
 elif op == "help":
   showhelp()

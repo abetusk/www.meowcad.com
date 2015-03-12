@@ -19,8 +19,8 @@ cgitb.enable()
 
 def renderProjectTable( olioList, publicOnlyFlag = True ):
   if publicOnlyFlag:
-    return mew.constructViewProjectListTable( olioList )
-  return mew.constructProjectListTable( olioList )
+    return mew.constructViewProjectListTable( olioList, showOwner=True )
+  return mew.constructProjectListTable( olioList, showOwner=False )
 
 
 
@@ -114,7 +114,7 @@ publicOnlyFlag = True
 if viewUserId == userId:
   publicOnlyFlag = False
 
-projectTable = renderProjectTable( olioList, publicOnlyFlag  )
+projectTable = renderProjectTable( olioList, publicOnlyFlag )
 tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
 #tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) )
 tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(viewUserName), str(viewUserId) ) )

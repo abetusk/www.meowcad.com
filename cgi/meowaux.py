@@ -1198,10 +1198,10 @@ def constructExploreHTMLList( userId, start, end ):
   projs = getExplorePortfolios( userId, start, end )
 
   #return constructProjectListTable( projs, start, end )
-  return constructViewProjectListTable( projs, start, end )
+  return constructViewProjectListTable( projs, start, end, showOwner=True )
 
 
-def _constructProjectListTable( projs, start = 0, end = 10, schlink = "sch", brdlink = "brd"  ):
+def _constructProjectListTable( projs, start = 0, end = 10, schlink = "sch", brdlink = "brd", showOwner=True  ):
 
   table_cols = [ "Project", "Description", "Sch", "Brd", "DL" ]
   table_cols_sz = [ "4", "5", "1", "1", "1" ]
@@ -1216,14 +1216,26 @@ def _constructProjectListTable( projs, start = 0, end = 10, schlink = "sch", brd
 
   for p in projs:
 
+    userId = p["userId"]
+    projectId = p["id"]
+    picdata = getProjectPic( userId, projectId )
+
+    aa = "<img class='img-rounded' "
+    zz = "style='width:100%; border:1px solid gray; max-width: 350px; opacity:0.9; '></img>"
+    extra = "&userId=" + userId + "&projectId=" + projectId
+
+    u = getUser( userId )
+
     tableProjectHTML.append( "<div class='panel panel-default'> " )
     tableProjectHTML.append( "<div class='panel-body'> <div class='row'> " )
 
 
     tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[0] + "'>" )
-    #tableProjectHTML.append( "<a href='portfolio?userId=" + p["userId"] + "'>" + p["userName"] + "</a>" )
-    #tableProjectHTML.append( " / " )
-    tableProjectHTML.append( "<a href='project?projectId=" + p["id"] + "'>" + p["name"] + "</a>" )
+
+    if showOwner:
+      tableProjectHTML.append( "<a href='project?projectId=" + p["id"] + "'>" + u["userName"] + " / " + p["name"] + "</a>" )
+    else:
+      tableProjectHTML.append( "<a href='project?projectId=" + p["id"] + "'>" + p["name"] + "</a>" )
     tableProjectHTML.append( "</div>" )
 
 
@@ -1233,16 +1245,14 @@ def _constructProjectListTable( projs, start = 0, end = 10, schlink = "sch", brd
 
 
     tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "'>" )
-    #tableProjectHTML.append(  "<a href='sch?project=" + p["id"] + "' >" +
     tableProjectHTML.append(  "<a href='" + schlink + "?project=" + p["id"] + "' >" +
-                              bbs + "<img src='/img/alignment-unalign.svg' width='20px' /><br/>sch" + bbe + "</a>" )
+                              aa +  "src='mewpng?f=img/" + picdata["schPicId"] + extra + "' " + zz + "</a>" )
     tableProjectHTML.append( "</div>" )
 
 
     tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "'>" )
-    #tableProjectHTML.append(  "<a href='brd?project=" + p["id"] + "' >" +
     tableProjectHTML.append(  "<a href='" + brdlink + "?project=" + p["id"] + "' >" +
-                              bbs + "<img src='/img/circuit-board.svg' width='20px' /><br/>brd" + bbe + "</a>" )
+                              aa +  "src='mewpng?f=img/" + picdata["brdPicId"] + extra + "' " + zz + "</a>" )
     tableProjectHTML.append( "</div>" )
 
 
@@ -1294,9 +1304,9 @@ def _constructProjectListTable( projs, start = 0, end = 10, schlink = "sch", brd
   return hs + "\n".join( tableProjectHTML ) + he
 
 
-def constructProjectListTable( projs, start = 0, end = 10 ):
-  return _constructProjectListTable( projs, start, end, "sch", "brd" )
+def constructProjectListTable( projs, start = 0, end = 10, showOwner=True ):
+  return _constructProjectListTable( projs, start, end, "sch", "brd", showOwner=showOwner )
 
-def constructViewProjectListTable( projs, start = 0, end = 10 ):
-  return _constructProjectListTable( projs, start, end, "view_sch", "view_pcb" ) 
+def constructViewProjectListTable( projs, start = 0, end = 10, showOwner=True ):
+  return _constructProjectListTable( projs, start, end, "view_sch", "view_pcb", showOwner=showOwner ) 
 

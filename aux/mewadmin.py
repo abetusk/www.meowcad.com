@@ -23,8 +23,24 @@ def projectsnapshot( projectId ):
   db = redis.Redis()
 
   s = db.hgetall( "projectsnapshot:" + str(projectId) )
-  print(s)
+
+  obj = {}
+  obj["json_sch"] = s["json_sch"]
+  obj["json_brd"] = s["json_brd"]
+  obj["id"] = s["id"]
+  print(json.dumps(obj))
   print
+
+def projectevent( projectId ):
+  db = redis.Redis()
+  s = db.lrange("projectevent:" + str(projectId), 0, -1)
+  for evid in s:
+    print str(evid)
+    ev = db.hgetall("projectop:" + str(projectId) + ":" + str(evid))
+    print "id:", str(evid)
+    print "data", str(ev["data"])
+    print ""
+
 
 def loadprojectsnapshot( projectId, fn ):
   """Force a projects snapshot into database"""
@@ -257,6 +273,7 @@ def showhelp():
   print "  user <userId>"
   print "  project <projectId>"
   print "  projectsnapshot <projectId>"
+  print "  projectevent <projectId>"
   print "  loadprojectsnapshot <projectId> <fn>"
   print "  sessions"
   print "  signups"
@@ -323,6 +340,9 @@ elif op == "loadprojectsnapshot":
 
 elif op == "pullprojectsnapshot":
   pullprojectsnapshot(x, y)
+
+elif op == "projectevent":
+  projectevent(x)
 
 elif op == "help":
   showhelp()

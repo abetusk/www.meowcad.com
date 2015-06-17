@@ -1,0 +1,109 @@
+h1. "Submitting Boards For Fabrication":/blog/2015-06-16
+
+h6>. <i class='fa fa-calendar'></i> 2015-06-17
+
+
+!{width:100%}img/blog/workflow_8bitheart.png!
+
+
+At some point, after you design your schematics and boards, you want to submit them to be fabricated.  Whether you use MeowCAD or some other tool, the workflow is pretty similar.  We live in a pretty amazing time where this can be done for reasonable cost with only a few weeks delay.  Not even 5 years ago, this was a costly ordeal.  Sometimes small electronics would order 500 boards at once and hope for the best since the cost of ordering so many more was negligible compared to the overhead cost of ordering a single prototype.
+
+
+We'll be focusing on submitting the "8 Bit Heart":https://meowcad.com/project?projectId=1bd24ce3-91d9-4846-b30d-1a8cfacd72d0 Gerber files to "OSH Park":https://oshpark.com/ for fabrication.  We've heard "Dirt Cheap Dirty Boards":http://dirtypcbs.com/ is a decent service that is very affordably priced but we haven't had a chance to use them.  We're hoping to make sure our Gerber file generation is robust so we'll be submitting to some different board manufacturer houses but so far we've only gone through OSH Park.
+
+Very roughly, one workflow is as follows:
+
+* Design your PCB.  We'll skip this step and use the @8 Bit Heart@ project ready in MeowCAD.
+* Collect the Gerbers.  The export from MeowCAD includes them but we'll need to collect them for later submission.
+* Submit to the board Manufacterer.  We'll be using "OSH Park":https://oshpark.com/.
+* Assemble.  We won't go into too much detail but briefly outline a "DIY" way to do this.
+
+
+As a quick aside, a snippet of an example "Gerber file":https://en.wikipedia.org/wiki/Gerber_format that we'll be submitting looks something like this:
+
+
+<pre>
+...
+G04 Gerber Fmt 3.4, Leading zero omitted, Abs format*
+%MOIN*%
+%FSLAX34Y34*%
+G01*
+G70*
+G90*
+G04 APERTURE LIST*
+%ADD12C,0.0000*%
+%ADD13C,0.0032*%
+%ADD10C,0.0640*%
+...
+%ADD19R,0.0177X0.0787*%
+G04 APERTURE END LIST*
+G54D12*
+D10*
+G01X22700Y-03900D02*
+G01X22700Y-03900D01*
+...
+</pre>
+
+
+For those familiar with "G-code":https://en.wikipedia.org/wiki/G-code, the files might look similar.  It's a textual representation how to draw geometric primitives.  The @APERTURE LIST@ section holds the primitives (@C@ for circle, @R@ for rectangle, etc.) after which the draw commands are issued with move commands (e.g. @G01@), specifying which of the apertures to use.  For example, in the snippet above, @%ADD10C,0.0640*%@ creates an aperture named @D10@, a circle of radius @0.064@.  Later, the aperture is specified with a @D10*@ line and the draw commands are issued via @G01X22700Y-03900D02*@ and @G01X22700Y-03900D01*@ move the pen to @x 2.2700 y -0.3900@ and then 'streak across' the circle to @x 2.2700 y -0.3900@.  The @%MOIN*%@ directive specifies the units in inches and the @%FSLAX34Y34*%@ specifies that the @X@ and @Y@ co-ordinates are given as 3 digits for the integral part and 4 digits for the fractional part.  For more details feel free to check out the "Gerber specification document":http://www.ucamco.com/files/downloads/file/81/the_gerber_file_format_specification.pdf?a25bee2557eb3cae2d756be2e9fca7e8.
+
+
+Probably way more detail then you wanted to know but it's sometimes nice to know that there's nothing magical going on underneath.  It's just a textual representation of the geometry that we want to produce.
+
+
+Let's download the "8 Bit Heart":https://meowcad.com/project?projectId=1bd24ce3-91d9-4846-b30d-1a8cfacd72d0 project.  If you hit the @Download@ button, this should download the project with all the relevant files (be patient, sometimes it takes a while).
+
+
+!{width:100%}/img/blog/8bitheart_project_download_sm.png!
+
+Once we have the project downloaded we'll take out the Gerber files.  It's a good idea to load it in a Gerber preview to make sure everything looks good.  Some standard ones are "gerbv":http://gerbv.sourceforge.net/ and "GerbView":http://www.kicad-pcb.org/display/KICAD/KiCad+EDA+Software+Suite, which ships with "KiCAD":https://en.wikipedia.org/wiki/KiCad.  There are some "online ones as well":http://mechaelephant.com/grb_png.  Using @gerbv@ and selecting the appropriate files in the @gerber@ directory of the @8 Bit Heart@ project should give you something that looks like this:
+
+<pre>
+$ unzip bit_heart.zip
+$ cd project
+~/project$ gerbv gerber/*
+</pre>
+
+!{width:100%}/img/blog/8bit_heart_spotcheck.png!
+
+We now need to collect the gerbers into a zip file for submission to OSH Park.  Load these into their own @zip@ file.  For example, here's one way:
+
+<pre>
+~/project$ ls
+gcode  gerber  json  KiCAD
+~/project$ zip -r my-gerbers.zip gerber
+~/project$ ls my-gerbers.zip
+my-gerbers.zip
+~/project$
+</pre>
+
+Now go to "OSH Park":https://oshpark.com/ and go through the submission process.  In the end, you should be deposited to a page that looks something like this:
+
+!{width:100%}/img/blog/osh.png!
+
+
+$11.40 for three boards is very reasonable.  OSH Park makes quality boards and they've been very nice about helping us through our process of creating Gerbers from MeowCAD.  We've found the boards usually arrive two weeks after submission.
+
+Once the boards arrive it's finally time to solder the everything on the board.  We used a re-purposed convection oven and an IR non-contact thermometer we got off of eBay to solder the parts on.  This whole process probably deserves a blog post of it's own.  The short version is:
+
+* Collect all the parts you need.  For the @8 Bit Heart@ it was:
+** "SMT ATMega328 (x1)":http://www.digikey.com/product-detail/en/ATMEGA328P-AUR/ATMEGA328P-AURCT-ND/3789455
+** "1206 Red LED (x16)":http://www.ebay.com/sch/i.html?_nkw=1206+red+led
+** "1206 22mF Capacitor (x1)":http://www.digikey.com/product-search/en?vendor=0&keywords=587-1356-1-ND
+** "1206 680 ohm Resistor (x4)":http://www.ebay.com/sch/i.html?_nkw=resistor+kit+1206
+** "2x3 .1" ISP Header (x1)":http://www.ebay.com/sch/i.html?_nkw=2x3+male+pin+header
+** "CR2032 Connector (x1)":http://www.digikey.com/product-search/en?vendor=0&keywords=952-1735-1-ND
+** "CR2032 Battery (x1)":http://www.ebay.com/sch/i.html?_nkw=cr2032
+* Apply "solder paste":http://www.ebay.com/sch/i.html?_nkw=solder+paste to pads and place with "ESD safe tweezers":http://www.adafruit.com/products/422.
+* Put in a "convection oven":http://www.amazon.com/Hamilton-Beach-31809C-6-Slice-Toaster/dp/B0053QVR8A/&keywords=convection+oven+hamilton+beach and use an "IR temperature gun":http://www.ebay.com/sch/i.html?_nkw=ir+temperature to make sure you follow the "reflow profile":/img/blog/reflow.svg.
+* Flash the ATMega328 using "avrdude":http://www.nongnu.org/avrdude/, some type of "programmer":http://www.evilmadscientist.com/2007/using-avr-microcontrollers-minimalist-target-boards/ and the "source code":https://github.com/abetusk/8bitheart.
+
+Afterwards you should have a functioning board.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0BI4rqI0vt0" frameborder="0" allowfullscreen></iframe>
+
+This process is long and complicated.  Collecting all the parts to just create a small circuit is pretty involved.  The barrier to electronics design is getting lower but the threshold is still high.  We've got a long way to go before we can do complex board design with ease.  Hopefully MeowCAD is a step in the right direction!
+
+Feedback?  Thoughts?  Be sure to drop us a line in our "feedback section":/feedback!
+
+Happy hacking!

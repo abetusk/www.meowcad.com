@@ -1,0 +1,23 @@
+h1. "Introducing MeowCAD":/blog/2015-06-16
+
+h6>. <i class='fa fa-calendar'></i> 2015-06-16
+
+!img/8bit_heart_small.png!
+
+Hi there!  This is "MeowCAD":https://meowcad.com!
+
+MeowCAD is an online, in-browser electronics design tool that's completely free and open source.  Use it to create schematics, printed circuit boards, share with your friends or just play around.
+
+Though MeowCAD has been live for almost 2 years it's only recently that MeowCAD has reached a minimum level of functionality to be considered usable.  There are rough corners to be sure but it's in a state where we can use it ourselves to create a schematic, create a printed circuit board, export Gerbers, send it off to be fabbed and get back a functioning PCB.
+
+The board above was fabbed through "OSH Park":https://oshpark.com/.  You can check out both the "schematic":https://meowcad.com/view_sch?project=1bd24ce3-91d9-4846-b30d-1a8cfacd72d0 and the "board":https://meowcad.com/view_pcb?project=1bd24ce3-91d9-4846-b30d-1a8cfacd72d0 right here on MeowCAD.
+
+In another post we'll go more in depth about the process of submitting to a board manufacturer but in this post we wanted to start things off with a little description of ourselves.
+
+Here's a screencast (it's about 17m) of some functionality:
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/uLoL5OwXnfg" frameborder="0" allowfullscreen></iframe>
+
+Feedback is always welcome, either through the "feedback form":/feedback or through the "issue tracker":https://github.com/abetusk/www.meowcad.com/issues.  We'd love to hear from you, positive, negative, rant, rave, whatever.  
+
+Have fun and happy hacking!

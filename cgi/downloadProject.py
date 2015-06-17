@@ -162,19 +162,20 @@ sessionId = None
 projectId = None
 
 fields = cgi.FieldStorage()
-if ("userId" in fields) and ("sessionId" in fields): 
+if ("userId" in fields) and ("sessionId" in fields):
   if mew.authenticateSession( fields["userId"].value, fields["sessionId"].value ):
     userId = fields["userId"].value
     sessionId = fields["sessionId"].value
     if "projectId" in fields:
       projectId = fields["projectId"].value
-
-if ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash) and
+elif ( ("userId" in cookie_hash) and ("sessionId" in cookie_hash) and
      ( mew.authenticateSession( cookie_hash["userId"], cookie_hash["sessionId"] ) == 1) ):
     userId = cookie_hash["userId"]
     sessionId = cookie_hash["sessionId"]
     if "projectId" in fields:
       projectId = fields["projectId"].value
+elif "projectId" in fields:
+  projectId = fields["projectId"].value
 
 #log_line( "u: " + str(userId) )
 #log_line( "s: " + str(sessionId) )

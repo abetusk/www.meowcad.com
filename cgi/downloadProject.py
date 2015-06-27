@@ -61,8 +61,24 @@ def dumpToFile( data ):
 def readyProjectZipfile( json_message ):
 
   try:
-    zip_uid = uuid.uuid4()
 
+    ## hacky to put here but quick and dirty, get the
+    ## number of distinct layers.
+    ## 
+    ## Do the minimal thing of just getting to 4 layer boards.
+    ## Only check explicitely layer 1 and 2 to see if we
+    ## should include them in the output.  If layer 1
+    ## exists, force the existence of layer 2 and vice versa.
+    ##
+    layer_map = {}
+    brd = json_message["board"]["element"]
+    for ele in brd:
+      if ele["type"] == "track":
+        layer_map[int(ele["layer"])] = True
+    if 1 in layer_map: layer_map[2] = True
+    if 2 in layer_map: layer_map[1] = True
+
+    zip_uid = uuid.uuid4()
 
     # Put json data structures into files
     #
@@ -85,7 +101,7 @@ def readyProjectZipfile( json_message ):
     ## from http://en.wikibooks.org/wiki/Kicad/file_formats
     ##
     ## 0 Back - Solder
-    ## 1 Inner-B, 2 Inner_frent (?)
+    ## 1 Inner1-Cu, 2 Inner2-Cu (so says KiCAD)
     ## 3-14 Inner
     ## 15 Component-F
     ## 16 Adhestive/glue-B, 17 Adhestive/glue-F
@@ -100,6 +116,8 @@ def readyProjectZipfile( json_message ):
     #layers = { -1: ".drl", 0 : "-B_Cu.gbl", 15 : "-F_Cu.gtl", 20 : "-B_SilkS.gbo", 21 : "-F_SilkS.gto", 28 : "-Edge_Cuts.gbr" }
     layers = { -1: ".drl",
                 0 : "-B_Cu.gbl",
+                1 : "-Inner1_Cu.gbl",
+                2 : "-Inner2_Cu.gbl",
                 15 : "-F_Cu.gtl",
                 20 : "-B_SilkS.gbo",
                 21 : "-F_SilkS.gto",
@@ -110,7 +128,10 @@ def readyProjectZipfile( json_message ):
     gcode_files = []
     for layer in layers:
 
-      #grbr = sp.check_output( [brdgrb_exec, str(brd_fn), str(layer), str(font_file) ] )
+      # skip if layer 1 or layer 2 aren't in the layers
+      #
+      if layer>0 and layer<15 and (layer not in layer_map): continue
+
       grbr = sp.check_output( [brdgrb_exec, "-i", str(brd_fn), "-L", str(layer), "-F", str(font_file) ] )
       gerber_uid, gerber_fn = dumpToFile( grbr )
       gerber_files.append( { "id": gerber_uid , "filename" : gerber_fn, "layer" : layer } )
@@ -135,7 +156,6 @@ def readyProjectZipfile( json_message ):
     z.write( brd_json_fn, projname + "/json/board.json" )
     z.write( sch_fn, projname + "/KiCAD/schematic.sch" )
     z.write( brd_fn, projname + "/KiCAD/board.brd" )
-
 
     for f in gerber_files:
       z.write( f["filename"], projname + "/gerber/board" + layers[ int(f["layer"]) ] )

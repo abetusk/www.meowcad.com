@@ -1244,13 +1244,13 @@ def _constructProjectListTable( projs, start = 0, end = 10, schlink = "sch", brd
     tableProjectHTML.append( "</div>" )
 
 
-    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "'>" )
+    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "' style='text-align:center;'>" )
     tableProjectHTML.append(  "<a href='" + schlink + "?project=" + p["id"] + "' >" +
                               aa +  "src='mewpng?f=img/" + picdata["schPicId"] + extra + "' " + zz + "</a>" )
     tableProjectHTML.append( "</div>" )
 
 
-    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "'>" )
+    tableProjectHTML.append( "<div class='col-sm-" + table_cols_sz[2] + "' style='text-align:center;'>" )
     tableProjectHTML.append(  "<a href='" + brdlink + "?project=" + p["id"] + "' >" +
                               aa +  "src='mewpng?f=img/" + picdata["brdPicId"] + extra + "' " + zz + "</a>" )
     tableProjectHTML.append( "</div>" )

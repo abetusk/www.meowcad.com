@@ -3,7 +3,7 @@ h1. "Submitting Boards For Fabrication":/blog/2015-06-16
 h6>. <i class='fa fa-calendar'></i> 2015-06-17
 
 
-!{width:100%}img/blog/workflow_8bitheart.png!
+!{width:100%}/img/blog/workflow_8bitheart.png!
 
 
 At some point, after you design your schematics and boards, you want to submit them to be fabricated.  Whether you use MeowCAD or some other tool, the workflow is pretty similar.  We live in a pretty amazing time where this can be done for reasonable cost with only a few weeks delay.  Not even 5 years ago, this was a costly ordeal.  Sometimes small electronics would order 500 boards at once and hope for the best since the cost of ordering so many more was negligible compared to the overhead cost of ordering a single prototype.

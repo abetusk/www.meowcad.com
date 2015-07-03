@@ -2,7 +2,7 @@ h1. "Introducing MeowCAD":/blog/2015-06-16
 
 h6>. <i class='fa fa-calendar'></i> 2015-06-16
 
-!img/8bit_heart_small.png!
+!/img/8bit_heart_small.png!
 
 Hi there!  This is "MeowCAD":https://meowcad.com!
 

@@ -1,7 +1,7 @@
 www.meowcad.com
 ===============
 
-![sch](html/img/kitty_head_blue_p512.png)
+![sch](html/img/misc/meowflow.png)
 
 Overview
 ---

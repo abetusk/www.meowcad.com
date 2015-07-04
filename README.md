@@ -1,7 +1,4 @@
-www.meowcad.com
-===============
-
-![sch](html/img/kitty_head_blue_p512.png)
+[![sch](html/img/misc/meowflow.png)](https://meowcad.com)
 
 Overview
 ---
@@ -28,6 +25,11 @@ Once a board is created, it can export the board as Gerber files that will look 
 which can be sent to board manufacturers to which will eventually give you boards that look like this:
 
 ![circ](html/img/8bit_heart_small.png)
+
+Here's a short video of the board in action:
+
+[![OHS2015 Ticker](http://img.youtube.com/vi/0BI4rqI0vt0/0.jpg)](http://www.youtube.com/watch?v=0BI4rqI0vt0)
+
 
 This codebase only represents the (very hacked together, hodge-podge frameworkless) python code that
 powers the website proper.  For the web application that runs the schematic and board capture in your

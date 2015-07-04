@@ -1,7 +1,4 @@
-www.meowcad.com
-===============
-
-![sch](html/img/misc/meowflow.png)
+[![sch](html/img/misc/meowflow.png)](https://meowcad.com)
 
 Overview
 ---

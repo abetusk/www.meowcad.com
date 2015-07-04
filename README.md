@@ -26,6 +26,11 @@ which can be sent to board manufacturers to which will eventually give you board
 
 ![circ](html/img/8bit_heart_small.png)
 
+Here's a short video of the board in action:
+
+[![OHS2015 Ticker](http://img.youtube.com/vi/0BI4rqI0vt0/0.jpg)](http://www.youtube.com/watch?v=0BI4rqI0vt0)
+
+
 This codebase only represents the (very hacked together, hodge-podge frameworkless) python code that
 powers the website proper.  For the web application that runs the schematic and board capture in your
 browser, see the sibling project:

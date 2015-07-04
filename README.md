@@ -43,7 +43,7 @@ There's a [screencast available](https://www.youtube.com/watch?v=MWll14sQI-A) (1
 Installation
 ---
 
-Installation is involved and has a lot of dependencies.  There's an old `Dockerfile` present in [config/docker.io/Dockerfile](config/docker.io/Dockerfile) that will get you started.  If there's interest, I will update the Dockerfile to make it in line with the most recent MeowCAD version.  You can check out an older [image of MeowCAD](https://registry.hub.docker.com/u/abetusk/meowcad/) in the Docker registry as well.
+Installation is involved and has a lot of dependencies.  There's a `Dockerfile` present in [config/docker.io/Dockerfile](config/docker.io/Dockerfile) that will get you started.  You can check out an [image of MeowCAD](https://registry.hub.docker.com/u/abetusk/meowcad/) in the Docker registry as well.
 
 Unfortunately this repository (www.meowcad.com) is intertwined with [bleepsix](https://github.com/abetusk/bleepsix).  For example, the node server requires the bleepsix repository to be installed at a pre-defined location.
 

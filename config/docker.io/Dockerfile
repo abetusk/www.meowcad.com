@@ -1,4 +1,4 @@
-FROM ubuntu:14.10
+FROM debian:jessie
 
 # The npm module 'canvas' has a lot of issue and is subseptible
 # to bit-rot.  Periodically the 'npm install -g canvas' will fail
@@ -16,8 +16,10 @@ RUN apt-get update && apt-get install -y git apache2 haproxy \
   nodejs npm build-essential gcc g++ python \
   redis-server redis-tools python-redis \
   imagemagick python-numpy libboost-thread-dev libjpeg-dev libcairo2-dev \
-  libjpeg8-dev libpango1.0-dev libgif-dev \
+  libpango1.0-dev libgif-dev \
   telnet vim
+
+#  libjpeg8-dev libpango1.0-dev libgif-dev \
 
 # Enable apahce2 settings and setup 'meow' user with password 'mewmew'.
 #

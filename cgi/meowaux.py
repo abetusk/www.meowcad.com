@@ -632,7 +632,7 @@ def transferUser( userid, username, password ):
   return db.hgetall( "user:" + str(userid) )
 
 
-def createUser( userName, password ):
+def createUser( userName, password, email = "" ):
   db = redis.Redis()
 
   userId = str( uuid.uuid4() )
@@ -647,6 +647,7 @@ def createUser( userName, password ):
   user = {}
   user["id"] = userId
   user["passwordHash"] = str(hashPassword)
+  user["email"] = str(email)
   user["active"] = 1
   user["userName"] = str(userName)
   user["type"] = "user"

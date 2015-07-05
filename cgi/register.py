@@ -21,6 +21,9 @@ def processSignup( ch, cook_hash ):
 
   username = ch["username"]
   password = ch["password"]
+  email = ""
+
+  if "email" in ch: email = ch["email"]
 
   if len( username ) == 0: return False, "badusername", "The username field is empty"
   if len( password ) == 0: return False, "badpassword","The password field is empty"
@@ -47,13 +50,13 @@ def processSignup( ch, cook_hash ):
     else:
       # In case something went really south with the userId,
       # just create one
-      user = mew.createUser( username, password )
+      user = mew.createUser( username, password, email )
       userId = user["id"]
       mew.createProject( userId, "My-New-Project", "user" )
       retStr = "newuser"
 
   else:
-    user = mew.createUser( username, password )
+    user = mew.createUser( username, password, email )
     userId = user["id"]
     mew.createProject( userId, "My-New-Project", "user" )
     retStr = "newuser"

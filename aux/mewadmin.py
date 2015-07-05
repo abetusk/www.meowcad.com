@@ -181,8 +181,14 @@ def users( flag ):
     act = "active"
     if userDat["active"] != "1": act = "nonactive"
 
+
+    email = ""
+    if "email" in userDat:
+      email = userDat["email"]
+
     print ">>>>"
     print "user:", userDat["userName"], userid
+    print "email:", str(email)
     print "status:", act, "(" + str(userDat["active"]) + ")"
     print "type:", userDat["type"]
     print

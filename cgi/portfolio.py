@@ -119,7 +119,8 @@ tmp_str = tmp_str.replace( "<!--NAVBAR-->", nav )
 #tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(userName) ) )
 tmp_str = tmp_str.replace( "<!--BREADCRUMB-->", mew.breadcrumb( str(viewUserName), str(viewUserId) ) )
 
-tmp_str = tmp_str.replace( "<!--PROJECT_TABLE-->", projectTable )
+#tmp_str = tmp_str.replace( "<!--PROJECT_TABLE-->", projectTable )
+tmp_str = tmp_str.replace( "<!--PROJECT_TABLE-->", projectTable.decode("utf-8") )
 
 #if userData["type"] != "anonymous":
 #if userType != "anonymous":
@@ -138,6 +139,6 @@ tmp_str = tmp_str.replace( "<!--ANALYTICS-->", analytics )
 print "Content-Type: text/html;charset=utf-8"
 print cookie.output()
 print
-print tmp_str
+print tmp_str.encode("utf-8")
 
 

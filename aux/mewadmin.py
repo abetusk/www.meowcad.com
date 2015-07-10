@@ -8,6 +8,9 @@ import os, sys, re
 import redis
 import json
 import meowaux as mew
+import time
+
+from datetime import datetime, timedelta
 
 def project( projectId ):
   """Get project information"""
@@ -186,11 +189,18 @@ def users( flag ):
     if "email" in userDat:
       email = userDat["email"]
 
+    strtime = ""
+    if "stime" in userDat:
+      istime = int(float(userDat["stime"]))
+      strtime = time.ctime(istime)
+
+
     print ">>>>"
     print "user:", userDat["userName"], userid
     print "email:", str(email)
     print "status:", act, "(" + str(userDat["active"]) + ")"
     print "type:", userDat["type"]
+    print "date:", strtime
     print
     print
 

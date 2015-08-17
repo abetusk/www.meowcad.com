@@ -1,0 +1,20 @@
+graph TB
+    Home(Home Page) --> SignIn(Sign In)
+    Home --> Register(Register)
+    SignIn --> Portfolio(Portfolio)
+    Register --> Portfolio
+    Home -.-> Sch(Schematic Capture)
+    Home -.-> Brd(Board Capture)
+    Portfolio --> Sch
+    Portfolio --> Brd
+
+    * --> Feedback
+    * --> Explore
+    * --> Search
+    * --> Blog
+
+    *user --> Account(Account Management)
+    *user --> Project
+
+    Sch --> Snapshot
+    Brd --> Snapshot

@@ -239,6 +239,8 @@ be covered briefly here:
 * Sub-component copying (copy from one project to another)
 * Component and footprint library creation
 * Circuit simulation
+* Push and shove router
+* Autorouter
 
 Current State
 ---
@@ -249,8 +251,8 @@ Currently, the following has been *implemented*:
 * Schematic and board capture
 * Gerber export
 * KiCAD library (component and footprint) import
-* KiCAD export (experimental)
-* GCode export (experimental)
+* KiCAD export (preliminary, experimental only)
+* GCode export (preliminary, experimental only)
 
 The following features have *not yet been implemented*:
 
@@ -260,3 +262,5 @@ The following features have *not yet been implemented*:
 * Sub-component copying (copy from one project to another)
 * Component and footprint library creation
 * Circuit simulation
+* Push and shove router
+* Autorouter

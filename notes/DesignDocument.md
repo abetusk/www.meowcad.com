@@ -236,6 +236,7 @@ be covered briefly here:
 * KiCAD project import
 * GCode export (for use in isolation milling)
 * Project forking/copying
+* Bill of Materials (BOM) management
 * Sub-component copying (copy from one project to another)
 * Component and footprint library creation
 * Circuit simulation
@@ -259,6 +260,7 @@ The following features have *not yet been implemented*:
 * Eagle library (component and footprint) import
 * KiCAD project import
 * Project forking/copying
+* Bill of Materials (BOM) management
 * Sub-component copying (copy from one project to another)
 * Component and footprint library creation
 * Circuit simulation

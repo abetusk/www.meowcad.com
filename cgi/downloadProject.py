@@ -17,6 +17,7 @@ cgitb.enable();
 
 jsonsch_exec = "/home/meow/pykicad/jsonsch.py"
 jsonbrd_exec = "/home/meow/pykicad/jsonbrd.py"
+json2kicad_pcb_exec = "/home/meow/pykicad/json2kicad_pcb.py"
 
 brdgrb_exec = "/home/meow/pykicad/brdgerber.py"
 grbngc_exec = "/home/meow/bin/gbl2ngc"
@@ -90,11 +91,14 @@ def readyProjectZipfile( json_message ):
 
     # Create KiCAD schematic and board files
     #
-    kicad_sch = sp.check_output( [jsonsch_exec, sch_json_fn ] );
+    kicad_sch = sp.check_output( [jsonsch_exec, sch_json_fn] )
     sch_uid, sch_fn  = dumpToFile( kicad_sch )
 
-    kicad_brd = sp.check_output( [jsonbrd_exec, brd_json_fn ] );
+    kicad_brd = sp.check_output( [jsonbrd_exec, brd_json_fn] )
     brd_uid, brd_fn = dumpToFile( kicad_brd )
+
+    kicad_pcb = sp.check_output( [json2kicad_pcb_exec, brd_json_fn] )
+    kicad_pcb_uid, kicad_pcb_fn = dumpToFile( kicad_pcb )
 
     # Go through relevant layers and create gerber and gcode files for each
     #
@@ -156,6 +160,7 @@ def readyProjectZipfile( json_message ):
     z.write( brd_json_fn, projname + "/json/board.json" )
     z.write( sch_fn, projname + "/KiCAD/schematic.sch" )
     z.write( brd_fn, projname + "/KiCAD/board.brd" )
+    z.write( kicad_pcb_fn, projname + "/KiCAD/board.kicad_pcb" )
 
     for f in gerber_files:
       z.write( f["filename"], projname + "/gerber/board" + layers[ int(f["layer"]) ] )

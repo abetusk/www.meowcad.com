@@ -16,8 +16,8 @@ login_signup="""
       <button class='btn btn-success' type='submit'>Log in</button>
     </form>
 
-    <form action='/signup' style='display:inline;' >
-      <button class='btn btn-warning' type='submit'>Sign up!</button>
+    <form action='/register' style='display:inline;' >
+      <button class='btn btn-warning' type='submit'>Register!</button>
     </form>
 
   </li>

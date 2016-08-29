@@ -9,9 +9,6 @@ import "io/ioutil"
 
 func (ce *CustomEngine) Response(val interface{}, options ...map[string]interface{}) ([]byte, error) {
   dat := val.([]byte)
-
-  fmt.Printf("mewpng response: render (%d)\n", len(dat))
-
   return dat, nil
 }
 
@@ -26,8 +23,6 @@ func MewPNG(ctx *iris.Context) {
   rest_projectid := string(ctx.Param("projectId"))
   form_projectid := string(ctx.FormValue("projectId"))
 
-  fmt.Printf("  projectid (%v %v)\n", rest_projectid, form_projectid)
-
   projectid := form_projectid
   if rest_projectid != "" { projectid = rest_projectid }
 
@@ -40,22 +35,10 @@ func MewPNG(ctx *iris.Context) {
 
   authorized := false
 
-  //DEBUG
-  fmt.Printf("MewPNG: userid: %s, owner_userid %s\n", userid, owner_userid)
-  fmt.Printf("MewPNG: rest_projectid: %s, form_projectid %s\n", rest_projectid, form_projectid)
-
   if owner_userid != userid {
     perm := ProjectPerm(g_redis_cli, projectid)
-
-    //DEBUG
-    fmt.Printf("  not owner: perm %s\n", perm)
-
     if perm == "world-read" { authorized = true }
   } else {
-
-    //DEBUG
-    fmt.Printf("  owner (authorized)\n")
-
     authorized = true
   }
 
@@ -73,8 +56,6 @@ func MewPNG(ctx *iris.Context) {
       return
     }
 
-    fmt.Printf("mewpng: render (%d)\n", len(dat))
-
     ctx.MustRender("image/png", dat)
     return
   }
@@ -83,8 +64,6 @@ func MewPNG(ctx *iris.Context) {
 
   fn,e := FileCascadeFn(owner_userid, projectid, inp_fn)
   if e!=nil {
-
-    fmt.Printf("file cascade error: %v (owner_userid %s, projectid %s, inp_fn %s)\n", e, owner_userid, projectid, inp_fn)
 
     err_png := "img/ghost_alt_big.png"
     dat, err := ioutil.ReadFile(err_png)
@@ -98,19 +77,11 @@ func MewPNG(ctx *iris.Context) {
     return
   }
 
-  //DEBUG
-  fmt.Printf("  mewpng: fn %sn", fn)
-
   dat, err := ioutil.ReadFile(fn)
   if err!=nil {
-
-    fmt.Printf("mewpng: error %v (%s)\n", err, fn)
-
     ctx.Render("error.html", nil)
     return
   }
-
-  fmt.Printf("mewpng: render (%d)\n", len(dat))
 
   ctx.MustRender("image/png", dat)
   return

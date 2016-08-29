@@ -109,8 +109,6 @@ func (ri *RenderInfo) UpdateSession(userid, sessionid string) {
     b := sha512.Sum512( []byte(userid + sessionid) )
     hashsessionid := hex.EncodeToString(b[:])
 
-    fmt.Printf("about: hashsessionid: %v\n", hashsessionid)
-
     z := ri.DBClient.SIsMember("sesspool", hashsessionid)
     if z.Val() {
       z1 := ri.DBClient.HGetAll("user:" + userid)
@@ -164,7 +162,6 @@ func RenderInfoCreate(ctx *iris.Context) RenderInfo {
   ctx.RemoveCookie("messageType")
 
   return ri
-
 }
 
 func RenderInfoUserSession(userid, sessionid string) RenderInfo {
@@ -181,7 +178,7 @@ func login(ctx *iris.Context) {
 
   e := ctx.Render(dst_page, ri)
   if e!=nil { fmt.Printf("login error: %v\n", e) }
-  fmt.Printf("login... %v\n", ri)
+
 }
 
 func forgot(ctx *iris.Context) {
@@ -192,7 +189,7 @@ func forgot(ctx *iris.Context) {
 
   e := ctx.Render(dst_page, ri)
   if e!=nil { fmt.Printf("forgot error: %v\n", e) }
-  fmt.Printf("forgot... %v\n", ri)
+
 }
 
 func project(ctx *iris.Context) {
@@ -216,8 +213,6 @@ func project(ctx *iris.Context) {
   _ = form_project_id
 
   ri.CurProject,ok = GetProject(g_redis_cli, userid, projectid)
-
-  fmt.Printf("PROJECT: %v\n", ri.CurProject)
 
   if !ok {
     fmt.Printf("project not found or unavailable: userid:%v projectid:%v\n", userid, projectid)
@@ -248,10 +243,6 @@ func portfolio(ctx *iris.Context) {
   }
   _ = view_user_id
 
-  fmt.Printf("portfolio %v %v --> %v\n", string(rest_user_id), string(form_user_id), view_user_id)
-
-
-  //userid := ctx.GetCookie("userId")
   sessionid := ctx.GetCookie("sessionId")
 
   p,ok := GetPortfolio(g_redis_cli, userid, sessionid, view_user_id)
@@ -260,11 +251,8 @@ func portfolio(ctx *iris.Context) {
 
   ri.Project = p
 
-  fmt.Printf(">>> %v\n", ri.Project)
-
   e := ctx.Render("portfolio.html", ri)
   if e!=nil { fmt.Printf("portfolio error: %v\n", e) }
-  //fmt.Printf("portfolio... %v\n", ri)
 }
 
 func user(ctx *iris.Context) {
@@ -286,7 +274,6 @@ func user_post(ctx *iris.Context) {
     ctx.SetCookieKV("message", msg)
     ctx.SetCookieKV("messageType", "error")
 
-    //ctx.Redirect("/user")
     ctx.Redirect( BASE_HOST + "/user")
     return
   }
@@ -294,7 +281,6 @@ func user_post(ctx *iris.Context) {
   if string(password_new) != string(password_confirm) {
     ctx.SetCookieKV("message", "Passwords do not match")
     ctx.SetCookieKV("messageType", "error")
-    //ctx.Redirect("/user")
     ctx.Redirect( BASE_HOST + "/user")
     return
   }
@@ -304,7 +290,6 @@ func user_post(ctx *iris.Context) {
   if !AuthenticateUser(g_redis_cli, string(userid), string(password_old)) {
     ctx.SetCookieKV("message", "Authentication failure")
     ctx.SetCookieKV("messageType", "error")
-    //ctx.Redirect("/user")
     ctx.Redirect( BASE_HOST + "/user")
     return
   }
@@ -313,7 +298,6 @@ func user_post(ctx *iris.Context) {
 
   ctx.SetCookieKV("message", "Password changed!")
   ctx.SetCookieKV("messageType", "success")
-  //ctx.Redirect("/user")
   ctx.Redirect( BASE_HOST + "/user")
 }
 
@@ -333,12 +317,7 @@ func logout(ctx *iris.Context) {
     ri.DBClient.SRem( "sesspool", hashsessionid )
   }
 
-
-  //ctx.Redirect("/")
   ctx.Redirect( BASE_HOST + "/")
-
-  fmt.Printf("logout ... %v\n", ri)
-
 }
 
 
@@ -346,7 +325,6 @@ func register(ctx *iris.Context) {
   ri := RenderInfoCreate(ctx)
 
   if ri.LoggedIn && (!ri.Anonymous) {
-    //ctx.RedirectTo("/portfolio")
     ctx.Redirect( BASE_HOST + "/portfolio")
     return
   }
@@ -382,7 +360,6 @@ func register_post(ctx *iris.Context) {
   ctx.RemoveCookie("signup_email")
 
   if ri.LoggedIn && (!ri.Anonymous) {
-    //ctx.Redirect("/portfolio")
     ctx.Redirect( BASE_HOST + "/portfolio")
     return
   }
@@ -401,7 +378,6 @@ func register_post(ctx *iris.Context) {
 
     ctx.SetCookieKV("message", "Anonymous session cleared!")
     ctx.SetCookieKV("messageType", "success")
-    //ctx.Redirect("/register")
     ctx.Redirect( BASE_HOST + "/register")
     return
   }
@@ -420,7 +396,6 @@ func register_post(ctx *iris.Context) {
     SetCookieSecureKV(ctx, "signup_focus", "username")
     SetCookieSecureKV(ctx, "signup_email", string(email))
 
-    //ctx.Redirect("/register")
     ctx.Redirect( BASE_HOST + "/register")
     return
   }
@@ -429,35 +404,18 @@ func register_post(ctx *iris.Context) {
   //
   scmd := ri.DBClient.HGet( "username:" + string(username), "id")
   if scmd.Val() != "" {
-
-    fmt.Printf("'%v' '%v'\n", scmd.Err(), scmd.Val())
-
     ctx.SetCookieKV("message", "We're sorry, that username already exists!  Please try another username")
     ctx.SetCookieKV("messageType", "error")
 
     SetCookieSecureKV(ctx, "signup_focus", "username")
     SetCookieSecureKV(ctx, "signup_email", string(email))
 
-    //ctx.Redirect("/register")
     ctx.Redirect( BASE_HOST + "/register")
     return
   }
 
-  // Check password conditions (if less than 20 chars, needs mixed alphanumeric case).
-  //
-  /*
-  n,ncap,nnum := 0,0,0
-  for i:=0; i<len(password); i++ {
-    n++
-    if (password[i] >= 'A') && (password[i] <= 'Z') { ncap++ }
-    if (password[i] >= '0') && (password[i] <= '9') { nnum++ }
-  }
-  if ((n<8) && ((ncap==0) || (ncap==n) || (nnum==0))) {
-  */
-
   if ok,msg := ValidPassword(string(password)) ; !ok {
 
-    //ctx.SetCookieKV("message", "Password less than 20 characters long must contain mixed case, at least one number and be at least 7 characters long")
     ctx.SetCookieKV("message", msg)
     ctx.SetCookieKV("messageType", "error")
 
@@ -465,7 +423,6 @@ func register_post(ctx *iris.Context) {
     SetCookieSecureKV(ctx, "signup_username", string(username))
     SetCookieSecureKV(ctx, "signup_email", string(email))
 
-    //ctx.Redirect("/register")
     ctx.Redirect( BASE_HOST + "/register")
     return
   }
@@ -522,20 +479,13 @@ func register_post(ctx *iris.Context) {
 func search(ctx *iris.Context) {
   ri := RenderInfoCreate(ctx)
 
-  param := ctx.Param("search")
-  m := ctx.URLParams()
-
-  fmt.Printf("search: %s %v\n", param, m)
-
-  //ctx.Write("search... %s %v", param, m)
-
+  param := ctx.Param("search") ; _ = param
+  m := ctx.URLParams() ; _ = m
 
   e := ctx.Render("search.html", ri)
   if e!=nil {
     fmt.Printf("searcherror: %v\n", e)
   }
-
-  fmt.Printf("search... %v\n", ri)
 
 }
 
@@ -546,19 +496,14 @@ func feedback_post(ctx *iris.Context) {
   email := ctx.FormValue("email")
   feedback := ctx.FormValue("feedback")
 
-  //DEBUG
-  fmt.Printf("feedback post (redirect) %s %s\n", email, feedback)
-
   SendFeedback(g_redis_cli, string(userid), string(email), string(feedback))
 
   if ri.LoggedIn {
     SetCookieSecureKV(ctx, "message", "Thank you!  Your feedback has been sent")
     SetCookieSecureKV(ctx, "messageType", "info")
 
-    //ctx.Redirect("/portfolio")
     ctx.Redirect( BASE_HOST + "/portfolio")
   } else {
-    //ctx.Redirect("/landing")
     ctx.Redirect( BASE_HOST + "/landing")
   }
 
@@ -596,8 +541,6 @@ func explore(ctx *iris.Context) {
     fmt.Printf("explore error: %v\n", e)
   }
 
-  fmt.Printf("explore... %v %v\n", ri, ctx.URLParams())
-
 }
 
 func about(ctx *iris.Context) {
@@ -608,15 +551,12 @@ func about(ctx *iris.Context) {
     fmt.Printf("about error: %v\n", e)
   }
 
-  fmt.Printf("about... %v %v\n", ri, ctx.URLParams())
-
 }
 
 func landing(ctx *iris.Context) {
   ri := RenderInfoCreate(ctx)
 
   if ri.LoggedIn {
-    //ctx.Redirect("/portfolio")
     ctx.Redirect( BASE_HOST + "/portfolio")
     return
   }
@@ -625,8 +565,6 @@ func landing(ctx *iris.Context) {
   if e!=nil {
     fmt.Printf("landing error: %v\n", e)
   }
-
-  fmt.Printf("landing... %v\n", ri)
 
 }
 

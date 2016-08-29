@@ -48,25 +48,17 @@ func GetPortfolio(cli *redis.Client, userid, sessionid, view_userid string) ([]P
   sess,e := r.Result()
   if e!=nil { return nil,false }
 
-  //fmt.Printf("  sess: %v\n", sess)
-
   if sess["active"] != "1" { return nil,false }
 
   r1 := cli.HGetAll("user:" + view_userid)
   view_user,e := r1.Result()
   if e!=nil { return nil,false }
 
-  //fmt.Printf("  view_user: %v\n", view_user)
-
   if view_user["active"] != "1" { return nil, false }
-
-  //fmt.Printf("  >> user active\n")
 
   r2 := cli.LLen("olio:" + view_userid)
   n_portfolio,e := r2.Result()
   if e!=nil { return nil,false }
-
-  //fmt.Printf("  n_portfolio: %v\n", n_portfolio)
 
   r3 := cli.LRange("olio:" + view_userid, 0, n_portfolio)
   portfolio,e := r3.Result()
@@ -103,8 +95,6 @@ func GetProject(cli *redis.Client, userid, projectid string) (ProjectInfo, bool)
   schpic := ""
   brdpic := ""
   picinfo,e := cli.HGetAll("projectpic:" + projectid).Result()
-
-  fmt.Printf(">>>>get project %v\n", picinfo)
 
   if e==nil {
     schpic = picinfo["schPicId"]
@@ -246,8 +236,6 @@ func ProjectUserId(cli *redis.Client, projectid string) string {
 func ProjectPerm(cli *redis.Client, projectid string) string {
   u,e := cli.HGet("project:" + projectid, "permission").Result()
 
-  fmt.Printf("??? projectid %v, %v %v\n", projectid, u, e)
-
   if e!=nil { return "owner" }
   return u
 }
@@ -323,32 +311,17 @@ var USR_BASE_LOCATION     string = "/home/meow/usr"
 func FileCascadeFn(userid, projectid, fn string) (string,error) {
   fullfn := ""
 
-  //DEBUG
-  fmt.Printf("FileCascadeFn: userid(%s)  projectid(%s) fn(%s)\n", userid, projectid, fn)
-
   if (userid!="") && (projectid!="") {
     usrDir := USR_BASE_LOCATION + "/" + userid
     projDir := usrDir + "/" + projectid
 
-    //DEBUG
-    fmt.Printf("  a.0: usrDir %s, projDir %s\n", usrDir, projDir)
-
     if inDirectory(usrDir, USR_BASE_LOCATION) {
-
-      fmt.Printf("  cp0\n")
 
       if inDirectory(projDir, usrDir) {
         fullfn = projDir + "/" + fn
 
-        fmt.Printf("  cp1 %v\n", fullfn)
-
-
         if inDirectory(fullfn, projDir) {
           if _,err := os.Stat(fullfn) ; err==nil {
-
-            //DEBUG
-            fmt.Printf("  a:fullfn: %v\n", fullfn)
-
             return fullfn, nil
           }
         }
@@ -357,10 +330,6 @@ func FileCascadeFn(userid, projectid, fn string) (string,error) {
       fullfn = usrDir + "/" + fn
       if inDirectory(usrDir, fn) {
         if _,err := os.Stat(fullfn) ; err==nil {
-
-          //DEBUG
-          fmt.Printf("  b:fullfn: %v\n", fullfn)
-
           return fullfn, nil
         }
       }
@@ -375,11 +344,6 @@ func FileCascadeFn(userid, projectid, fn string) (string,error) {
       fullfn = usrDir + "/" + fn
       if inDirectory(fullfn, usrDir) {
         if _,err := os.Stat(fullfn) ; err==nil {
-
-          //DEBUG
-          fmt.Printf("  c:fullfn: %v\n", fullfn)
-
-
           return fullfn, nil
         }
       }
@@ -389,15 +353,8 @@ func FileCascadeFn(userid, projectid, fn string) (string,error) {
 
   fullfn = DEFAULT_DATA_LOCATION + "/" + fn
   if _,err := os.Stat(fullfn) ; err!=nil {
-
-    //DEBUG
-    fmt.Printf("  err: %v (%v)\n", err, fullfn)
-
     return "", fmt.Errorf("invalid file: %s", fullfn)
   }
-
-  //DEBUG
-  fmt.Printf("  d:fullfn: %v\n", fullfn)
 
   return fullfn, nil
 }

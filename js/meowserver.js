@@ -8,11 +8,17 @@ var redis = require('redis'),
 var bleepsixSchematicController = require("../../bleepsix/js/sch/bleepsixSchematicController.js");
 var meowsession = require("./meowsession.js");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 meowsession.init( auth, aux, proj );
 
 var io = require("socket.io").listen(8000);
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 io.set('log level', 1);
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 function _makeData(  transactionId, socket, db, data, callback )
 {

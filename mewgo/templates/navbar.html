@@ -1,0 +1,88 @@
+<!-- inside container means it has some margin at the sides, outside means it spans -->
+
+        {{if .LandingPage }}
+          <div class="navbar-flush navbar-inverse">
+        {{else}}
+          <div class="navbar navbar-inverse">
+        {{end}}
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                  <img style='opacity:0.5;' src='/img/kitty_head_white_outline_p32.png' height='16px' width='16px' >
+                  </img>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse navbar-inverse-collapse">
+
+              {{if .Anonymous}}
+                <ul class="nav navbar-nav"> <li><a href="/register">&lt; anonymous &gt;</a></li> </ul>
+              {{else if .LoggedIn}}
+                <ul class="nav navbar-nav">  <li>    <a href="/user"><i class='fa fa-cog'></i>    </a>  </li>  <li>    <a href="/portfolio">[{{.UserName}}]    </a>  </li></ul>
+              {{end}}
+
+
+                <form class="navbar-form navbar-left" action='/search' >
+                  <div class='input-group'>
+
+                    {{if .LandingPage }}
+                      <input type="text" class="form-control col-lg-8" size="12" style='width:auto;' placeholder="Search">
+                    {{else}}
+                      <input type="text" class="form-control col-lg-8" style='width:auto;' placeholder="Search">
+                    {{end}}
+
+                    <span class='input-group-btn' style='width:auto;' >
+                      <button class='btn btn-default' type='submit'><img src='/img/search_p64.png' style='height:16px;' >
+                        </img>
+                      </button>
+                    </span>
+                  </div>
+                </form>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="/explore">Explore</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+
+                {{if .Anonymous}}
+
+                  <ul class='nav navbar-nav' style='float:right; margin-top:7px; margin-right:5px; ' >
+                    <li>
+
+                      <form action='/register' style='display:inline;' >
+                        <button class='btn btn-warning' type='submit'>Register!</button>
+                      </form>
+
+                    </li>
+                  </ul>
+
+                {{else if .LoggedIn}}
+                  <ul class="nav navbar-nav navbar-right">  <li>    <a href='/logout'><i class='fa fa-sign-out'></i> Logout</a>  </li></ul>
+                {{else}}
+            
+                  <ul class='nav navbar-nav' style='float:right; margin-top:7px; margin-right:5px; ' >
+                    <li>
+
+                      <form action='/login' style='display:inline;' >
+                        <button class='btn btn-success' type='submit'>Log in</button>
+                      </form>
+
+                      <form action='/register' style='display:inline;' >
+                        <button class='btn btn-warning' type='submit'>Register!</button>
+                      </form>
+
+                    </li>
+                  </ul>
+
+                {{end}}
+                <!--NAVBAR_USER_CONTEXT-->
+
+            </div>
+        </div>

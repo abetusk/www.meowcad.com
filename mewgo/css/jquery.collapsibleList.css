@@ -1,0 +1,80 @@
+/*!
+ * jQuery Collapsible List Plugin v0.2
+ * http://github.com/sergiocampama/
+ *
+ * Based on the Collapsible library by Stephen Morley
+ * http://code.stephenmorley.org/javascript/collapsible-lists/
+ *
+ * Released under the MIT License
+ *
+ * Date: Mon Oct 15 2012
+ */
+
+.collapsibleList li{
+	list-style-image:url('img/coll-list/button.png');
+	list-style-position:inside;
+	cursor:auto;
+}
+
+li.collapsibleListOpen{
+	list-style-image:url('img/coll-list/button-open.png');
+	cursor:pointer;
+}
+
+li.collapsibleListClosed{
+	list-style-image:url('img/coll-list/button-closed.png');
+	cursor:pointer;
+}
+
+li.collapsibleListClosed ul{
+	display:none;
+}
+
+.collapsibleList ul {
+	padding-left: 20px;
+}
+
+.treeView{
+	line-height: 1.5em;
+}
+
+.treeView ul{
+	margin:0 0 0 -1.5em;
+	padding:0 0 0 1.5em;
+}
+
+.treeView ul ul{
+	background:url('img/coll-list/list-item-contents.png') repeat-y left;
+}
+
+.treeView li.lastChild > ul{
+	background-image:none;
+}
+
+.treeView li{
+	margin:0;
+	padding:0;
+	background:no-repeat top left;
+	list-style-position:inside;
+}
+
+.treeView li li{
+	background-image:url('img/coll-list/list-item.png');
+	padding-left:1.5em;
+}
+
+.treeView li.lastChild{
+	background-image:url('img/coll-list/list-item-last.png');
+}
+
+.treeView li.collapsibleListOpen{
+	background-image:url('img/coll-list/list-item-open.png');
+}
+
+.treeView li.collapsibleListOpen.lastChild{
+	background-image:url('img/coll-list/list-item-last-open.png');
+}
+
+.treeView > li.collapsibleListOpen {
+	background:url('img/coll-list/list-item-root.png') no-repeat top left;
+}

@@ -1,0 +1,4002 @@
+[
+  {
+    "list": [
+      {
+        "data": "pcb/json/adafruit/0204%252F5.json", 
+        "type": "element", 
+        "id": "0204/5", 
+        "name": "0204/5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0204%252F7.json", 
+        "type": "element", 
+        "id": "0204/7", 
+        "name": "0204/7"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0204V.json", 
+        "type": "element", 
+        "id": "0204V", 
+        "name": "0204V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0207%252F10.json", 
+        "type": "element", 
+        "id": "0207/10", 
+        "name": "0207/10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0207%252F12.json", 
+        "type": "element", 
+        "id": "0207/12", 
+        "name": "0207/12"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0207%252F15.json", 
+        "type": "element", 
+        "id": "0207/15", 
+        "name": "0207/15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0207%252F2V.json", 
+        "type": "element", 
+        "id": "0207/2V", 
+        "name": "0207/2V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0207%252F5V.json", 
+        "type": "element", 
+        "id": "0207/5V", 
+        "name": "0207/5V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0207%252F7.json", 
+        "type": "element", 
+        "id": "0207/7", 
+        "name": "0207/7"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0207%252F9.json", 
+        "type": "element", 
+        "id": "0207/9", 
+        "name": "0207/9"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0309%252F10.json", 
+        "type": "element", 
+        "id": "0309/10", 
+        "name": "0309/10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0309%252F12.json", 
+        "type": "element", 
+        "id": "0309/12", 
+        "name": "0309/12"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0309V.json", 
+        "type": "element", 
+        "id": "0309V", 
+        "name": "0309V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0411%252F12.json", 
+        "type": "element", 
+        "id": "0411/12", 
+        "name": "0411/12"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0411%252F15.json", 
+        "type": "element", 
+        "id": "0411/15", 
+        "name": "0411/15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0411V.json", 
+        "type": "element", 
+        "id": "0411V", 
+        "name": "0411V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0414%252F15.json", 
+        "type": "element", 
+        "id": "0414/15", 
+        "name": "0414/15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0414V.json", 
+        "type": "element", 
+        "id": "0414V", 
+        "name": "0414V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/06132.json", 
+        "type": "element", 
+        "id": "06132", 
+        "name": "06132"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0617%252F17.json", 
+        "type": "element", 
+        "id": "0617/17", 
+        "name": "0617/17"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0617%252F22.json", 
+        "type": "element", 
+        "id": "0617/22", 
+        "name": "0617/22"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0617V.json", 
+        "type": "element", 
+        "id": "0617V", 
+        "name": "0617V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0805-THM.json", 
+        "type": "element", 
+        "id": "0805-THM", 
+        "name": "0805-THM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0805-THM-7.json", 
+        "type": "element", 
+        "id": "0805-THM-7", 
+        "name": "0805-THM-7"
+      }, 
+      {
+        "data": "pcb/json/adafruit/085CS_1AR.json", 
+        "type": "element", 
+        "id": "085CS_1AR", 
+        "name": "085CS_1AR"
+      }, 
+      {
+        "data": "pcb/json/adafruit/085CS_1AW.json", 
+        "type": "element", 
+        "id": "085CS_1AW", 
+        "name": "085CS_1AW"
+      }, 
+      {
+        "data": "pcb/json/adafruit/085CS_1R.json", 
+        "type": "element", 
+        "id": "085CS_1R", 
+        "name": "085CS_1R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/085CS_1W.json", 
+        "type": "element", 
+        "id": "085CS_1W", 
+        "name": "085CS_1W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0922%252F22.json", 
+        "type": "element", 
+        "id": "0922/22", 
+        "name": "0922/22"
+      }, 
+      {
+        "data": "pcb/json/adafruit/0922V.json", 
+        "type": "element", 
+        "id": "0922V", 
+        "name": "0922V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1035D.json", 
+        "type": "element", 
+        "id": "1035D", 
+        "name": "1035D"
+      }, 
+      {
+        "data": "pcb/json/adafruit/12-STRIP.json", 
+        "type": "element", 
+        "id": "12-STRIP", 
+        "name": "12-STRIP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1206.json", 
+        "type": "element", 
+        "id": "1206", 
+        "name": "1206"
+      }, 
+      {
+        "data": "pcb/json/adafruit/12BH412.json", 
+        "type": "element", 
+        "id": "12BH412", 
+        "name": "12BH412"
+      }, 
+      {
+        "data": "pcb/json/adafruit/139CLL-2R.json", 
+        "type": "element", 
+        "id": "139CLL-2R", 
+        "name": "139CLL-2R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/139CLL-2W.json", 
+        "type": "element", 
+        "id": "139CLL-2W", 
+        "name": "139CLL-2W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/139CLL-3R.json", 
+        "type": "element", 
+        "id": "139CLL-3R", 
+        "name": "139CLL-3R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/139CLL-3W.json", 
+        "type": "element", 
+        "id": "139CLL-3W", 
+        "name": "139CLL-3W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/140CLH-0810.json", 
+        "type": "element", 
+        "id": "140CLH-0810", 
+        "name": "140CLH-0810"
+      }, 
+      {
+        "data": "pcb/json/adafruit/140CLH-1010.json", 
+        "type": "element", 
+        "id": "140CLH-1010", 
+        "name": "140CLH-1010"
+      }, 
+      {
+        "data": "pcb/json/adafruit/140CLH-1014.json", 
+        "type": "element", 
+        "id": "140CLH-1014", 
+        "name": "140CLH-1014"
+      }, 
+      {
+        "data": "pcb/json/adafruit/150CLZ-0810.json", 
+        "type": "element", 
+        "id": "150CLZ-0810", 
+        "name": "150CLZ-0810"
+      }, 
+      {
+        "data": "pcb/json/adafruit/150CLZ-1010.json", 
+        "type": "element", 
+        "id": "150CLZ-1010", 
+        "name": "150CLZ-1010"
+      }, 
+      {
+        "data": "pcb/json/adafruit/150CLZ-1014.json", 
+        "type": "element", 
+        "id": "150CLZ-1014", 
+        "name": "150CLZ-1014"
+      }, 
+      {
+        "data": "pcb/json/adafruit/153CLV-0405.json", 
+        "type": "element", 
+        "id": "153CLV-0405", 
+        "name": "153CLV-0405"
+      }, 
+      {
+        "data": "pcb/json/adafruit/153CLV-0505.json", 
+        "type": "element", 
+        "id": "153CLV-0505", 
+        "name": "153CLV-0505"
+      }, 
+      {
+        "data": "pcb/json/adafruit/153CLV-0605.json", 
+        "type": "element", 
+        "id": "153CLV-0605", 
+        "name": "153CLV-0605"
+      }, 
+      {
+        "data": "pcb/json/adafruit/153CLV-0807.json", 
+        "type": "element", 
+        "id": "153CLV-0807", 
+        "name": "153CLV-0807"
+      }, 
+      {
+        "data": "pcb/json/adafruit/153CLV-0810.json", 
+        "type": "element", 
+        "id": "153CLV-0810", 
+        "name": "153CLV-0810"
+      }, 
+      {
+        "data": "pcb/json/adafruit/153CLV-1010.json", 
+        "type": "element", 
+        "id": "153CLV-1010", 
+        "name": "153CLV-1010"
+      }, 
+      {
+        "data": "pcb/json/adafruit/153CLV-1012.json", 
+        "type": "element", 
+        "id": "153CLV-1012", 
+        "name": "153CLV-1012"
+      }, 
+      {
+        "data": "pcb/json/adafruit/153CLV-1014.json", 
+        "type": "element", 
+        "id": "153CLV-1014", 
+        "name": "153CLV-1014"
+      }, 
+      {
+        "data": "pcb/json/adafruit/16LCSP.json", 
+        "type": "element", 
+        "id": "16LCSP", 
+        "name": "16LCSP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/175TMP-0808.json", 
+        "type": "element", 
+        "id": "175TMP-0808", 
+        "name": "175TMP-0808"
+      }, 
+      {
+        "data": "pcb/json/adafruit/175TMP-0810.json", 
+        "type": "element", 
+        "id": "175TMP-0810", 
+        "name": "175TMP-0810"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1800R.json", 
+        "type": "element", 
+        "id": "1800R", 
+        "name": "1800R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1812.json", 
+        "type": "element", 
+        "id": "1812", 
+        "name": "1812"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X01.json", 
+        "type": "element", 
+        "id": "1X01", 
+        "name": "1X01"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X01-CLEANBIG.json", 
+        "type": "element", 
+        "id": "1X01-CLEANBIG", 
+        "name": "1X01-CLEANBIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X03.json", 
+        "type": "element", 
+        "id": "1X03", 
+        "name": "1X03"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X03-CLEANBIG.json", 
+        "type": "element", 
+        "id": "1X03-CLEANBIG", 
+        "name": "1X03-CLEANBIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X04-3.5MM.json", 
+        "type": "element", 
+        "id": "1X04-3.5MM", 
+        "name": "1X04-3.5MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X04-BIG.json", 
+        "type": "element", 
+        "id": "1X04-BIG", 
+        "name": "1X04-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X04-CLEANBIG.json", 
+        "type": "element", 
+        "id": "1X04-CLEANBIG", 
+        "name": "1X04-CLEANBIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X05-3.5MM.json", 
+        "type": "element", 
+        "id": "1X05-3.5MM", 
+        "name": "1X05-3.5MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X06.json", 
+        "type": "element", 
+        "id": "1X06", 
+        "name": "1X06"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X06-3.5MM.json", 
+        "type": "element", 
+        "id": "1X06-3.5MM", 
+        "name": "1X06-3.5MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X06-BIG.json", 
+        "type": "element", 
+        "id": "1X06-BIG", 
+        "name": "1X06-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X06-BIGLOCK.json", 
+        "type": "element", 
+        "id": "1X06-BIGLOCK", 
+        "name": "1X06-BIGLOCK"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X06-CLEAN.json", 
+        "type": "element", 
+        "id": "1X06-CLEAN", 
+        "name": "1X06-CLEAN"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X06-CLEANBIG.json", 
+        "type": "element", 
+        "id": "1X06-CLEANBIG", 
+        "name": "1X06-CLEANBIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X08-3.5MM.json", 
+        "type": "element", 
+        "id": "1X08-3.5MM", 
+        "name": "1X08-3.5MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X08-BIG.json", 
+        "type": "element", 
+        "id": "1X08-BIG", 
+        "name": "1X08-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X08-CLEANBIG.json", 
+        "type": "element", 
+        "id": "1X08-CLEANBIG", 
+        "name": "1X08-CLEANBIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X08-LOCK.json", 
+        "type": "element", 
+        "id": "1X08-LOCK", 
+        "name": "1X08-LOCK"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X08_SMT.json", 
+        "type": "element", 
+        "id": "1X08_SMT", 
+        "name": "1X08_SMT"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X09-BIG.json", 
+        "type": "element", 
+        "id": "1X09-BIG", 
+        "name": "1X09-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X10-BIG.json", 
+        "type": "element", 
+        "id": "1X10-BIG", 
+        "name": "1X10-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X12.json", 
+        "type": "element", 
+        "id": "1X12", 
+        "name": "1X12"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X12-CB.json", 
+        "type": "element", 
+        "id": "1X12-CB", 
+        "name": "1X12-CB"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X13.json", 
+        "type": "element", 
+        "id": "1X13", 
+        "name": "1X13"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X13-BIG.json", 
+        "type": "element", 
+        "id": "1X13-BIG", 
+        "name": "1X13-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X14.json", 
+        "type": "element", 
+        "id": "1X14", 
+        "name": "1X14"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X14-CB.json", 
+        "type": "element", 
+        "id": "1X14-CB", 
+        "name": "1X14-CB"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X15.json", 
+        "type": "element", 
+        "id": "1X15", 
+        "name": "1X15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X15-CB.json", 
+        "type": "element", 
+        "id": "1X15-CB", 
+        "name": "1X15-CB"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X18.json", 
+        "type": "element", 
+        "id": "1X18", 
+        "name": "1X18"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X18-BIG.json", 
+        "type": "element", 
+        "id": "1X18-BIG", 
+        "name": "1X18-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X2-3.5MM.json", 
+        "type": "element", 
+        "id": "1X2-3.5MM", 
+        "name": "1X2-3.5MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X20.json", 
+        "type": "element", 
+        "id": "1X20", 
+        "name": "1X20"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X20-BIG.json", 
+        "type": "element", 
+        "id": "1X20-BIG", 
+        "name": "1X20-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X22.json", 
+        "type": "element", 
+        "id": "1X22", 
+        "name": "1X22"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X25-CB.json", 
+        "type": "element", 
+        "id": "1X25-CB", 
+        "name": "1X25-CB"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X30-0.7MM.json", 
+        "type": "element", 
+        "id": "1X30-0.7MM", 
+        "name": "1X30-0.7MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X4-SMT.json", 
+        "type": "element", 
+        "id": "1X4-SMT", 
+        "name": "1X4-SMT"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X40-0.5MM.json", 
+        "type": "element", 
+        "id": "1X40-0.5MM", 
+        "name": "1X40-0.5MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X40-0.6MM.json", 
+        "type": "element", 
+        "id": "1X40-0.6MM", 
+        "name": "1X40-0.6MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X40-0.7MM.json", 
+        "type": "element", 
+        "id": "1X40-0.7MM", 
+        "name": "1X40-0.7MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X40-0.8MM.json", 
+        "type": "element", 
+        "id": "1X40-0.8MM", 
+        "name": "1X40-0.8MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/1X40-1MM.json", 
+        "type": "element", 
+        "id": "1X40-1MM", 
+        "name": "1X40-1MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2747.json", 
+        "type": "element", 
+        "id": "2747", 
+        "name": "2747"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X04.json", 
+        "type": "element", 
+        "id": "2X04", 
+        "name": "2X04"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X04%252F90.json", 
+        "type": "element", 
+        "id": "2X04/90", 
+        "name": "2X04/90"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X08-IDC.json", 
+        "type": "element", 
+        "id": "2X08-IDC", 
+        "name": "2X08-IDC"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X09-BIG.json", 
+        "type": "element", 
+        "id": "2X09-BIG", 
+        "name": "2X09-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X09-CLEANBIG.json", 
+        "type": "element", 
+        "id": "2X09-CLEANBIG", 
+        "name": "2X09-CLEANBIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X14.json", 
+        "type": "element", 
+        "id": "2X14", 
+        "name": "2X14"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X14-CLEANBIG.json", 
+        "type": "element", 
+        "id": "2X14-CLEANBIG", 
+        "name": "2X14-CLEANBIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X14-SMT.json", 
+        "type": "element", 
+        "id": "2X14-SMT", 
+        "name": "2X14-SMT"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X20.json", 
+        "type": "element", 
+        "id": "2X20", 
+        "name": "2X20"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X20-BIG.json", 
+        "type": "element", 
+        "id": "2X20-BIG", 
+        "name": "2X20-BIG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X22.json", 
+        "type": "element", 
+        "id": "2X22", 
+        "name": "2X22"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2X22-SMT.json", 
+        "type": "element", 
+        "id": "2X22-SMT", 
+        "name": "2X22-SMT"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2XAA.json", 
+        "type": "element", 
+        "id": "2XAA", 
+        "name": "2XAA"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2XAAA.json", 
+        "type": "element", 
+        "id": "2XAAA", 
+        "name": "2XAAA"
+      }, 
+      {
+        "data": "pcb/json/adafruit/2XAAA-SIDE.json", 
+        "type": "element", 
+        "id": "2XAAA-SIDE", 
+        "name": "2XAAA-SIDE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/3-STRIP.json", 
+        "type": "element", 
+        "id": "3-STRIP", 
+        "name": "3-STRIP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/4-1734839-0.json", 
+        "type": "element", 
+        "id": "4-1734839-0", 
+        "name": "4-1734839-0"
+      }, 
+      {
+        "data": "pcb/json/adafruit/414-VA5R.json", 
+        "type": "element", 
+        "id": "414-VA5R", 
+        "name": "414-VA5R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/5-STRIP.json", 
+        "type": "element", 
+        "id": "5-STRIP", 
+        "name": "5-STRIP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/6000.json", 
+        "type": "element", 
+        "id": "6000", 
+        "name": "6000"
+      }, 
+      {
+        "data": "pcb/json/adafruit/6MM.json", 
+        "type": "element", 
+        "id": "6MM", 
+        "name": "6MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/8-STRIP.json", 
+        "type": "element", 
+        "id": "8-STRIP", 
+        "name": "8-STRIP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/86SMX.json", 
+        "type": "element", 
+        "id": "86SMX", 
+        "name": "86SMX"
+      }, 
+      {
+        "data": "pcb/json/adafruit/9.7ELECTRET.json", 
+        "type": "element", 
+        "id": "9.7ELECTRET", 
+        "name": "9.7ELECTRET"
+      }, 
+      {
+        "data": "pcb/json/adafruit/A%252F3216-18R.json", 
+        "type": "element", 
+        "id": "A/3216-18R", 
+        "name": "A/3216-18R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/A%252F3216-18W.json", 
+        "type": "element", 
+        "id": "A/3216-18W", 
+        "name": "A/3216-18W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ADAFRUIT200MIL.json", 
+        "type": "element", 
+        "id": "ADAFRUIT200MIL", 
+        "name": "ADAFRUIT200MIL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ADAFRUIT450MIL.json", 
+        "type": "element", 
+        "id": "ADAFRUIT450MIL", 
+        "name": "ADAFRUIT450MIL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/AG.json", 
+        "type": "element", 
+        "id": "AG", 
+        "name": "AG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/AL11P.json", 
+        "type": "element", 
+        "id": "AL11P", 
+        "name": "AL11P"
+      }, 
+      {
+        "data": "pcb/json/adafruit/AL60P.json", 
+        "type": "element", 
+        "id": "AL60P", 
+        "name": "AL60P"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ALTOIDSSMALLS.json", 
+        "type": "element", 
+        "id": "ALTOIDSSMALLS", 
+        "name": "ALTOIDSSMALLS"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ALTOIDSTIN.json", 
+        "type": "element", 
+        "id": "ALTOIDSTIN", 
+        "name": "ALTOIDSTIN"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ALTOIDSTIN-DIM.json", 
+        "type": "element", 
+        "id": "ALTOIDSTIN-DIM", 
+        "name": "ALTOIDSTIN-DIM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINO.json", 
+        "type": "element", 
+        "id": "ARDUINO", 
+        "name": "ARDUINO"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINO-BPLACE.json", 
+        "type": "element", 
+        "id": "ARDUINO-BPLACE", 
+        "name": "ARDUINO-BPLACE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINO-NODIM.json", 
+        "type": "element", 
+        "id": "ARDUINO-NODIM", 
+        "name": "ARDUINO-NODIM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINO-NOHOLE.json", 
+        "type": "element", 
+        "id": "ARDUINO-NOHOLE", 
+        "name": "ARDUINO-NOHOLE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINOMICRO.json", 
+        "type": "element", 
+        "id": "ARDUINOMICRO", 
+        "name": "ARDUINOMICRO"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINOR3.json", 
+        "type": "element", 
+        "id": "ARDUINOR3", 
+        "name": "ARDUINOR3"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINOR3-BPLACE.json", 
+        "type": "element", 
+        "id": "ARDUINOR3-BPLACE", 
+        "name": "ARDUINOR3-BPLACE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINOR3-NOTEXT-NOIOREF.json", 
+        "type": "element", 
+        "id": "ARDUINOR3-NOTEXT-NOIOREF", 
+        "name": "ARDUINOR3-NOTEXT-NOIOREF"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINOR3_ICSP.json", 
+        "type": "element", 
+        "id": "ARDUINOR3_ICSP", 
+        "name": "ARDUINOR3_ICSP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINOR3_ICSP_NODIM.json", 
+        "type": "element", 
+        "id": "ARDUINOR3_ICSP_NODIM", 
+        "name": "ARDUINOR3_ICSP_NODIM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ARDUINOR3_ICSP_SMT.json", 
+        "type": "element", 
+        "id": "ARDUINOR3_ICSP_SMT", 
+        "name": "ARDUINOR3_ICSP_SMT"
+      }, 
+      {
+        "data": "pcb/json/adafruit/AVRISP.json", 
+        "type": "element", 
+        "id": "AVRISP", 
+        "name": "AVRISP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/AVRISP-BOX.json", 
+        "type": "element", 
+        "id": "AVRISP-BOX", 
+        "name": "AVRISP-BOX"
+      }, 
+      {
+        "data": "pcb/json/adafruit/AWCSR.json", 
+        "type": "element", 
+        "id": "AWCSR", 
+        "name": "AWCSR"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B%252F3528-21R.json", 
+        "type": "element", 
+        "id": "B/3528-21R", 
+        "name": "B/3528-21R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B%252F3528-21W.json", 
+        "type": "element", 
+        "id": "B/3528-21W", 
+        "name": "B/3528-21W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B3F-31XX.json", 
+        "type": "element", 
+        "id": "B3F-31XX", 
+        "name": "B3F-31XX"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B3F-31XX-SKINNIER.json", 
+        "type": "element", 
+        "id": "B3F-31XX-SKINNIER", 
+        "name": "B3F-31XX-SKINNIER"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B3F-40XX.json", 
+        "type": "element", 
+        "id": "B3F-40XX", 
+        "name": "B3F-40XX"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B3F-40XX-ROUND.json", 
+        "type": "element", 
+        "id": "B3F-40XX-ROUND", 
+        "name": "B3F-40XX-ROUND"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B45181A.json", 
+        "type": "element", 
+        "id": "B45181A", 
+        "name": "B45181A"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B45181B.json", 
+        "type": "element", 
+        "id": "B45181B", 
+        "name": "B45181B"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B45181C.json", 
+        "type": "element", 
+        "id": "B45181C", 
+        "name": "B45181C"
+      }, 
+      {
+        "data": "pcb/json/adafruit/B45181D.json", 
+        "type": "element", 
+        "id": "B45181D", 
+        "name": "B45181D"
+      }, 
+      {
+        "data": "pcb/json/adafruit/BEAGLEBONE_SHIELD.json", 
+        "type": "element", 
+        "id": "BEAGLEBONE_SHIELD", 
+        "name": "BEAGLEBONE_SHIELD"
+      }, 
+      {
+        "data": "pcb/json/adafruit/BIGTAP.json", 
+        "type": "element", 
+        "id": "BIGTAP", 
+        "name": "BIGTAP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/BLUEFRUITLOGO_100MM.json", 
+        "type": "element", 
+        "id": "BLUEFRUITLOGO_100MM", 
+        "name": "BLUEFRUITLOGO_100MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/BLUEFRUITLOGO_150MM.json", 
+        "type": "element", 
+        "id": "BLUEFRUITLOGO_150MM", 
+        "name": "BLUEFRUITLOGO_150MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/BMP085.json", 
+        "type": "element", 
+        "id": "BMP085", 
+        "name": "BMP085"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C%252F6032-28R.json", 
+        "type": "element", 
+        "id": "C/6032-28R", 
+        "name": "C/6032-28R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C%252F6032-28W.json", 
+        "type": "element", 
+        "id": "C/6032-28W", 
+        "name": "C/6032-28W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025-024X044.json", 
+        "type": "element", 
+        "id": "C025-024X044", 
+        "name": "C025-024X044"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025-025X050.json", 
+        "type": "element", 
+        "id": "C025-025X050", 
+        "name": "C025-025X050"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025-030X050.json", 
+        "type": "element", 
+        "id": "C025-030X050", 
+        "name": "C025-030X050"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025-040X050.json", 
+        "type": "element", 
+        "id": "C025-040X050", 
+        "name": "C025-040X050"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025-050X050.json", 
+        "type": "element", 
+        "id": "C025-050X050", 
+        "name": "C025-050X050"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025-060X050.json", 
+        "type": "element", 
+        "id": "C025-060X050", 
+        "name": "C025-060X050"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025_050-024X070.json", 
+        "type": "element", 
+        "id": "C025_050-024X070", 
+        "name": "C025_050-024X070"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025_050-025X075.json", 
+        "type": "element", 
+        "id": "C025_050-025X075", 
+        "name": "C025_050-025X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025_050-035X075.json", 
+        "type": "element", 
+        "id": "C025_050-035X075", 
+        "name": "C025_050-035X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025_050-045X075.json", 
+        "type": "element", 
+        "id": "C025_050-045X075", 
+        "name": "C025_050-045X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C025_050-055X075.json", 
+        "type": "element", 
+        "id": "C025_050-055X075", 
+        "name": "C025_050-055X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C0402.json", 
+        "type": "element", 
+        "id": "C0402", 
+        "name": "C0402"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C0402K.json", 
+        "type": "element", 
+        "id": "C0402K", 
+        "name": "C0402K"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C050-024X044.json", 
+        "type": "element", 
+        "id": "C050-024X044", 
+        "name": "C050-024X044"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C050-025X075.json", 
+        "type": "element", 
+        "id": "C050-025X075", 
+        "name": "C050-025X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C050-030X075.json", 
+        "type": "element", 
+        "id": "C050-030X075", 
+        "name": "C050-030X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C050-035X075.json", 
+        "type": "element", 
+        "id": "C050-035X075", 
+        "name": "C050-035X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C050-045X075.json", 
+        "type": "element", 
+        "id": "C050-045X075", 
+        "name": "C050-045X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C050-050X075.json", 
+        "type": "element", 
+        "id": "C050-050X075", 
+        "name": "C050-050X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C050-055X075.json", 
+        "type": "element", 
+        "id": "C050-055X075", 
+        "name": "C050-055X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C050-075X075.json", 
+        "type": "element", 
+        "id": "C050-075X075", 
+        "name": "C050-075X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C0504.json", 
+        "type": "element", 
+        "id": "C0504", 
+        "name": "C0504"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C050H075X075.json", 
+        "type": "element", 
+        "id": "C050H075X075", 
+        "name": "C050H075X075"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C0603.json", 
+        "type": "element", 
+        "id": "C0603", 
+        "name": "C0603"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C0603K.json", 
+        "type": "element", 
+        "id": "C0603K", 
+        "name": "C0603K"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C075-032X103.json", 
+        "type": "element", 
+        "id": "C075-032X103", 
+        "name": "C075-032X103"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C075-042X103.json", 
+        "type": "element", 
+        "id": "C075-042X103", 
+        "name": "C075-042X103"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C075-052X106.json", 
+        "type": "element", 
+        "id": "C075-052X106", 
+        "name": "C075-052X106"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C075-063X106.json", 
+        "type": "element", 
+        "id": "C075-063X106", 
+        "name": "C075-063X106"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C0805.json", 
+        "type": "element", 
+        "id": "C0805", 
+        "name": "C0805"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C0805K.json", 
+        "type": "element", 
+        "id": "C0805K", 
+        "name": "C0805K"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1005.json", 
+        "type": "element", 
+        "id": "C1005", 
+        "name": "C1005"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C102-043X133.json", 
+        "type": "element", 
+        "id": "C102-043X133", 
+        "name": "C102-043X133"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C102-054X133.json", 
+        "type": "element", 
+        "id": "C102-054X133", 
+        "name": "C102-054X133"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C102-064X133.json", 
+        "type": "element", 
+        "id": "C102-064X133", 
+        "name": "C102-064X133"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C102_152-062X184.json", 
+        "type": "element", 
+        "id": "C102_152-062X184", 
+        "name": "C102_152-062X184"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1206.json", 
+        "type": "element", 
+        "id": "C1206", 
+        "name": "C1206"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1206K.json", 
+        "type": "element", 
+        "id": "C1206K", 
+        "name": "C1206K"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1210.json", 
+        "type": "element", 
+        "id": "C1210", 
+        "name": "C1210"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1210K.json", 
+        "type": "element", 
+        "id": "C1210K", 
+        "name": "C1210K"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1310.json", 
+        "type": "element", 
+        "id": "C1310", 
+        "name": "C1310"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C150-054X183.json", 
+        "type": "element", 
+        "id": "C150-054X183", 
+        "name": "C150-054X183"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C150-064X183.json", 
+        "type": "element", 
+        "id": "C150-064X183", 
+        "name": "C150-064X183"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C150-072X183.json", 
+        "type": "element", 
+        "id": "C150-072X183", 
+        "name": "C150-072X183"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C150-084X183.json", 
+        "type": "element", 
+        "id": "C150-084X183", 
+        "name": "C150-084X183"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C150-091X182.json", 
+        "type": "element", 
+        "id": "C150-091X182", 
+        "name": "C150-091X182"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1608.json", 
+        "type": "element", 
+        "id": "C1608", 
+        "name": "C1608"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1812.json", 
+        "type": "element", 
+        "id": "C1812", 
+        "name": "C1812"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1812K.json", 
+        "type": "element", 
+        "id": "C1812K", 
+        "name": "C1812K"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1825.json", 
+        "type": "element", 
+        "id": "C1825", 
+        "name": "C1825"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C1825K.json", 
+        "type": "element", 
+        "id": "C1825K", 
+        "name": "C1825K"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C2012.json", 
+        "type": "element", 
+        "id": "C2012", 
+        "name": "C2012"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C2220K.json", 
+        "type": "element", 
+        "id": "C2220K", 
+        "name": "C2220K"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C2225K.json", 
+        "type": "element", 
+        "id": "C2225K", 
+        "name": "C2225K"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C225-062X268.json", 
+        "type": "element", 
+        "id": "C225-062X268", 
+        "name": "C225-062X268"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C225-074X268.json", 
+        "type": "element", 
+        "id": "C225-074X268", 
+        "name": "C225-074X268"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C225-087X268.json", 
+        "type": "element", 
+        "id": "C225-087X268", 
+        "name": "C225-087X268"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C225-108X268.json", 
+        "type": "element", 
+        "id": "C225-108X268", 
+        "name": "C225-108X268"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C225-113X268.json", 
+        "type": "element", 
+        "id": "C225-113X268", 
+        "name": "C225-113X268"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C275-093X316.json", 
+        "type": "element", 
+        "id": "C275-093X316", 
+        "name": "C275-093X316"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C275-113X316.json", 
+        "type": "element", 
+        "id": "C275-113X316", 
+        "name": "C275-113X316"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C275-134X316.json", 
+        "type": "element", 
+        "id": "C275-134X316", 
+        "name": "C275-134X316"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C275-154X316.json", 
+        "type": "element", 
+        "id": "C275-154X316", 
+        "name": "C275-154X316"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C275-173X316.json", 
+        "type": "element", 
+        "id": "C275-173X316", 
+        "name": "C275-173X316"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C275-205X316.json", 
+        "type": "element", 
+        "id": "C275-205X316", 
+        "name": "C275-205X316"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C3216.json", 
+        "type": "element", 
+        "id": "C3216", 
+        "name": "C3216"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C3225.json", 
+        "type": "element", 
+        "id": "C3225", 
+        "name": "C3225"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C325-137X374.json", 
+        "type": "element", 
+        "id": "C325-137X374", 
+        "name": "C325-137X374"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C325-162X374.json", 
+        "type": "element", 
+        "id": "C325-162X374", 
+        "name": "C325-162X374"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C325-182X374.json", 
+        "type": "element", 
+        "id": "C325-182X374", 
+        "name": "C325-182X374"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C375-155X418.json", 
+        "type": "element", 
+        "id": "C375-155X418", 
+        "name": "C375-155X418"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C375-192X418.json", 
+        "type": "element", 
+        "id": "C375-192X418", 
+        "name": "C375-192X418"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C375-203X418.json", 
+        "type": "element", 
+        "id": "C375-203X418", 
+        "name": "C375-203X418"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C4111-15.json", 
+        "type": "element", 
+        "id": "C4111-15", 
+        "name": "C4111-15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C4532.json", 
+        "type": "element", 
+        "id": "C4532", 
+        "name": "C4532"
+      }, 
+      {
+        "data": "pcb/json/adafruit/C4564.json", 
+        "type": "element", 
+        "id": "C4564", 
+        "name": "C4564"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CB417-15.json", 
+        "type": "element", 
+        "id": "CB417-15", 
+        "name": "CB417-15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CB429-15.json", 
+        "type": "element", 
+        "id": "CB429-15", 
+        "name": "CB429-15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CB429-17.json", 
+        "type": "element", 
+        "id": "CB429-17", 
+        "name": "CB429-17"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CERM_OSC.json", 
+        "type": "element", 
+        "id": "CERM_OSC", 
+        "name": "CERM_OSC"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CHIP-LED0603.json", 
+        "type": "element", 
+        "id": "CHIP-LED0603", 
+        "name": "CHIP-LED0603"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CHIP-LED0805.json", 
+        "type": "element", 
+        "id": "CHIP-LED0805", 
+        "name": "CHIP-LED0805"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CHIPLED-0603-TTW.json", 
+        "type": "element", 
+        "id": "CHIPLED-0603-TTW", 
+        "name": "CHIPLED-0603-TTW"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CHIPLED_0603.json", 
+        "type": "element", 
+        "id": "CHIPLED_0603", 
+        "name": "CHIPLED_0603"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CHIPLED_0805.json", 
+        "type": "element", 
+        "id": "CHIPLED_0805", 
+        "name": "CHIPLED_0805"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CHIPLED_1206.json", 
+        "type": "element", 
+        "id": "CHIPLED_1206", 
+        "name": "CHIPLED_1206"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CP-2350.json", 
+        "type": "element", 
+        "id": "CP-2350", 
+        "name": "CP-2350"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CQFP-44.json", 
+        "type": "element", 
+        "id": "CQFP-44", 
+        "name": "CQFP-44"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CR1220-SMD.json", 
+        "type": "element", 
+        "id": "CR1220-SMD", 
+        "name": "CR1220-SMD"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CR1220-THM.json", 
+        "type": "element", 
+        "id": "CR1220-THM", 
+        "name": "CR1220-THM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CR2032-SMD.json", 
+        "type": "element", 
+        "id": "CR2032-SMD", 
+        "name": "CR2032-SMD"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CR2032-THRU.json", 
+        "type": "element", 
+        "id": "CR2032-THRU", 
+        "name": "CR2032-THRU"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CSTCR-G.json", 
+        "type": "element", 
+        "id": "CSTCR-G", 
+        "name": "CSTCR-G"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CT3216.json", 
+        "type": "element", 
+        "id": "CT3216", 
+        "name": "CT3216"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CT3528.json", 
+        "type": "element", 
+        "id": "CT3528", 
+        "name": "CT3528"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CT6032.json", 
+        "type": "element", 
+        "id": "CT6032", 
+        "name": "CT6032"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CT7343.json", 
+        "type": "element", 
+        "id": "CT7343", 
+        "name": "CT7343"
+      }, 
+      {
+        "data": "pcb/json/adafruit/CTS406.json", 
+        "type": "element", 
+        "id": "CTS406", 
+        "name": "CTS406"
+      }, 
+      {
+        "data": "pcb/json/adafruit/D%252F7343-31R.json", 
+        "type": "element", 
+        "id": "D/7343-31R", 
+        "name": "D/7343-31R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/D%252F7343-31W.json", 
+        "type": "element", 
+        "id": "D/7343-31W", 
+        "name": "D/7343-31W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DCJACK_2MM_PTH.json", 
+        "type": "element", 
+        "id": "DCJACK_2MM_PTH", 
+        "name": "DCJACK_2MM_PTH"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DCJACK_2MM_SMT.json", 
+        "type": "element", 
+        "id": "DCJACK_2MM_SMT", 
+        "name": "DCJACK_2MM_SMT"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DFN-6.json", 
+        "type": "element", 
+        "id": "DFN-6", 
+        "name": "DFN-6"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL08.json", 
+        "type": "element", 
+        "id": "DIL08", 
+        "name": "DIL08"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL08-ROUND.json", 
+        "type": "element", 
+        "id": "DIL08-ROUND", 
+        "name": "DIL08-ROUND"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL14.json", 
+        "type": "element", 
+        "id": "DIL14", 
+        "name": "DIL14"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL14-LARDO.json", 
+        "type": "element", 
+        "id": "DIL14-LARDO", 
+        "name": "DIL14-LARDO"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL16.json", 
+        "type": "element", 
+        "id": "DIL16", 
+        "name": "DIL16"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL18.json", 
+        "type": "element", 
+        "id": "DIL18", 
+        "name": "DIL18"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL20.json", 
+        "type": "element", 
+        "id": "DIL20", 
+        "name": "DIL20"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL28-3.json", 
+        "type": "element", 
+        "id": "DIL28-3", 
+        "name": "DIL28-3"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL28-3-ROUND.json", 
+        "type": "element", 
+        "id": "DIL28-3-ROUND", 
+        "name": "DIL28-3-ROUND"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DIL28-3-TI.json", 
+        "type": "element", 
+        "id": "DIL28-3-TI", 
+        "name": "DIL28-3-TI"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DO-1N4148.json", 
+        "type": "element", 
+        "id": "DO-1N4148", 
+        "name": "DO-1N4148"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DO13M.json", 
+        "type": "element", 
+        "id": "DO13M", 
+        "name": "DO13M"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DO201T15.json", 
+        "type": "element", 
+        "id": "DO201T15", 
+        "name": "DO201T15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DO35-10.json", 
+        "type": "element", 
+        "id": "DO35-10", 
+        "name": "DO35-10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DO35-7.json", 
+        "type": "element", 
+        "id": "DO35-7", 
+        "name": "DO35-7"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DO41-10.json", 
+        "type": "element", 
+        "id": "DO41-10", 
+        "name": "DO41-10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/DO41-7.json", 
+        "type": "element", 
+        "id": "DO41-7", 
+        "name": "DO41-7"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E%252F7260-38R.json", 
+        "type": "element", 
+        "id": "E/7260-38R", 
+        "name": "E/7260-38R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E%252F7260-38W.json", 
+        "type": "element", 
+        "id": "E/7260-38W", 
+        "name": "E/7260-38W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E1%252C8-4.json", 
+        "type": "element", 
+        "id": "E1,8-4", 
+        "name": "E1,8-4"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E15-5.json", 
+        "type": "element", 
+        "id": "E15-5", 
+        "name": "E15-5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E15-6.json", 
+        "type": "element", 
+        "id": "E15-6", 
+        "name": "E15-6"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E15-9.json", 
+        "type": "element", 
+        "id": "E15-9", 
+        "name": "E15-9"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E2%252C5-4R.json", 
+        "type": "element", 
+        "id": "E2,5-4R", 
+        "name": "E2,5-4R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E2%252C5-5.json", 
+        "type": "element", 
+        "id": "E2,5-5", 
+        "name": "E2,5-5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E2%252C5-6.json", 
+        "type": "element", 
+        "id": "E2,5-6", 
+        "name": "E2,5-6"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E2%252C5-6E.json", 
+        "type": "element", 
+        "id": "E2,5-6E", 
+        "name": "E2,5-6E"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E2%252C5-7.json", 
+        "type": "element", 
+        "id": "E2,5-7", 
+        "name": "E2,5-7"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E2%252C5RE.json", 
+        "type": "element", 
+        "id": "E2,5RE", 
+        "name": "E2,5RE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E2-4.json", 
+        "type": "element", 
+        "id": "E2-4", 
+        "name": "E2-4"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E2-5.json", 
+        "type": "element", 
+        "id": "E2-5", 
+        "name": "E2-5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E22-10.json", 
+        "type": "element", 
+        "id": "E22-10", 
+        "name": "E22-10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E22-6.json", 
+        "type": "element", 
+        "id": "E22-6", 
+        "name": "E22-6"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E22-9.json", 
+        "type": "element", 
+        "id": "E22-9", 
+        "name": "E22-9"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E25-10.json", 
+        "type": "element", 
+        "id": "E25-10", 
+        "name": "E25-10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E25-9.json", 
+        "type": "element", 
+        "id": "E25-9", 
+        "name": "E25-9"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E3%252C5-10.json", 
+        "type": "element", 
+        "id": "E3,5-10", 
+        "name": "E3,5-10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E3%252C5-8.json", 
+        "type": "element", 
+        "id": "E3,5-8", 
+        "name": "E3,5-8"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E30-10.json", 
+        "type": "element", 
+        "id": "E30-10", 
+        "name": "E30-10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E30-12.json", 
+        "type": "element", 
+        "id": "E30-12", 
+        "name": "E30-12"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E30-16.json", 
+        "type": "element", 
+        "id": "E30-16", 
+        "name": "E30-16"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E35-12.json", 
+        "type": "element", 
+        "id": "E35-12", 
+        "name": "E35-12"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E35-14.json", 
+        "type": "element", 
+        "id": "E35-14", 
+        "name": "E35-14"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E35-16.json", 
+        "type": "element", 
+        "id": "E35-16", 
+        "name": "E35-16"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E35-18.json", 
+        "type": "element", 
+        "id": "E35-18", 
+        "name": "E35-18"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E45-16.json", 
+        "type": "element", 
+        "id": "E45-16", 
+        "name": "E45-16"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E45-18.json", 
+        "type": "element", 
+        "id": "E45-18", 
+        "name": "E45-18"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E45-21.json", 
+        "type": "element", 
+        "id": "E45-21", 
+        "name": "E45-21"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E45-22.json", 
+        "type": "element", 
+        "id": "E45-22", 
+        "name": "E45-22"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E45-25.json", 
+        "type": "element", 
+        "id": "E45-25", 
+        "name": "E45-25"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E5-10%252C5.json", 
+        "type": "element", 
+        "id": "E5-10,5", 
+        "name": "E5-10,5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E5-13.json", 
+        "type": "element", 
+        "id": "E5-13", 
+        "name": "E5-13"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E5-4.json", 
+        "type": "element", 
+        "id": "E5-4", 
+        "name": "E5-4"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E5-5.json", 
+        "type": "element", 
+        "id": "E5-5", 
+        "name": "E5-5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E5-6.json", 
+        "type": "element", 
+        "id": "E5-6", 
+        "name": "E5-6"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E5-8%252C5.json", 
+        "type": "element", 
+        "id": "E5-8,5", 
+        "name": "E5-8,5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E50-25.json", 
+        "type": "element", 
+        "id": "E50-25", 
+        "name": "E50-25"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E50-30.json", 
+        "type": "element", 
+        "id": "E50-30", 
+        "name": "E50-30"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E55-25.json", 
+        "type": "element", 
+        "id": "E55-25", 
+        "name": "E55-25"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E55-30.json", 
+        "type": "element", 
+        "id": "E55-30", 
+        "name": "E55-30"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E5R.json", 
+        "type": "element", 
+        "id": "E5R", 
+        "name": "E5R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E7%252C5-16.json", 
+        "type": "element", 
+        "id": "E7,5-16", 
+        "name": "E7,5-16"
+      }, 
+      {
+        "data": "pcb/json/adafruit/E7%252C5-18.json", 
+        "type": "element", 
+        "id": "E7,5-18", 
+        "name": "E7,5-18"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EB20D.json", 
+        "type": "element", 
+        "id": "EB20D", 
+        "name": "EB20D"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EB22%252C5D.json", 
+        "type": "element", 
+        "id": "EB22,5D", 
+        "name": "EB22,5D"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EB25D.json", 
+        "type": "element", 
+        "id": "EB25D", 
+        "name": "EB25D"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EB30D.json", 
+        "type": "element", 
+        "id": "EB30D", 
+        "name": "EB30D"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EB35D.json", 
+        "type": "element", 
+        "id": "EB35D", 
+        "name": "EB35D"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EG1213.json", 
+        "type": "element", 
+        "id": "EG1213", 
+        "name": "EG1213"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EG1218.json", 
+        "type": "element", 
+        "id": "EG1218", 
+        "name": "EG1218"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EG1390.json", 
+        "type": "element", 
+        "id": "EG1390", 
+        "name": "EG1390"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ETR1.json", 
+        "type": "element", 
+        "id": "ETR1", 
+        "name": "ETR1"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ETR2.json", 
+        "type": "element", 
+        "id": "ETR2", 
+        "name": "ETR2"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ETR3.json", 
+        "type": "element", 
+        "id": "ETR3", 
+        "name": "ETR3"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ETR4.json", 
+        "type": "element", 
+        "id": "ETR4", 
+        "name": "ETR4"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ETR5.json", 
+        "type": "element", 
+        "id": "ETR5", 
+        "name": "ETR5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EVQ-Q2.json", 
+        "type": "element", 
+        "id": "EVQ-Q2", 
+        "name": "EVQ-Q2"
+      }, 
+      {
+        "data": "pcb/json/adafruit/EVQQ7GA50.json", 
+        "type": "element", 
+        "id": "EVQQ7GA50", 
+        "name": "EVQQ7GA50"
+      }, 
+      {
+        "data": "pcb/json/adafruit/F126Z12.json", 
+        "type": "element", 
+        "id": "F126Z12", 
+        "name": "F126Z12"
+      }, 
+      {
+        "data": "pcb/json/adafruit/F15D.json", 
+        "type": "element", 
+        "id": "F15D", 
+        "name": "F15D"
+      }, 
+      {
+        "data": "pcb/json/adafruit/F15H.json", 
+        "type": "element", 
+        "id": "F15H", 
+        "name": "F15H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/F15HP.json", 
+        "type": "element", 
+        "id": "F15HP", 
+        "name": "F15HP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/F15V.json", 
+        "type": "element", 
+        "id": "F15V", 
+        "name": "F15V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/F15VB.json", 
+        "type": "element", 
+        "id": "F15VB", 
+        "name": "F15VB"
+      }, 
+      {
+        "data": "pcb/json/adafruit/F15VP.json", 
+        "type": "element", 
+        "id": "F15VP", 
+        "name": "F15VP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/FB.json", 
+        "type": "element", 
+        "id": "FB", 
+        "name": "FB"
+      }, 
+      {
+        "data": "pcb/json/adafruit/FGPMMOPA6B.json", 
+        "type": "element", 
+        "id": "FGPMMOPA6B", 
+        "name": "FGPMMOPA6B"
+      }, 
+      {
+        "data": "pcb/json/adafruit/FGPMMOPA6C.json", 
+        "type": "element", 
+        "id": "FGPMMOPA6C", 
+        "name": "FGPMMOPA6C"
+      }, 
+      {
+        "data": "pcb/json/adafruit/FGPMMOPA6H.json", 
+        "type": "element", 
+        "id": "FGPMMOPA6H", 
+        "name": "FGPMMOPA6H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/FIDUCIAL_1MM.json", 
+        "type": "element", 
+        "id": "FIDUCIAL_1MM", 
+        "name": "FIDUCIAL_1MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/FPC_0.5MM-4.json", 
+        "type": "element", 
+        "id": "FPC_0.5MM-4", 
+        "name": "FPC_0.5MM-4"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC13U-H.json", 
+        "type": "element", 
+        "id": "HC13U-H", 
+        "name": "HC13U-H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC18U-H.json", 
+        "type": "element", 
+        "id": "HC18U-H", 
+        "name": "HC18U-H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC18U-V.json", 
+        "type": "element", 
+        "id": "HC18U-V", 
+        "name": "HC18U-V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC33U-H.json", 
+        "type": "element", 
+        "id": "HC33U-H", 
+        "name": "HC33U-H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC33U-V.json", 
+        "type": "element", 
+        "id": "HC33U-V", 
+        "name": "HC33U-V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC49%252FS.json", 
+        "type": "element", 
+        "id": "HC49/S", 
+        "name": "HC49/S"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC49GW.json", 
+        "type": "element", 
+        "id": "HC49GW", 
+        "name": "HC49GW"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC49TL-H.json", 
+        "type": "element", 
+        "id": "HC49TL-H", 
+        "name": "HC49TL-H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC49U-H.json", 
+        "type": "element", 
+        "id": "HC49U-H", 
+        "name": "HC49U-H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC49U-LM.json", 
+        "type": "element", 
+        "id": "HC49U-LM", 
+        "name": "HC49U-LM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC49U-V.json", 
+        "type": "element", 
+        "id": "HC49U-V", 
+        "name": "HC49U-V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC49U70.json", 
+        "type": "element", 
+        "id": "HC49U70", 
+        "name": "HC49U70"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HC49UP.json", 
+        "type": "element", 
+        "id": "HC49UP", 
+        "name": "HC49UP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HDF15H.json", 
+        "type": "element", 
+        "id": "HDF15H", 
+        "name": "HDF15H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HDF15V.json", 
+        "type": "element", 
+        "id": "HDF15V", 
+        "name": "HDF15V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HTSSOP20DAP.json", 
+        "type": "element", 
+        "id": "HTSSOP20DAP", 
+        "name": "HTSSOP20DAP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/HTSSOP32DAP.json", 
+        "type": "element", 
+        "id": "HTSSOP32DAP", 
+        "name": "HTSSOP32DAP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/ILI9325_28INCH_TS.json", 
+        "type": "element", 
+        "id": "ILI9325_28INCH_TS", 
+        "name": "ILI9325_28INCH_TS"
+      }, 
+      {
+        "data": "pcb/json/adafruit/INDUCTOR_5X5MM_TDK_VLC5045.json", 
+        "type": "element", 
+        "id": "INDUCTOR_5X5MM_TDK_VLC5045", 
+        "name": "INDUCTOR_5X5MM_TDK_VLC5045"
+      }, 
+      {
+        "data": "pcb/json/adafruit/IRL80A.json", 
+        "type": "element", 
+        "id": "IRL80A", 
+        "name": "IRL80A"
+      }, 
+      {
+        "data": "pcb/json/adafruit/IV18.json", 
+        "type": "element", 
+        "id": "IV18", 
+        "name": "IV18"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JD-T1800.json", 
+        "type": "element", 
+        "id": "JD-T1800", 
+        "name": "JD-T1800"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JOYSTICK.json", 
+        "type": "element", 
+        "id": "JOYSTICK", 
+        "name": "JOYSTICK"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JST-6POS.json", 
+        "type": "element", 
+        "id": "JST-6POS", 
+        "name": "JST-6POS"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JST-8POS.json", 
+        "type": "element", 
+        "id": "JST-8POS", 
+        "name": "JST-8POS"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JST-PH-2-SMT.json", 
+        "type": "element", 
+        "id": "JST-PH-2-SMT", 
+        "name": "JST-PH-2-SMT"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JST-PH-2-SMT-RA.json", 
+        "type": "element", 
+        "id": "JST-PH-2-SMT-RA", 
+        "name": "JST-PH-2-SMT-RA"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JST-PH-2-THM.json", 
+        "type": "element", 
+        "id": "JST-PH-2-THM", 
+        "name": "JST-PH-2-THM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JST-PH-2-THM-RA.json", 
+        "type": "element", 
+        "id": "JST-PH-2-THM-RA", 
+        "name": "JST-PH-2-THM-RA"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JSTPH3.json", 
+        "type": "element", 
+        "id": "JSTPH3", 
+        "name": "JSTPH3"
+      }, 
+      {
+        "data": "pcb/json/adafruit/JUDCOSPST.json", 
+        "type": "element", 
+        "id": "JUDCOSPST", 
+        "name": "JUDCOSPST"
+      }, 
+      {
+        "data": "pcb/json/adafruit/KMR2.json", 
+        "type": "element", 
+        "id": "KMR2", 
+        "name": "KMR2"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LCC20.json", 
+        "type": "element", 
+        "id": "LCC20", 
+        "name": "LCC20"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LCD1602.json", 
+        "type": "element", 
+        "id": "LCD1602", 
+        "name": "LCD1602"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LCD1602-RGB.json", 
+        "type": "element", 
+        "id": "LCD1602-RGB", 
+        "name": "LCD1602-RGB"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LD260.json", 
+        "type": "element", 
+        "id": "LD260", 
+        "name": "LD260"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LED2X5.json", 
+        "type": "element", 
+        "id": "LED2X5", 
+        "name": "LED2X5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LED3MM.json", 
+        "type": "element", 
+        "id": "LED3MM", 
+        "name": "LED3MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LED5MM.json", 
+        "type": "element", 
+        "id": "LED5MM", 
+        "name": "LED5MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LED5MMRGB.json", 
+        "type": "element", 
+        "id": "LED5MMRGB", 
+        "name": "LED5MMRGB"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LQH55.json", 
+        "type": "element", 
+        "id": "LQH55", 
+        "name": "LQH55"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LSU260.json", 
+        "type": "element", 
+        "id": "LSU260", 
+        "name": "LSU260"
+      }, 
+      {
+        "data": "pcb/json/adafruit/LZR181.json", 
+        "type": "element", 
+        "id": "LZR181", 
+        "name": "LZR181"
+      }, 
+      {
+        "data": "pcb/json/adafruit/M0805.json", 
+        "type": "element", 
+        "id": "M0805", 
+        "name": "M0805"
+      }, 
+      {
+        "data": "pcb/json/adafruit/M1206.json", 
+        "type": "element", 
+        "id": "M1206", 
+        "name": "M1206"
+      }, 
+      {
+        "data": "pcb/json/adafruit/M1406.json", 
+        "type": "element", 
+        "id": "M1406", 
+        "name": "M1406"
+      }, 
+      {
+        "data": "pcb/json/adafruit/M2012.json", 
+        "type": "element", 
+        "id": "M2012", 
+        "name": "M2012"
+      }, 
+      {
+        "data": "pcb/json/adafruit/M2309.json", 
+        "type": "element", 
+        "id": "M2309", 
+        "name": "M2309"
+      }, 
+      {
+        "data": "pcb/json/adafruit/M3216.json", 
+        "type": "element", 
+        "id": "M3216", 
+        "name": "M3216"
+      }, 
+      {
+        "data": "pcb/json/adafruit/M3516.json", 
+        "type": "element", 
+        "id": "M3516", 
+        "name": "M3516"
+      }, 
+      {
+        "data": "pcb/json/adafruit/M5923.json", 
+        "type": "element", 
+        "id": "M5923", 
+        "name": "M5923"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MC14093B-TSSOP14.json", 
+        "type": "element", 
+        "id": "MC14093B-TSSOP14", 
+        "name": "MC14093B-TSSOP14"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MICRO-SIDELED.json", 
+        "type": "element", 
+        "id": "MICRO-SIDELED", 
+        "name": "MICRO-SIDELED"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MICROSD.json", 
+        "type": "element", 
+        "id": "MICROSD", 
+        "name": "MICROSD"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MINI-TOPLED-SANTANA.json", 
+        "type": "element", 
+        "id": "MINI-TOPLED-SANTANA", 
+        "name": "MINI-TOPLED-SANTANA"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MINI_MELF-0102AX.json", 
+        "type": "element", 
+        "id": "MINI_MELF-0102AX", 
+        "name": "MINI_MELF-0102AX"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MINI_MELF-0102R.json", 
+        "type": "element", 
+        "id": "MINI_MELF-0102R", 
+        "name": "MINI_MELF-0102R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MINI_MELF-0102W.json", 
+        "type": "element", 
+        "id": "MINI_MELF-0102W", 
+        "name": "MINI_MELF-0102W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MINI_MELF-0204R.json", 
+        "type": "element", 
+        "id": "MINI_MELF-0204R", 
+        "name": "MINI_MELF-0204R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MINI_MELF-0204W.json", 
+        "type": "element", 
+        "id": "MINI_MELF-0204W", 
+        "name": "MINI_MELF-0204W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MINI_MELF-0207R.json", 
+        "type": "element", 
+        "id": "MINI_MELF-0207R", 
+        "name": "MINI_MELF-0207R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MINI_MELF-0207W.json", 
+        "type": "element", 
+        "id": "MINI_MELF-0207W", 
+        "name": "MINI_MELF-0207W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MLF32.json", 
+        "type": "element", 
+        "id": "MLF32", 
+        "name": "MLF32"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MM20SS.json", 
+        "type": "element", 
+        "id": "MM20SS", 
+        "name": "MM20SS"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MM39SL.json", 
+        "type": "element", 
+        "id": "MM39SL", 
+        "name": "MM39SL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MOLEX_480371000.json", 
+        "type": "element", 
+        "id": "MOLEX_480371000", 
+        "name": "MOLEX_480371000"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MOON.json", 
+        "type": "element", 
+        "id": "MOON", 
+        "name": "MOON"
+      }, 
+      {
+        "data": "pcb/json/adafruit/MSOP10.json", 
+        "type": "element", 
+        "id": "MSOP10", 
+        "name": "MSOP10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/NX3225.json", 
+        "type": "element", 
+        "id": "NX3225", 
+        "name": "NX3225"
+      }, 
+      {
+        "data": "pcb/json/adafruit/NX5032.json", 
+        "type": "element", 
+        "id": "NX5032", 
+        "name": "NX5032"
+      }, 
+      {
+        "data": "pcb/json/adafruit/NX8045.json", 
+        "type": "element", 
+        "id": "NX8045", 
+        "name": "NX8045"
+      }, 
+      {
+        "data": "pcb/json/adafruit/OS102011MA1Q.json", 
+        "type": "element", 
+        "id": "OS102011MA1Q", 
+        "name": "OS102011MA1Q"
+      }, 
+      {
+        "data": "pcb/json/adafruit/OSHWLOGO_0.3.json", 
+        "type": "element", 
+        "id": "OSHWLOGO_0.3", 
+        "name": "OSHWLOGO_0.3"
+      }, 
+      {
+        "data": "pcb/json/adafruit/OSHWLOGO_TOL_0.2.json", 
+        "type": "element", 
+        "id": "OSHWLOGO_TOL_0.2", 
+        "name": "OSHWLOGO_TOL_0.2"
+      }, 
+      {
+        "data": "pcb/json/adafruit/OSHWLOGO_TOP_0.2.json", 
+        "type": "element", 
+        "id": "OSHWLOGO_TOP_0.2", 
+        "name": "OSHWLOGO_TOP_0.2"
+      }, 
+      {
+        "data": "pcb/json/adafruit/OSRAM-MINI-TOP-LED.json", 
+        "type": "element", 
+        "id": "OSRAM-MINI-TOP-LED", 
+        "name": "OSRAM-MINI-TOP-LED"
+      }, 
+      {
+        "data": "pcb/json/adafruit/OSRAM-SIDELED.json", 
+        "type": "element", 
+        "id": "OSRAM-SIDELED", 
+        "name": "OSRAM-SIDELED"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P-LCC-2.json", 
+        "type": "element", 
+        "id": "P-LCC-2", 
+        "name": "P-LCC-2"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P-LCC-2-TOPLED-RG.json", 
+        "type": "element", 
+        "id": "P-LCC-2-TOPLED-RG", 
+        "name": "P-LCC-2-TOPLED-RG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P-LCC-4.json", 
+        "type": "element", 
+        "id": "P-LCC-4", 
+        "name": "P-LCC-4"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P0613%252F15.json", 
+        "type": "element", 
+        "id": "P0613/15", 
+        "name": "P0613/15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P0613V.json", 
+        "type": "element", 
+        "id": "P0613V", 
+        "name": "P0613V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P0817%252F22.json", 
+        "type": "element", 
+        "id": "P0817/22", 
+        "name": "P0817/22"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P0817V.json", 
+        "type": "element", 
+        "id": "P0817V", 
+        "name": "P0817V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P128-35.json", 
+        "type": "element", 
+        "id": "P128-35", 
+        "name": "P128-35"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P128-40.json", 
+        "type": "element", 
+        "id": "P128-40", 
+        "name": "P128-40"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P128-50.json", 
+        "type": "element", 
+        "id": "P128-50", 
+        "name": "P128-50"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P128-60.json", 
+        "type": "element", 
+        "id": "P128-60", 
+        "name": "P128-60"
+      }, 
+      {
+        "data": "pcb/json/adafruit/P6T15.json", 
+        "type": "element", 
+        "id": "P6T15", 
+        "name": "P6T15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PANASONIC_A.json", 
+        "type": "element", 
+        "id": "PANASONIC_A", 
+        "name": "PANASONIC_A"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PANASONIC_B.json", 
+        "type": "element", 
+        "id": "PANASONIC_B", 
+        "name": "PANASONIC_B"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PANASONIC_C.json", 
+        "type": "element", 
+        "id": "PANASONIC_C", 
+        "name": "PANASONIC_C"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PANASONIC_D.json", 
+        "type": "element", 
+        "id": "PANASONIC_D", 
+        "name": "PANASONIC_D"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PANASONIC_E.json", 
+        "type": "element", 
+        "id": "PANASONIC_E", 
+        "name": "PANASONIC_E"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PANASONIC_F.json", 
+        "type": "element", 
+        "id": "PANASONIC_F", 
+        "name": "PANASONIC_F"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PANASONIC_G.json", 
+        "type": "element", 
+        "id": "PANASONIC_G", 
+        "name": "PANASONIC_G"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PIRANHA5MM.json", 
+        "type": "element", 
+        "id": "PIRANHA5MM", 
+        "name": "PIRANHA5MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PJ-102A.json", 
+        "type": "element", 
+        "id": "PJ-102A", 
+        "name": "PJ-102A"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PLCC-S28.json", 
+        "type": "element", 
+        "id": "PLCC-S28", 
+        "name": "PLCC-S28"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PNA460XM.json", 
+        "type": "element", 
+        "id": "PNA460XM", 
+        "name": "PNA460XM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PROPCLIP.json", 
+        "type": "element", 
+        "id": "PROPCLIP", 
+        "name": "PROPCLIP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PROPPLUG.json", 
+        "type": "element", 
+        "id": "PROPPLUG", 
+        "name": "PROPPLUG"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PROTRINKET.json", 
+        "type": "element", 
+        "id": "PROTRINKET", 
+        "name": "PROTRINKET"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PS12.json", 
+        "type": "element", 
+        "id": "PS12", 
+        "name": "PS12"
+      }, 
+      {
+        "data": "pcb/json/adafruit/PS603.json", 
+        "type": "element", 
+        "id": "PS603", 
+        "name": "PS603"
+      }, 
+      {
+        "data": "pcb/json/adafruit/Q62902-B152.json", 
+        "type": "element", 
+        "id": "Q62902-B152", 
+        "name": "Q62902-B152"
+      }, 
+      {
+        "data": "pcb/json/adafruit/Q62902-B153.json", 
+        "type": "element", 
+        "id": "Q62902-B153", 
+        "name": "Q62902-B153"
+      }, 
+      {
+        "data": "pcb/json/adafruit/Q62902-B155.json", 
+        "type": "element", 
+        "id": "Q62902-B155", 
+        "name": "Q62902-B155"
+      }, 
+      {
+        "data": "pcb/json/adafruit/Q62902-B156.json", 
+        "type": "element", 
+        "id": "Q62902-B156", 
+        "name": "Q62902-B156"
+      }, 
+      {
+        "data": "pcb/json/adafruit/QFN20.json", 
+        "type": "element", 
+        "id": "QFN20", 
+        "name": "QFN20"
+      }, 
+      {
+        "data": "pcb/json/adafruit/QFN28-ML_6X6MM.json", 
+        "type": "element", 
+        "id": "QFN28-ML_6X6MM", 
+        "name": "QFN28-ML_6X6MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R%252F2012-12R.json", 
+        "type": "element", 
+        "id": "R/2012-12R", 
+        "name": "R/2012-12R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R%252F2012-12W.json", 
+        "type": "element", 
+        "id": "R/2012-12W", 
+        "name": "R/2012-12W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R0402.json", 
+        "type": "element", 
+        "id": "R0402", 
+        "name": "R0402"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R0603.json", 
+        "type": "element", 
+        "id": "R0603", 
+        "name": "R0603"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R0805.json", 
+        "type": "element", 
+        "id": "R0805", 
+        "name": "R0805"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R0805W.json", 
+        "type": "element", 
+        "id": "R0805W", 
+        "name": "R0805W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R1005.json", 
+        "type": "element", 
+        "id": "R1005", 
+        "name": "R1005"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R1206.json", 
+        "type": "element", 
+        "id": "R1206", 
+        "name": "R1206"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R1206W.json", 
+        "type": "element", 
+        "id": "R1206W", 
+        "name": "R1206W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R1210.json", 
+        "type": "element", 
+        "id": "R1210", 
+        "name": "R1210"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R1210W.json", 
+        "type": "element", 
+        "id": "R1210W", 
+        "name": "R1210W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R2010.json", 
+        "type": "element", 
+        "id": "R2010", 
+        "name": "R2010"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R2010W.json", 
+        "type": "element", 
+        "id": "R2010W", 
+        "name": "R2010W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R2012.json", 
+        "type": "element", 
+        "id": "R2012", 
+        "name": "R2012"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R2012W.json", 
+        "type": "element", 
+        "id": "R2012W", 
+        "name": "R2012W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R2512.json", 
+        "type": "element", 
+        "id": "R2512", 
+        "name": "R2512"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R2512W.json", 
+        "type": "element", 
+        "id": "R2512W", 
+        "name": "R2512W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R3216.json", 
+        "type": "element", 
+        "id": "R3216", 
+        "name": "R3216"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R3216W.json", 
+        "type": "element", 
+        "id": "R3216W", 
+        "name": "R3216W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R3225.json", 
+        "type": "element", 
+        "id": "R3225", 
+        "name": "R3225"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R3225W.json", 
+        "type": "element", 
+        "id": "R3225W", 
+        "name": "R3225W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R5025.json", 
+        "type": "element", 
+        "id": "R5025", 
+        "name": "R5025"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R5025W.json", 
+        "type": "element", 
+        "id": "R5025W", 
+        "name": "R5025W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R6332.json", 
+        "type": "element", 
+        "id": "R6332", 
+        "name": "R6332"
+      }, 
+      {
+        "data": "pcb/json/adafruit/R6332W.json", 
+        "type": "element", 
+        "id": "R6332W", 
+        "name": "R6332W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/RDH%252F15.json", 
+        "type": "element", 
+        "id": "RDH/15", 
+        "name": "RDH/15"
+      }, 
+      {
+        "data": "pcb/json/adafruit/RGBLED5050.json", 
+        "type": "element", 
+        "id": "RGBLED5050", 
+        "name": "RGBLED5050"
+      }, 
+      {
+        "data": "pcb/json/adafruit/RK0971221.json", 
+        "type": "element", 
+        "id": "RK0971221", 
+        "name": "RK0971221"
+      }, 
+      {
+        "data": "pcb/json/adafruit/RN-171.json", 
+        "type": "element", 
+        "id": "RN-171", 
+        "name": "RN-171"
+      }, 
+      {
+        "data": "pcb/json/adafruit/RN-ANT.json", 
+        "type": "element", 
+        "id": "RN-ANT", 
+        "name": "RN-ANT"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SCDA.json", 
+        "type": "element", 
+        "id": "SCDA", 
+        "name": "SCDA"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SDCARD.json", 
+        "type": "element", 
+        "id": "SDCARD", 
+        "name": "SDCARD"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SEGMENT_BICOL_BL-AR12Z3010.json", 
+        "type": "element", 
+        "id": "SEGMENT_BICOL_BL-AR12Z3010", 
+        "name": "SEGMENT_BICOL_BL-AR12Z3010"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SEGMENT_BICOL_BL-M12A883XX.json", 
+        "type": "element", 
+        "id": "SEGMENT_BICOL_BL-M12A883XX", 
+        "name": "SEGMENT_BICOL_BL-M12A883XX"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SEGMENT_BL-M07C881UR.json", 
+        "type": "element", 
+        "id": "SEGMENT_BL-M07C881UR", 
+        "name": "SEGMENT_BL-M07C881UR"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SEGMENT_BL-M12A881UR.json", 
+        "type": "element", 
+        "id": "SEGMENT_BL-M12A881UR", 
+        "name": "SEGMENT_BL-M12A881UR"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SEGMENT_BL-M12A883.json", 
+        "type": "element", 
+        "id": "SEGMENT_BL-M12A883", 
+        "name": "SEGMENT_BL-M12A883"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SEGMENT_BL-M15A881.json", 
+        "type": "element", 
+        "id": "SEGMENT_BL-M15A881", 
+        "name": "SEGMENT_BL-M15A881"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SEWINGTAP_0.4.json", 
+        "type": "element", 
+        "id": "SEWINGTAP_0.4", 
+        "name": "SEWINGTAP_0.4"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SEWINGTAP_0.5.json", 
+        "type": "element", 
+        "id": "SEWINGTAP_0.5", 
+        "name": "SEWINGTAP_0.5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SEWINGTAP_2.0.json", 
+        "type": "element", 
+        "id": "SEWINGTAP_2.0", 
+        "name": "SEWINGTAP_2.0"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SFH480.json", 
+        "type": "element", 
+        "id": "SFH480", 
+        "name": "SFH480"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SFH482.json", 
+        "type": "element", 
+        "id": "SFH482", 
+        "name": "SFH482"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SFV4R-1STE1LF.json", 
+        "type": "element", 
+        "id": "SFV4R-1STE1LF", 
+        "name": "SFV4R-1STE1LF"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SLIDEPOT-45.json", 
+        "type": "element", 
+        "id": "SLIDEPOT-45", 
+        "name": "SLIDEPOT-45"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SM49.json", 
+        "type": "element", 
+        "id": "SM49", 
+        "name": "SM49"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SMA90_DIP.json", 
+        "type": "element", 
+        "id": "SMA90_DIP", 
+        "name": "SMA90_DIP"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SMA_EDGELAUNCH.json", 
+        "type": "element", 
+        "id": "SMA_EDGELAUNCH", 
+        "name": "SMA_EDGELAUNCH"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SMA_EDGELAUNCH_UFL.json", 
+        "type": "element", 
+        "id": "SMA_EDGELAUNCH_UFL", 
+        "name": "SMA_EDGELAUNCH_UFL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SMADIODE.json", 
+        "type": "element", 
+        "id": "SMADIODE", 
+        "name": "SMADIODE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SMART-LED.json", 
+        "type": "element", 
+        "id": "SMART-LED", 
+        "name": "SMART-LED"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SMARTLED-TTW.json", 
+        "type": "element", 
+        "id": "SMARTLED-TTW", 
+        "name": "SMARTLED-TTW"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SMLK34.json", 
+        "type": "element", 
+        "id": "SMLK34", 
+        "name": "SMLK34"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SMT-0540-S-R.json", 
+        "type": "element", 
+        "id": "SMT-0540-S-R", 
+        "name": "SMT-0540-S-R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SO08.json", 
+        "type": "element", 
+        "id": "SO08", 
+        "name": "SO08"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SO08-SKINNYPADS.json", 
+        "type": "element", 
+        "id": "SO08-SKINNYPADS", 
+        "name": "SO08-SKINNYPADS"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SO14.json", 
+        "type": "element", 
+        "id": "SO14", 
+        "name": "SO14"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SO16.json", 
+        "type": "element", 
+        "id": "SO16", 
+        "name": "SO16"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SO16W.json", 
+        "type": "element", 
+        "id": "SO16W", 
+        "name": "SO16W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SO18W.json", 
+        "type": "element", 
+        "id": "SO18W", 
+        "name": "SO18W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SO20W.json", 
+        "type": "element", 
+        "id": "SO20W", 
+        "name": "SO20W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SO28W.json", 
+        "type": "element", 
+        "id": "SO28W", 
+        "name": "SO28W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOD-123.json", 
+        "type": "element", 
+        "id": "SOD-123", 
+        "name": "SOD-123"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOD-123FL.json", 
+        "type": "element", 
+        "id": "SOD-123FL", 
+        "name": "SOD-123FL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOD-323.json", 
+        "type": "element", 
+        "id": "SOD-323", 
+        "name": "SOD-323"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOD-323F.json", 
+        "type": "element", 
+        "id": "SOD-323F", 
+        "name": "SOD-323F"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOD-523.json", 
+        "type": "element", 
+        "id": "SOD-523", 
+        "name": "SOD-523"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOIC8_208MIL.json", 
+        "type": "element", 
+        "id": "SOIC8_208MIL", 
+        "name": "SOIC8_208MIL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOP24.json", 
+        "type": "element", 
+        "id": "SOP24", 
+        "name": "SOP24"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOT23.json", 
+        "type": "element", 
+        "id": "SOT23", 
+        "name": "SOT23"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOT23-5L.json", 
+        "type": "element", 
+        "id": "SOT23-5L", 
+        "name": "SOT23-5L"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOT23-6.json", 
+        "type": "element", 
+        "id": "SOT23-6", 
+        "name": "SOT23-6"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOT23-R.json", 
+        "type": "element", 
+        "id": "SOT23-R", 
+        "name": "SOT23-R"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SOT23-W.json", 
+        "type": "element", 
+        "id": "SOT23-W", 
+        "name": "SOT23-W"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SPRINGTERMINAL-17.json", 
+        "type": "element", 
+        "id": "SPRINGTERMINAL-17", 
+        "name": "SPRINGTERMINAL-17"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SQFP-S-5X5-48.json", 
+        "type": "element", 
+        "id": "SQFP-S-5X5-48", 
+        "name": "SQFP-S-5X5-48"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SQFP-S-7X7-48.json", 
+        "type": "element", 
+        "id": "SQFP-S-7X7-48", 
+        "name": "SQFP-S-7X7-48"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SSOP20.json", 
+        "type": "element", 
+        "id": "SSOP20", 
+        "name": "SSOP20"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SSOP24.json", 
+        "type": "element", 
+        "id": "SSOP24", 
+        "name": "SSOP24"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SSOP28.json", 
+        "type": "element", 
+        "id": "SSOP28", 
+        "name": "SSOP28"
+      }, 
+      {
+        "data": "pcb/json/adafruit/STRIP-3PIN.json", 
+        "type": "element", 
+        "id": "STRIP-3PIN", 
+        "name": "STRIP-3PIN"
+      }, 
+      {
+        "data": "pcb/json/adafruit/STRIP-5PINSS.json", 
+        "type": "element", 
+        "id": "STRIP-5PINSS", 
+        "name": "STRIP-5PINSS"
+      }, 
+      {
+        "data": "pcb/json/adafruit/STX3100.json", 
+        "type": "element", 
+        "id": "STX3100", 
+        "name": "STX3100"
+      }, 
+      {
+        "data": "pcb/json/adafruit/SUN.json", 
+        "type": "element", 
+        "id": "SUN", 
+        "name": "SUN"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TAP5-45.json", 
+        "type": "element", 
+        "id": "TAP5-45", 
+        "name": "TAP5-45"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TAP5-50.json", 
+        "type": "element", 
+        "id": "TAP5-50", 
+        "name": "TAP5-50"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TAP5-60.json", 
+        "type": "element", 
+        "id": "TAP5-60", 
+        "name": "TAP5-60"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TAP5-70.json", 
+        "type": "element", 
+        "id": "TAP5-70", 
+        "name": "TAP5-70"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TAP5-80.json", 
+        "type": "element", 
+        "id": "TAP5-80", 
+        "name": "TAP5-80"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TC26H.json", 
+        "type": "element", 
+        "id": "TC26H", 
+        "name": "TC26H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TC26V.json", 
+        "type": "element", 
+        "id": "TC26V", 
+        "name": "TC26V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TC33X.json", 
+        "type": "element", 
+        "id": "TC33X", 
+        "name": "TC33X"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TC38H.json", 
+        "type": "element", 
+        "id": "TC38H", 
+        "name": "TC38H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TDFN14.json", 
+        "type": "element", 
+        "id": "TDFN14", 
+        "name": "TDFN14"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TDFN14_3X3MM.json", 
+        "type": "element", 
+        "id": "TDFN14_3X3MM", 
+        "name": "TDFN14_3X3MM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TEENSY.json", 
+        "type": "element", 
+        "id": "TEENSY", 
+        "name": "TEENSY"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TFT_2.83IN_240X320_50PIN.json", 
+        "type": "element", 
+        "id": "TFT_2.83IN_240X320_50PIN", 
+        "name": "TFT_2.83IN_240X320_50PIN"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TFT_CTP28.json", 
+        "type": "element", 
+        "id": "TFT_CTP28", 
+        "name": "TFT_CTP28"
+      }, 
+      {
+        "data": "pcb/json/adafruit/THUMBWHEEL.json", 
+        "type": "element", 
+        "id": "THUMBWHEEL", 
+        "name": "THUMBWHEEL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/THUMBWHEELV.json", 
+        "type": "element", 
+        "id": "THUMBWHEELV", 
+        "name": "THUMBWHEELV"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO220.json", 
+        "type": "element", 
+        "id": "TO220", 
+        "name": "TO220"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO220-NOHOLE.json", 
+        "type": "element", 
+        "id": "TO220-NOHOLE", 
+        "name": "TO220-NOHOLE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO220H.json", 
+        "type": "element", 
+        "id": "TO220H", 
+        "name": "TO220H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO220V.json", 
+        "type": "element", 
+        "id": "TO220V", 
+        "name": "TO220V"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO237.json", 
+        "type": "element", 
+        "id": "TO237", 
+        "name": "TO237"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO252.json", 
+        "type": "element", 
+        "id": "TO252", 
+        "name": "TO252"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO39.json", 
+        "type": "element", 
+        "id": "TO39", 
+        "name": "TO39"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO92.json", 
+        "type": "element", 
+        "id": "TO92", 
+        "name": "TO92"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO92-EBC-OVAL.json", 
+        "type": "element", 
+        "id": "TO92-EBC-OVAL", 
+        "name": "TO92-EBC-OVAL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO92-INLINE.json", 
+        "type": "element", 
+        "id": "TO92-INLINE", 
+        "name": "TO92-INLINE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO92-OVAL.json", 
+        "type": "element", 
+        "id": "TO92-OVAL", 
+        "name": "TO92-OVAL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TO92H.json", 
+        "type": "element", 
+        "id": "TO92H", 
+        "name": "TO92H"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TQFP32-08.json", 
+        "type": "element", 
+        "id": "TQFP32-08", 
+        "name": "TQFP32-08"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TQFP44.json", 
+        "type": "element", 
+        "id": "TQFP44", 
+        "name": "TQFP44"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TRIM-3386.json", 
+        "type": "element", 
+        "id": "TRIM-3386", 
+        "name": "TRIM-3386"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TRIMBLE.json", 
+        "type": "element", 
+        "id": "TRIMBLE", 
+        "name": "TRIMBLE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TS12864.json", 
+        "type": "element", 
+        "id": "TS12864", 
+        "name": "TS12864"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TSSOP-8.json", 
+        "type": "element", 
+        "id": "TSSOP-8", 
+        "name": "TSSOP-8"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TSSOP14.json", 
+        "type": "element", 
+        "id": "TSSOP14", 
+        "name": "TSSOP14"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TSSOP20.json", 
+        "type": "element", 
+        "id": "TSSOP20", 
+        "name": "TSSOP20"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TSSOP28.json", 
+        "type": "element", 
+        "id": "TSSOP28", 
+        "name": "TSSOP28"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT2D4.json", 
+        "type": "element", 
+        "id": "TT2D4", 
+        "name": "TT2D4"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT2D4L.json", 
+        "type": "element", 
+        "id": "TT2D4L", 
+        "name": "TT2D4L"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT2D5.json", 
+        "type": "element", 
+        "id": "TT2D5", 
+        "name": "TT2D5"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT2D5L.json", 
+        "type": "element", 
+        "id": "TT2D5L", 
+        "name": "TT2D5L"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT2D6.json", 
+        "type": "element", 
+        "id": "TT2D6", 
+        "name": "TT2D6"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT2D6L.json", 
+        "type": "element", 
+        "id": "TT2D6L", 
+        "name": "TT2D6L"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT2D7.json", 
+        "type": "element", 
+        "id": "TT2D7", 
+        "name": "TT2D7"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT2D7L.json", 
+        "type": "element", 
+        "id": "TT2D7L", 
+        "name": "TT2D7L"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT5D10.json", 
+        "type": "element", 
+        "id": "TT5D10", 
+        "name": "TT5D10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT5D11.json", 
+        "type": "element", 
+        "id": "TT5D11", 
+        "name": "TT5D11"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT5D11L.json", 
+        "type": "element", 
+        "id": "TT5D11L", 
+        "name": "TT5D11L"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT5D6.json", 
+        "type": "element", 
+        "id": "TT5D6", 
+        "name": "TT5D6"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT5D6L.json", 
+        "type": "element", 
+        "id": "TT5D6L", 
+        "name": "TT5D6L"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT5D7.json", 
+        "type": "element", 
+        "id": "TT5D7", 
+        "name": "TT5D7"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT5D7L.json", 
+        "type": "element", 
+        "id": "TT5D7L", 
+        "name": "TT5D7L"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT5D9.json", 
+        "type": "element", 
+        "id": "TT5D9", 
+        "name": "TT5D9"
+      }, 
+      {
+        "data": "pcb/json/adafruit/TT5D9L.json", 
+        "type": "element", 
+        "id": "TT5D9L", 
+        "name": "TT5D9L"
+      }, 
+      {
+        "data": "pcb/json/adafruit/U.FL.json", 
+        "type": "element", 
+        "id": "U.FL", 
+        "name": "U.FL"
+      }, 
+      {
+        "data": "pcb/json/adafruit/U57X32.json", 
+        "type": "element", 
+        "id": "U57X32", 
+        "name": "U57X32"
+      }, 
+      {
+        "data": "pcb/json/adafruit/UDFN-8.json", 
+        "type": "element", 
+        "id": "UDFN-8", 
+        "name": "UDFN-8"
+      }, 
+      {
+        "data": "pcb/json/adafruit/UMAX10.json", 
+        "type": "element", 
+        "id": "UMAX10", 
+        "name": "UMAX10"
+      }, 
+      {
+        "data": "pcb/json/adafruit/USB-MINIB.json", 
+        "type": "element", 
+        "id": "USB-MINIB", 
+        "name": "USB-MINIB"
+      }, 
+      {
+        "data": "pcb/json/adafruit/USB-MINIB-THM.json", 
+        "type": "element", 
+        "id": "USB-MINIB-THM", 
+        "name": "USB-MINIB-THM"
+      }, 
+      {
+        "data": "pcb/json/adafruit/USB-MINIB-THM-MOLEX.json", 
+        "type": "element", 
+        "id": "USB-MINIB-THM-MOLEX", 
+        "name": "USB-MINIB-THM-MOLEX"
+      }, 
+      {
+        "data": "pcb/json/adafruit/USB-MINIB-THM-MOLEX-PWRONLY.json", 
+        "type": "element", 
+        "id": "USB-MINIB-THM-MOLEX-PWRONLY", 
+        "name": "USB-MINIB-THM-MOLEX-PWRONLY"
+      }, 
+      {
+        "data": "pcb/json/adafruit/USB-MINIB-THM-PWRONLY.json", 
+        "type": "element", 
+        "id": "USB-MINIB-THM-PWRONLY", 
+        "name": "USB-MINIB-THM-PWRONLY"
+      }, 
+      {
+        "data": "pcb/json/adafruit/V234%252F12.json", 
+        "type": "element", 
+        "id": "V234/12", 
+        "name": "V234/12"
+      }, 
+      {
+        "data": "pcb/json/adafruit/V235%252F17.json", 
+        "type": "element", 
+        "id": "V235/17", 
+        "name": "V235/17"
+      }, 
+      {
+        "data": "pcb/json/adafruit/V526-0.json", 
+        "type": "element", 
+        "id": "V526-0", 
+        "name": "V526-0"
+      }, 
+      {
+        "data": "pcb/json/adafruit/VFSOP-8.json", 
+        "type": "element", 
+        "id": "VFSOP-8", 
+        "name": "VFSOP-8"
+      }, 
+      {
+        "data": "pcb/json/adafruit/WS2812.json", 
+        "type": "element", 
+        "id": "WS2812", 
+        "name": "WS2812"
+      }, 
+      {
+        "data": "pcb/json/adafruit/WS2812B.json", 
+        "type": "element", 
+        "id": "WS2812B", 
+        "name": "WS2812B"
+      }, 
+      {
+        "data": "pcb/json/adafruit/XBEE.json", 
+        "type": "element", 
+        "id": "XBEE", 
+        "name": "XBEE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/XF2E-0515-1.json", 
+        "type": "element", 
+        "id": "XF2E-0515-1", 
+        "name": "XF2E-0515-1"
+      }, 
+      {
+        "data": "pcb/json/adafruit/XF2H-4015-1LW.json", 
+        "type": "element", 
+        "id": "XF2H-4015-1LW", 
+        "name": "XF2H-4015-1LW"
+      }, 
+      {
+        "data": "pcb/json/adafruit/XF2L-0535-1.json", 
+        "type": "element", 
+        "id": "XF2L-0535-1", 
+        "name": "XF2L-0535-1"
+      }, 
+      {
+        "data": "pcb/json/adafruit/XF2M-4015-1F-REVERSE.json", 
+        "type": "element", 
+        "id": "XF2M-4015-1F-REVERSE", 
+        "name": "XF2M-4015-1F-REVERSE"
+      }, 
+      {
+        "data": "pcb/json/adafruit/XF2R-4015-4A.json", 
+        "type": "element", 
+        "id": "XF2R-4015-4A", 
+        "name": "XF2R-4015-4A"
+      }, 
+      {
+        "data": "pcb/json/adafruit/XTAL3215.json", 
+        "type": "element", 
+        "id": "XTAL3215", 
+        "name": "XTAL3215"
+      }
+    ], 
+    "type": "list", 
+    "id": "adafruit", 
+    "name": "adafruit", 
+    "data": "pcb/json/adafruit"
+  }, 
+  {
+    "type": "list", 
+    "list": [
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_12mm_disc.json", 
+        "id": "cnp_12mm_disc", 
+        "name": "cnp_12mm_disc"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_13x4mm.json", 
+        "id": "cnp_13x4mm", 
+        "name": "cnp_13x4mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_18x5mm.json", 
+        "id": "cnp_18x5mm", 
+        "name": "cnp_18x5mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_18x6mm.json", 
+        "id": "cnp_18x6mm", 
+        "name": "cnp_18x6mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_18x8mm.json", 
+        "id": "cnp_18x8mm", 
+        "name": "cnp_18x8mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_3mm_disc.json", 
+        "id": "cnp_3mm_disc", 
+        "name": "cnp_3mm_disc"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_6mm_disc.json", 
+        "id": "cnp_6mm_disc", 
+        "name": "cnp_6mm_disc"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_7.5mm_disc.json", 
+        "id": "cnp_7.5mm_disc", 
+        "name": "cnp_7.5mm_disc"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_7x2mm.json", 
+        "id": "cnp_7x2mm", 
+        "name": "cnp_7x2mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_7x4.5mm.json", 
+        "id": "cnp_7x4.5mm", 
+        "name": "cnp_7x4.5mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/cnp_7x6mm.json", 
+        "id": "cnp_7x6mm", 
+        "name": "cnp_7x6mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_10x13mm.json", 
+        "id": "CP_10x13mm", 
+        "name": "CP_10x13mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_10x16mm.json", 
+        "id": "CP_10x16mm", 
+        "name": "CP_10x16mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_10x21mm.json", 
+        "id": "CP_10x21mm", 
+        "name": "CP_10x21mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_10x25mm.json", 
+        "id": "CP_10x25mm", 
+        "name": "CP_10x25mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_13x21mm.json", 
+        "id": "CP_13x21mm", 
+        "name": "CP_13x21mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_13x25mm.json", 
+        "id": "CP_13x25mm", 
+        "name": "CP_13x25mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_16x25mm.json", 
+        "id": "CP_16x25mm", 
+        "name": "CP_16x25mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_22x41mm.json", 
+        "id": "CP_22x41mm", 
+        "name": "CP_22x41mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_26x31mm.json", 
+        "id": "CP_26x31mm", 
+        "name": "CP_26x31mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_26x45mm.json", 
+        "id": "CP_26x45mm", 
+        "name": "CP_26x45mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_30x51mm.json", 
+        "id": "CP_30x51mm", 
+        "name": "CP_30x51mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_35x51mm.json", 
+        "id": "CP_35x51mm", 
+        "name": "CP_35x51mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_5x11mm.json", 
+        "id": "CP_5x11mm", 
+        "name": "CP_5x11mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_5x6mm.json", 
+        "id": "CP_5x6mm", 
+        "name": "CP_5x6mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_8x13mm.json", 
+        "id": "CP_8x13mm", 
+        "name": "CP_8x13mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CP_8x21mm.json", 
+        "id": "CP_8x21mm", 
+        "name": "CP_8x21mm"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CPA_13x31MM.json", 
+        "id": "CPA_13x31MM", 
+        "name": "CPA_13x31MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CPA_16x31MM.json", 
+        "id": "CPA_16x31MM", 
+        "name": "CPA_16x31MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CPA_16x40MM.json", 
+        "id": "CPA_16x40MM", 
+        "name": "CPA_16x40MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CPA_5x11MM.json", 
+        "id": "CPA_5x11MM", 
+        "name": "CPA_5x11MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CPA_6x11MM.json", 
+        "id": "CPA_6x11MM", 
+        "name": "CPA_6x11MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "pcb/json/capacitors/CPA_8x21MM.json", 
+        "id": "CPA_8x21MM", 
+        "name": "CPA_8x21MM"
+      }
+    ], 
+    "id": "capacitors", 
+    "data": "pcb/json/capacitors", 
+    "name": "capacitors"
+  } 
+]

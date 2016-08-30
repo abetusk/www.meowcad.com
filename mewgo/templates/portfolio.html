@@ -215,10 +215,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
                 <li class='active'><a href='#PanelProjects' data-toggle='tab'>Projects</a></li>
                 <!--PROJECT_CREATE_FORM_HEADER-->
+                {{if .PortfolioAdminPermission}}
+                <li><a href='#PanelProjectCreate' data-toggle='tab'>New</a></li>
+                {{end}}
+
                 <!-- <li><a href='#PanelProjectCreate' data-toggle='tab'>New</a></li> -->
                 <li><a href='#PanelComponent' data-toggle='tab'>Components</a></li>
                 <li><a href='#PanelModule' data-toggle='tab'>Modules</a></li>
+
+                {{if .PortfolioAdminPermission}}
+                <li><a href='#PanelImport' data-toggle='tab'>Import</a></li>
+                {{end}}
                 <!--PROJECT_IMPORT_FORM_HEADER-->
+
                 <!-- <li><a href='#PanelImport' data-toggle='tab'>Import</a></li> -->
 
               </ul>
@@ -274,7 +283,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                   
                 </div>
 
+
                 <!--PROJECT_CREATE_FORM-->
+                {{if .PortfolioAdminPermission}}
+                <div class='tab-pane' id='PanelProjectCreate' style='margin-left:10px; margin-right:10px;' >
+
+                  {{template "portfolio_create_form.html" .}}
+
+                </div>
+                {{end}}
 
 
                 <div class='tab-pane' id='PanelComponent'>
@@ -288,20 +305,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                   <!--ACCORDIAN_COMPONENTS-->
 
                   {{template "component_accordian.html" .}}
-
-                  <!-- testing -->
-                  <!--
-                  <div class='panel panel-default' style='margin:10px 10px;'>
-                    <div class='panel-heading'>
-                      <h4 class='panel-title'>
-                        <a class='accordian-toggle collapsed' data-toggle='collapse' data-parent='#' href='#' name='x' onclick=";" >
-                          ok
-                        </a>
-                      </h4>
-                    </div>
-                  </div>
-                  -->
-                  <!-- testing -->
 
                 </div>
 
@@ -319,7 +322,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
                 </div>
 
-                <!--PROJECT_IMPORT_FORM-->
+                {{if .PortfolioAdminPermission}}
+                  <div class='tab-pane' id='PanelImport'>
+
+                    <!--PROJECT_IMPORT_FORM-->
+                    {{template "portfolio_import_form.html" .}}
+
+                  </div>
+                {{end}}
 
                 <!--
                 <div class='tab-pane' id='PanelImport'>

@@ -354,9 +354,9 @@ function cancelReadme() {
             <li><a href='#PanelComponents' data-toggle='tab'>Components</a></li>
             <li><a href='#PanelModules' data-toggle='tab'>Modules</a></li>
 
-            <!--
+            {{if .ProjectAdminPermission}}
             <li><a href='#PanelManage' data-toggle='tab'>Manage</a></li>
-            -->
+            {{end}}
             <!--PERMISSION_PANE_HEADER-->
 
           </ul>
@@ -590,6 +590,10 @@ function cancelReadme() {
 
             </div>
 
+
+            {{if .ProjectAdminPermission}}
+            {{template "project_manage_pane.html" .}}
+            {{end}}
 
             <!--PERMISSION_PANE-->
 

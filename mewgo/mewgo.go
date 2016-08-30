@@ -36,6 +36,7 @@ type ProjectInfo struct {
   Brd string
   SchPicId string
   BrdPicId string
+  Perm string
 }
 
 type CircuitElement struct {
@@ -73,6 +74,9 @@ type RenderInfo struct {
   MessageDanger bool
   MessagePrimary bool
   Message string
+
+  PortfolioAdminPermission bool
+  ProjectAdminPermission bool
 
   Title string
 
@@ -219,6 +223,16 @@ func project(ctx *iris.Context) {
     ri.Title = "Not Found"
     ri.Message = "..."
     dst_page = "sink.html"
+  } else {
+
+    // Simple permissions for now.  If your'e the owner, you can
+    // edit it.
+    //
+    ri.ProjectAdminPermission = false
+    if ri.CurProject.Owner == ri.UserId {
+      ri.ProjectAdminPermission = true
+    }
+
   }
 
   e := ctx.Render(dst_page, ri)
@@ -251,6 +265,11 @@ func portfolio(ctx *iris.Context) {
 
   ri.Project = p
 
+  ri.PortfolioAdminPermission = false
+  if view_user_id == userid {
+    ri.PortfolioAdminPermission = true
+  }
+
   e := ctx.Render("portfolio.html", ri)
   if e!=nil { fmt.Printf("portfolio error: %v\n", e) }
 }
@@ -261,6 +280,95 @@ func user(ctx *iris.Context) {
   e := ctx.Render("user.html", ri)
   if e!=nil { fmt.Printf("usererror: %v\n", e) }
   fmt.Printf("user... %v\n", ri)
+}
+
+func deleteproject(ctx *iris.Context) {
+  ri := RenderInfoCreate(ctx) ; _ = ri
+
+  fmt.Printf("deleteproject:...\n")
+
+  projectid := ctx.FormValue("projectId")
+
+  if (!ri.LoggedIn) || ri.Anonymous {
+    ctx.SetCookieKV("message", "You do not have permissino to delete this project")
+    ctx.SetCookieKV("messageType", "error")
+
+    if ri.Anonymous || ri.LoggedIn {
+      ctx.Redirect( BASE_HOST + "/portfolio")
+    } else {
+      ctx.Redirect( BASE_HOST + "/landing")
+    }
+    return
+  }
+
+  var ok bool
+  ri.CurProject,ok = GetProject(g_redis_cli, ri.UserId, string(projectid))
+
+  fmt.Printf(">>> userid %s, projectid %s (%s)\n", ri.UserId, projectid, ri.CurProject.Id)
+
+  if !ok {
+    fmt.Printf("project not found or unavailable: userid:%v projectid:%v\n", ri.UserId, projectid)
+    ri.Title = "Not Found"
+    ri.Message = "Project not found"
+    e := ctx.Render("sink.html", ri)
+    if e!=nil { fmt.Printf("project error: %v\n", e) }
+    return
+
+  } else {
+
+    // Simple permissions for now.  If your'e the owner, you can
+    // edit it.
+    //
+    if ri.CurProject.Owner != ri.UserId {
+      ctx.SetCookieKV("message", "You do not have permissino to delete this project")
+      ctx.SetCookieKV("messageType", "error")
+      ctx.Redirect( BASE_HOST + "/portfolio")
+      return
+    }
+    ri.ProjectAdminPermission = true
+
+    DeleteProject(g_redis_cli, string(projectid))
+
+  }
+
+  ctx.SetCookieKV("message", "Project deleted")
+  ctx.SetCookieKV("messageType", "warning")
+
+  ctx.Redirect( BASE_HOST + "/portfolio" )
+}
+
+func createproject(ctx *iris.Context) {
+  ri := RenderInfoCreate(ctx) ; _ = ri
+
+  if (!ri.LoggedIn) || ri.Anonymous {
+    ctx.SetCookieKV("message", "You do not have permission to create a new project")
+    ctx.SetCookieKV("messageType", "error")
+
+    if ri.Anonymous || ri.LoggedIn {
+      ctx.Redirect( BASE_HOST + "/portfolio")
+    } else {
+      ctx.Redirect( BASE_HOST + "/landing")
+    }
+    return
+  }
+
+  proj_name := ctx.FormValue("name")
+  perm := ctx.FormValue("permissionOption")
+
+  fmt.Printf("createproject: %s %s\n", proj_name, perm)
+
+  if len(proj_name) == 0 {
+    ctx.SetCookieKV("message", "Project name must be non-empty")
+    ctx.SetCookieKV("messageType", "error")
+    ctx.Redirect( BASE_HOST + "/portfolio")
+    return
+  }
+
+  proj_perm := "user"
+  if string(perm) != "private" { proj_perm = "world-read" }
+  CreateProject(g_redis_cli, []byte(ri.UserId), proj_name, []byte(proj_perm))
+
+  ctx.Redirect( BASE_HOST + "/portfolio" )
 }
 
 func user_post(ctx *iris.Context) {
@@ -588,6 +696,10 @@ func main() {
 
   iris.Get("/project", project)
   iris.Get("/project/:projectid", project)
+
+  iris.Post("/createproject", createproject)
+  iris.Get("/deleteproject", deleteproject)
+  iris.Post("/deleteproject", deleteproject)
 
   iris.Get("/login", login)
   iris.Get("/forgot", forgot)

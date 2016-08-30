@@ -71,6 +71,7 @@ func GetPortfolio(cli *redis.Client, userid, sessionid, view_userid string) ([]P
     if e!=nil { return nil,false }
 
     if (proj["userId"] != userid) && (proj["permission"] != "world-read") { continue }
+    if proj["active"] != "1" { continue }
 
     schpic := ""
     brdpic := ""
@@ -101,7 +102,7 @@ func GetProject(cli *redis.Client, userid, projectid string) (ProjectInfo, bool)
     brdpic = picinfo["brdPicId"]
   }
 
-  return ProjectInfo{ Id:proj["id"], Owner:proj["userId"], Name:proj["name"], SchPicId:schpic, BrdPicId:brdpic },true
+  return ProjectInfo{ Id:proj["id"], Owner:proj["userId"], Name:proj["name"], SchPicId:schpic, BrdPicId:brdpic, Perm:proj["permission"] },true
 }
 
 func ChangePassword(cli *redis.Client, userid, password string) bool {
@@ -300,6 +301,10 @@ func CreateProject(cli *redis.Client, userid, projectName, permission []byte) {
   cli.HSet("projectrecent:" + string(userid), "projectId", proj["id"])
   cli.SAdd("projectpool", proj["id"])
 
+}
+
+func DeleteProject(cli *redis.Client, projectid string) {
+  cli.HSet("project:" + projectid, "active", "0")
 }
 
 //var DEFAULT_DATA_LOCATION string = "/var/www/data"

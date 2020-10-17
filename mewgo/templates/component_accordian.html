@@ -1,0 +1,130 @@
+<script>
+
+  /* http://stackoverflow.com/questions/3820381/need-a-basename-function-in-javascript
+     answered Sep 29 '10 at 9:44 by Nivas 
+     user contributions licensed under cc by-sa 3.0
+  */
+
+
+  function basename_component(str) {  
+     var base = new String(str).substring(str.lastIndexOf('/') + 1); 
+      if(base.lastIndexOf(".") != -1)       
+          base = base.substring(0, base.lastIndexOf("."));
+     return base;
+  }
+
+  function dirname_component(str) {  
+     var base = new String(str).substring(0, str.lastIndexOf('/') ); 
+     return base;
+  }
+
+	function utf8_to_b64( str ) {
+    return window.btoa(encodeURIComponent( escape( str )));
+  }
+
+ function load_details_componentaccordion(ele_id, data) {
+   var ele_img = document.getElementById("img_" + ele_id);
+
+   d = dirname_component( data );
+   b = basename_component( data );
+   d = d.replace( /\/json\//, "/png/" );
+   //req = "/picModLibSentry.py?data=" + encodeURI(d) + "/" + b + ".png";
+   req = "/picmodlib/" + encodeURI(d) + "/" + b + ".png";
+
+ //DEBUG
+ console.log("sending", req );
+
+    ele_img.src = req;
+
+    chev = document.getElementById("btn_chevron_" + ele_id);
+    if (chev.className.match( /chevron-right/ )) {
+      chev.className = "glyphicon glyphicon-chevron-down";
+    } else {
+      chev.className = "glyphicon glyphicon-chevron-right";
+    }
+
+  }
+
+  function load_group_details_componentaccordion(group_base_name, n) {
+    //console.log(group_base_name, n);
+  }
+
+
+  function load_err_pic( ele_id ) {
+    var ele_img = document.getElementById( "img_" + ele_id );
+    ele_img.src = "/img/ghost_alt_big.png";
+  }
+
+
+</script>
+
+<div class='panel-group' id='componentaccordion'>
+
+{{range $ind_x, $x := .ComponentList}}
+
+  <div class='panel panel-default' style='margin:10px 10px;' >
+    <div class='panel-heading'>
+      <h4 class='panel-title'>
+
+        <!--
+          role='button'
+          aria-expanded='false'
+          aria-controls='#componentaccordion_{{$ind_x}}'
+        -->
+        <a class='accordion-toggle collapsed'
+          data-toggle='collapse'
+          data-parent='#componentaccordion'
+          href='#componentaccordion_{{$ind_x}}'
+          name='componentaccordion'
+          onclick='load_group_details_componentaccordion("componentaccordion_{{$x.Id}}", "{{len $x.List}}")'
+            >{{$x.Name}}</a>
+      </h4>
+    </div>
+  </div>
+
+  <div id='componentaccordion_{{$ind_x}}' name='componentaccordion' class='panel-collapse collapse'>
+    <div class='panel-body'>
+      <ul class='list-group'>
+
+        {{range $ind_y, $y := $x.List}}
+          <li class='list-group-item'>
+            <div class='row'>
+              <div class='col-sm-12'>
+
+                <button name='componentaccordion'
+                        onclick='load_details_componentaccordion("componentaccordion_componentaccordion_{{$ind_x}}_{{$ind_y}}", "{{html $y.Data}}");'
+                        type='button'
+                        class='btn btn-default btn-sm accordion-toggle btn-responsive'
+                        data-toggle='collapse'
+                        style='word-wrap:break-word: white-space:normal;'
+                        data-target='#componentaccordion_componentaccordion_{{$ind_x}}_{{$ind_y}}' >
+                  <span id='btn_chevron_componentaccordion_componentaccordion_{{$ind_x}}_{{$ind_y}}' 
+                        class='glyphicon glyphicon-chevron-right'
+                        style='margin-right:10px;' >
+
+                  </span>
+
+                  {{html $y.Name}}
+
+                </button>
+
+                <div id='componentaccordion_componentaccordion_{{$ind_x}}_{{$ind_y}}' class='collapse' style='tex-align:center;'>
+                  <img onerror='load_err_pic("componentaccordion_componentaccordion_{{$ind_x}}_{{$ind_y}}");'
+                       style='width:100%; max-width:200px; opacity:0.95; text-align:center;'
+                       id='img_componentaccordion_componentaccordion_{{$ind_x}}_{{$ind_y}}'
+                       alt='...'>
+                  </img>
+                </div>
+
+              </div>
+            </div>
+          </li>
+        {{end}}
+
+      </ul>
+    </div>
+  </div>
+
+{{end}}
+
+</div>

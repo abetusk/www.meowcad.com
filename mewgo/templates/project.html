@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<!--
+http://www.prepbootstrap.com/license
+
+All the Templates and Themes on this website can be used under the MIT license, stated below. Some templates and themes can use third-party components and frameworks, that are subject to their own licenses.
+
+Copyright (c) 2014 PrepBootstrap.com
+Alterations made by abetusk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowCAD</title>
+
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="/css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="/css/tables.css" />
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+
+
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/js/lib/markdown.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery.autosize.js"></script>
+
+    <script type="text/javascript" src="/js/meowmeow.js"></script>
+
+<!-- 
+  http://stackoverflow.com/questions/19262113/change-header-background-color-of-modal-of-twitter-bootstrap
+  answered Oct 9 '13 at 3:30 janzstone
+-->
+    <style>
+.modal-header-red {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #be8080;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
+    </style>
+
+    <script>
+
+/*
+   http://stackoverflow.com/questions/12049620/how-to-get-get-variables-value-in-javascript
+   answered Aug 21 '12 at 6:55 by gion_13 
+   */
+var g_project = {};
+
+$(document).ready( function() {
+
+  meowmeow();
+
+  var url = document.location.toString();
+  var m = url.match(/^https?:\/\/\w+/ );
+  if (m && (m.length > 0)) {
+    g_project["baseurl"] = m[0];
+  }
+
+  if(document.location.toString().indexOf('?') !== -1) {
+    var query = document.location
+                   .toString()
+                   // get the query string
+                   .replace(/^.*?\?/, '')
+                   // and remove any existing hash string (thanks, @vrijdenker)
+                   .replace(/#.*$/, '')
+                   .split('&');
+
+    for(var i=0, l=query.length; i<l; i++) {
+      var aux = decodeURIComponent(query[i]).split('=');
+      g_project[aux[0]] = aux[1];
+    }
+  }
+  else  // restful
+  {
+    var url = document.location.toString();
+    var m = url.match( /\/project\/\w+/ );
+    if ((m) && (m.length > 0))
+    {
+      g_project[ "projectId" ] = m.split( '/' )[2];
+    }
+  }
+  
+  if ( typeof $('textarea') !== 'undefined') { 
+    $('textarea').autosize(); 
+  }
+
+  var ele = document.getElementById("projectName");
+  if (ele && (typeof ele !== "undefined")) {
+    g_project[ "projectName" ] = ele.value;
+  }
+  else {
+    g_project[ "projectName" ] = "yesIReallyWantToDeleteThisProject";
+  }
+
+  $("#confirmProjectDeleteName").keyup( function(ev) {
+    var projectName = g_project[ "projectName" ];
+
+    var ele = document.getElementById("confirmProjectDeleteName");
+    var v = ele.value;
+
+    var s = ( (v==projectName) ? "" : "disabled" );
+    var btn = document.getElementById("confirmDeleteButton");
+    btn.disabled = s;
+
+  });
+
+});
+
+function gotosch() {
+  window.location.href = "/sch?project=" + g_project["projectId"];
+}
+
+function gotobrd() {
+  window.location.href = "/brd?project=" + g_project["projectId"];
+}
+
+function gotoviewsch() {
+  window.location.href = "/view_sch?project=" + g_project["projectId"];
+}
+
+function gotoviewbrd() {
+  window.location.href = "/view_pcb?project=" + g_project["projectId"];
+}
+
+function fetchdownload() {
+  console.log("fetch download", g_project["projectId"] );
+}
+
+/* We'll need to be careful.
+   As it stands now, we're using markdown v0.5.0 which doesn't have HTML
+   support, so security shouldn't be a problem.
+   There is an issue with linking to offsite graphics, so we'll have to 
+   be careful about stripping those out, but we can save it for later.
+
+   Refernces
+   - https://github.com/evilstreak/markdown-js
+   - https://github.com/evilstreak/markdown-js/issues/151
+*/
+function renderReadme() {
+  var text = document.getElementById('readmeinput');
+  var html = markdown.toHTML( text.value );
+  var preview = document.getElementById("readmepreview");
+  preview.innerHTML = html;
+}
+
+var g_origMarkdown = "this is **Markdown**";
+
+function buttonViz( e, s, c ) {
+
+  var b = document.getElementById("edit-readme-button");
+  b.style.visibility = (e ? "visible" : "hidden");
+
+  b = document.getElementById("save-readme-button");
+  b.style.visibility = (s ? "visible" : "hidden");
+
+  b = document.getElementById("cancel-readme-button");
+  b.style.visibility = (c ? "visible" : "hidden");
+
+}
+
+function buttonH1V2() {
+}
+
+function enableEditor() {
+  var ele = document.getElementById("readme");
+  ele.innerHTML = 
+    '<textarea id="readmeinput" oninput="renderReadme()"'
+       + ' rows="6" cols="60">Type **Markdown** here.</textarea> '
+       + ' <div class="panel panel-default" > '
+       + ' <div id="readmepreview"> </div> '
+       + ' </div>'
+       ;
+  $("textarea").autosize();
+
+  buttonViz( false, true, true );
+
+  renderReadme();
+
+}
+
+function disableEditor() {
+  var x = document.getElementById( "readmeinput" );
+  var html = markdown.toHTML( x.value );
+  var ele = document.getElementById("readme");
+  ele.innerHTML = html;
+
+  buttonViz( true, false, false );
+
+}
+
+function saveReadme() {
+  disableEditor();
+}
+
+function cancelReadme() {
+  var html = markdown.toHTML( g_origMarkdown );
+  var ele = document.getElementById("readme");
+  ele.innerHTML = html;
+
+  buttonViz( true, false, false );
+}
+
+
+//---------------------
+
+      function initiateDownload( json_container )
+      {
+        var msg_type = json_container["type"];
+        if (msg_type != "id")
+        {
+          console.log("error, expected id, got: " + msg_type);
+          console.log(json_container);
+          return;
+        }
+
+        // fiddle with iframe to send a download request
+        //
+        var id = json_container["id"];
+        var ifrm = document.getElementById( "downloadFrame" );
+        //ifrm.src = "bleepsixDownloadManager.py?id=" + id;
+
+        url = "bleepsixDownloadManager.py?id=" + id;
+        if ("name" in json_container)
+        {
+          url += '&name=' + json_container["name"]
+        }
+
+        ifrm.src = url;
+      }
+
+
+      function downloadProject( )
+      {
+        //var form_data = { "projectId" : "b9e179db-9102-4507-836e-abf7e1373494" };
+        var form_data = { "projectId" : g_project["projectId"] }
+
+        console.log(form_data);
+
+        $.ajax({
+          url: "downloadProject.py",
+          type: 'POST',
+          data: form_data,
+          success: initiateDownload,
+          error: function(jqxhr, status, err) { console.log(jqxhr); console.log(status); console.log(err); }
+
+          });
+      }
+
+
+    </script>
+
+</head>
+<body>
+
+  <iframe id='downloadFrame' style='display:none'></iframe>
+
+  <!--NAVBAR-->
+  {{template "navbar.html" .}}
+
+  <div class="container">
+
+    <div class='container-fluid'>
+
+      <div class='row'>
+
+        <div class='col-sm-4'>
+          <h3 style='text-align:center;' >
+            <i class='fa fa-leaf' style='opacity:0.5;' ></i>
+          </h3>
+        </div>
+
+        <div class='col-sm-4'>
+          <h3 style='text-align:center; margin-bottom:25px;'>Project</h3>
+        </div>
+
+        <div class='col-sm-4'>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <!--BREADCRUMB-->
+
+    <div class='row' style='margin-bottom:20px; margin-left:5px;'>
+      <div class='col-lg-12'>
+        <!--PROJECT_SHORT_DESCRIPTION-->
+      </div>
+    </div>
+
+    <div class='container-fluid'>
+      <div class='row'>
+
+        <div class='col-sm-3' style='text-align:center; margin-bottom:5px;' >
+
+          <a href='#' style='margin-bottom:10px;' ><span class='glyphicon glyphicon-heart'></span></a> <!--PROJECT_HEART_COUNT-->
+              &nbsp; &nbsp;
+          <a href='#' style='margin-bottom:10px;'  ><span class='glyphicon glyphicon-comment'></span></a> <!--PROJECT_COMMENT_COUNT-->
+              &nbsp; &nbsp;
+          <a href='#' style='margin-bottom:10px;' ><span class='glyphicon glyphicon-download'></span></a> <!--PROJECT_DOWNLOAD_COUNT-->
+
+        </div>
+
+        <div class='col-sm-6' style='text-align:center; margin-bottom:5px;' >
+       
+        </div>
+        <div class='col-sm-3' style='text-align:center; margin-bottom:5px;' >
+
+          <button type='button' class='btn btn-default' onclick='downloadProject();' >
+            <i class='fa fa-cloud-download'></i>
+            Download
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!--MESSAGE-->
+    {{template "message.html" .}}
+
+
+    <!--PROJECT_README-->
+
+    <div class='row' style='margin-top:10px;'>
+      <div class='col-lg-12' >
+        <div class='panel panel-default'>
+
+          <ul class='nav nav-tabs' style='margin-bottom: 15px;'>
+
+            <li class='active'><a href='#PanelOverview' data-toggle='tab'>Overview</a></li>
+            <!-- <li><a href='#PanelBOM' data-toggle='tab'>BOM</a></li> -->
+            <!-- <li><a href='#PanelFiles' data-toggle='tab'>Files</a></li> -->
+            <li><a href='#PanelComponents' data-toggle='tab'>Components</a></li>
+            <li><a href='#PanelModules' data-toggle='tab'>Modules</a></li>
+
+            {{if .ProjectAdminPermission}}
+            <li><a href='#PanelManage' data-toggle='tab'>Manage</a></li>
+            {{end}}
+            <!--PERMISSION_PANE_HEADER-->
+
+          </ul>
+
+          <div id='PaneTabContent' class='tab-content'>
+
+            <div  class='tab-pane active in' 
+              id='PanelOverview' 
+              style='margin-left:10px; margin-right:10px; margin-top:10px; margin-bottom:10px; word-break:break-word;' >
+
+
+              <div class='row'>
+
+                <div class='col-sm-6' style='text-align:center;' >
+                  <div id='schematicSnapshot' style='margin-bottom:10px; margin-top:10px;' >
+                    <!--
+                    <img class='img-rounded' src='/img/sch_snapshot.png' style='width:100%; border:1px solid gray;' ></img>
+                    -->
+
+                    <!--SCHPIC-->
+                    <img class='img-rounded'
+                         src='mewpng?f=img/{{.CurProject.SchPicId}}&userId={{.CurProject.Owner}}&projectId={{.CurProject.Id}}'
+                         style='width:100%; border:1px solid gray; max-width: 350px;'>
+                    </img>
+
+                  </div>
+
+                  <div>
+                    <!-- <button id='schematicSnapshotButton' type='button' class='btn btn-info' onclick='gotosch();' > -->
+
+                    {{if and (.LoggedIn) (eq .CurProject.Owner .UserId) }}
+                      <button id='schematicSnapshotButton' type='button' class='btn btn-info' onclick='gotosch();' >
+                        <i class='fa fa-share'></i>
+                        Goto Schematic
+                      </button>
+                    {{else}}
+                      <button id='schematicSnapshotButton' type='button' class='btn btn-info' onclick='gotoviewsch();' >
+                        <i class='fa fa-share'></i>
+                        Goto Schematic
+                      </button>
+                    {{end}}
+
+                  </div>
+                </div>
+
+                <div class='col-sm-6' style='text-align:center;' >
+                  <div id='boardSnapshot' style='margin-bottom:10px; margin-top:10px; ' >
+                    <!-- <img class='img-rounded' src='/img/brd_snapshot.png' style='width:100%; border:1px solid black;' ></img> -->
+                    <!--BRDPIC-->
+                    <img class='img-rounded'
+                         src='mewpng?f=img/{{.CurProject.BrdPicId}}&userId={{.CurProject.Owner}}&projectId={{.CurProject.Id}}'
+                         style='width:100%; border:1px solid gray; max-width: 350px;'>
+                    </img>
+
+                  </div>
+
+                  <div>
+                    <!-- <button id='boardSnapshotButton' type='button' class='btn btn-info' onclick='gotobrd();' > -->
+                    {{if and (.LoggedIn) (eq .CurProject.Owner .UserId) }}
+                      <button id='boardSnapshotButton' type='button' class='btn btn-info' onclick='gotobrd();' >
+                        <!-- <i class='fa fa-pencil'></i> -->
+                        <i class='fa fa-share'></i>
+                        Goto Board
+                      </button>
+                    {{else}}
+                      <button id='boardSnapshotButton' type='button' class='btn btn-info' onclick='gotoviewbrd();' >
+                        <!-- <i class='fa fa-pencil'></i> -->
+                        <i class='fa fa-share'></i>
+                        Goto Board
+                      </button>
+                    {{end}}
+
+                  </div>
+                </div>
+
+              </div>
+
+
+              <br />
+              <br />
+              <br />
+
+              <!--
+
+              <div id='readme' >
+                The readme for this project...
+              </div>
+
+              <br />
+              <br />
+              <br />
+
+              <div id='edit-readme'>
+
+                <div class='row'>
+
+                  <div class='col-sm-4' style='text-align:center;' >
+                    <button id='edit-readme-button' type='button' class='btn btn-default' onclick='enableEditor();' >
+                      <i class='fa fa-pencil'></i>
+                      Edit Overview
+                    </button>
+                  </div>
+
+                  <div class='col-sm-4' style='text-align:center;' >
+                    <button id='save-readme-button' style='visibility:hidden;' type='button' class='btn btn-success' onclick='saveReadme();' >
+                      <i class='fa fa-save'></i>
+                      Save
+                    </button>
+                  </div>
+
+                  <div class='col-sm-4' style='text-align:center;' >
+                    <button id='cancel-readme-button' style='visibility:hidden;' type='button' class='btn btn-danger' onclick='cancelReadme();' >
+                      <i class='fa fa-times'></i>
+                      Cancel
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
+
+              -->
+
+
+            </div>
+
+            <div class='tab-pane' id='PanelBOM'>
+
+              <!--BOM_TABLE-->
+              <p>Sorry, this option isn't available yet!</p>
+
+              <table class='table table-striped table-bordered table-condensed'>
+
+                <thead> 
+                  <tr> 
+                    <th style='text-align:center;' class='col-xs-4'> Schematic </th> 
+                    <th style='text-align:center;' class='col-xs-4'> Board </th> 
+                    <th style='text-align:center;' class='col-xs-4'> Links </th> 
+                  </tr> 
+                </thead>
+
+                <tbody>
+
+                  <tr> 
+                    <td align='center'>component</td> 
+                    <td align='center'>footprint</td> 
+                    <td align='center'> ... </td> 
+                  </tr>
+
+                  <tr> 
+                    <td align='center'>?</td> 
+                    <td align='center'>footprint</td> 
+                    <td align='center'> ... </td> 
+                  </tr>
+
+                  <tr> 
+                    <td align='center'>?</td> 
+                    <td align='center'>?</td> 
+                    <td align='center'> ... </td> 
+                  </tr>
+
+                  <tr> 
+                    <td align='center'>component</td> 
+                    <td align='center'>?</td> 
+                    <td align='center'> ... </td> 
+                  </tr>
+
+                  <tr> 
+                    <td align='center'>component</td> 
+                    <td align='center'>?</td> 
+                    <td align='center'> ... </td> 
+                  </tr>
+
+                  <tr> 
+                    <td align='center'>component</td> 
+                    <td align='center'>?</td> 
+                    <td align='center'> ... </td> 
+                  </tr>
+
+                  <tr> 
+                    <td align='center'>component</td> 
+                    <td align='center'>?</td> 
+                    <td align='center'> ... </td> 
+                  </tr>
+
+                  <tr> 
+                    <td align='center'>component</td> 
+                    <td align='center'>?</td> 
+                    <td align='center'> ... </td> 
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+              
+            </div>
+
+            <div class='tab-pane' id='PanelFiles'>
+
+              <!--PROJECT_FILES-->
+              <p>Sorry, this option isn't available yet!</p>
+
+            </div>
+
+            <div class='tab-pane' id='PanelComponents'>
+
+              <div class='alert alert-info'>
+                <p style='text-align:center; margin-left:10px; margin-right:10px;' >
+                  Components here will override portfolio or global components.
+                </p>
+              </div>
+
+
+              <!--ACCORDIAN_COMPONENTS-->
+
+              {{template "component_accordian.html" .}}
+
+            </div>  <!-- panel -->
+
+            <div class='tab-pane' id='PanelModules'>
+
+              <div class='alert alert-info'>
+                <p style='text-align:center; margin-left:10px; margin-right:10px;' >
+                  Modules here will override portfolio or global modules.
+                </p>
+              </div>
+
+              <!--ACCORDIAN_MODULES-->
+              {{template "module_accordian.html" .}}
+
+            </div>
+
+
+            {{if .ProjectAdminPermission}}
+            {{template "project_manage_pane.html" .}}
+            {{end}}
+
+            <!--PERMISSION_PANE-->
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!--FOOTER-->
+    {{template "footer.html" .}}
+
+  </div> <!-- container -->
+
+
+
+</body>
+</html>
+

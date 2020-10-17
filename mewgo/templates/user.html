@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE html>
+
+<!--
+http://www.prepbootstrap.com/license
+
+All the Templates and Themes on this website can be used under the MIT license, stated below. Some templates and themes can use third-party components and frameworks, that are subject to their own licenses.
+
+Copyright (c) 2014 PrepBootstrap.com
+Alterations made by abetusk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowCAD</title>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/js/meowmeow.js"></script>
+    <script>
+      $(document).ready( function() {
+        meowmeow();
+      });
+    </script>
+
+
+</head>
+<body>
+
+  {{template "navbar.html" .}}
+
+  <div class="container">
+
+
+        <div class='container-fluid'>
+
+          <div class='row'>
+
+            <div class='col-sm-4'>
+              <!-- <img src='/img/ghost_big.png' style='margin-top:25px;' height='16px' width='16px' ></img> -->
+
+              <h3 style='text-align:center;' >
+                <i class='fa fa-moon-o' style='opacity:0.5;'> </i>
+              </h3>
+            </div>
+
+            <div class='col-sm-4'>
+              <h3 style='text-align:center; margin-bottom:25px;'>User Settings</h3>
+            </div>
+
+            <div class='col-sm-4'>
+              <!-- <img src='/img/ghost_big.png' style='float:right; margin-top:25px;' height='16px' width='16px' ></img> -->
+            </div>
+
+          </div>
+        </div>
+
+
+        <!--BREADCRUMB-->
+
+        {{template "message.html" .}}
+
+
+        <!--USER_PANE-->
+        <div class='row' style='margin-top:25px'>
+          <div class='col-lg-12'>
+            <div class='panel panel-default'>
+
+              <ul class='nav nav-tabs' style='margin-bottom: 15px;'>
+                <li class='active'><a href='#PanelUser' data-toggle='tab'>Passwords</a></li>
+                <!-- <li ><a href='#PanelPermissions' data-toggle='tab'>Permissions</a></li> -->
+              </ul>
+
+              <div id='PaneTabContent' class='tab-content' style='margin-left:10px; margin-right:10px;' >
+
+                <div class='tab-pane active in' id='PanelUser' >
+
+                  <form role='form' action='user' method='POST' class='form-horizontal' >
+          
+                    <div class='form-group'>
+                      <label for='password' class='col-sm-2' >Current Password</label>
+                      <div class='col-sm-10'>
+                        <input id='passwordOrig' name='passwordOrig' type='password' class='form-control' placeholder='Current password' required>
+                      </div>
+                    </div>
+        
+         
+                    <div class='form-group'>
+                      <label for='password' class='col-sm-2'>New Password</label>
+                      <div class='col-sm-10'>
+                        <input id='password' name='password' type='password' class='form-control' placeholder='New password' required>
+                      </div>
+                    </div>
+          
+                    <div class='form-group'>
+                      <label for='passwordAgain' class='col-sm-2'> Re-Enter </label>
+                      <div class='col-sm-10'>
+                        <input 
+                          id='passwordAgain' 
+                          name='passwordAgain' 
+                          type='password' 
+                          class='form-control' 
+                          placeholder='Re-enter new password' required>
+                      </div>
+                    </div>
+
+                    <div class='col-sm-offset-2 col-sm-10'>
+                      <p>
+                        <small>
+                          Passwords must be greater than 7 characters long, contain at least one numeral
+                          and be of mixed case.  Passwords greater than 20 characters have no restrictions.
+                        </small>
+                      </p>
+                    </div>
+
+          
+                    <div class='form-group'>
+                      <div class='col-sm-offset-2 col-sm-10'>
+                        <button id='update' class='btn btn-primary' type='submit'>Update</button>
+                      </div>
+                    </div>
+
+                    <input id='action' name='action' type='hidden' value='password'></input>
+          
+                  </form>
+                 
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        {{template "footer.html" .}}
+
+    </div> <!-- container -->
+
+    <!--ANALYTICS-->
+
+</body>
+</html>
+

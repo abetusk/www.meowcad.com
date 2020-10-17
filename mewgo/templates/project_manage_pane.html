@@ -1,0 +1,272 @@
+
+<script>
+function deleteProject() {
+  var ele = document.getElementById('confirmProjectDeleteName');
+  console.log(ele);
+  window.location.replace( "/deleteproject?projectId=" + g_project["projectId"] );
+}
+</script>
+
+            <div class='tab-pane' id='PanelManage'>
+
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <b>Short Description</b>
+                </div>
+
+                <div class='panel-body'>
+
+                  <p>
+                  Provide a short description of your project.  If the project is public,
+                  this is what will appear when others explore and search.
+                  </p>
+
+                  <br/>
+
+                  <form class='form-group' action='updateproject' method='POST'>
+
+                    <fieldset>
+                      <div class='form-group'>
+
+                        <textarea name='shortDescription' id='shortDescription' class='form-control' rows='3'></textarea>
+
+                      </div>
+                    </fieldset>
+
+
+                    <fieldset>
+                      <div class='form-group' style='margin-left:10px;' >
+                        <button id='updateButton' class='btn btn-primary'>Update Project</button>
+                      </div>
+                    </fieldset>
+
+                    <!--PROJECTID_HIDDEN_INPUT-->
+                    <!-- <input type='hidden' id='permissionOption' name='permissionOption'></input> -->
+                    <input type='hidden' name='projectId' id='projectId' value='{{.CurProject.Id}}'></input>
+
+                  </form>
+
+                </div>
+              </div>
+
+              <br />
+
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <b>Permissions</b>
+                </div>
+
+                <div class='panel-body'>
+
+                  <form class='form-group' action='updateproject' method='POST'>
+
+                    <fieldset>
+                      <div class='form-group'>
+
+                        <label for='private' class='radio' style='margin-left:10px;' >
+                          <img src='/img/locked.png' width='20px' ></img>
+                            <!--PRIVATERADIO-->
+                          <input id='private' type='radio' name='permissionOption' value='private'
+
+                          {{if eq .CurProject.Perm "user"}}
+                            checked
+                          {{end}}
+
+                           ></input>
+                            <!-- <input id='private' type='radio' name='permissionOption' value='private' > </input> -->
+                            Private (only viewable by you)
+                        </label>
+
+                        <label for='public' class='radio' style='margin-left:10px;' >
+                          <img src='/img/heart.png' width='20'></img>
+                            <!--PUBLICRADIO-->
+                            <input id='public' type='radio' name='permissionOption' value='public'
+
+                            {{if eq .CurProject.Perm "world-read"}}
+                              checked
+                            {{end}}
+
+
+                            ></input>
+                            <!-- <input id='public' type='radio' name='permissionOption' value='public' > </input> -->
+                            Public (viewable by everyone)
+                        </label>
+
+                      </div>
+                    </fieldset>
+
+
+                    <fieldset>
+                      <div class='form-group' style='margin-left:10px;' >
+                        <button id='updateButton' class='btn btn-primary'>Update Project</button>
+                      </div>
+                    </fieldset>
+
+                    <!--PROJECTID_HIDDEN_INPUT-->
+                    <!-- <input type='hidden' id='permissionOption' name='permissionOption'></input> -->
+                    <input type='hidden' name='projectName' id='projectName' value='{{.CurProject.Name}}'></input>
+
+                  </form>
+
+                </div>
+              </div>
+
+              <br />
+
+
+              <div class='panel panel-default'>
+                <div class='panel-heading'>
+                  <b>License</b>
+
+                </div>
+
+                <div class='panel-body'>
+                  <p>
+                  Please select the license under which the artwork and associated
+                  design files are under.
+                  <br/>
+
+                  Free accounts on this site that have projects made public
+                  must have all artwork must be under a permissive license.
+                  <br/>
+
+                  Upgraded accounts have the option to keep projects and artwork
+                  under more restrictive licenses.
+                  </p>
+
+
+                  <form class='form-group' action='updateproject' method='POST'>
+
+                    <fieldset>
+                      <div class='form-group'>
+
+                        <label for='ccbysa' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' checked>
+                          CC-BY-SA
+                          (<a href='http://creativecommons.org/licenses/by-sa/4.0/'>
+                            <small><small>by attribution, share alike</small></small>
+                           </a>)
+                        </label>
+
+                        <label for='ccby' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' >
+                          CC-BY 
+                          (<a href='http://creativecommons.org/licenses/by/4.0/'>
+                            <small><small>by attribution</small></small>
+                           </a>)
+                        </label>
+
+                        <label for='cc0' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' >
+                          CC0
+                          (<a href='http://creativecommons.org/about/cc0'>
+                            <small><small>public domain</small></small>
+                          </a>)
+                        </label>
+
+
+                        <label for='copyright' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' disabled>
+                          <span style='opacity:0.3;' >Copyright</span>
+                        </label>
+
+                        <label for='copyrightother' class='radio' style='margin-left:10px;' >
+                          <input id='private' type='radio' name='permissionOption' value='private' disabled>
+                          <span style='opacity:0.3;' >Other</span>
+                        </label>
+
+                      </div>
+                    </fieldset>
+
+
+                    <fieldset>
+                      <div class='form-group' style='margin-left:10px;' >
+                        <button id='updateButtonLicense' class='btn btn-primary'>Update Project</button>
+                      </div>
+                    </fieldset>
+
+                    <!--PROJECTID_HIDDEN_INPUT_PERMISSION-->
+                    <!-- <input type='hidden' id='permissionOption' name='permissionOption'></input> -->
+
+                  </form>
+
+                </div>
+              </div>
+
+              <br />
+              <br />
+              <br />
+              <br />
+
+              <div class='panel panel-danger'>
+
+                <div class='panel-heading'> <b>Danger Zone</b> </div>
+
+                  <div class='panel-body'>
+
+                    <!-- <form class='pure-form' action='deleteproject' method='POST'> -->
+
+                      <fieldset  >
+                        <!--PROJECTID_HIDDEN_INPUT-->
+                        <!--PROJECTNAME_HIDDEN_INPUT-->
+
+                        <!-- <button id='deleteButton' style='float:right;' class='pure-button pure-button-red'> -->
+                        <button class='btn btn-danger' data-toggle='modal' data-target='#confirmProjectDelete' style='float:right;' >
+                          Delete Project
+                        </button>
+
+                        <div class='modal fade' id='confirmProjectDelete' tabindex='-1' role='dialog'
+                          arai-labelledby='confirmProjectDeleteLabel' aria-hidden='true'>
+                          <div class='modal-dialog'>
+                            <div class='modal-content'>
+
+                              <div class='modal-header-red'>
+
+                                <button type='button' class='close' data-dismiss='modal'>
+                                  <span aria-hidden='true'>&times;</span>
+                                  <span class='sr-only'>Close</span>
+                                </button>
+
+                                <h4 class='modal-title' id='confirmProjectDeleteLabel'>Confirm Deletion</h4>
+
+                              </div>
+
+                              <div class='modal-body'>
+                                <p>
+                                <font color='red'>This will permanently delete this project!  This is an unrecoverable action!</font>
+                                </p>
+
+                                <p>
+                                Please input the name of the project below to confirm that you are sure you want to delete this project.
+                                </p>
+
+                                <input id='confirmProjectDeleteName' name='confirmProjectDeleteName' type='text' ></input>
+                                <input id='projectDeleteName' type='hidden' value='foo'></input>
+                              </div>
+
+                              <div class='modal-footer'>
+                                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                <button 
+                                  id='confirmDeleteButton' 
+                                  type='button' 
+                                  class='btn btn-danger' 
+                                  disabled='disabled' 
+                                  onclick='deleteProject();' >
+                                  Confirm Deletion
+                                </button>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </fieldset>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+
+

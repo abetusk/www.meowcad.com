@@ -1,0 +1,93 @@
+
+
+<!DOCTYPE html>
+
+<!--
+http://www.prepbootstrap.com/license
+
+All the Templates and Themes on this website can be used under the MIT license, stated below. Some templates and themes can use third-party components and frameworks, that are subject to their own licenses.
+
+Copyright (c) 2014 PrepBootstrap.com
+Alterations made by abetusk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowCAD</title>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="/css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="/css/tables.css" />
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+
+    <script type='text/javascript' src='js/meowmeow.js' ></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready( function() {
+        meowmeow();
+      });
+    </script>
+
+
+</head>
+
+<body>
+
+{{template "navbar.html" .}}
+
+
+  <div class="container">
+
+    <!--BLOG_ROLL-->
+    <div class='row'>
+
+      <div class='col-md-8' style='text-align:left; font-size:medium;' >
+
+        <h1><a href="/blog/2015-06-16">Submitting Boards For Fabrication</a></h1><h6 style="text-align:right"><i class='fa fa-calendar'></i> 2015-06-17</h6><p><img alt="" src="/img/blog/workflow_8bitheart.png" style="width:100%" /></p><p>At some point, after you design your schematics and boards, you want to submit them to be fabricated.  Whether you use MeowCAD or some other tool, the workflow is pretty similar.  We live in a pretty amazing time where this can be done for reasonable cost with only a few weeks delay.  Not even 5 years ago, this was a costly ordeal.  Sometimes small electronics would order 500 boards at once and hope for the best since the cost of ordering so many more was negligible compared to the overhead cost of ordering a single prototype.</p><p>We'll be focusing on submitting the <a href="https://meowcad.com/project?projectId=1bd24ce3-91d9-4846-b30d-1a8cfacd72d0">8 Bit Heart</a> Gerber files to <a href="https://oshpark.com/">OSH Park</a> for fabrication.  We've heard <a href="http://dirtypcbs.com/">Dirt Cheap Dirty Boards</a> is a decent service that is very affordably priced but we haven't had a chance to use them.  We're hoping to make sure our Gerber file generation is robust so we'll be submitting to some different board manufacturer houses but so far we've only gone through OSH Park.</p><p>Very roughly, one workflow is as follows:</p><ul><li>Design your PCB.  We'll skip this step and use the <code>8 Bit Heart</code> project ready in MeowCAD.</li><li>Collect the Gerbers.  The export from MeowCAD includes them but we'll need to collect them for later submission.</li><li>Submit to the board Manufacterer.  We'll be using <a href="https://oshpark.com/">OSH Park</a>.</li><li>Assemble.  We won't go into too much detail but briefly outline a "DIY" way to do this.</li></ul><p>As a quick aside, a snippet of an example <a href="https://en.wikipedia.org/wiki/Gerber_format">Gerber file</a> that we'll be submitting looks something like this:</p><p><pre><br />...<br />G04 Gerber Fmt 3.4, Leading zero omitted, Abs format*<br /><span>MOIN*</span><br /><span>FSLAX34Y34*</span><br />G01*<br />G70*<br />G90*<br />G04 APERTURE LIST*<br /><span>ADD12C,0.0000*</span><br /><span>ADD13C,0.0032*</span><br /><span>ADD10C,0.0640*</span><br />...<br /><span>ADD19R,0.0177X0.0787*</span><br />G04 APERTURE END LIST*<br />G54D12*<br />D10*<br />G01X22700Y-03900D02*<br />G01X22700Y-03900D01*<br />...<br /></pre></p><p>For those familiar with <a href="https://en.wikipedia.org/wiki/G-code">G-code</a>, the files might look similar.  It's a textual representation how to draw geometric primitives.  The <code>APERTURE LIST</code> section holds the primitives (<code>C</code> for circle, <code>R</code> for rectangle, etc.) after which the draw commands are issued with move commands (e.g. <code>G01</code>), specifying which of the apertures to use.  For example, in the snippet above, <code>%ADD10C,0.0640*%</code> creates an aperture named <code>D10</code>, a circle of radius <code>0.064</code>.  Later, the aperture is specified with a <code>D10*</code> line and the draw commands are issued via <code>G01X22700Y-03900D02*</code> and <code>G01X22700Y-03900D01*</code> move the pen to <code>x 2.2700 y -0.3900</code> and then 'streak across' the circle to <code>x 2.2700 y -0.3900</code>.  The <code>%MOIN*%</code> directive specifies the units in inches and the <code>%FSLAX34Y34*%</code> specifies that the <code>X</code> and <code>Y</code> co-ordinates are given as 3 digits for the integral part and 4 digits for the fractional part.  For more details feel free to check out the <a href="http://www.ucamco.com/files/downloads/file/81/the_gerber_file_format_specification.pdf?a25bee2557eb3cae2d756be2e9fca7e8">Gerber specification document</a>.</p><p>Probably way more detail then you wanted to know but it's sometimes nice to know that there's nothing magical going on underneath.  It's just a textual representation of the geometry that we want to produce.</p><p>Let's download the <a href="https://meowcad.com/project?projectId=1bd24ce3-91d9-4846-b30d-1a8cfacd72d0">8 Bit Heart</a> project.  If you hit the <code>Download</code> button, this should download the project with all the relevant files (be patient, sometimes it takes a while).</p><p><img alt="" src="/img/blog/8bitheart_project_download_sm.png" style="width:100%" /></p><p>Once we have the project downloaded we'll take out the Gerber files.  It's a good idea to load it in a Gerber preview to make sure everything looks good.  Some standard ones are <a href="http://gerbv.sourceforge.net/">gerbv</a> and <a href="http://www.kicad-pcb.org/display/KICAD/KiCad+EDA+Software+Suite">GerbView</a>, which ships with <a href="https://en.wikipedia.org/wiki/KiCad">KiCAD</a>.  There are some <a href="http://mechaelephant.com/grb_png">online ones as well</a>.  Using <code>gerbv</code> and selecting the appropriate files in the <code>gerber</code> directory of the <code>8 Bit Heart</code> project should give you something that looks like this:</p><p><pre><br />$ unzip bit_heart.zip<br />$ cd project<br />~/project$ gerbv gerber/*<br /></pre></p><p><img alt="" src="/img/blog/8bit_heart_spotcheck.png" style="width:100%" /></p><p>We now need to collect the gerbers into a zip file for submission to OSH Park.  Load these into their own <code>zip</code> file.  For example, here's one way:</p><p><pre><br />~/project$ ls<br />gcode  gerber  json  KiCAD<br />~/project$ zip -r my-gerbers.zip gerber<br />~/project$ ls my-gerbers.zip<br />my-gerbers.zip<br />~/project$<br /></pre></p><p>Now go to <a href="https://oshpark.com/">OSH Park</a> and go through the submission process.  In the end, you should be deposited to a page that looks something like this:</p><p><img alt="" src="/img/blog/osh.png" style="width:100%" /></p><p>$11.40 for three boards is very reasonable.  OSH Park makes quality boards and they've been very nice about helping us through our process of creating Gerbers from MeowCAD.  We've found the boards usually arrive two weeks after submission.</p><p>Once the boards arrive it's finally time to solder the everything on the board.  We used a re-purposed convection oven and an IR non-contact thermometer we got off of eBay to solder the parts on.  This whole process probably deserves a blog post of it's own.  The short version is:</p><ul><li>Collect all the parts you need.  For the <code>8 Bit Heart</code> it was:<ul><li><a title="x1" href="http://www.digikey.com/product-detail/en/ATMEGA328P-AUR/ATMEGA328P-AURCT-ND/3789455">SMT ATMega328 </a></li><li><a title="x16" href="http://www.ebay.com/sch/i.html?_nkw=1206+red+led">1206 Red LED </a></li><li><a title="x1" href="http://www.digikey.com/product-search/en?vendor=0&amp;keywords=587-1356-1-ND">1206 22mF Capacitor </a></li><li><a title="x4" href="http://www.ebay.com/sch/i.html?_nkw=resistor+kit+1206">1206 680 ohm Resistor </a></li><li><a title="x1" href="http://www.ebay.com/sch/i.html?_nkw=2x3+male+pin+header">2x3 .1" ISP Header </a></li><li><a title="x1" href="http://www.digikey.com/product-search/en?vendor=0&amp;keywords=952-1735-1-ND">CR2032 Connector </a></li><li><a title="x1" href="http://www.ebay.com/sch/i.html?_nkw=cr2032">CR2032 Battery </a></li></ul></li><li>Apply <a href="http://www.ebay.com/sch/i.html?_nkw=solder+paste">solder paste</a> to pads and place with <a href="http://www.adafruit.com/products/422">ESD safe tweezers</a>.</li><li>Put in a <a href="http://www.amazon.com/Hamilton-Beach-31809C-6-Slice-Toaster/dp/B0053QVR8A/&amp;keywords=convection+oven+hamilton+beach">convection oven</a> and use an <a href="http://www.ebay.com/sch/i.html?_nkw=ir+temperature">IR temperature gun</a> to make sure you follow the <a href="/img/blog/reflow.svg">reflow profile</a>.</li><li>Flash the ATMega328 using <a href="http://www.nongnu.org/avrdude/">avrdude</a>, some type of <a href="http://www.evilmadscientist.com/2007/using-avr-microcontrollers-minimalist-target-boards/">programmer</a> and the <a href="https://github.com/abetusk/8bitheart">source code</a>.</li></ul><p>Afterwards you should have a functioning board.</p><p><iframe width="560" height="315" src="https://www.youtube.com/embed/0BI4rqI0vt0" frameborder="0" allowfullscreen></iframe></p><p>This process is long and complicated.  Collecting all the parts to just create a small circuit is pretty involved.  The barrier to electronics design is getting lower but the threshold is still high.  We've got a long way to go before we can do complex board design with ease.  Hopefully MeowCAD is a step in the right direction!</p><p>Feedback?  Thoughts?  Be sure to drop us a line in our <a href="/feedback">feedback section</a>!</p><p>Happy hacking!</p>
+
+      </div>
+
+      <div class='col-md-4'></div>
+
+
+    </div>
+
+    <hr />
+
+    <div class='row'>
+
+      <div class='col-md-8' style='text-align:left; font-size:medium;' >
+
+
+        <h1><a href="/blog/2015-06-16">Introducing MeowCAD</a></h1><h6 style="text-align:right"><i class='fa fa-calendar'></i> 2015-06-16</h6><p><img alt="" src="/img/8bit_heart_small.png" /></p><p>Hi there!  This is <a href="https://meowcad.com">MeowCAD</a>!</p><p>MeowCAD is an online, in-browser electronics design tool that's completely free and open source.  Use it to create schematics, printed circuit boards, share with your friends or just play around.</p><p>Though MeowCAD has been live for almost 2 years it's only recently that MeowCAD has reached a minimum level of functionality to be considered usable.  There are rough corners to be sure but it's in a state where we can use it ourselves to create a schematic, create a printed circuit board, export Gerbers, send it off to be fabbed and get back a functioning PCB.</p><p>The board above was fabbed through <a href="https://oshpark.com/">OSH Park</a>.  You can check out both the <a href="https://meowcad.com/view_sch?project=1bd24ce3-91d9-4846-b30d-1a8cfacd72d0">schematic</a> and the <a href="https://meowcad.com/view_pcb?project=1bd24ce3-91d9-4846-b30d-1a8cfacd72d0">board</a> right here on MeowCAD.</p><p>In another post we'll go more in depth about the process of submitting to a board manufacturer but in this post we wanted to start things off with a little description of ourselves.</p><p>Here's a screencast (it's about 17m) of some functionality:</p><p><iframe width="420" height="315" src="https://www.youtube.com/embed/uLoL5OwXnfg" frameborder="0" allowfullscreen></iframe></p><p>Feedback is always welcome, either through the <a href="/feedback">feedback form</a> or through the <a href="https://github.com/abetusk/www.meowcad.com/issues">issue tracker</a>.  We'd love to hear from you, positive, negative, rant, rave, whatever.  </p><p>Have fun and happy hacking!</p>
+
+
+      </div>
+
+      <div class='col-md-4'></div>
+
+    </div>
+
+
+    {{template "footer.html" .}}
+
+  </div> <!-- container -->
+
+  <!--ANALYTICS-->
+
+</body>
+</html>
+

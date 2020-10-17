@@ -1,0 +1,46 @@
+Each page has a header and footer.
+The header is the navbar which has three states (user|anonymous|not-logged-in).
+The footer holds a link to the `source` (github, external), `about` and `feedback`.
+Unless specified, all pages have the standard header and footer
+
+header:
+  (user):
+    /
+    /user
+    /portfolio
+    /search
+    /explore
+    /blog
+    /logout
+  (anonymous):
+    /
+    /portfolio
+    /search
+    /explore
+    /blog
+    /register
+  (not-logged-in):
+    /
+    /search
+    /explore
+    /blog
+    /login
+    /register
+    
+
+footer:
+  github
+  /about
+  /feedback
+
+
+landing
+  github
+  /register
+  /explore
+  /feedback
+  /about
+
+
+
+

@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+
+<!--
+http://www.prepbootstrap.com/license
+
+All the Templates and Themes on this website can be used under the MIT license, stated below. Some templates and themes can use third-party components and frameworks, that are subject to their own licenses.
+
+Copyright (c) 2014 PrepBootstrap.com
+Alterations made by abetusk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeowCAD</title>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="/js/lib/numeric.js"></script> 
+    <script type="text/javascript" src="/js/core/bleepsixRender.js"></script> 
+    <script type="text/javascript" src="/js/lib/bg.js"></script> 
+
+    <script type="text/javascript" src="js/meowmeow.js"></script> 
+
+    <script type="text/javascript" src="js/jquery.js"></script> 
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+
+
+    <style>
+      .jumbotron-background {
+        background: url('/img/kitty_head_light_p512_bg.png') no-repeat center center !important;
+        width: 100% !important;
+        height: 450px !important;
+      }
+
+      body { font-family: "Oswald", sans-serif; }
+    </style>
+
+    <script>
+      $(document).ready( function() {
+        meowmeow();
+
+        bg_init();
+        bg_resize();
+
+        $(window).resize( function(ee) {
+          bg_resize();
+        });
+
+      });
+    </script>
+
+
+</head>
+
+<body>
+
+
+{{template "navbar.html" .}}
+
+<div>
+
+  <div id='canvas_jumbo_container'>
+
+            <canvas id='bg_canvas' width='1000' height='2000'
+              style='position:absolute; left:0 top:0 z-index:-1; overflow:hidden;'
+              tabindex='0'></canvas>
+
+  <!-- <div class='jumbotron' style="background-image: url('/img/bright_squares/bright_squares.png'); ;" id='jumbotron' > -->
+  <div class='jumbotron' id='jumbotron' style='padding: 0.25em 0.25em;' >
+    <!-- <div class='jumbotron' id='jumbotron'> -->
+
+
+
+            <div class='row'>
+
+              <!-- <div class='col-sm-1' style='text-align:center;' > </div> -->
+
+              <div class='col-sm-4' style='text-align:center;' >
+                <!-- <img src='/img/kitty_head_blue_p512.png' style='width:100%; opacity:0.65;'> -->
+                <img src='/img/kitty_head_light_p512.png' style='width:100%; opacity:0.9; max-width: 350px; ' >
+              </div>
+
+              <div class='col-sm-1' style='text-align:center;' > </div>
+
+              <div class='col-sm-7' style='text-align:center;' >
+                <h1> MeowCAD </h1>
+                <p style='float:left;' > 
+                  Online design for electronic schematics and circuit boards!
+                </p>
+
+                <br/>
+                <br/>
+
+                <form role='form' action='/register' method='POST' >
+
+                  <div class='form-group' style='width:80%;' >
+
+                    <br/>
+
+                    <input name='username' size='20' style='margin-bottom:5px;' type="text" class="form-control" placeholder="Username">
+                    </input>
+                    <input name='email' size='20' style='margin-bottom:5px;' type="text" class="form-control" placeholder="Email (optional)">
+                    </input>
+                    <input name='password' size='20' style='margin-bottom:5px;' type="password" class="form-control" placeholder="Password">
+                    </input>
+
+                    <small style='opacity:0.7; text-align:left; float:left; ' >
+                      Passwords less than 20 characters long must contain mixed case, at least one number and be at lest 7 characters long.
+                      Passwords over 20 characters may be of any form.
+                    </small>
+                    <br/>
+                    <br/>
+
+
+                    <!-- <button class='btn btn-warning' type='submit' style='float:right;'>Register!</button> -->
+                    <button class='btn btn-warning' type='submit' style='float:left;'  >Register!</button>
+
+                  </div> <!-- form -->
+
+                </form>
+
+              </div> <!-- col-sm-7 -->
+
+
+            </div> <!-- row -->
+
+          </div> <!-- jumbotron -->
+
+        </div> <!-- canvas div -->
+
+
+  <div class="container">
+
+    <div class='row'>
+
+      <div class='col-sm-4'>
+        <h3 style='text-align:center;' >Schematic Design</h3>
+
+        <div style='text-align:center;' >
+          <img src='/img/schTitle.png' style='width:80%; opacity:0.9;'></img>
+        </div>
+
+        <div style='text-align:center;' >
+          <form action='/sch'>
+            <button style='margin-top:10px;' class='btn btn-info' type='submit' >Try it!</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class='col-sm-4'>
+        <h3 style='text-align:center;' >Board Design</h3>
+
+        <div style='text-align:center;' >
+          <img src='/img/brdTitle.png' style='width:80%; opacity:0.9;'></img>
+        </div>
+
+        <div style='text-align:center;' >
+          <form action='/brd'>
+            <button style='margin-top:15px;' class='btn btn-info' type='submit'  >Try it!</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class='col-sm-4'>
+        <h3 style='text-align:center;' >Explore!</h3>
+
+        <div style='text-align:center;' >
+            <img src='/img/heart_p256.png' style='width:55%; opacity:0.8;' ></img>
+        </div>
+
+        <div style='text-align:center;' >
+
+          <form action='/explore'>
+            <button class='btn btn-info' type='submit' >Show me!</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+        <br />
+        <br />
+
+        <br />
+        <br />
+
+
+    <div class='row'>
+
+      <div class='col-xs-2'>
+      </div>
+
+      <div class='col-xs-8' style='text-align:center;' >
+
+        <h2>Online Electronic Design</h2>
+
+        <p>
+        MeowCAD is an online electronics design application.  With it, you'll be able to design schematics like this:
+        </p>
+
+        <br />
+        <br />
+
+        <img src='/img/schExample.png' style='width:80%;'></img>
+
+        <br />
+        <br />
+
+        <p>
+        and board layouts like this:
+        </p>
+
+        <br />
+        <br />
+
+        <img src='/img/brdExample.png' style='width:80%;'></img>
+
+        <br />
+        <br />
+
+        <p>
+        to create circuits like this:
+        </p>
+
+        <br />
+        <br />
+
+        <!-- <img src='/img/fabExample.png' style='width:80%;'></img> -->
+        <img src='/img/fabExample.jpg' style='width:80%;'></img>
+
+        <br />
+        <br />
+
+        <p>
+        The schematic design and board layout are all online and in the browser.
+        </p>
+
+        <br />
+        <br />
+
+
+        <h2>Free and Open Design</h2>
+
+        <br />
+
+          <img src='/img/heart_p256.png' style='width:30%; opacity:0.8;'  ></img>
+
+        <!--
+        <p>
+          <img src='/img/osh-logo-w256.png' style='width:30%;' ></img>
+          <img src='/img/heart_p256.png' style='width:30%;'  ></img>
+          <img src='/img/osh-logo-w256.png' style='width:30%;' ></img>
+        </p>
+        -->
+
+        <p>
+        You can import your designs or libraries from other EDA tools to use in your own project or
+        export your own project out of MeowCAD.
+        </p>
+
+        <p>
+        Public accounts whose artwork is under permissive licenses are hosted gratis (within reason).
+        </p>
+
+
+        <p>
+        All our code is free and open (AGPLv3 or GPL compatible) and can be found here:
+        </p>
+
+        <br />
+
+        <a href='https://github.com/abetusk/bleepsix'>
+          <img src='/img/git-logo-o-h56.png' style='height:23px;'></img>
+          bleepsix
+        </a>
+
+        <br />
+        <br />
+
+        <a href='https://github.com/abetusk/www.meowcad.com'>
+          <img src='/img/git-logo-o-h56.png' style='height:23px;'></img>
+          website
+        </a>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <p>
+        If you have any comments, suggestions
+        or anything else that might be on your mind,
+        please give us some <a href='feedback'>feedback</a>!
+        </p>
+
+        <p>
+        We're still working on a lot of features, so if you find something is missing or broken,
+        please be patient with us (and be sure to tell us about it)!
+        </p>
+
+        <br />
+
+      </div>
+
+      <div class='col-xs-2'>
+      </div>
+
+    </div>
+
+
+    {{template "footer.html" .}}
+
+  </div> <!-- container -->
+
+  <!--ANALYTICS-->
+
+
+  <!-- <script> bg_init(); </script> -->
+
+</body>
+</html>
+

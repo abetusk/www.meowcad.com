@@ -1,0 +1,4164 @@
+[
+  {
+    "type": "list", 
+    "list": [
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/%252A555D_SO08.json", 
+        "id": "*555D_SO08", 
+        "name": "*555D_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/%252A555N_DIL08-ROUND.json", 
+        "id": "*555N_DIL08-ROUND", 
+        "name": "*555N_DIL08-ROUND"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1035D_1035D.json", 
+        "id": "1035D_1035D", 
+        "name": "1035D_1035D"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/10F200T_SOT23-6.json", 
+        "id": "10F200T_SOT23-6", 
+        "name": "10F200T_SOT23-6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1N4004_DO41-10.json", 
+        "id": "1N4004_DO41-10", 
+        "name": "1N4004_DO41-10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1SS309_SOT23-5L.json", 
+        "id": "1SS309_SOT23-5L", 
+        "name": "1SS309_SOT23-5L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X17-SPRINGTERMINAL_SPRINGTERMINAL-17.json", 
+        "id": "1X17-SPRINGTERMINAL_SPRINGTERMINAL-17", 
+        "name": "1X17-SPRINGTERMINAL_SPRINGTERMINAL-17"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X2-3.5MM_1X2-3.5MM.json", 
+        "id": "1X2-3.5MM_1X2-3.5MM", 
+        "name": "1X2-3.5MM_1X2-3.5MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X22THM_1X22.json", 
+        "id": "1X22THM_1X22", 
+        "name": "1X22THM_1X22"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X4-3.5MM_1X04-3.5MM.json", 
+        "id": "1X4-3.5MM_1X04-3.5MM", 
+        "name": "1X4-3.5MM_1X04-3.5MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X4-BIG_1X04-BIG.json", 
+        "id": "1X4-BIG_1X04-BIG", 
+        "name": "1X4-BIG_1X04-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X4-CLEANBIG_1X04-CLEANBIG.json", 
+        "id": "1X4-CLEANBIG_1X04-CLEANBIG", 
+        "name": "1X4-CLEANBIG_1X04-CLEANBIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X40_None.json", 
+        "id": "1X40_None", 
+        "name": "1X40_None"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X4FPC0.5_FPC_0.5MM-4.json", 
+        "id": "1X4FPC0.5_FPC_0.5MM-4", 
+        "name": "1X4FPC0.5_FPC_0.5MM-4"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X4SMT_1X4-SMT.json", 
+        "id": "1X4SMT_1X4-SMT", 
+        "name": "1X4SMT_1X4-SMT"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/1X5_1X05-3.5MM.json", 
+        "id": "1X5_1X05-3.5MM", 
+        "name": "1X5_1X05-3.5MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/2.1MMJACKSMT_DCJACK_2MM_SMT.json", 
+        "id": "2.1MMJACKSMT_DCJACK_2MM_SMT", 
+        "name": "2.1MMJACKSMT_DCJACK_2MM_SMT"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/2.1MMJACKTHM_PJ-102A.json", 
+        "id": "2.1MMJACKTHM_PJ-102A", 
+        "name": "2.1MMJACKTHM_PJ-102A"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/2N2222_TO92-EBC-OVAL.json", 
+        "id": "2N2222_TO92-EBC-OVAL", 
+        "name": "2N2222_TO92-EBC-OVAL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/2N2907_TO92-EBC-OVAL.json", 
+        "id": "2N2907_TO92-EBC-OVAL", 
+        "name": "2N2907_TO92-EBC-OVAL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/2X22-2MM_2X22.json", 
+        "id": "2X22-2MM_2X22", 
+        "name": "2X22-2MM_2X22"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/2X22-SMT_2X22-SMT.json", 
+        "id": "2X22-SMT_2X22-SMT", 
+        "name": "2X22-SMT_2X22-SMT"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/31-XX_B3F-31XX.json", 
+        "id": "31-XX_B3F-31XX", 
+        "name": "31-XX_B3F-31XX"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/31-XXSKINNY_B3F-31XX-SKINNIER.json", 
+        "id": "31-XXSKINNY_B3F-31XX-SKINNIER", 
+        "name": "31-XXSKINNY_B3F-31XX-SKINNIER"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/40-XX-ROUND_B3F-40XX-ROUND.json", 
+        "id": "40-XX-ROUND_B3F-40XX-ROUND", 
+        "name": "40-XX-ROUND_B3F-40XX-ROUND"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/40-XX_B3F-40XX.json", 
+        "id": "40-XX_B3F-40XX", 
+        "name": "40-XX_B3F-40XX"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/4093D_SO14.json", 
+        "id": "4093D_SO14", 
+        "name": "4093D_SO14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/4093DT_MC14093B-TSSOP14.json", 
+        "id": "4093DT_MC14093B-TSSOP14", 
+        "name": "4093DT_MC14093B-TSSOP14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/4093N_DIL14.json", 
+        "id": "4093N_DIL14", 
+        "name": "4093N_DIL14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/40FPC_None.json", 
+        "id": "40FPC_None", 
+        "name": "40FPC_None"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/40PINFPC15-1F-REV_XF2M-4015-1F-REVERSE.json", 
+        "id": "40PINFPC15-1F-REV_XF2M-4015-1F-REVERSE", 
+        "name": "40PINFPC15-1F-REV_XF2M-4015-1F-REVERSE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/40PINFPC15-1LW_XF2H-4015-1LW.json", 
+        "id": "40PINFPC15-1LW_XF2H-4015-1LW", 
+        "name": "40PINFPC15-1LW_XF2H-4015-1LW"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/40PINFPC15-4A_XF2R-4015-4A.json", 
+        "id": "40PINFPC15-4A_XF2R-4015-4A", 
+        "name": "40PINFPC15-4A_XF2R-4015-4A"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/40PINFPC4-1734839-0_4-1734839-0.json", 
+        "id": "40PINFPC4-1734839-0_4-1734839-0", 
+        "name": "40PINFPC4-1734839-0_4-1734839-0"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/5MMRGBLED_LED5MMRGB.json", 
+        "id": "5MMRGBLED_LED5MMRGB", 
+        "name": "5MMRGBLED_LED5MMRGB"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/74%252A125N-LARDO_DIL14-LARDO.json", 
+        "id": "74*125N-LARDO_DIL14-LARDO", 
+        "name": "74*125N-LARDO_DIL14-LARDO"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/74%252A125N_DIL14.json", 
+        "id": "74*125N_DIL14", 
+        "name": "74*125N_DIL14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/74%252A245DW_SO20W.json", 
+        "id": "74*245DW_SO20W", 
+        "name": "74*245DW_SO20W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/74%252A245FK_LCC20.json", 
+        "id": "74*245FK_LCC20", 
+        "name": "74*245FK_LCC20"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/74%252A245MTC_SSOP20.json", 
+        "id": "74*245MTC_SSOP20", 
+        "name": "74*245MTC_SSOP20"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/74%252A245N_DIL20.json", 
+        "id": "74*245N_DIL20", 
+        "name": "74*245N_DIL20"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/74AHC1G125_SOT23-5L.json", 
+        "id": "74AHC1G125_SOT23-5L", 
+        "name": "74AHC1G125_SOT23-5L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/78DT_TO252.json", 
+        "id": "78DT_TO252", 
+        "name": "78DT_TO252"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/78H_TO39.json", 
+        "id": "78H_TO39", 
+        "name": "78H_TO39"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/78L_TO92.json", 
+        "id": "78L_TO92", 
+        "name": "78L_TO92"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/78T_TO220H.json", 
+        "id": "78T_TO220H", 
+        "name": "78T_TO220H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/78Z_TO92.json", 
+        "id": "78Z_TO92", 
+        "name": "78Z_TO92"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/A1171_DFN-6.json", 
+        "id": "A1171_DFN-6", 
+        "name": "A1171_DFN-6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/AAA_12BH412.json", 
+        "id": "AAA_12BH412", 
+        "name": "AAA_12BH412"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ADXL33X_16LCSP.json", 
+        "id": "ADXL33X_16LCSP", 
+        "name": "ADXL33X_16LCSP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ANTENNA_RN-ANT.json", 
+        "id": "ANTENNA_RN-ANT", 
+        "name": "ANTENNA_RN-ANT"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ANTENNA_U.FL_U.FL.json", 
+        "id": "ANTENNA_U.FL_U.FL", 
+        "name": "ANTENNA_U.FL_U.FL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINO-BPLACE_ARDUINO-BPLACE.json", 
+        "id": "ARDUINO-BPLACE_ARDUINO-BPLACE", 
+        "name": "ARDUINO-BPLACE_ARDUINO-BPLACE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINO-NODIM_ARDUINO-NODIM.json", 
+        "id": "ARDUINO-NODIM_ARDUINO-NODIM", 
+        "name": "ARDUINO-NODIM_ARDUINO-NODIM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINO-NOHOLE_ARDUINO-NOHOLE.json", 
+        "id": "ARDUINO-NOHOLE_ARDUINO-NOHOLE", 
+        "name": "ARDUINO-NOHOLE_ARDUINO-NOHOLE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINO_R3_ICSP_ARDUINOR3_ICSP.json", 
+        "id": "ARDUINO_R3_ICSP_ARDUINOR3_ICSP", 
+        "name": "ARDUINO_R3_ICSP_ARDUINOR3_ICSP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINO_R3_ICSP_NODIM_ARDUINOR3_ICSP_NODIM.json", 
+        "id": "ARDUINO_R3_ICSP_NODIM_ARDUINOR3_ICSP_NODIM", 
+        "name": "ARDUINO_R3_ICSP_NODIM_ARDUINOR3_ICSP_NODIM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINO_R3_ICSPSMT_ARDUINOR3_ICSP_SMT.json", 
+        "id": "ARDUINO_R3_ICSPSMT_ARDUINOR3_ICSP_SMT", 
+        "name": "ARDUINO_R3_ICSPSMT_ARDUINOR3_ICSP_SMT"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINOMICRO_ARDUINOMICRO.json", 
+        "id": "ARDUINOMICRO_ARDUINOMICRO", 
+        "name": "ARDUINOMICRO_ARDUINOMICRO"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINOR3-BPLACE_ARDUINOR3-BPLACE.json", 
+        "id": "ARDUINOR3-BPLACE_ARDUINOR3-BPLACE", 
+        "name": "ARDUINOR3-BPLACE_ARDUINOR3-BPLACE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINOR3-DIMENSION_ARDUINOR3.json", 
+        "id": "ARDUINOR3-DIMENSION_ARDUINOR3", 
+        "name": "ARDUINOR3-DIMENSION_ARDUINOR3"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINOR3-NOIOREF-NOTEXT_ARDUINOR3-NOTEXT-NOIOREF.json", 
+        "id": "ARDUINOR3-NOIOREF-NOTEXT_ARDUINOR3-NOTEXT-NOIOREF", 
+        "name": "ARDUINOR3-NOIOREF-NOTEXT_ARDUINOR3-NOTEXT-NOIOREF"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ARDUINOUNO_ARDUINO.json", 
+        "id": "ARDUINOUNO_ARDUINO", 
+        "name": "ARDUINOUNO_ARDUINO"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/AT42QT1070-SSU_SO14.json", 
+        "id": "AT42QT1070-SSU_SO14", 
+        "name": "AT42QT1070-SSU_SO14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/AT45DB-S_SOIC8_208MIL.json", 
+        "id": "AT45DB-S_SOIC8_208MIL", 
+        "name": "AT45DB-S_SOIC8_208MIL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/AT90USB162A_TQFP32-08.json", 
+        "id": "AT90USB162A_TQFP32-08", 
+        "name": "AT90USB162A_TQFP32-08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/AT90USB162QFN_MLF32.json", 
+        "id": "AT90USB162QFN_MLF32", 
+        "name": "AT90USB162QFN_MLF32"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ATMEGA168%252AP_DIL28-3.json", 
+        "id": "ATMEGA168*P_DIL28-3", 
+        "name": "ATMEGA168*P_DIL28-3"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ATMEGA168%252APROUND_DIL28-3-ROUND.json", 
+        "id": "ATMEGA168*PROUND_DIL28-3-ROUND", 
+        "name": "ATMEGA168*PROUND_DIL28-3-ROUND"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ATMEGA32U2-TQFP_TQFP32-08.json", 
+        "id": "ATMEGA32U2-TQFP_TQFP32-08", 
+        "name": "ATMEGA32U2-TQFP_TQFP32-08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ATMEGA32U4-AU_TQFP44.json", 
+        "id": "ATMEGA32U4-AU_TQFP44", 
+        "name": "ATMEGA32U4-AU_TQFP44"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ATTINY10-MAHR_UDFN-8.json", 
+        "id": "ATTINY10-MAHR_UDFN-8", 
+        "name": "ATTINY10-MAHR_UDFN-8"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ATTINY10_SOT23-6.json", 
+        "id": "ATTINY10_SOT23-6", 
+        "name": "ATTINY10_SOT23-6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/AVRISP-6_AVRISP.json", 
+        "id": "AVRISP-6_AVRISP", 
+        "name": "AVRISP-6_AVRISP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/AVRISP-BOX_AVRISP-BOX.json", 
+        "id": "AVRISP-BOX_AVRISP-BOX", 
+        "name": "AVRISP-BOX_AVRISP-BOX"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/AXP083-SAG_SOT23.json", 
+        "id": "AXP083-SAG_SOT23", 
+        "name": "AXP083-SAG_SOT23"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/BEAGLEBONE_OUTLINE_BEAGLEBONE_SHIELD.json", 
+        "id": "BEAGLEBONE_OUTLINE_BEAGLEBONE_SHIELD", 
+        "name": "BEAGLEBONE_OUTLINE_BEAGLEBONE_SHIELD"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025-024X044_C025-024X044.json", 
+        "id": "C-US025-024X044_C025-024X044", 
+        "name": "C-US025-024X044_C025-024X044"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025-025X050_C025-025X050.json", 
+        "id": "C-US025-025X050_C025-025X050", 
+        "name": "C-US025-025X050_C025-025X050"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025-030X050_C025-030X050.json", 
+        "id": "C-US025-030X050_C025-030X050", 
+        "name": "C-US025-030X050_C025-030X050"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025-040X050_C025-040X050.json", 
+        "id": "C-US025-040X050_C025-040X050", 
+        "name": "C-US025-040X050_C025-040X050"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025-050X050_C025-050X050.json", 
+        "id": "C-US025-050X050_C025-050X050", 
+        "name": "C-US025-050X050_C025-050X050"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025-060X050_C025-060X050.json", 
+        "id": "C-US025-060X050_C025-060X050", 
+        "name": "C-US025-060X050_C025-060X050"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025_050-025X075_C025_050-025X075.json", 
+        "id": "C-US025_050-025X075_C025_050-025X075", 
+        "name": "C-US025_050-025X075_C025_050-025X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025_050-035X075_C025_050-035X075.json", 
+        "id": "C-US025_050-035X075_C025_050-035X075", 
+        "name": "C-US025_050-035X075_C025_050-035X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025_050-045X075_C025_050-045X075.json", 
+        "id": "C-US025_050-045X075_C025_050-045X075", 
+        "name": "C-US025_050-045X075_C025_050-045X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US025_050-055X075_C025_050-055X075.json", 
+        "id": "C-US025_050-055X075_C025_050-055X075", 
+        "name": "C-US025_050-055X075_C025_050-055X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US050-024X044_C050-024X044.json", 
+        "id": "C-US050-024X044_C050-024X044", 
+        "name": "C-US050-024X044_C050-024X044"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US050-025X075_C050-025X075.json", 
+        "id": "C-US050-025X075_C050-025X075", 
+        "name": "C-US050-025X075_C050-025X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US050-030X075_C050-030X075.json", 
+        "id": "C-US050-030X075_C050-030X075", 
+        "name": "C-US050-030X075_C050-030X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US050-035X075_C050-035X075.json", 
+        "id": "C-US050-035X075_C050-035X075", 
+        "name": "C-US050-035X075_C050-035X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US050-045X075_C050-045X075.json", 
+        "id": "C-US050-045X075_C050-045X075", 
+        "name": "C-US050-045X075_C050-045X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US050-050X075_C050-050X075.json", 
+        "id": "C-US050-050X075_C050-050X075", 
+        "name": "C-US050-050X075_C050-050X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US050-055X075_C050-055X075.json", 
+        "id": "C-US050-055X075_C050-055X075", 
+        "name": "C-US050-055X075_C050-055X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US050-075X075_C050-075X075.json", 
+        "id": "C-US050-075X075_C050-075X075", 
+        "name": "C-US050-075X075_C050-075X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US050H075X075_C050H075X075.json", 
+        "id": "C-US050H075X075_C050H075X075", 
+        "name": "C-US050H075X075_C050H075X075"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US075-032X103_C075-032X103.json", 
+        "id": "C-US075-032X103_C075-032X103", 
+        "name": "C-US075-032X103_C075-032X103"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US075-042X103_C075-042X103.json", 
+        "id": "C-US075-042X103_C075-042X103", 
+        "name": "C-US075-042X103_C075-042X103"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US075-052X106_C075-052X106.json", 
+        "id": "C-US075-052X106_C075-052X106", 
+        "name": "C-US075-052X106_C075-052X106"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US075-063X106_C075-063X106.json", 
+        "id": "C-US075-063X106_C075-063X106", 
+        "name": "C-US075-063X106_C075-063X106"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US102-043X133_C102-043X133.json", 
+        "id": "C-US102-043X133_C102-043X133", 
+        "name": "C-US102-043X133_C102-043X133"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US102-054X133_C102-054X133.json", 
+        "id": "C-US102-054X133_C102-054X133", 
+        "name": "C-US102-054X133_C102-054X133"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US102-064X133_C102-064X133.json", 
+        "id": "C-US102-064X133_C102-064X133", 
+        "name": "C-US102-064X133_C102-064X133"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US102_152-062X184_C102_152-062X184.json", 
+        "id": "C-US102_152-062X184_C102_152-062X184", 
+        "name": "C-US102_152-062X184_C102_152-062X184"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US150-054X183_C150-054X183.json", 
+        "id": "C-US150-054X183_C150-054X183", 
+        "name": "C-US150-054X183_C150-054X183"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US150-064X183_C150-064X183.json", 
+        "id": "C-US150-064X183_C150-064X183", 
+        "name": "C-US150-064X183_C150-064X183"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US150-072X183_C150-072X183.json", 
+        "id": "C-US150-072X183_C150-072X183", 
+        "name": "C-US150-072X183_C150-072X183"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US150-084X183_C150-084X183.json", 
+        "id": "C-US150-084X183_C150-084X183", 
+        "name": "C-US150-084X183_C150-084X183"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US150-091X182_C150-091X182.json", 
+        "id": "C-US150-091X182_C150-091X182", 
+        "name": "C-US150-091X182_C150-091X182"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US225-062X268_C225-062X268.json", 
+        "id": "C-US225-062X268_C225-062X268", 
+        "name": "C-US225-062X268_C225-062X268"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US225-074X268_C225-074X268.json", 
+        "id": "C-US225-074X268_C225-074X268", 
+        "name": "C-US225-074X268_C225-074X268"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US225-087X268_C225-087X268.json", 
+        "id": "C-US225-087X268_C225-087X268", 
+        "name": "C-US225-087X268_C225-087X268"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US225-108X268_C225-108X268.json", 
+        "id": "C-US225-108X268_C225-108X268", 
+        "name": "C-US225-108X268_C225-108X268"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US225-113X268_C225-113X268.json", 
+        "id": "C-US225-113X268_C225-113X268", 
+        "name": "C-US225-113X268_C225-113X268"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US275-093X316_C275-093X316.json", 
+        "id": "C-US275-093X316_C275-093X316", 
+        "name": "C-US275-093X316_C275-093X316"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US275-113X316_C275-113X316.json", 
+        "id": "C-US275-113X316_C275-113X316", 
+        "name": "C-US275-113X316_C275-113X316"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US275-134X316_C275-134X316.json", 
+        "id": "C-US275-134X316_C275-134X316", 
+        "name": "C-US275-134X316_C275-134X316"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US275-154X316_C275-154X316.json", 
+        "id": "C-US275-154X316_C275-154X316", 
+        "name": "C-US275-154X316_C275-154X316"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US275-173X316_C275-173X316.json", 
+        "id": "C-US275-173X316_C275-173X316", 
+        "name": "C-US275-173X316_C275-173X316"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US275-205X316_C275-205X316.json", 
+        "id": "C-US275-205X316_C275-205X316", 
+        "name": "C-US275-205X316_C275-205X316"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US325-137X374_C325-137X374.json", 
+        "id": "C-US325-137X374_C325-137X374", 
+        "name": "C-US325-137X374_C325-137X374"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US325-162X374_C325-162X374.json", 
+        "id": "C-US325-162X374_C325-162X374", 
+        "name": "C-US325-162X374_C325-162X374"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US325-182X374_C325-182X374.json", 
+        "id": "C-US325-182X374_C325-182X374", 
+        "name": "C-US325-182X374_C325-182X374"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US375-155X418_C375-155X418.json", 
+        "id": "C-US375-155X418_C375-155X418", 
+        "name": "C-US375-155X418_C375-155X418"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US375-192X418_C375-192X418.json", 
+        "id": "C-US375-192X418_C375-192X418", 
+        "name": "C-US375-192X418_C375-192X418"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-US375-203X418_C375-203X418.json", 
+        "id": "C-US375-203X418_C375-203X418", 
+        "name": "C-US375-203X418_C375-203X418"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC025_050-024X070_C025_050-024X070.json", 
+        "id": "C-USC025_050-024X070_C025_050-024X070", 
+        "name": "C-USC025_050-024X070_C025_050-024X070"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC0402_C0402.json", 
+        "id": "C-USC0402_C0402", 
+        "name": "C-USC0402_C0402"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC0402K_C0402K.json", 
+        "id": "C-USC0402K_C0402K", 
+        "name": "C-USC0402K_C0402K"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC0504_C0504.json", 
+        "id": "C-USC0504_C0504", 
+        "name": "C-USC0504_C0504"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC0603_C0603.json", 
+        "id": "C-USC0603_C0603", 
+        "name": "C-USC0603_C0603"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC0603K_C0603K.json", 
+        "id": "C-USC0603K_C0603K", 
+        "name": "C-USC0603K_C0603K"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC0805_C0805.json", 
+        "id": "C-USC0805_C0805", 
+        "name": "C-USC0805_C0805"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC0805K_C0805K.json", 
+        "id": "C-USC0805K_C0805K", 
+        "name": "C-USC0805K_C0805K"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1005_C1005.json", 
+        "id": "C-USC1005_C1005", 
+        "name": "C-USC1005_C1005"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1206_C1206.json", 
+        "id": "C-USC1206_C1206", 
+        "name": "C-USC1206_C1206"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1206K_C1206K.json", 
+        "id": "C-USC1206K_C1206K", 
+        "name": "C-USC1206K_C1206K"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1210_C1210.json", 
+        "id": "C-USC1210_C1210", 
+        "name": "C-USC1210_C1210"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1210K_C1210K.json", 
+        "id": "C-USC1210K_C1210K", 
+        "name": "C-USC1210K_C1210K"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1310_C1310.json", 
+        "id": "C-USC1310_C1310", 
+        "name": "C-USC1310_C1310"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1608_C1608.json", 
+        "id": "C-USC1608_C1608", 
+        "name": "C-USC1608_C1608"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1812_C1812.json", 
+        "id": "C-USC1812_C1812", 
+        "name": "C-USC1812_C1812"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1812K_C1812K.json", 
+        "id": "C-USC1812K_C1812K", 
+        "name": "C-USC1812K_C1812K"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1825_C1825.json", 
+        "id": "C-USC1825_C1825", 
+        "name": "C-USC1825_C1825"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC1825K_C1825K.json", 
+        "id": "C-USC1825K_C1825K", 
+        "name": "C-USC1825K_C1825K"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC2012_C2012.json", 
+        "id": "C-USC2012_C2012", 
+        "name": "C-USC2012_C2012"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC2220K_C2220K.json", 
+        "id": "C-USC2220K_C2220K", 
+        "name": "C-USC2220K_C2220K"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC2225K_C2225K.json", 
+        "id": "C-USC2225K_C2225K", 
+        "name": "C-USC2225K_C2225K"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC3216_C3216.json", 
+        "id": "C-USC3216_C3216", 
+        "name": "C-USC3216_C3216"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC3225_C3225.json", 
+        "id": "C-USC3225_C3225", 
+        "name": "C-USC3225_C3225"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC4532_C4532.json", 
+        "id": "C-USC4532_C4532", 
+        "name": "C-USC4532_C4532"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/C-USC4564_C4564.json", 
+        "id": "C-USC4564_C4564", 
+        "name": "C-USC4564_C4564"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CERMOSCILL-AWCSR_AWCSR.json", 
+        "id": "CERMOSCILL-AWCSR_AWCSR", 
+        "name": "CERMOSCILL-AWCSR_AWCSR"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CERMOSCILL-CSTCRG_CSTCR-G.json", 
+        "id": "CERMOSCILL-CSTCRG_CSTCR-G", 
+        "name": "CERMOSCILL-CSTCRG_CSTCR-G"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CERMOSCILL-THM_CERM_OSC.json", 
+        "id": "CERMOSCILL-THM_CERM_OSC", 
+        "name": "CERMOSCILL-THM_CERM_OSC"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CHUMBYLCD-SMT_2X22-SMT.json", 
+        "id": "CHUMBYLCD-SMT_2X22-SMT", 
+        "name": "CHUMBYLCD-SMT_2X22-SMT"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CHUMBYLCD-THM_2X22.json", 
+        "id": "CHUMBYLCD-THM_2X22", 
+        "name": "CHUMBYLCD-THM_2X22"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US085CS-1AR_085CS_1AR.json", 
+        "id": "CPOL-US085CS-1AR_085CS_1AR", 
+        "name": "CPOL-US085CS-1AR_085CS_1AR"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US085CS-1AW_085CS_1AW.json", 
+        "id": "CPOL-US085CS-1AW_085CS_1AW", 
+        "name": "CPOL-US085CS-1AW_085CS_1AW"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US085CS-1R_085CS_1R.json", 
+        "id": "CPOL-US085CS-1R_085CS_1R", 
+        "name": "CPOL-US085CS-1R_085CS_1R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US085CS-1W_085CS_1W.json", 
+        "id": "CPOL-US085CS-1W_085CS_1W", 
+        "name": "CPOL-US085CS-1W_085CS_1W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US139CLL-2R_139CLL-2R.json", 
+        "id": "CPOL-US139CLL-2R_139CLL-2R", 
+        "name": "CPOL-US139CLL-2R_139CLL-2R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US139CLL-2W_139CLL-2W.json", 
+        "id": "CPOL-US139CLL-2W_139CLL-2W", 
+        "name": "CPOL-US139CLL-2W_139CLL-2W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US139CLL-3R_139CLL-3R.json", 
+        "id": "CPOL-US139CLL-3R_139CLL-3R", 
+        "name": "CPOL-US139CLL-3R_139CLL-3R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US139CLL-3W_139CLL-3W.json", 
+        "id": "CPOL-US139CLL-3W_139CLL-3W", 
+        "name": "CPOL-US139CLL-3W_139CLL-3W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US140CLH-0810_140CLH-0810.json", 
+        "id": "CPOL-US140CLH-0810_140CLH-0810", 
+        "name": "CPOL-US140CLH-0810_140CLH-0810"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US140CLH-1010_140CLH-1010.json", 
+        "id": "CPOL-US140CLH-1010_140CLH-1010", 
+        "name": "CPOL-US140CLH-1010_140CLH-1010"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US140CLH-1014_140CLH-1014.json", 
+        "id": "CPOL-US140CLH-1014_140CLH-1014", 
+        "name": "CPOL-US140CLH-1014_140CLH-1014"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US150CLZ-0810_150CLZ-0810.json", 
+        "id": "CPOL-US150CLZ-0810_150CLZ-0810", 
+        "name": "CPOL-US150CLZ-0810_150CLZ-0810"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US150CLZ-1010_150CLZ-1010.json", 
+        "id": "CPOL-US150CLZ-1010_150CLZ-1010", 
+        "name": "CPOL-US150CLZ-1010_150CLZ-1010"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US150CLZ-1014_150CLZ-1014.json", 
+        "id": "CPOL-US150CLZ-1014_150CLZ-1014", 
+        "name": "CPOL-US150CLZ-1014_150CLZ-1014"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US153CLV-0405_153CLV-0405.json", 
+        "id": "CPOL-US153CLV-0405_153CLV-0405", 
+        "name": "CPOL-US153CLV-0405_153CLV-0405"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US153CLV-0505_153CLV-0505.json", 
+        "id": "CPOL-US153CLV-0505_153CLV-0505", 
+        "name": "CPOL-US153CLV-0505_153CLV-0505"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US153CLV-0605_153CLV-0605.json", 
+        "id": "CPOL-US153CLV-0605_153CLV-0605", 
+        "name": "CPOL-US153CLV-0605_153CLV-0605"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US153CLV-0807_153CLV-0807.json", 
+        "id": "CPOL-US153CLV-0807_153CLV-0807", 
+        "name": "CPOL-US153CLV-0807_153CLV-0807"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US153CLV-0810_153CLV-0810.json", 
+        "id": "CPOL-US153CLV-0810_153CLV-0810", 
+        "name": "CPOL-US153CLV-0810_153CLV-0810"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US153CLV-1010_153CLV-1010.json", 
+        "id": "CPOL-US153CLV-1010_153CLV-1010", 
+        "name": "CPOL-US153CLV-1010_153CLV-1010"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US153CLV-1012_153CLV-1012.json", 
+        "id": "CPOL-US153CLV-1012_153CLV-1012", 
+        "name": "CPOL-US153CLV-1012_153CLV-1012"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US153CLV-1014_153CLV-1014.json", 
+        "id": "CPOL-US153CLV-1014_153CLV-1014", 
+        "name": "CPOL-US153CLV-1014_153CLV-1014"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US175TMP-0808_175TMP-0808.json", 
+        "id": "CPOL-US175TMP-0808_175TMP-0808", 
+        "name": "CPOL-US175TMP-0808_175TMP-0808"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-US175TMP-0810_175TMP-0810.json", 
+        "id": "CPOL-US175TMP-0810_175TMP-0810", 
+        "name": "CPOL-US175TMP-0810_175TMP-0810"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USA%252F3216-18R_A%252F3216-18R.json", 
+        "id": "CPOL-USA/3216-18R_A/3216-18R", 
+        "name": "CPOL-USA/3216-18R_A/3216-18R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USA%252F3216-18W_A%252F3216-18W.json", 
+        "id": "CPOL-USA/3216-18W_A/3216-18W", 
+        "name": "CPOL-USA/3216-18W_A/3216-18W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USA_PANASONIC_A.json", 
+        "id": "CPOL-USA_PANASONIC_A", 
+        "name": "CPOL-USA_PANASONIC_A"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USB%252F3528-21R_B%252F3528-21R.json", 
+        "id": "CPOL-USB/3528-21R_B/3528-21R", 
+        "name": "CPOL-USB/3528-21R_B/3528-21R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USB%252F3528-21W_B%252F3528-21W.json", 
+        "id": "CPOL-USB/3528-21W_B/3528-21W", 
+        "name": "CPOL-USB/3528-21W_B/3528-21W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USB45181A_B45181A.json", 
+        "id": "CPOL-USB45181A_B45181A", 
+        "name": "CPOL-USB45181A_B45181A"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USB45181B_B45181B.json", 
+        "id": "CPOL-USB45181B_B45181B", 
+        "name": "CPOL-USB45181B_B45181B"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USB45181C_B45181C.json", 
+        "id": "CPOL-USB45181C_B45181C", 
+        "name": "CPOL-USB45181C_B45181C"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USB45181D_B45181D.json", 
+        "id": "CPOL-USB45181D_B45181D", 
+        "name": "CPOL-USB45181D_B45181D"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USB_PANASONIC_B.json", 
+        "id": "CPOL-USB_PANASONIC_B", 
+        "name": "CPOL-USB_PANASONIC_B"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USC%252F6032-28R_C%252F6032-28R.json", 
+        "id": "CPOL-USC/6032-28R_C/6032-28R", 
+        "name": "CPOL-USC/6032-28R_C/6032-28R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USC%252F6032-28W_C%252F6032-28W.json", 
+        "id": "CPOL-USC/6032-28W_C/6032-28W", 
+        "name": "CPOL-USC/6032-28W_C/6032-28W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USC_PANASONIC_C.json", 
+        "id": "CPOL-USC_PANASONIC_C", 
+        "name": "CPOL-USC_PANASONIC_C"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USCT3216_CT3216.json", 
+        "id": "CPOL-USCT3216_CT3216", 
+        "name": "CPOL-USCT3216_CT3216"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USCT3528_CT3528.json", 
+        "id": "CPOL-USCT3528_CT3528", 
+        "name": "CPOL-USCT3528_CT3528"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USCT6032_CT6032.json", 
+        "id": "CPOL-USCT6032_CT6032", 
+        "name": "CPOL-USCT6032_CT6032"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USCT7343_CT7343.json", 
+        "id": "CPOL-USCT7343_CT7343", 
+        "name": "CPOL-USCT7343_CT7343"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USD%252F7343-31R_D%252F7343-31R.json", 
+        "id": "CPOL-USD/7343-31R_D/7343-31R", 
+        "name": "CPOL-USD/7343-31R_D/7343-31R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USD%252F7343-31W_D%252F7343-31W.json", 
+        "id": "CPOL-USD/7343-31W_D/7343-31W", 
+        "name": "CPOL-USD/7343-31W_D/7343-31W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USD_PANASONIC_D.json", 
+        "id": "CPOL-USD_PANASONIC_D", 
+        "name": "CPOL-USD_PANASONIC_D"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE%252F7260-38R_E%252F7260-38R.json", 
+        "id": "CPOL-USE/7260-38R_E/7260-38R", 
+        "name": "CPOL-USE/7260-38R_E/7260-38R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE%252F7260-38W_E%252F7260-38W.json", 
+        "id": "CPOL-USE/7260-38W_E/7260-38W", 
+        "name": "CPOL-USE/7260-38W_E/7260-38W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE1.8-4_E1%252C8-4.json", 
+        "id": "CPOL-USE1.8-4_E1,8-4", 
+        "name": "CPOL-USE1.8-4_E1,8-4"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE10-20_EB20D.json", 
+        "id": "CPOL-USE10-20_EB20D", 
+        "name": "CPOL-USE10-20_EB20D"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE10-22.5_EB22%252C5D.json", 
+        "id": "CPOL-USE10-22.5_EB22,5D", 
+        "name": "CPOL-USE10-22.5_EB22,5D"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE10-25_EB25D.json", 
+        "id": "CPOL-USE10-25_EB25D", 
+        "name": "CPOL-USE10-25_EB25D"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE10-30_EB30D.json", 
+        "id": "CPOL-USE10-30_EB30D", 
+        "name": "CPOL-USE10-30_EB30D"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE10-35_EB35D.json", 
+        "id": "CPOL-USE10-35_EB35D", 
+        "name": "CPOL-USE10-35_EB35D"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE15-5AXIAL_E15-5.json", 
+        "id": "CPOL-USE15-5AXIAL_E15-5", 
+        "name": "CPOL-USE15-5AXIAL_E15-5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE15-6AXIAL_E15-6.json", 
+        "id": "CPOL-USE15-6AXIAL_E15-6", 
+        "name": "CPOL-USE15-6AXIAL_E15-6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE15-9AXIAL_E15-9.json", 
+        "id": "CPOL-USE15-9AXIAL_E15-9", 
+        "name": "CPOL-USE15-9AXIAL_E15-9"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE2%252C5-6E_E2%252C5-6E.json", 
+        "id": "CPOL-USE2,5-6E_E2,5-6E", 
+        "name": "CPOL-USE2,5-6E_E2,5-6E"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE2-4_E2-4.json", 
+        "id": "CPOL-USE2-4_E2-4", 
+        "name": "CPOL-USE2-4_E2-4"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE2-5_E2-5.json", 
+        "id": "CPOL-USE2-5_E2-5", 
+        "name": "CPOL-USE2-5_E2-5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE2.5-4V_E2%252C5RE.json", 
+        "id": "CPOL-USE2.5-4V_E2,5RE", 
+        "name": "CPOL-USE2.5-4V_E2,5RE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE2.5-5_E2%252C5-5.json", 
+        "id": "CPOL-USE2.5-5_E2,5-5", 
+        "name": "CPOL-USE2.5-5_E2,5-5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE2.5-5V_E2%252C5-4R.json", 
+        "id": "CPOL-USE2.5-5V_E2,5-4R", 
+        "name": "CPOL-USE2.5-5V_E2,5-4R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE2.5-6_E2%252C5-6.json", 
+        "id": "CPOL-USE2.5-6_E2,5-6", 
+        "name": "CPOL-USE2.5-6_E2,5-6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE2.5-7_E2%252C5-7.json", 
+        "id": "CPOL-USE2.5-7_E2,5-7", 
+        "name": "CPOL-USE2.5-7_E2,5-7"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE22-10AXIAL_E22-10.json", 
+        "id": "CPOL-USE22-10AXIAL_E22-10", 
+        "name": "CPOL-USE22-10AXIAL_E22-10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE22-6AXIAL_E22-6.json", 
+        "id": "CPOL-USE22-6AXIAL_E22-6", 
+        "name": "CPOL-USE22-6AXIAL_E22-6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE22-9AXIAL_E22-9.json", 
+        "id": "CPOL-USE22-9AXIAL_E22-9", 
+        "name": "CPOL-USE22-9AXIAL_E22-9"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE25-10AXIAL_E25-10.json", 
+        "id": "CPOL-USE25-10AXIAL_E25-10", 
+        "name": "CPOL-USE25-10AXIAL_E25-10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE25-9AXIAL_E25-9.json", 
+        "id": "CPOL-USE25-9AXIAL_E25-9", 
+        "name": "CPOL-USE25-9AXIAL_E25-9"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE3.5-10_E3%252C5-10.json", 
+        "id": "CPOL-USE3.5-10_E3,5-10", 
+        "name": "CPOL-USE3.5-10_E3,5-10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE3.5-8_E3%252C5-8.json", 
+        "id": "CPOL-USE3.5-8_E3,5-8", 
+        "name": "CPOL-USE3.5-8_E3,5-8"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE30-10AXIAL_E30-10.json", 
+        "id": "CPOL-USE30-10AXIAL_E30-10", 
+        "name": "CPOL-USE30-10AXIAL_E30-10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE30-12AXIAL_E30-12.json", 
+        "id": "CPOL-USE30-12AXIAL_E30-12", 
+        "name": "CPOL-USE30-12AXIAL_E30-12"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE30-16AXIAL_E30-16.json", 
+        "id": "CPOL-USE30-16AXIAL_E30-16", 
+        "name": "CPOL-USE30-16AXIAL_E30-16"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE35-12AXIAL_E35-12.json", 
+        "id": "CPOL-USE35-12AXIAL_E35-12", 
+        "name": "CPOL-USE35-12AXIAL_E35-12"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE35-14AXIAL_E35-14.json", 
+        "id": "CPOL-USE35-14AXIAL_E35-14", 
+        "name": "CPOL-USE35-14AXIAL_E35-14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE35-16AXIAL_E35-16.json", 
+        "id": "CPOL-USE35-16AXIAL_E35-16", 
+        "name": "CPOL-USE35-16AXIAL_E35-16"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE35-18AXIAL_E35-18.json", 
+        "id": "CPOL-USE35-18AXIAL_E35-18", 
+        "name": "CPOL-USE35-18AXIAL_E35-18"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE45-16AXIAL_E45-16.json", 
+        "id": "CPOL-USE45-16AXIAL_E45-16", 
+        "name": "CPOL-USE45-16AXIAL_E45-16"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE45-18AXIAL_E45-18.json", 
+        "id": "CPOL-USE45-18AXIAL_E45-18", 
+        "name": "CPOL-USE45-18AXIAL_E45-18"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE45-21AXIAL_E45-21.json", 
+        "id": "CPOL-USE45-21AXIAL_E45-21", 
+        "name": "CPOL-USE45-21AXIAL_E45-21"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE45-22AXIAL_E45-22.json", 
+        "id": "CPOL-USE45-22AXIAL_E45-22", 
+        "name": "CPOL-USE45-22AXIAL_E45-22"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE45-25AXIAL_E45-25.json", 
+        "id": "CPOL-USE45-25AXIAL_E45-25", 
+        "name": "CPOL-USE45-25AXIAL_E45-25"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE5-10.5_E5-10%252C5.json", 
+        "id": "CPOL-USE5-10.5_E5-10,5", 
+        "name": "CPOL-USE5-10.5_E5-10,5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE5-13_E5-13.json", 
+        "id": "CPOL-USE5-13_E5-13", 
+        "name": "CPOL-USE5-13_E5-13"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE5-4_E5-4.json", 
+        "id": "CPOL-USE5-4_E5-4", 
+        "name": "CPOL-USE5-4_E5-4"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE5-5_E5-5.json", 
+        "id": "CPOL-USE5-5_E5-5", 
+        "name": "CPOL-USE5-5_E5-5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE5-6_E5-6.json", 
+        "id": "CPOL-USE5-6_E5-6", 
+        "name": "CPOL-USE5-6_E5-6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE5-8.5_E5-8%252C5.json", 
+        "id": "CPOL-USE5-8.5_E5-8,5", 
+        "name": "CPOL-USE5-8.5_E5-8,5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE5-9VAXIAL_E5R.json", 
+        "id": "CPOL-USE5-9VAXIAL_E5R", 
+        "name": "CPOL-USE5-9VAXIAL_E5R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE50-25AXIAL_E50-25.json", 
+        "id": "CPOL-USE50-25AXIAL_E50-25", 
+        "name": "CPOL-USE50-25AXIAL_E50-25"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE50-30AXIAL_E50-30.json", 
+        "id": "CPOL-USE50-30AXIAL_E50-30", 
+        "name": "CPOL-USE50-30AXIAL_E50-30"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE55-25AXIAL_E55-25.json", 
+        "id": "CPOL-USE55-25AXIAL_E55-25", 
+        "name": "CPOL-USE55-25AXIAL_E55-25"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE55-30AXIAL_E55-30.json", 
+        "id": "CPOL-USE55-30AXIAL_E55-30", 
+        "name": "CPOL-USE55-30AXIAL_E55-30"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE7.5-16_E7%252C5-16.json", 
+        "id": "CPOL-USE7.5-16_E7,5-16", 
+        "name": "CPOL-USE7.5-16_E7,5-16"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE7.5-18_E7%252C5-18.json", 
+        "id": "CPOL-USE7.5-18_E7,5-18", 
+        "name": "CPOL-USE7.5-18_E7,5-18"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USE_PANASONIC_E.json", 
+        "id": "CPOL-USE_PANASONIC_E", 
+        "name": "CPOL-USE_PANASONIC_E"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USETR1_ETR1.json", 
+        "id": "CPOL-USETR1_ETR1", 
+        "name": "CPOL-USETR1_ETR1"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USETR2_ETR2.json", 
+        "id": "CPOL-USETR2_ETR2", 
+        "name": "CPOL-USETR2_ETR2"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USETR3_ETR3.json", 
+        "id": "CPOL-USETR3_ETR3", 
+        "name": "CPOL-USETR3_ETR3"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USETR4_ETR4.json", 
+        "id": "CPOL-USETR4_ETR4", 
+        "name": "CPOL-USETR4_ETR4"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USETR5_ETR5.json", 
+        "id": "CPOL-USETR5_ETR5", 
+        "name": "CPOL-USETR5_ETR5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USF_PANASONIC_F.json", 
+        "id": "CPOL-USF_PANASONIC_F", 
+        "name": "CPOL-USF_PANASONIC_F"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USG_PANASONIC_G.json", 
+        "id": "CPOL-USG_PANASONIC_G", 
+        "name": "CPOL-USG_PANASONIC_G"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USP128-35_P128-35.json", 
+        "id": "CPOL-USP128-35_P128-35", 
+        "name": "CPOL-USP128-35_P128-35"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USP128-40_P128-40.json", 
+        "id": "CPOL-USP128-40_P128-40", 
+        "name": "CPOL-USP128-40_P128-40"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USP128-50_P128-50.json", 
+        "id": "CPOL-USP128-50_P128-50", 
+        "name": "CPOL-USP128-50_P128-50"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USP128-60_P128-60.json", 
+        "id": "CPOL-USP128-60_P128-60", 
+        "name": "CPOL-USP128-60_P128-60"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USR%252F2012-12R_R%252F2012-12R.json", 
+        "id": "CPOL-USR/2012-12R_R/2012-12R", 
+        "name": "CPOL-USR/2012-12R_R/2012-12R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USR%252F2012-12W_R%252F2012-12W.json", 
+        "id": "CPOL-USR/2012-12W_R/2012-12W", 
+        "name": "CPOL-USR/2012-12W_R/2012-12W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTAP5-45_TAP5-45.json", 
+        "id": "CPOL-USTAP5-45_TAP5-45", 
+        "name": "CPOL-USTAP5-45_TAP5-45"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTAP5-50_TAP5-50.json", 
+        "id": "CPOL-USTAP5-50_TAP5-50", 
+        "name": "CPOL-USTAP5-50_TAP5-50"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTAP5-60_TAP5-60.json", 
+        "id": "CPOL-USTAP5-60_TAP5-60", 
+        "name": "CPOL-USTAP5-60_TAP5-60"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTAP5-70_TAP5-70.json", 
+        "id": "CPOL-USTAP5-70_TAP5-70", 
+        "name": "CPOL-USTAP5-70_TAP5-70"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTAP5-80_TAP5-80.json", 
+        "id": "CPOL-USTAP5-80_TAP5-80", 
+        "name": "CPOL-USTAP5-80_TAP5-80"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT2D4_TT2D4.json", 
+        "id": "CPOL-USTT2D4_TT2D4", 
+        "name": "CPOL-USTT2D4_TT2D4"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT2D4L_TT2D4L.json", 
+        "id": "CPOL-USTT2D4L_TT2D4L", 
+        "name": "CPOL-USTT2D4L_TT2D4L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT2D5_TT2D5.json", 
+        "id": "CPOL-USTT2D5_TT2D5", 
+        "name": "CPOL-USTT2D5_TT2D5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT2D5L_TT2D5L.json", 
+        "id": "CPOL-USTT2D5L_TT2D5L", 
+        "name": "CPOL-USTT2D5L_TT2D5L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT2D6_TT2D6.json", 
+        "id": "CPOL-USTT2D6_TT2D6", 
+        "name": "CPOL-USTT2D6_TT2D6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT2D6L_TT2D6L.json", 
+        "id": "CPOL-USTT2D6L_TT2D6L", 
+        "name": "CPOL-USTT2D6L_TT2D6L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT2D7_TT2D7.json", 
+        "id": "CPOL-USTT2D7_TT2D7", 
+        "name": "CPOL-USTT2D7_TT2D7"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT2D7L_TT2D7L.json", 
+        "id": "CPOL-USTT2D7L_TT2D7L", 
+        "name": "CPOL-USTT2D7L_TT2D7L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT5D10_TT5D10.json", 
+        "id": "CPOL-USTT5D10_TT5D10", 
+        "name": "CPOL-USTT5D10_TT5D10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT5D11_TT5D11.json", 
+        "id": "CPOL-USTT5D11_TT5D11", 
+        "name": "CPOL-USTT5D11_TT5D11"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT5D11L_TT5D11L.json", 
+        "id": "CPOL-USTT5D11L_TT5D11L", 
+        "name": "CPOL-USTT5D11L_TT5D11L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT5D6L_TT5D6L.json", 
+        "id": "CPOL-USTT5D6L_TT5D6L", 
+        "name": "CPOL-USTT5D6L_TT5D6L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT5D7_TT5D7.json", 
+        "id": "CPOL-USTT5D7_TT5D7", 
+        "name": "CPOL-USTT5D7_TT5D7"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT5D7L_TT5D7L.json", 
+        "id": "CPOL-USTT5D7L_TT5D7L", 
+        "name": "CPOL-USTT5D7L_TT5D7L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT5D9_TT5D9.json", 
+        "id": "CPOL-USTT5D9_TT5D9", 
+        "name": "CPOL-USTT5D9_TT5D9"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT5D9L_TT5D9L.json", 
+        "id": "CPOL-USTT5D9L_TT5D9L", 
+        "name": "CPOL-USTT5D9L_TT5D9L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CPOL-USTT6D6_TT5D6.json", 
+        "id": "CPOL-USTT6D6_TT5D6", 
+        "name": "CPOL-USTT6D6_TT5D6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CR1220SMT_CR1220-SMD.json", 
+        "id": "CR1220SMT_CR1220-SMD", 
+        "name": "CR1220SMT_CR1220-SMD"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CR1220THM_CR1220-THM.json", 
+        "id": "CR1220THM_CR1220-THM", 
+        "name": "CR1220THM_CR1220-THM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CR2032SMT_CR2032-SMD.json", 
+        "id": "CR2032SMT_CR2032-SMD", 
+        "name": "CR2032SMT_CR2032-SMD"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CR2032THM_CR2032-THRU.json", 
+        "id": "CR2032THM_CR2032-THRU", 
+        "name": "CR2032THM_CR2032-THRU"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTAL68SMX_86SMX.json", 
+        "id": "CRYSTAL68SMX_86SMX", 
+        "name": "CRYSTAL68SMX_86SMX"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALCTS406_CTS406.json", 
+        "id": "CRYSTALCTS406_CTS406", 
+        "name": "CRYSTALCTS406_CTS406"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC13U-H_HC13U-H.json", 
+        "id": "CRYSTALHC13U-H_HC13U-H", 
+        "name": "CRYSTALHC13U-H_HC13U-H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC18U-H_HC18U-H.json", 
+        "id": "CRYSTALHC18U-H_HC18U-H", 
+        "name": "CRYSTALHC18U-H_HC18U-H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC18U-V_HC18U-V.json", 
+        "id": "CRYSTALHC18U-V_HC18U-V", 
+        "name": "CRYSTALHC18U-V_HC18U-V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC33U-H_HC33U-H.json", 
+        "id": "CRYSTALHC33U-H_HC33U-H", 
+        "name": "CRYSTALHC33U-H_HC33U-H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC33U-V_HC33U-V.json", 
+        "id": "CRYSTALHC33U-V_HC33U-V", 
+        "name": "CRYSTALHC33U-V_HC33U-V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC49GW_HC49GW.json", 
+        "id": "CRYSTALHC49GW_HC49GW", 
+        "name": "CRYSTALHC49GW_HC49GW"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC49S_HC49%252FS.json", 
+        "id": "CRYSTALHC49S_HC49/S", 
+        "name": "CRYSTALHC49S_HC49/S"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC49TL-H_HC49TL-H.json", 
+        "id": "CRYSTALHC49TL-H_HC49TL-H", 
+        "name": "CRYSTALHC49TL-H_HC49TL-H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC49U-H_HC49U-H.json", 
+        "id": "CRYSTALHC49U-H_HC49U-H", 
+        "name": "CRYSTALHC49U-H_HC49U-H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC49U-LM_HC49U-LM.json", 
+        "id": "CRYSTALHC49U-LM_HC49U-LM", 
+        "name": "CRYSTALHC49U-LM_HC49U-LM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC49U-V_HC49U-V.json", 
+        "id": "CRYSTALHC49U-V_HC49U-V", 
+        "name": "CRYSTALHC49U-V_HC49U-V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC49U70_HC49U70.json", 
+        "id": "CRYSTALHC49U70_HC49U70", 
+        "name": "CRYSTALHC49U70_HC49U70"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALHC49UP_HC49UP.json", 
+        "id": "CRYSTALHC49UP_HC49UP", 
+        "name": "CRYSTALHC49UP_HC49UP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALMM20SS_MM20SS.json", 
+        "id": "CRYSTALMM20SS_MM20SS", 
+        "name": "CRYSTALMM20SS_MM20SS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALMM39SL_MM39SL.json", 
+        "id": "CRYSTALMM39SL_MM39SL", 
+        "name": "CRYSTALMM39SL_MM39SL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALSM49_SM49.json", 
+        "id": "CRYSTALSM49_SM49", 
+        "name": "CRYSTALSM49_SM49"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALTC26H_TC26H.json", 
+        "id": "CRYSTALTC26H_TC26H", 
+        "name": "CRYSTALTC26H_TC26H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALTC26V_TC26V.json", 
+        "id": "CRYSTALTC26V_TC26V", 
+        "name": "CRYSTALTC26V_TC26V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/CRYSTALTC38H_TC38H.json", 
+        "id": "CRYSTALTC38H_TC38H", 
+        "name": "CRYSTALTC38H_TC38H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DCBARRELPTH_DCJACK_2MM_PTH.json", 
+        "id": "DCBARRELPTH_DCJACK_2MM_PTH", 
+        "name": "DCBARRELPTH_DCJACK_2MM_PTH"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DCBARRELSMT_DCJACK_2MM_SMT.json", 
+        "id": "DCBARRELSMT_DCJACK_2MM_SMT", 
+        "name": "DCBARRELSMT_DCJACK_2MM_SMT"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DIODE_SOD-123FL_SOD-123FL.json", 
+        "id": "DIODE_SOD-123FL_SOD-123FL", 
+        "name": "DIODE_SOD-123FL_SOD-123FL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DIODEDO-1N4148_DO-1N4148.json", 
+        "id": "DIODEDO-1N4148_DO-1N4148", 
+        "name": "DIODEDO-1N4148_DO-1N4148"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DIODESMA_SMADIODE.json", 
+        "id": "DIODESMA_SMADIODE", 
+        "name": "DIODESMA_SMADIODE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DIODESOD-123_SOD-123.json", 
+        "id": "DIODESOD-123_SOD-123", 
+        "name": "DIODESOD-123_SOD-123"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DIODESOD-323F_SOD-323F.json", 
+        "id": "DIODESOD-323F_SOD-323F", 
+        "name": "DIODESOD-323F_SOD-323F"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DIODESOD-523_SOD-523.json", 
+        "id": "DIODESOD-523_SOD-523", 
+        "name": "DIODESOD-523_SOD-523"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DIODESOT23_REFLOW_SOT23-R.json", 
+        "id": "DIODESOT23_REFLOW_SOT23-R", 
+        "name": "DIODESOT23_REFLOW_SOT23-R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DIODESOT23_WAVE_SOT23-W.json", 
+        "id": "DIODESOT23_WAVE_SOT23-W", 
+        "name": "DIODESOT23_WAVE_SOT23-W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DISP_LCD_2.8IN_240X320_50PIN_TFT_2.83IN_240X320_50PIN.json", 
+        "id": "DISP_LCD_2.8IN_240X320_50PIN_TFT_2.83IN_240X320_50PIN", 
+        "name": "DISP_LCD_2.8IN_240X320_50PIN_TFT_2.83IN_240X320_50PIN"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DISP_LCD_CTP28_DATASHEET_TFT_CTP28.json", 
+        "id": "DISP_LCD_CTP28_DATASHEET_TFT_CTP28", 
+        "name": "DISP_LCD_CTP28_DATASHEET_TFT_CTP28"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DISP_LCD_CTP28_SAMPLE_TFT_2.83IN_240X320_50PIN.json", 
+        "id": "DISP_LCD_CTP28_SAMPLE_TFT_2.83IN_240X320_50PIN", 
+        "name": "DISP_LCD_CTP28_SAMPLE_TFT_2.83IN_240X320_50PIN"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DPDT-EG1390_EG1390.json", 
+        "id": "DPDT-EG1390_EG1390", 
+        "name": "DPDT-EG1390_EG1390"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DS1302_DIL08-ROUND.json", 
+        "id": "DS1302_DIL08-ROUND", 
+        "name": "DS1302_DIL08-ROUND"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DS1307_DIL08.json", 
+        "id": "DS1307_DIL08", 
+        "name": "DS1307_DIL08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DS1337_DIL08-ROUND.json", 
+        "id": "DS1337_DIL08-ROUND", 
+        "name": "DS1337_DIL08-ROUND"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DS3231%252FSO_SO16W.json", 
+        "id": "DS3231/SO_SO16W", 
+        "name": "DS3231/SO_SO16W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/DUALPOTSW_RK0971221.json", 
+        "id": "DUALPOTSW_RK0971221", 
+        "name": "DUALPOTSW_RK0971221"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/EB-85A_JST-8POS.json", 
+        "id": "EB-85A_JST-8POS", 
+        "name": "EB-85A_JST-8POS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/EG1213_EG1213.json", 
+        "id": "EG1213_EG1213", 
+        "name": "EG1213_EG1213"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/EG1218S_EG1218.json", 
+        "id": "EG1218S_EG1218", 
+        "name": "EG1218S_EG1218"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ELECTRET_9.7ELECTRET.json", 
+        "id": "ELECTRET_9.7ELECTRET", 
+        "name": "ELECTRET_9.7ELECTRET"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/EM-406A_JST-6POS.json", 
+        "id": "EM-406A_JST-6POS", 
+        "name": "EM-406A_JST-6POS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/EVQQ7GA50_EVQQ7GA50.json", 
+        "id": "EVQQ7GA50_EVQQ7GA50", 
+        "name": "EVQQ7GA50_EVQQ7GA50"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/F15D_F15D.json", 
+        "id": "F15D_F15D", 
+        "name": "F15D_F15D"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/F15H_F15H.json", 
+        "id": "F15H_F15H", 
+        "name": "F15H_F15H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/F15HDH_HDF15H.json", 
+        "id": "F15HDH_HDF15H", 
+        "name": "F15HDH_HDF15H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/F15HDV_HDF15V.json", 
+        "id": "F15HDV_HDF15V", 
+        "name": "F15HDV_HDF15V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/F15HP_F15HP.json", 
+        "id": "F15HP_F15HP", 
+        "name": "F15HP_F15HP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/F15V_F15V.json", 
+        "id": "F15V_F15V", 
+        "name": "F15V_F15V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/F15VB_F15VB.json", 
+        "id": "F15VB_F15VB", 
+        "name": "F15VB_F15VB"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/F15VP_F15VP.json", 
+        "id": "F15VP_F15VP", 
+        "name": "F15VP_F15VP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/FB_FB.json", 
+        "id": "FB_FB", 
+        "name": "FB_FB"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/FIDUCIAL_FIDUCIAL_1MM.json", 
+        "id": "FIDUCIAL_FIDUCIAL_1MM", 
+        "name": "FIDUCIAL_FIDUCIAL_1MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/FLIPFLOP-RES_0805-THM.json", 
+        "id": "FLIPFLOP-RES_0805-THM", 
+        "name": "FLIPFLOP-RES_0805-THM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/FQN1N50C_TO92.json", 
+        "id": "FQN1N50C_TO92", 
+        "name": "FQN1N50C_TO92"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/FQN1N50CI_TO92-INLINE.json", 
+        "id": "FQN1N50CI_TO92-INLINE", 
+        "name": "FQN1N50CI_TO92-INLINE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/GPS_FGPMMOPA6B_FGPMMOPA6B.json", 
+        "id": "GPS_FGPMMOPA6B_FGPMMOPA6B", 
+        "name": "GPS_FGPMMOPA6B_FGPMMOPA6B"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/GPS_FGPMMOPA6C_FGPMMOPA6C.json", 
+        "id": "GPS_FGPMMOPA6C_FGPMMOPA6C", 
+        "name": "GPS_FGPMMOPA6C_FGPMMOPA6C"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/GPS_FGPMMOPA6H_FGPMMOPA6H.json", 
+        "id": "GPS_FGPMMOPA6H_FGPMMOPA6H", 
+        "name": "GPS_FGPMMOPA6H_FGPMMOPA6H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/HD44780LCD-1602_LCD1602.json", 
+        "id": "HD44780LCD-1602_LCD1602", 
+        "name": "HD44780LCD-1602_LCD1602"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/HD44780LCD_RGBLONGPINS_LCD1602-RGB.json", 
+        "id": "HD44780LCD_RGBLONGPINS_LCD1602-RGB", 
+        "name": "HD44780LCD_RGBLONGPINS_LCD1602-RGB"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/HL1606_SO16.json", 
+        "id": "HL1606_SO16", 
+        "name": "HL1606_SO16"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/HUB08MATRIX_2X08-IDC.json", 
+        "id": "HUB08MATRIX_2X08-IDC", 
+        "name": "HUB08MATRIX_2X08-IDC"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/HUB75MATRIX_2X08-IDC.json", 
+        "id": "HUB75MATRIX_2X08-IDC", 
+        "name": "HUB75MATRIX_2X08-IDC"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ILI9325_LCD1.0MM_ILI9325_28INCH_TS.json", 
+        "id": "ILI9325_LCD1.0MM_ILI9325_28INCH_TS", 
+        "name": "ILI9325_LCD1.0MM_ILI9325_28INCH_TS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/ISL1209_MSOP10.json", 
+        "id": "ISL1209_MSOP10", 
+        "name": "ISL1209_MSOP10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/IV18_IV18.json", 
+        "id": "IV18_IV18", 
+        "name": "IV18_IV18"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/JD-T1800_JD-T1800.json", 
+        "id": "JD-T1800_JD-T1800", 
+        "name": "JD-T1800_JD-T1800"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/JOYSTICKPTH_JOYSTICK.json", 
+        "id": "JOYSTICKPTH_JOYSTICK", 
+        "name": "JOYSTICKPTH_JOYSTICK"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/JST_2PIN-SMT-RA_JST-PH-2-SMT-RA.json", 
+        "id": "JST_2PIN-SMT-RA_JST-PH-2-SMT-RA", 
+        "name": "JST_2PIN-SMT-RA_JST-PH-2-SMT-RA"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/JST_2PIN-SMT_JST-PH-2-SMT.json", 
+        "id": "JST_2PIN-SMT_JST-PH-2-SMT", 
+        "name": "JST_2PIN-SMT_JST-PH-2-SMT"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/JST_2PIN-THM-RA_JST-PH-2-THM-RA.json", 
+        "id": "JST_2PIN-THM-RA_JST-PH-2-THM-RA", 
+        "name": "JST_2PIN-THM-RA_JST-PH-2-THM-RA"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/JST_2PIN-THM_JST-PH-2-THM.json", 
+        "id": "JST_2PIN-THM_JST-PH-2-THM", 
+        "name": "JST_2PIN-THM_JST-PH-2-THM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/JST_3PIN_JSTPH3.json", 
+        "id": "JST_3PIN_JSTPH3", 
+        "name": "JST_3PIN_JSTPH3"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/L-LQH55_LQH55.json", 
+        "id": "L-LQH55_LQH55", 
+        "name": "L-LQH55_LQH55"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/L1800R_1800R.json", 
+        "id": "L1800R_1800R", 
+        "name": "L1800R_1800R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/L2474%252F10_2747.json", 
+        "id": "L2474/10_2747", 
+        "name": "L2474/10_2747"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/L_6000.json", 
+        "id": "L_6000", 
+        "name": "L_6000"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LASSENIQ_TRIMBLE.json", 
+        "id": "LASSENIQ_TRIMBLE", 
+        "name": "LASSENIQ_TRIMBLE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LED3MM_LED3MM.json", 
+        "id": "LED3MM_LED3MM", 
+        "name": "LED3MM_LED3MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LED5MM_LED5MM.json", 
+        "id": "LED5MM_LED5MM", 
+        "name": "LED5MM_LED5MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LED_SMARTLED-TTW.json", 
+        "id": "LED_SMARTLED-TTW", 
+        "name": "LED_SMARTLED-TTW"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDB152_Q62902-B152.json", 
+        "id": "LEDB152_Q62902-B152", 
+        "name": "LEDB152_Q62902-B152"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDB153_Q62902-B153.json", 
+        "id": "LEDB153_Q62902-B153", 
+        "name": "LEDB153_Q62902-B153"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDB155_Q62902-B155.json", 
+        "id": "LEDB155_Q62902-B155", 
+        "name": "LEDB155_Q62902-B155"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDB156_Q62902-B156.json", 
+        "id": "LEDB156_Q62902-B156", 
+        "name": "LEDB156_Q62902-B156"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDCHIP-LED0603_CHIP-LED0603.json", 
+        "id": "LEDCHIP-LED0603_CHIP-LED0603", 
+        "name": "LEDCHIP-LED0603_CHIP-LED0603"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDCHIP-LED0805_CHIP-LED0805.json", 
+        "id": "LEDCHIP-LED0805_CHIP-LED0805", 
+        "name": "LEDCHIP-LED0805_CHIP-LED0805"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDCHIPLED-0603-TTW_CHIPLED-0603-TTW.json", 
+        "id": "LEDCHIPLED-0603-TTW_CHIPLED-0603-TTW", 
+        "name": "LEDCHIPLED-0603-TTW_CHIPLED-0603-TTW"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDCHIPLED_0603_CHIPLED_0603.json", 
+        "id": "LEDCHIPLED_0603_CHIPLED_0603", 
+        "name": "LEDCHIPLED_0603_CHIPLED_0603"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDCHIPLED_0805_CHIPLED_0805.json", 
+        "id": "LEDCHIPLED_0805_CHIPLED_0805", 
+        "name": "LEDCHIPLED_0805_CHIPLED_0805"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDCHIPLED_1206_CHIPLED_1206.json", 
+        "id": "LEDCHIPLED_1206_CHIPLED_1206", 
+        "name": "LEDCHIPLED_1206_CHIPLED_1206"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDIRL80A_IRL80A.json", 
+        "id": "LEDIRL80A_IRL80A", 
+        "name": "LEDIRL80A_IRL80A"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDLD260_LD260.json", 
+        "id": "LEDLD260_LD260", 
+        "name": "LEDLD260_LD260"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDLSU260_LSU260.json", 
+        "id": "LEDLSU260_LSU260", 
+        "name": "LEDLSU260_LSU260"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDLZR181_LZR181.json", 
+        "id": "LEDLZR181_LZR181", 
+        "name": "LEDLZR181_LZR181"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDMICRO-SIDELED_MICRO-SIDELED.json", 
+        "id": "LEDMICRO-SIDELED_MICRO-SIDELED", 
+        "name": "LEDMICRO-SIDELED_MICRO-SIDELED"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDMINI-TOP_OSRAM-MINI-TOP-LED.json", 
+        "id": "LEDMINI-TOP_OSRAM-MINI-TOP-LED", 
+        "name": "LEDMINI-TOP_OSRAM-MINI-TOP-LED"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDP-LCC-2-BACK_P-LCC-2-TOPLED-RG.json", 
+        "id": "LEDP-LCC-2-BACK_P-LCC-2-TOPLED-RG", 
+        "name": "LEDP-LCC-2-BACK_P-LCC-2-TOPLED-RG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDP-LCC-2_P-LCC-2.json", 
+        "id": "LEDP-LCC-2_P-LCC-2", 
+        "name": "LEDP-LCC-2_P-LCC-2"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDP-LCC-4_P-LCC-4.json", 
+        "id": "LEDP-LCC-4_P-LCC-4", 
+        "name": "LEDP-LCC-4_P-LCC-4"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDSFH480_SFH480.json", 
+        "id": "LEDSFH480_SFH480", 
+        "name": "LEDSFH480_SFH480"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDSFH482_SFH482.json", 
+        "id": "LEDSFH482_SFH482", 
+        "name": "LEDSFH482_SFH482"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDSIDELED_OSRAM-SIDELED.json", 
+        "id": "LEDSIDELED_OSRAM-SIDELED", 
+        "name": "LEDSIDELED_OSRAM-SIDELED"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDSMART-LED_SMART-LED.json", 
+        "id": "LEDSMART-LED_SMART-LED", 
+        "name": "LEDSMART-LED_SMART-LED"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDSMLK34_SMLK34.json", 
+        "id": "LEDSMLK34_SMLK34", 
+        "name": "LEDSMLK34_SMLK34"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDSMT1206_1206.json", 
+        "id": "LEDSMT1206_1206", 
+        "name": "LEDSMT1206_1206"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDSQR2X5_LED2X5.json", 
+        "id": "LEDSQR2X5_LED2X5", 
+        "name": "LEDSQR2X5_LED2X5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDSQR5.7X3.2_U57X32.json", 
+        "id": "LEDSQR5.7X3.2_U57X32", 
+        "name": "LEDSQR5.7X3.2_U57X32"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LEDTOPLED-SANTANA_MINI-TOPLED-SANTANA.json", 
+        "id": "LEDTOPLED-SANTANA_MINI-TOPLED-SANTANA", 
+        "name": "LEDTOPLED-SANTANA_MINI-TOPLED-SANTANA"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LM3622_SO08.json", 
+        "id": "LM3622_SO08", 
+        "name": "LM3622_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LP298XS_SOT23-5L.json", 
+        "id": "LP298XS_SOT23-5L", 
+        "name": "LP298XS_SOT23-5L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LT1173CN_DIL08.json", 
+        "id": "LT1173CN_DIL08", 
+        "name": "LT1173CN_DIL08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LT1173CS_SO08.json", 
+        "id": "LT1173CS_SO08", 
+        "name": "LT1173CS_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LT1302_DIL08.json", 
+        "id": "LT1302_DIL08", 
+        "name": "LT1302_DIL08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LT3426_SOT23-6.json", 
+        "id": "LT3426_SOT23-6", 
+        "name": "LT3426_SOT23-6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LTC1730_SO08.json", 
+        "id": "LTC1730_SO08", 
+        "name": "LTC1730_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/LTC1731_SO08.json", 
+        "id": "LTC1731_SO08", 
+        "name": "LTC1731_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX1811SO8_SO08.json", 
+        "id": "MAX1811SO8_SO08", 
+        "name": "MAX1811SO8_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX1898U_UMAX10.json", 
+        "id": "MAX1898U_UMAX10", 
+        "name": "MAX1898U_UMAX10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX486X%252FSOT_SOT23-6.json", 
+        "id": "MAX486X/SOT_SOT23-6", 
+        "name": "MAX486X/SOT_SOT23-6"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX6675_SO08.json", 
+        "id": "MAX6675_SO08", 
+        "name": "MAX6675_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX6921_PLCC-S28.json", 
+        "id": "MAX6921_PLCC-S28", 
+        "name": "MAX6921_PLCC-S28"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX756CPA_DIL08.json", 
+        "id": "MAX756CPA_DIL08", 
+        "name": "MAX756CPA_DIL08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX756CSA_SO08.json", 
+        "id": "MAX756CSA_SO08", 
+        "name": "MAX756CSA_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX757_DIL08.json", 
+        "id": "MAX757_DIL08", 
+        "name": "MAX757_DIL08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX8601_TDFN14.json", 
+        "id": "MAX8601_TDFN14", 
+        "name": "MAX8601_TDFN14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MAX9814TDFN14_TDFN14_3X3MM.json", 
+        "id": "MAX9814TDFN14_TDFN14_3X3MM", 
+        "name": "MAX9814TDFN14_TDFN14_3X3MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MC33063%252FMC34063D_SO08.json", 
+        "id": "MC33063/MC34063D_SO08", 
+        "name": "MC33063/MC34063D_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MC33063%252FMC34063P_DIL08.json", 
+        "id": "MC33063/MC34063P_DIL08", 
+        "name": "MC33063/MC34063P_DIL08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MC33340%252F2P_DIL08.json", 
+        "id": "MC33340/2P_DIL08", 
+        "name": "MC33340/2P_DIL08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP1700INLINE_TO92-INLINE.json", 
+        "id": "MCP1700INLINE_TO92-INLINE", 
+        "name": "MCP1700INLINE_TO92-INLINE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP1700TRI_TO92.json", 
+        "id": "MCP1700TRI_TO92", 
+        "name": "MCP1700TRI_TO92"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP2300X%252FP_DIL18.json", 
+        "id": "MCP2300X/P_DIL18", 
+        "name": "MCP2300X/P_DIL18"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP2300X%252FSO_SO18W.json", 
+        "id": "MCP2300X/SO_SO18W", 
+        "name": "MCP2300X/SO_SO18W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP23017ML_QFN28-ML_6X6MM.json", 
+        "id": "MCP23017ML_QFN28-ML_6X6MM", 
+        "name": "MCP23017ML_QFN28-ML_6X6MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP23017SO_SO28W.json", 
+        "id": "MCP23017SO_SO28W", 
+        "name": "MCP23017SO_SO28W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP23017SP2_DIL28-3-ROUND.json", 
+        "id": "MCP23017SP2_DIL28-3-ROUND", 
+        "name": "MCP23017SP2_DIL28-3-ROUND"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP23017SP_DIL28-3.json", 
+        "id": "MCP23017SP_DIL28-3", 
+        "name": "MCP23017SP_DIL28-3"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP23017SS_SSOP28.json", 
+        "id": "MCP23017SS_SSOP28", 
+        "name": "MCP23017SS_SSOP28"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP3008_DIL16.json", 
+        "id": "MCP3008_DIL16", 
+        "name": "MCP3008_DIL16"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP4921_DIL08.json", 
+        "id": "MCP4921_DIL08", 
+        "name": "MCP4921_DIL08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP73811%252F2_SOT23-5L.json", 
+        "id": "MCP73811/2_SOT23-5L", 
+        "name": "MCP73811/2_SOT23-5L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP73831%252FOT_SOT23-5L.json", 
+        "id": "MCP73831/OT_SOT23-5L", 
+        "name": "MCP73831/OT_SOT23-5L"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP73833-UN_MSOP10.json", 
+        "id": "MCP73833-UN_MSOP10", 
+        "name": "MCP73833-UN_MSOP10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP7386XS_SO16.json", 
+        "id": "MCP7386XS_SO16", 
+        "name": "MCP7386XS_SO16"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP73871_QFN20.json", 
+        "id": "MCP73871_QFN20", 
+        "name": "MCP73871_QFN20"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MCP9422_DIL14.json", 
+        "id": "MCP9422_DIL14", 
+        "name": "MCP9422_DIL14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MICROSD_MICROSD.json", 
+        "id": "MICROSD_MICROSD", 
+        "name": "MICROSD_MICROSD"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MIDIJACK_CP-2350.json", 
+        "id": "MIDIJACK_CP-2350", 
+        "name": "MIDIJACK_CP-2350"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MOSFET-NGDS_TO220V_TO220V.json", 
+        "id": "MOSFET-NGDS_TO220V_TO220V", 
+        "name": "MOSFET-NGDS_TO220V_TO220V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MOSFET-NREFLOW_SOT23.json", 
+        "id": "MOSFET-NREFLOW_SOT23", 
+        "name": "MOSFET-NREFLOW_SOT23"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MOSFET-NWAVE_SOT23-W.json", 
+        "id": "MOSFET-NWAVE_SOT23-W", 
+        "name": "MOSFET-NWAVE_SOT23-W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/MOSFET-PGDS_TO220V_TO220V.json", 
+        "id": "MOSFET-PGDS_TO220V_TO220V", 
+        "name": "MOSFET-PGDS_TO220V_TO220V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/OS102011MA1Q_OS102011MA1Q.json", 
+        "id": "OS102011MA1Q_OS102011MA1Q", 
+        "name": "OS102011MA1Q_OS102011MA1Q"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PCA9685_TSSOP28.json", 
+        "id": "PCA9685_TSSOP28", 
+        "name": "PCA9685_TSSOP28"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PFETBS250_TO92-OVAL.json", 
+        "id": "PFETBS250_TO92-OVAL", 
+        "name": "PFETBS250_TO92-OVAL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PFETTP0610KL_TO92-OVAL.json", 
+        "id": "PFETTP0610KL_TO92-OVAL", 
+        "name": "PFETTP0610KL_TO92-OVAL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PFETZVP3306_TO92-OVAL.json", 
+        "id": "PFETZVP3306_TO92-OVAL", 
+        "name": "PFETZVP3306_TO92-OVAL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X10_1X10-BIG.json", 
+        "id": "PINHD-1X10_1X10-BIG", 
+        "name": "PINHD-1X10_1X10-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X12-CB_1X12-CB.json", 
+        "id": "PINHD-1X12-CB_1X12-CB", 
+        "name": "PINHD-1X12-CB_1X12-CB"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X12_1X12.json", 
+        "id": "PINHD-1X12_1X12", 
+        "name": "PINHD-1X12_1X12"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X13_1X13.json", 
+        "id": "PINHD-1X13_1X13", 
+        "name": "PINHD-1X13_1X13"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X13_BIG_1X13-BIG.json", 
+        "id": "PINHD-1X13_BIG_1X13-BIG", 
+        "name": "PINHD-1X13_BIG_1X13-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X14-CB_1X14-CB.json", 
+        "id": "PINHD-1X14-CB_1X14-CB", 
+        "name": "PINHD-1X14-CB_1X14-CB"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X14_1X14.json", 
+        "id": "PINHD-1X14_1X14", 
+        "name": "PINHD-1X14_1X14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X15-CB_1X15-CB.json", 
+        "id": "PINHD-1X15-CB_1X15-CB", 
+        "name": "PINHD-1X15-CB_1X15-CB"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X15_1X15.json", 
+        "id": "PINHD-1X15_1X15", 
+        "name": "PINHD-1X15_1X15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X18-BIG_1X18-BIG.json", 
+        "id": "PINHD-1X18-BIG_1X18-BIG", 
+        "name": "PINHD-1X18-BIG_1X18-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X18_1X18.json", 
+        "id": "PINHD-1X18_1X18", 
+        "name": "PINHD-1X18_1X18"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X1_1X01.json", 
+        "id": "PINHD-1X1_1X01", 
+        "name": "PINHD-1X1_1X01"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X1CB_1X01-CLEANBIG.json", 
+        "id": "PINHD-1X1CB_1X01-CLEANBIG", 
+        "name": "PINHD-1X1CB_1X01-CLEANBIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X20-BIG_1X20-BIG.json", 
+        "id": "PINHD-1X20-BIG_1X20-BIG", 
+        "name": "PINHD-1X20-BIG_1X20-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X20_1X20.json", 
+        "id": "PINHD-1X20_1X20", 
+        "name": "PINHD-1X20_1X20"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X3_1X03.json", 
+        "id": "PINHD-1X3_1X03", 
+        "name": "PINHD-1X3_1X03"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X3CB_1X03-CLEANBIG.json", 
+        "id": "PINHD-1X3CB_1X03-CLEANBIG", 
+        "name": "PINHD-1X3CB_1X03-CLEANBIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X40-0.5MM_1X40-0.5MM.json", 
+        "id": "PINHD-1X40-0.5MM_1X40-0.5MM", 
+        "name": "PINHD-1X40-0.5MM_1X40-0.5MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X40-0.6MM_1X40-0.6MM.json", 
+        "id": "PINHD-1X40-0.6MM_1X40-0.6MM", 
+        "name": "PINHD-1X40-0.6MM_1X40-0.6MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X40-0.7MM_1X40-0.7MM.json", 
+        "id": "PINHD-1X40-0.7MM_1X40-0.7MM", 
+        "name": "PINHD-1X40-0.7MM_1X40-0.7MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X40-0.8MM_1X40-0.8MM.json", 
+        "id": "PINHD-1X40-0.8MM_1X40-0.8MM", 
+        "name": "PINHD-1X40-0.8MM_1X40-0.8MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X40-1MM_1X40-1MM.json", 
+        "id": "PINHD-1X40-1MM_1X40-1MM", 
+        "name": "PINHD-1X40-1MM_1X40-1MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X6-3.5MM_1X06-3.5MM.json", 
+        "id": "PINHD-1X6-3.5MM_1X06-3.5MM", 
+        "name": "PINHD-1X6-3.5MM_1X06-3.5MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X6_1X06.json", 
+        "id": "PINHD-1X6_1X06", 
+        "name": "PINHD-1X6_1X06"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X6B_1X06-BIG.json", 
+        "id": "PINHD-1X6B_1X06-BIG", 
+        "name": "PINHD-1X6B_1X06-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X6CB_1X06-CLEANBIG.json", 
+        "id": "PINHD-1X6CB_1X06-CLEANBIG", 
+        "name": "PINHD-1X6CB_1X06-CLEANBIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X6CLEAN_1X06-CLEAN.json", 
+        "id": "PINHD-1X6CLEAN_1X06-CLEAN", 
+        "name": "PINHD-1X6CLEAN_1X06-CLEAN"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X6LOCK_1X06-BIGLOCK.json", 
+        "id": "PINHD-1X6LOCK_1X06-BIGLOCK", 
+        "name": "PINHD-1X6LOCK_1X06-BIGLOCK"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X8-3.5MM_1X08-3.5MM.json", 
+        "id": "PINHD-1X8-3.5MM_1X08-3.5MM", 
+        "name": "PINHD-1X8-3.5MM_1X08-3.5MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X8BIG_1X08-BIG.json", 
+        "id": "PINHD-1X8BIG_1X08-BIG", 
+        "name": "PINHD-1X8BIG_1X08-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X8CLEANBIG_1X08-CLEANBIG.json", 
+        "id": "PINHD-1X8CLEANBIG_1X08-CLEANBIG", 
+        "name": "PINHD-1X8CLEANBIG_1X08-CLEANBIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X8LOCK_1X08-LOCK.json", 
+        "id": "PINHD-1X8LOCK_1X08-LOCK", 
+        "name": "PINHD-1X8LOCK_1X08-LOCK"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-1X9_1X09-BIG.json", 
+        "id": "PINHD-1X9_1X09-BIG", 
+        "name": "PINHD-1X9_1X09-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-2X14-CB_2X14-CLEANBIG.json", 
+        "id": "PINHD-2X14-CB_2X14-CLEANBIG", 
+        "name": "PINHD-2X14-CB_2X14-CLEANBIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-2X14-SMT_2X14-SMT.json", 
+        "id": "PINHD-2X14-SMT_2X14-SMT", 
+        "name": "PINHD-2X14-SMT_2X14-SMT"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-2X14_2X14.json", 
+        "id": "PINHD-2X14_2X14", 
+        "name": "PINHD-2X14_2X14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-2X20-BIG_2X20-BIG.json", 
+        "id": "PINHD-2X20-BIG_2X20-BIG", 
+        "name": "PINHD-2X20-BIG_2X20-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-2X20_2X20.json", 
+        "id": "PINHD-2X20_2X20", 
+        "name": "PINHD-2X20_2X20"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-2X4%252F90_2X04%252F90.json", 
+        "id": "PINHD-2X4/90_2X04/90", 
+        "name": "PINHD-2X4/90_2X04/90"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-2X4_2X04.json", 
+        "id": "PINHD-2X4_2X04", 
+        "name": "PINHD-2X4_2X04"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-2X9-BIG_2X09-BIG.json", 
+        "id": "PINHD-2X9-BIG_2X09-BIG", 
+        "name": "PINHD-2X9-BIG_2X09-BIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PINHD-2X9-CBIG_2X09-CLEANBIG.json", 
+        "id": "PINHD-2X9-CBIG_2X09-CLEANBIG", 
+        "name": "PINHD-2X9-CBIG_2X09-CLEANBIG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PNA460XM_PNA460XM.json", 
+        "id": "PNA460XM_PNA460XM", 
+        "name": "PNA460XM_PNA460XM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PRO_TRINKET_PROTRINKET.json", 
+        "id": "PRO_TRINKET_PROTRINKET", 
+        "name": "PRO_TRINKET_PROTRINKET"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PS603SPK_PS603.json", 
+        "id": "PS603SPK_PS603", 
+        "name": "PS603SPK_PS603"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PTCFUSE-1206_R1206.json", 
+        "id": "PTCFUSE-1206_R1206", 
+        "name": "PTCFUSE-1206_R1206"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/PTCFUSE-1812_1812.json", 
+        "id": "PTCFUSE-1812_1812", 
+        "name": "PTCFUSE-1812_1812"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/QUAD_OPAMPD_SO14.json", 
+        "id": "QUAD_OPAMPD_SO14", 
+        "name": "QUAD_OPAMPD_SO14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/QUAD_OPAMPP-TI_DIL14-LARDO.json", 
+        "id": "QUAD_OPAMPP-TI_DIL14-LARDO", 
+        "name": "QUAD_OPAMPP-TI_DIL14-LARDO"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/QUAD_OPAMPP_DIL14.json", 
+        "id": "QUAD_OPAMPP_DIL14", 
+        "name": "QUAD_OPAMPP_DIL14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0204%252F2V_0204V.json", 
+        "id": "R-US_0204/2V_0204V", 
+        "name": "R-US_0204/2V_0204V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0204%252F5_0204%252F5.json", 
+        "id": "R-US_0204/5_0204/5", 
+        "name": "R-US_0204/5_0204/5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0204%252F7_0204%252F7.json", 
+        "id": "R-US_0204/7_0204/7", 
+        "name": "R-US_0204/7_0204/7"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0207%252F10_0207%252F10.json", 
+        "id": "R-US_0207/10_0207/10", 
+        "name": "R-US_0207/10_0207/10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0207%252F12_0207%252F12.json", 
+        "id": "R-US_0207/12_0207/12", 
+        "name": "R-US_0207/12_0207/12"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0207%252F15_0207%252F15.json", 
+        "id": "R-US_0207/15_0207/15", 
+        "name": "R-US_0207/15_0207/15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0207%252F2V_0207%252F2V.json", 
+        "id": "R-US_0207/2V_0207/2V", 
+        "name": "R-US_0207/2V_0207/2V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0207%252F5V_0207%252F5V.json", 
+        "id": "R-US_0207/5V_0207/5V", 
+        "name": "R-US_0207/5V_0207/5V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0207%252F7_0207%252F7.json", 
+        "id": "R-US_0207/7_0207/7", 
+        "name": "R-US_0207/7_0207/7"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0207%252F9_0207%252F9.json", 
+        "id": "R-US_0207/9_0207/9", 
+        "name": "R-US_0207/9_0207/9"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0309%252F10_0309%252F10.json", 
+        "id": "R-US_0309/10_0309/10", 
+        "name": "R-US_0309/10_0309/10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0309%252F12_0309%252F12.json", 
+        "id": "R-US_0309/12_0309/12", 
+        "name": "R-US_0309/12_0309/12"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0309%252FV_0309V.json", 
+        "id": "R-US_0309/V_0309V", 
+        "name": "R-US_0309/V_0309V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0411%252F12_0411%252F12.json", 
+        "id": "R-US_0411/12_0411/12", 
+        "name": "R-US_0411/12_0411/12"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0411%252F15_0411%252F15.json", 
+        "id": "R-US_0411/15_0411/15", 
+        "name": "R-US_0411/15_0411/15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0411%252F3V_0411V.json", 
+        "id": "R-US_0411/3V_0411V", 
+        "name": "R-US_0411/3V_0411V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0414%252F15_0414%252F15.json", 
+        "id": "R-US_0414/15_0414/15", 
+        "name": "R-US_0414/15_0414/15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0414%252F5V_0414V.json", 
+        "id": "R-US_0414/5V_0414V", 
+        "name": "R-US_0414/5V_0414V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0613%252F15_P0613%252F15.json", 
+        "id": "R-US_0613/15_P0613/15", 
+        "name": "R-US_0613/15_P0613/15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0613%252F5V_P0613V.json", 
+        "id": "R-US_0613/5V_P0613V", 
+        "name": "R-US_0613/5V_P0613V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0617%252F17_0617%252F17.json", 
+        "id": "R-US_0617/17_0617/17", 
+        "name": "R-US_0617/17_0617/17"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0617%252F22_0617%252F22.json", 
+        "id": "R-US_0617/22_0617/22", 
+        "name": "R-US_0617/22_0617/22"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0617%252F5V_0617V.json", 
+        "id": "R-US_0617/5V_0617V", 
+        "name": "R-US_0617/5V_0617V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0817%252F22_P0817%252F22.json", 
+        "id": "R-US_0817/22_P0817/22", 
+        "name": "R-US_0817/22_P0817/22"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0817%252F7V_P0817V.json", 
+        "id": "R-US_0817/7V_P0817V", 
+        "name": "R-US_0817/7V_P0817V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0922%252F22_0922%252F22.json", 
+        "id": "R-US_0922/22_0922/22", 
+        "name": "R-US_0922/22_0922/22"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_0922V_0922V.json", 
+        "id": "R-US_0922V_0922V", 
+        "name": "R-US_0922V_0922V"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_FLIPFLOP7_0805-THM-7.json", 
+        "id": "R-US_FLIPFLOP7_0805-THM-7", 
+        "name": "R-US_FLIPFLOP7_0805-THM-7"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_FLIPFLOP_0805-THM.json", 
+        "id": "R-US_FLIPFLOP_0805-THM", 
+        "name": "R-US_FLIPFLOP_0805-THM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_M0805_M0805.json", 
+        "id": "R-US_M0805_M0805", 
+        "name": "R-US_M0805_M0805"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_M1206_M1206.json", 
+        "id": "R-US_M1206_M1206", 
+        "name": "R-US_M1206_M1206"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_M1406_M1406.json", 
+        "id": "R-US_M1406_M1406", 
+        "name": "R-US_M1406_M1406"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_M2012_M2012.json", 
+        "id": "R-US_M2012_M2012", 
+        "name": "R-US_M2012_M2012"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_M2309_M2309.json", 
+        "id": "R-US_M2309_M2309", 
+        "name": "R-US_M2309_M2309"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_M3216_M3216.json", 
+        "id": "R-US_M3216_M3216", 
+        "name": "R-US_M3216_M3216"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_M3516_M3516.json", 
+        "id": "R-US_M3516_M3516", 
+        "name": "R-US_M3516_M3516"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_M5923_M5923.json", 
+        "id": "R-US_M5923_M5923", 
+        "name": "R-US_M5923_M5923"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_MELF0102AX_MINI_MELF-0102AX.json", 
+        "id": "R-US_MELF0102AX_MINI_MELF-0102AX", 
+        "name": "R-US_MELF0102AX_MINI_MELF-0102AX"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_MELF0102R_MINI_MELF-0102R.json", 
+        "id": "R-US_MELF0102R_MINI_MELF-0102R", 
+        "name": "R-US_MELF0102R_MINI_MELF-0102R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_MELF0102W_MINI_MELF-0102W.json", 
+        "id": "R-US_MELF0102W_MINI_MELF-0102W", 
+        "name": "R-US_MELF0102W_MINI_MELF-0102W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_MELF0204R_MINI_MELF-0204R.json", 
+        "id": "R-US_MELF0204R_MINI_MELF-0204R", 
+        "name": "R-US_MELF0204R_MINI_MELF-0204R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_MELF0204W_MINI_MELF-0204W.json", 
+        "id": "R-US_MELF0204W_MINI_MELF-0204W", 
+        "name": "R-US_MELF0204W_MINI_MELF-0204W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_MELF0207R_MINI_MELF-0207R.json", 
+        "id": "R-US_MELF0207R_MINI_MELF-0207R", 
+        "name": "R-US_MELF0207R_MINI_MELF-0207R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_MELF0207W_MINI_MELF-0207W.json", 
+        "id": "R-US_MELF0207W_MINI_MELF-0207W", 
+        "name": "R-US_MELF0207W_MINI_MELF-0207W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R0402_R0402.json", 
+        "id": "R-US_R0402_R0402", 
+        "name": "R-US_R0402_R0402"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R0603_R0603.json", 
+        "id": "R-US_R0603_R0603", 
+        "name": "R-US_R0603_R0603"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R0805_R0805.json", 
+        "id": "R-US_R0805_R0805", 
+        "name": "R-US_R0805_R0805"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R0805W_R0805W.json", 
+        "id": "R-US_R0805W_R0805W", 
+        "name": "R-US_R0805W_R0805W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R1005_R1005.json", 
+        "id": "R-US_R1005_R1005", 
+        "name": "R-US_R1005_R1005"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R1206_R1206.json", 
+        "id": "R-US_R1206_R1206", 
+        "name": "R-US_R1206_R1206"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R1206W_R1206W.json", 
+        "id": "R-US_R1206W_R1206W", 
+        "name": "R-US_R1206W_R1206W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R1210_R1210.json", 
+        "id": "R-US_R1210_R1210", 
+        "name": "R-US_R1210_R1210"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R1210W_R1210W.json", 
+        "id": "R-US_R1210W_R1210W", 
+        "name": "R-US_R1210W_R1210W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R2010_R2010.json", 
+        "id": "R-US_R2010_R2010", 
+        "name": "R-US_R2010_R2010"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R2010W_R2010W.json", 
+        "id": "R-US_R2010W_R2010W", 
+        "name": "R-US_R2010W_R2010W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R2012_R2012.json", 
+        "id": "R-US_R2012_R2012", 
+        "name": "R-US_R2012_R2012"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R2012W_R2012W.json", 
+        "id": "R-US_R2012W_R2012W", 
+        "name": "R-US_R2012W_R2012W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R2512_R2512.json", 
+        "id": "R-US_R2512_R2512", 
+        "name": "R-US_R2512_R2512"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R2512W_R2512W.json", 
+        "id": "R-US_R2512W_R2512W", 
+        "name": "R-US_R2512W_R2512W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R3216_R3216.json", 
+        "id": "R-US_R3216_R3216", 
+        "name": "R-US_R3216_R3216"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R3216W_R3216W.json", 
+        "id": "R-US_R3216W_R3216W", 
+        "name": "R-US_R3216W_R3216W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R3225_R3225.json", 
+        "id": "R-US_R3225_R3225", 
+        "name": "R-US_R3225_R3225"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R3225W_R3225W.json", 
+        "id": "R-US_R3225W_R3225W", 
+        "name": "R-US_R3225W_R3225W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R5025_R5025.json", 
+        "id": "R-US_R5025_R5025", 
+        "name": "R-US_R5025_R5025"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R5025W_R5025W.json", 
+        "id": "R-US_R5025W_R5025W", 
+        "name": "R-US_R5025W_R5025W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R6332_R6332.json", 
+        "id": "R-US_R6332_R6332", 
+        "name": "R-US_R6332_R6332"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_R6332W_R6332W.json", 
+        "id": "R-US_R6332W_R6332W", 
+        "name": "R-US_R6332W_R6332W"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_RDH%252F15_RDH%252F15.json", 
+        "id": "R-US_RDH/15_RDH/15", 
+        "name": "R-US_RDH/15_RDH/15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_V234%252F12_V234%252F12.json", 
+        "id": "R-US_V234/12_V234/12", 
+        "name": "R-US_V234/12_V234/12"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_V235%252F17_V235%252F17.json", 
+        "id": "R-US_V235/17_V235/17", 
+        "name": "R-US_V235/17_V235/17"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/R-US_V526-0_V526-0.json", 
+        "id": "R-US_V526-0_V526-0", 
+        "name": "R-US_V526-0_V526-0"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/RGBLED5050_RGBLED5050.json", 
+        "id": "RGBLED5050_RGBLED5050", 
+        "name": "RGBLED5050_RGBLED5050"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/RGBLED_CA-5MM_LED5MMRGB.json", 
+        "id": "RGBLED_CA-5MM_LED5MMRGB", 
+        "name": "RGBLED_CA-5MM_LED5MMRGB"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/RGBLED_CA-PIRANHA_PIRANHA5MM.json", 
+        "id": "RGBLED_CA-PIRANHA_PIRANHA5MM", 
+        "name": "RGBLED_CA-PIRANHA_PIRANHA5MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/RN-171_RN-171.json", 
+        "id": "RN-171_RN-171", 
+        "name": "RN-171_RN-171"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/S-35390A-T_TSSOP-8.json", 
+        "id": "S-35390A-T_TSSOP-8", 
+        "name": "S-35390A-T_TSSOP-8"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODEAG_AG.json", 
+        "id": "SCHOTTKY-DIODEAG_AG", 
+        "name": "SCHOTTKY-DIODEAG_AG"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODEC4111-15_C4111-15.json", 
+        "id": "SCHOTTKY-DIODEC4111-15_C4111-15", 
+        "name": "SCHOTTKY-DIODEC4111-15_C4111-15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODECB417-15_CB417-15.json", 
+        "id": "SCHOTTKY-DIODECB417-15_CB417-15", 
+        "name": "SCHOTTKY-DIODECB417-15_CB417-15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODECB429-15_CB429-15.json", 
+        "id": "SCHOTTKY-DIODECB429-15_CB429-15", 
+        "name": "SCHOTTKY-DIODECB429-15_CB429-15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODECB429-17_CB429-17.json", 
+        "id": "SCHOTTKY-DIODECB429-17_CB429-17", 
+        "name": "SCHOTTKY-DIODECB429-17_CB429-17"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODEDO13M_DO13M.json", 
+        "id": "SCHOTTKY-DIODEDO13M_DO13M", 
+        "name": "SCHOTTKY-DIODEDO13M_DO13M"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODEDO201T15_DO201T15.json", 
+        "id": "SCHOTTKY-DIODEDO201T15_DO201T15", 
+        "name": "SCHOTTKY-DIODEDO201T15_DO201T15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODEDO35-7_DO35-7.json", 
+        "id": "SCHOTTKY-DIODEDO35-7_DO35-7", 
+        "name": "SCHOTTKY-DIODEDO35-7_DO35-7"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODEDO41-7_DO41-7.json", 
+        "id": "SCHOTTKY-DIODEDO41-7_DO41-7", 
+        "name": "SCHOTTKY-DIODEDO41-7_DO41-7"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODEDO41_DO41-10.json", 
+        "id": "SCHOTTKY-DIODEDO41_DO41-10", 
+        "name": "SCHOTTKY-DIODEDO41_DO41-10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODEF126Z12_F126Z12.json", 
+        "id": "SCHOTTKY-DIODEF126Z12_F126Z12", 
+        "name": "SCHOTTKY-DIODEF126Z12_F126Z12"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODEP6T15_P6T15.json", 
+        "id": "SCHOTTKY-DIODEP6T15_P6T15", 
+        "name": "SCHOTTKY-DIODEP6T15_P6T15"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SCHOTTKY-DIODETO92H_TO92H.json", 
+        "id": "SCHOTTKY-DIODETO92H_TO92H", 
+        "name": "SCHOTTKY-DIODETO92H_TO92H"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SDMMC06132_06132.json", 
+        "id": "SDMMC06132_06132", 
+        "name": "SDMMC06132_06132"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SDMMC18650_SDCARD.json", 
+        "id": "SDMMC18650_SDCARD", 
+        "name": "SDMMC18650_SDCARD"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SDMMCSCDA_SCDA.json", 
+        "id": "SDMMCSCDA_SCDA", 
+        "name": "SDMMCSCDA_SCDA"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEGMENT_12BAR_BICOLORAR12Z3010_SEGMENT_BICOL_BL-AR12Z3010.json", 
+        "id": "SEGMENT_12BAR_BICOLORAR12Z3010_SEGMENT_BICOL_BL-AR12Z3010", 
+        "name": "SEGMENT_12BAR_BICOLORAR12Z3010_SEGMENT_BICOL_BL-AR12Z3010"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEGMENT_8X8_BICOLOR_ROWCATHODEMI2A883XX_SEGMENT_BICOL_BL-M12A883XX.json", 
+        "id": "SEGMENT_8X8_BICOLOR_ROWCATHODEMI2A883XX_SEGMENT_BICOL_BL-M12A883XX", 
+        "name": "SEGMENT_8X8_BICOLOR_ROWCATHODEMI2A883XX_SEGMENT_BICOL_BL-M12A883XX"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEGMENT_8X8_ROWCATHODE_SEGMENT_BL-M07C881UR.json", 
+        "id": "SEGMENT_8X8_ROWCATHODE_SEGMENT_BL-M07C881UR", 
+        "name": "SEGMENT_8X8_ROWCATHODE_SEGMENT_BL-M07C881UR"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEGMENT_8X8_ROWCATHODEBL-M12A883_SEGMENT_BL-M12A883.json", 
+        "id": "SEGMENT_8X8_ROWCATHODEBL-M12A883_SEGMENT_BL-M12A883", 
+        "name": "SEGMENT_8X8_ROWCATHODEBL-M12A883_SEGMENT_BL-M12A883"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEGMENT_8X8_ROWCATHODEBL-M15_SEGMENT_BL-M15A881.json", 
+        "id": "SEGMENT_8X8_ROWCATHODEBL-M15_SEGMENT_BL-M15A881", 
+        "name": "SEGMENT_8X8_ROWCATHODEBL-M15_SEGMENT_BL-M15A881"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEGMENT_8X8_ROWCATHODEM12A881UR_SEGMENT_BL-M12A881UR.json", 
+        "id": "SEGMENT_8X8_ROWCATHODEM12A881UR_SEGMENT_BL-M12A881UR", 
+        "name": "SEGMENT_8X8_ROWCATHODEM12A881UR_SEGMENT_BL-M12A881UR"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEWTAP-2.0IN_SEWINGTAP_2.0.json", 
+        "id": "SEWTAP-2.0IN_SEWINGTAP_2.0", 
+        "name": "SEWTAP-2.0IN_SEWINGTAP_2.0"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEWTAP0.4IN_SEWINGTAP_0.4.json", 
+        "id": "SEWTAP0.4IN_SEWINGTAP_0.4", 
+        "name": "SEWTAP0.4IN_SEWINGTAP_0.4"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEWTAP0.5IN_SEWINGTAP_0.5.json", 
+        "id": "SEWTAP0.5IN_SEWINGTAP_0.5", 
+        "name": "SEWTAP0.5IN_SEWINGTAP_0.5"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SEWTAPBIG_BIGTAP.json", 
+        "id": "SEWTAPBIG_BIGTAP", 
+        "name": "SEWTAPBIG_BIGTAP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SFV4R-1STE1LF_SFV4R-1STE1LF.json", 
+        "id": "SFV4R-1STE1LF_SFV4R-1STE1LF", 
+        "name": "SFV4R-1STE1LF_SFV4R-1STE1LF"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SMACONNECTOR_EDGE_SMA_EDGELAUNCH.json", 
+        "id": "SMACONNECTOR_EDGE_SMA_EDGELAUNCH", 
+        "name": "SMACONNECTOR_EDGE_SMA_EDGELAUNCH"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SMACONNECTOR_EDGE_UFL_SMA_EDGELAUNCH_UFL.json", 
+        "id": "SMACONNECTOR_EDGE_UFL_SMA_EDGELAUNCH_UFL", 
+        "name": "SMACONNECTOR_EDGE_UFL_SMA_EDGELAUNCH_UFL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SMACONNECTOR_SMA90_DIP.json", 
+        "id": "SMACONNECTOR_SMA90_DIP", 
+        "name": "SMACONNECTOR_SMA90_DIP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SMT-0540-S-R_SMT-0540-S-R.json", 
+        "id": "SMT-0540-S-R_SMT-0540-S-R", 
+        "name": "SMT-0540-S-R_SMT-0540-S-R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SPEAKER%252FAL11P_AL11P.json", 
+        "id": "SPEAKER/AL11P_AL11P", 
+        "name": "SPEAKER/AL11P_AL11P"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SPEAKER%252FAL60P_AL60P.json", 
+        "id": "SPEAKER/AL60P_AL60P", 
+        "name": "SPEAKER/AL60P_AL60P"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SPEAKER%252FPS12_PS12.json", 
+        "id": "SPEAKER/PS12_PS12", 
+        "name": "SPEAKER/PS12_PS12"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SPST_JUDCOSPST.json", 
+        "id": "SPST_JUDCOSPST", 
+        "name": "SPST_JUDCOSPST"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SPST_TACT-EVQQ2_EVQ-Q2.json", 
+        "id": "SPST_TACT-EVQQ2_EVQ-Q2", 
+        "name": "SPST_TACT-EVQQ2_EVQ-Q2"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SPST_TACT-KMR2_KMR2.json", 
+        "id": "SPST_TACT-KMR2_KMR2", 
+        "name": "SPST_TACT-KMR2_KMR2"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SSM2167_MSOP10.json", 
+        "id": "SSM2167_MSOP10", 
+        "name": "SSM2167_MSOP10"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/STEREOJACK_STX3100.json", 
+        "id": "STEREOJACK_STX3100", 
+        "name": "STEREOJACK_STX3100"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SUNLOGO_SUN.json", 
+        "id": "SUNLOGO_SUN", 
+        "name": "SUNLOGO_SUN"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/SUPERCAP_414-VA5R.json", 
+        "id": "SUPERCAP_414-VA5R", 
+        "name": "SUPERCAP_414-VA5R"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TB6612FNG_SSOP24.json", 
+        "id": "TB6612FNG_SSOP24", 
+        "name": "TB6612FNG_SSOP24"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/THUMBPOT_THUMBWHEEL.json", 
+        "id": "THUMBPOT_THUMBWHEEL", 
+        "name": "THUMBPOT_THUMBWHEEL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/THUMBPOTV_THUMBWHEELV.json", 
+        "id": "THUMBPOTV_THUMBWHEELV", 
+        "name": "THUMBPOTV_THUMBWHEELV"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TIP30_TO220.json", 
+        "id": "TIP30_TO220", 
+        "name": "TIP30_TO220"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TIP30NOHOLE_TO220-NOHOLE.json", 
+        "id": "TIP30NOHOLE_TO220-NOHOLE", 
+        "name": "TIP30NOHOLE_TO220-NOHOLE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TLC5941NT_DIL28-3.json", 
+        "id": "TLC5941NT_DIL28-3", 
+        "name": "TLC5941NT_DIL28-3"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TLC5947-DAP_HTSSOP32DAP.json", 
+        "id": "TLC5947-DAP_HTSSOP32DAP", 
+        "name": "TLC5947-DAP_HTSSOP32DAP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TLC59711_HTSSOP20DAP.json", 
+        "id": "TLC59711_HTSSOP20DAP", 
+        "name": "TLC59711_HTSSOP20DAP"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TM1804_SO08.json", 
+        "id": "TM1804_SO08", 
+        "name": "TM1804_SO08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TM1804SKINNY_SO08-SKINNYPADS.json", 
+        "id": "TM1804SKINNY_SO08-SKINNYPADS", 
+        "name": "TM1804SKINNY_SO08-SKINNYPADS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TRIM3386_TRIM-3386.json", 
+        "id": "TRIM3386_TRIM-3386", 
+        "name": "TRIM3386_TRIM-3386"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TRIM_6MM.json", 
+        "id": "TRIM_6MM", 
+        "name": "TRIM_6MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TRIMPOT3386_TRIM-3386.json", 
+        "id": "TRIMPOT3386_TRIM-3386", 
+        "name": "TRIMPOT3386_TRIM-3386"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TRIMPOTTC33X_TC33X.json", 
+        "id": "TRIMPOTTC33X_TC33X", 
+        "name": "TRIMPOTTC33X_TC33X"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TRIMSLIDE45_SLIDEPOT-45.json", 
+        "id": "TRIMSLIDE45_SLIDEPOT-45", 
+        "name": "TRIMSLIDE45_SLIDEPOT-45"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TS12864A_TS12864.json", 
+        "id": "TS12864A_TS12864", 
+        "name": "TS12864A_TS12864"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TXB0104PWR_TSSOP14.json", 
+        "id": "TXB0104PWR_TSSOP14", 
+        "name": "TXB0104PWR_TSSOP14"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TXB0108PWR_TSSOP20.json", 
+        "id": "TXB0108PWR_TSSOP20", 
+        "name": "TXB0108PWR_TSSOP20"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/TXS0102_VFSOP-8.json", 
+        "id": "TXS0102_VFSOP-8", 
+        "name": "TXS0102_VFSOP-8"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/UG-2864HSWEG01_1X30-0.7MM.json", 
+        "id": "UG-2864HSWEG01_1X30-0.7MM", 
+        "name": "UG-2864HSWEG01_1X30-0.7MM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/USB-A_MOLEX_480371000.json", 
+        "id": "USB-A_MOLEX_480371000", 
+        "name": "USB-A_MOLEX_480371000"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/USB-PWR_USB-MINIB-THM-MOLEX-PWRONLY.json", 
+        "id": "USB-PWR_USB-MINIB-THM-MOLEX-PWRONLY", 
+        "name": "USB-PWR_USB-MINIB-THM-MOLEX-PWRONLY"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/USB-PWRU4CON_USB-MINIB-THM-PWRONLY.json", 
+        "id": "USB-PWRU4CON_USB-MINIB-THM-PWRONLY", 
+        "name": "USB-PWRU4CON_USB-MINIB-THM-PWRONLY"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/USBMINIB_USB-MINIB.json", 
+        "id": "USBMINIB_USB-MINIB", 
+        "name": "USBMINIB_USB-MINIB"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/USBMOLEX_USB-MINIB-THM-MOLEX.json", 
+        "id": "USBMOLEX_USB-MINIB-THM-MOLEX", 
+        "name": "USBMOLEX_USB-MINIB-THM-MOLEX"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/USBTHM_USB-MINIB-THM.json", 
+        "id": "USBTHM_USB-MINIB-THM", 
+        "name": "USBTHM_USB-MINIB-THM"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/VS1033_SQFP-S-7X7-48.json", 
+        "id": "VS1033_SQFP-S-7X7-48", 
+        "name": "VS1033_SQFP-S-7X7-48"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/WS2811-SOP8_SO08-SKINNYPADS.json", 
+        "id": "WS2811-SOP8_SO08-SKINNYPADS", 
+        "name": "WS2811-SOP8_SO08-SKINNYPADS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/WS2812_WS2812.json", 
+        "id": "WS2812_WS2812", 
+        "name": "WS2812_WS2812"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/WS2812B_WS2812B.json", 
+        "id": "WS2812B_WS2812B", 
+        "name": "WS2812B_WS2812B"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/XBEE_XBEE.json", 
+        "id": "XBEE_XBEE", 
+        "name": "XBEE_XBEE"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/XF2%252A-05%253F15-1_XF2E-0515-1.json", 
+        "id": "XF2*-05?15-1_XF2E-0515-1", 
+        "name": "XF2*-05?15-1_XF2E-0515-1"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/XF2%252A-05%253F35-1_XF2L-0535-1.json", 
+        "id": "XF2*-05?35-1_XF2L-0535-1", 
+        "name": "XF2*-05?35-1_XF2L-0535-1"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/XTAL-3.2X1.5_XTAL3215.json", 
+        "id": "XTAL-3.2X1.5_XTAL3215", 
+        "name": "XTAL-3.2X1.5_XTAL3215"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/XTAL-4-3225_NX3225.json", 
+        "id": "XTAL-4-3225_NX3225", 
+        "name": "XTAL-4-3225_NX3225"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/XTALNX5032_NX5032.json", 
+        "id": "XTALNX5032_NX5032", 
+        "name": "XTALNX5032_NX5032"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adafruit/XTALNX8045_NX8045.json", 
+        "id": "XTALNX8045_NX8045", 
+        "name": "XTALNX8045_NX8045"
+      }
+    ], 
+    "id": "adafruit", 
+    "data": "eeschema/json/adafruit", 
+    "name": "adafruit"
+  }, 
+  {
+    "type": "list", 
+    "list": [
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD390JD.json", 
+        "id": "AD390JD", 
+        "name": "AD390JD"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD558.json", 
+        "id": "AD558", 
+        "name": "AD558"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD7224.json", 
+        "id": "AD7224", 
+        "name": "AD7224"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD7225.json", 
+        "id": "AD7225", 
+        "name": "AD7225"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD7226.json", 
+        "id": "AD7226", 
+        "name": "AD7226"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD7228.json", 
+        "id": "AD7228", 
+        "name": "AD7228"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD7533.json", 
+        "id": "AD7533", 
+        "name": "AD7533"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD775.json", 
+        "id": "AD775", 
+        "name": "AD775"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD7819.json", 
+        "id": "AD7819", 
+        "name": "AD7819"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD9280ARS.json", 
+        "id": "AD9280ARS", 
+        "name": "AD9280ARS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD9283.json", 
+        "id": "AD9283", 
+        "name": "AD9283"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/AD9708AR.json", 
+        "id": "AD9708AR", 
+        "name": "AD9708AR"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/ADC0800.json", 
+        "id": "ADC0800", 
+        "name": "ADC0800"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/ADC08060.json", 
+        "id": "ADC08060", 
+        "name": "ADC08060"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/ADC0832.json", 
+        "id": "ADC0832", 
+        "name": "ADC0832"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/ADC1173.json", 
+        "id": "ADC1173", 
+        "name": "ADC1173"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/CA3300.json", 
+        "id": "CA3300", 
+        "name": "CA3300"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/DAC08.json", 
+        "id": "DAC08", 
+        "name": "DAC08"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/LTC1406CGN.json", 
+        "id": "LTC1406CGN", 
+        "name": "LTC1406CGN"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/LTC1594CS.json", 
+        "id": "LTC1594CS", 
+        "name": "LTC1594CS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/LTC1664CGN.json", 
+        "id": "LTC1664CGN", 
+        "name": "LTC1664CGN"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/LTC1664CN.json", 
+        "id": "LTC1664CN", 
+        "name": "LTC1664CN"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/MCP3425A0T-E%252FCH.json", 
+        "id": "MCP3425A0T-E/CH", 
+        "name": "MCP3425A0T-E/CH"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/MCP3550-50-E%252FMS.json", 
+        "id": "MCP3550-50-E/MS", 
+        "name": "MCP3550-50-E/MS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/MCP3550-60-E%252FSN.json", 
+        "id": "MCP3550-60-E/SN", 
+        "name": "MCP3550-60-E/SN"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/MCP4921-E%252FMS.json", 
+        "id": "MCP4921-E/MS", 
+        "name": "MCP4921-E/MS"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/MCP4921-E%252FP.json", 
+        "id": "MCP4921-E/P", 
+        "name": "MCP4921-E/P"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/MCP4921-E%252FSN.json", 
+        "id": "MCP4921-E/SN", 
+        "name": "MCP4921-E/SN"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/MCP4922-E%252FP.json", 
+        "id": "MCP4922-E/P", 
+        "name": "MCP4922-E/P"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/MCP4922-E%252FSL.json", 
+        "id": "MCP4922-E/SL", 
+        "name": "MCP4922-E/SL"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/MCP4922-E%252FST.json", 
+        "id": "MCP4922-E/ST", 
+        "name": "MCP4922-E/ST"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/TDA8702.json", 
+        "id": "TDA8702", 
+        "name": "TDA8702"
+      }, 
+      {
+        "type": "element", 
+        "data": "eeschema/json/adc-dac/TLV5627CD.json", 
+        "id": "TLV5627CD", 
+        "name": "TLV5627CD"
+      }
+    ], 
+    "id": "adc-dac", 
+    "data": "eeschema/json/adc-dac", 
+    "name": "adc-dac"
+  }
+]

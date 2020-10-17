@@ -1,0 +1,15 @@
+{{if .MessageNominal}}
+  <div style='text-align:center;' id='message' class='no-message'>{{.Message}}</div>
+{{else if .MessageDanger}}
+  <div style='text-align:center;' id='message' class='alert alert-danger' >{{.Message}}</div>
+{{else if .MessageError}}
+  <div style='text-align:center;' id='message' class='alert alert-danger' >{{.Message}}</div>
+{{else if .MessageWarning}}
+  <div style='text-align:center;' id='message' class='alert alert-warning' >{{.Message}}</div>
+{{else if .MessageInfo}}
+  <div style='text-align:center;' id='message' class='alert alert-info' >{{.Message}}</div>
+{{else if .MessagePrimary}}
+  <div style='text-align:center;' id='message' class='alert alert-primary' >{{.Message}}</div>
+{{else if .MessageSuccess}}
+  <div style='text-align:center;' id='message' class='alert alert-success' >{{.Message}}</div>
+{{end}}

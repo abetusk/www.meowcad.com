@@ -194,7 +194,6 @@ def users( flag ):
       istime = int(float(userDat["stime"]))
       strtime = time.ctime(istime)
 
-
     print ">>>>"
     print "user:", userDat["userName"], userid
     print "email:", str(email)

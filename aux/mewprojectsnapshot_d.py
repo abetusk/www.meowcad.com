@@ -29,7 +29,9 @@ def load_project_event_hash():
     f = open( g_fn )
     for line in f:
       line = line.rstrip()
+      if len(line) == 0: continue
       vv = line.split(",")
+      if len(vv) != 2: continue
       last_project_event_h[ vv[0] ] = vv[1]
     f.close()
 

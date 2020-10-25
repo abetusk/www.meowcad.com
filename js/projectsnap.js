@@ -41,7 +41,8 @@ if (!projectId) {
 var Canvas = require('canvas'),
     fs = require('fs'),
     Image = Canvas.Image,
-    canvas = new Canvas( width, height ),
+    canvas = Canvas.createCanvas( width, height ),
+    //canvas = new Canvas( width, height ),
     ctx = canvas.getContext('2d');
 
 var redis = require("redis"),

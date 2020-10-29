@@ -55,7 +55,8 @@ if ((!local_file) && (!inpJsonFn)) {
 var Canvas = require('canvas'),
     fs = require('fs'),
     Image = Canvas.Image,
-    canvas = new Canvas( width, height ),
+    canvas = Canvas.createCanvas( width, height ),
+    //canvas = new Canvas( width, height ),
     ctx = canvas.getContext('2d');
 
 var sch6 = require( "../../bleepsix/js/sch/bleepsixSchematic.js" );

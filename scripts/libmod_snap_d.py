@@ -43,6 +43,9 @@ def process_imports():
 
     fqfn_queue_file = os.path.join( LIBMOD_SNAP_QUEUE_DIR, qfn )
 
+    if verbose:
+      print mew.humanTime(), "libmod_snap_d>> processing", fqfn_queue_file
+
     fp = open( fqfn_queue_file, "r" )
     for line in fp:
 
@@ -51,6 +54,7 @@ def process_imports():
 
       if line[0] == '#': continue
       line = line.rstrip()
+
       fileId, fn, userId, portfolioId = line.split(',')
       try:
 

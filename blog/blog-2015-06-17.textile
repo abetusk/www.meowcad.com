@@ -15,7 +15,7 @@ Very roughly, one workflow is as follows:
 
 * Design your PCB.  We'll skip this step and use the @8 Bit Heart@ project ready in MeowCAD.
 * Collect the Gerbers.  The export from MeowCAD includes them but we'll need to collect them for later submission.
-* Submit to the board Manufacterer.  We'll be using "OSH Park":https://oshpark.com/.
+* Submit to the board Manufacturer.  We'll be using "OSH Park":https://oshpark.com/.
 * Assemble.  We won't go into too much detail but briefly outline a "DIY" way to do this.
 
 

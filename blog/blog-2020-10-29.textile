@@ -1,0 +1,227 @@
+h1. "An Update on MeowCAD":/blog/2020-10-29
+
+h6>. <i class='fa fa-calendar'></i> 2020-10-29
+
+!{width:100%}/img/blog/kitty_head_blue_p512.png
+
+This is a brief blog entry talking about the current state of MeowCAD, five years after initial release.
+The project has been sitting mostly untouched for these past five years and now that I have some
+distance from the initial release, I'd like to come back and talk about some of the lessons learned
+and other thoughts I have on the state of MeowCAD and online electronic design in general.
+
+h2> The Good
+
+To start off, here are some things I'm still proud of in MeowCAD:
+
+h3> It mostly works
+
+There are major limitations on it's use, it slows down for large boards, etc. etc. but it still
+works.
+One can quickly design a board, download it and have the Gerbers ready to use.
+
+Though I haven't checked KiCAD compatibility in a while, the KiCAD files are still exported and
+if they don't work straight away, I would assume they would only take a minor amount of work
+to be made functional.
+
+h3> It suits a PCB first workflow
+
+One of the design decisions I made was to not prefer a "schematic first" workflow.
+Instead, you can design in the PCB layout and then retroactively add elements in the schematic
+editor.
+
+When the schematic and board editor are both open, you can easily see which nets correspond
+to each pin, as there is cross browser highlighting.
+
+h3> It makes board design accessible
+
+To start designing a board, all you need do is dive right in.
+
+You don't need to go through a complicated interface, choose a board, go through
+confusing dialogues, etc.
+It provides a design tool that you can get started with immediately with minimal hassle.
+
+h3> It makes sharing easy
+
+Though this is a feature that is not used as MeowCAD mostly has a community of one (me),
+there are features for quickly taking snapshots of your board and of sharing a schematic
+and other board that people can look at immediately.
+
+h3> Separating of code and data
+
+One of the things I believe I got right is that data is a first class object.
+The code is really meant to be there to manipulate the underlying data and
+so swapping out code is, in theory, doable.
+
+All the projects and other data are represented by JSON, so it amounts to manipulating
+a well understood and simple data format.
+
+The UI also has different "tools" that are mostly independent of each other, allowing
+for extensions.
+In practice the tools need a lot of knowledge about the UI state, so developing new
+tools would require a lot of context of the MeowCAD code base and might be intimidating.
+
+h2> The Bad
+
+This list will be a lot longer.
+
+h3> Not getting community buy-in
+
+This was MeowCADs cardinal sin.
+
+By implementing MeowCAD in isolation, without any real feedback from real users,
+it suffered from weird engineering tangents, esoteric features and missing core
+features.
+By not getting at least one other person using the system, I was lost in what
+to prioritize and lost motivation to work on the project.
+
+h3> Not providing an easy way to import parts
+
+Though this is technically possible (as in there is a feature that I've implemented to
+do this), practically this is still very clunky.
+Though relying on third party part creation tools, like the one provided with KiCAD,
+could be considered a feature (instead of re-implementing another on specifically for
+MeowCAD), in practice it's nearly impossible to get parts into the system.
+
+This is, as I found out while using MeowCAD, critical.
+We all have a library of custom parts that are used and without our own special sauce
+of components, or an easy way to import components that are usable in the projects you
+want, it's nearly impossible to use.
+
+I've got around this personally by hacking together a library that I've hand crafted
+and added components too, but obviously this is a horrible solution.
+
+h3> Not providing an easy way to copy "modules"
+
+Here, by "modules", I mean a complete board, like an Arduino Nano or some other
+module provided by Adafruit or Sparkfun.
+
+I've seen boards "in the wild" that basically do this, put a whole Nano next to a
+motor controller module just on the same board.
+As of this writing, "Sparkfun":https://www.sparkfun.com/news/3422 just announced a service that will allow you to use
+their modules in this way, but at a hefty cost of around $1000 for a design
+fee and, as far as I know, without providing a FOSS piece of software that implements
+this feature.
+It looks like there might have been a previous attempt with "HackEDA":https://www.sparkfun.com/news/1187.
+
+In retrospect, I should have made this more of a first class feature as this clearly captures
+some of the core spirit of open source hardware by being able to reuse and remix previous work.
+There are many designs that are open source hardware, with "Adafruit":https://github.com/adafruit leading
+the charge in the sheer number of modules that are implemented, tested and
+sold, all completely open source hardware, but using them is a pain as any
+module that you would want to use would need to be painstakingly copy over, using
+their diagrams as reference.
+
+h3> Lack of nice UI features
+
+* Push and shove routing doesn't exist
+* Trace "grab and move" features (individual traces segments are treated as independent line elements)
+* GUI niceties like bigger icons, custom fonts, etc.
+
+There are no doubt many more but without a user base, it's hard to know what's important and what to prioritize.
+
+h3> Technical embarrassments
+
+I made many technical mistakes that I'm profoundly embarrassed by now:
+
+h4> Using Redis as a backend server
+
+In retrospect, this was so mind numbingly stupid as to be laughable but that's what I did.
+I would have been better served by either using a SQL backend or even text files on disk rather than the database I chose.
+
+h4> Not committing to a project single file
+
+I took the tactic from KiCAD which was to split the schematic and board into their own files, making references
+to modules are parts.
+In hindsight, I should have committed to making the project file completely self contained.
+
+I think I made the right decision to have all data in JSON but the idea that we need to save a couple
+Mb of space by referencing modules or splitting the board and schematic into separate files maybe made
+sense half a century ago but not so much today.
+
+h4> Not using WebPack
+
+I didn't know about it when I started development.
+
+Providing node + front end JavaScript is a solved problem, I just didn't use it and rolled my own
+weird tooling to get the JavaScript to run both on the backend and front end.
+
+h4> Not merging bleepsix and MeowCAD
+
+"bleepsix":https://github.com/abetusk/bleepsix is the graphics engine, of sorts, for MeowCAD.
+Essentially, all the JavaScript resides in bleepsix with all of the other server infrastructure
+in the "www.meowcad.com":https://github.com/abetusk/www.meowcad.com codebase.
+
+There was no reason to separate them out.
+I should have merged them to reduce confusion and allow for better maintainability.
+
+h4> Not providing a simpler hosting environment
+
+MeowCAD currently needs a lot of infrastructure to get an instance running.
+I tried to make this as painless as possible by providing a "Docker container":https://hub.docker.com/r/abetusk/meowcad/ but
+even with the Docker container, it's clunky to use and probably even clunkier to access
+the underlying projects and other data that users might want.
+
+
+h4> Not providing more transparent data
+
+Projects, users, etc. should all have been at least mirrored on disk in some way, with easily accessible
+human readable(ish) files.
+
+JSON goes a long way towards making the boards and schematics accessible in this way but I should have committed
+to other aspects of the data storage.
+
+
+h2> Going Forward
+
+A lot has changed in the five years since I initially released MeowCAD.
+For one, electronics has only gotten cheaper, CNC routers that can do PCB isolation
+routing are available for under $200 and, in some cases, assembly services are getting
+cheaper than having bare PCBs fabricated domestically in the USA.
+
+Eagle has also recently announced more restrictions on their EDA tools.
+Sparkfun, while leaders in open source hardware, aren't providing the design tools
+to the community in any real free/libre way, creating more opportunities for silos,
+walled gardens and vendor lock-in.
+
+To me, this means board design tools, especially ones that can integrate different
+rapid prototyping technology, will become more critical.
+FOSS tools often lag behind professional tools, especially for small niche markets,
+but eventually catch up once a community has rallied behind them.
+
+Providing an accessible EDA tool was a core motivation for MeowCAD, one that has
+pretty much failed.
+I'm hopeful that some tool will come around to fill this void, be it MeowCAD,
+a more mature KiCAD or some other tool.
+
+While I love that KiCAD exists, that there's a community around it and that there are
+active projects using it, my heart sinks when I think I need to use it.
+If a project demands it, I'll probably make the plunge to KiCAD, at least in a more active
+sense than I am now, but every time I've used it in the past,
+I'm left with a nagging feeling that electronic board design could be so much better.
+
+From lurking on KiCAD forums, I believe they'd be hesitant to take suggestions on updating
+their user interface, underlying data representation or other features.
+I completely understand their perspective and reticence, as they get many "drive-by"
+suggestions from people that do little more than provide negative feedback.
+
+I don't think the community is so small that there isn't room for more than one FOSS EDA.
+I also think that alternative EDAs could provide complementary features that KiCAD
+doesn't focus on.
+
+I think there are many ways to bridge the gap to KiCAD, like providing tools to
+pragmatically create modules, merge projects and do other automated and non-automated
+project manipulation.
+Some of the "pykicad":https://github.com/abetusk/pykicad programs were created with this
+in mind (as well as providing the basis for the data of MeowCAD).
+
+All this really means is that I'll be quietly working in my own little corner of the internet,
+making a tool that's designed for a community of one.
+
+I intend to use MeowCAD more for my personal projects but my focus will be on providing
+features that match my workflow rather than try to convince others to use MeowCAD
+or to add features to a hypothetical user that doesn't exist.
+
+
+Feedback?  Thoughts?  Be sure to drop us a line in our "feedback section":/feedback!
+
+Happy hacking!

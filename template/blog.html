@@ -57,6 +57,126 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
       <div class='col-md-8' style='text-align:left; font-size:medium;' >
 
+
+<h1 id="board-assembly-with-meowcad">Board Assembly (with MeowCAD)</h1>
+<h6 style="text-align:right"> <i class='fa fa-calendar'></i> 2020-10-29</h6>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="img/blog/seg16_diffusor_test.gif" alt="test run" /></td>
+</tr>
+</tbody>
+</table>
+<p>This is a brief blog post about using JLCPCB to do board assembly. Though the board design was done with <a href="https://meowcad.com/project?projectId=006b550f-e142-4a36-b113-f90155cf7723">MeowCAD</a>, the focus will be on the process of board assembly through JLCPCB.</p>
+<p>Note that I'm not affiliated with JLCPCB (or PCBWay) in any way. This was my first time ordering boards for manufacture and the experience was very satisfying, so I'm chronicling it in this blog post in the hopes others get something useful out of it.</p>
+<h2 id="motivation-and-design">Motivation and Design</h2>
+<p>I wanted to make a large <a href="https://en.wikipedia.org/wiki/Sixteen-segment_display">sixteen segment display</a> using RGB LEDs. There was a project called <a href="https://github.com/openKolibri/klais-16">Klais-16</a> which provides 16 segment displays for $10. While the Klais-16 project is awesome, the boards were just a little smaller than I wanted and were single color.</p>
+<p>The price, <a href="https://openkolibri.com/seg/16/">$10-$15</a>, was also on the high side. For small quantities, the $10-$15 prices is phenomenal but I wanted to see how cheap it would be for larger quantities.</p>
+<p>So I designed my own using WS2812b 5050 RGB LEDs:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><embed src="img/blog/2020-10-29-seg16-sch.jpg%20=400" width="500" /></td>
+</tr>
+<tr class="even">
+<td align="left"><embed src="img/blog/2020-10-29-seg16-brd.jpg%20=400" width="500" /></td>
+</tr>
+</tbody>
+</table>
+<p>The &quot;5050&quot; in the LED name refers to their size (5mmx5mm) and the <code>b</code> variant refers to the LED having four leads.</p>
+<p>The WS2812b has a tiny microcontroller embedded in it and uses it's own one wire protocol for communication. This makes it easy to chain as only power, ground and data need be wired.</p>
+<p>After downloading the project from MeowCAD and verifying the Gerbers, I started the process of submitting to <a href="https://jlcpcb.com/">JLCPCB</a>. Downloading the boards</p>
+<hr />
+<p>One design consideration was what parts JLCPCB had on hand. After some investigation on JLCPCB's <a href="https://jlcpcb.com/parts">parts library</a>, I found the WS2812b. One reason for choosing that particular part was that it had only 4 leads and was one of the only parts I could easily find and import into MeowCAD.</p>
+<p>Parts chosen from the JLCPCB parts library, the WS2812b and the 100nF capacitor, were used to create the BOM file.</p>
+<h2 id="prepping-for-manufacture">Prepping for Manufacture</h2>
+<p>After the Gerber files were put into a ZIP archive and uploaded, I filled options relating to size. For some reason the board dimensions don't autofill so I used my best guess, which was 105mm x 135mm, erring on the size of slightly larger.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="img/blog/blog-2020-10-29-jlcpcb-upload-gerber.jpg" alt="upload gerber" width="500" /></td>
+</tr>
+</tbody>
+</table>
+<p>Further down the page is an 'SMT Assembly' button. I guess JLCPCB only allows a green soldermask and SMT assembly for quantity less than 30. Assuming both of those conditions are met, you can hit the toggle button and choose the appropriate side to place parts on.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="img/blog/blog-2020-10-29-jlcpcb-smt-choice.jpg" alt="smt assembly choice" width="500" /></td>
+</tr>
+</tbody>
+</table>
+<p>Once saved, there will be a screen to upload the BOM and CPL files. I generated the CPL file by filtering JSON board file and taking the center of appropriate parts.</p>
+<p>Here's the <code>bash</code> incantation (a combination of <code>grep</code> and <code>jq</code>) to generate the CPL for this project:</p>
+<pre><code>echo &#39;Designator,Mid X,Mid Y,Layer,Rotation&#39;
+
+jq -c &#39;.element[]&#39; ../../export/json/board.json  | \
+  grep -v -P &#39;&quot;track&quot;|&quot;drawsegment&quot;&#39; | \
+  grep &#39;&quot;SMD&quot;&#39; | \
+  jq -r &#39;. | [.text[0].text, 25.4*.x/10000, 25.4*.y/10000, &quot;Top&quot;,((( (.orientation | tonumber)/10 ) + 360) % 360) ] | @csv&#39;</code></pre>
+<p>Note that this would need to change depending on your project, as the <code>SMD</code> <code>grep</code> line is pretty hacky.</p>
+<p>Regardless, once the BOM and CPL files are uploaded, you can review the selected parts:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="img/blog/blog-2020-10-29-jlcpcb-select-parts.jpg" alt="review selected parts" width="500" /></td>
+</tr>
+</tbody>
+</table>
+<p>And then review the SMT part placement:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="img/blog/blog-2020-10-29-jlcpcb-bom-cpl-confirm.jpg" alt="review part placement" width="500" /></td>
+</tr>
+</tbody>
+</table>
+<p>Once I was satisfied with the placement, I continued with the order:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="img/blog/blog-2020-10-29-jlcpcb-checkout.jpg" alt="order confirm" width="500" /></td>
+</tr>
+</tbody>
+</table>
+<p>This was for an order of 10 boards, fully assembled.</p>
+<p>I find it astounding that the price is only $47.44 for 10 boards. That's about $4.75 for a fully assembled board.</p>
+<p>When they arrived, I soldered a header on one and put it through it's paces to test:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="img/blog/seg16_diffusor_test.gif" alt="test run" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="closing-remarks">Closing Remarks</h2>
+<p>Though this post is basically a &quot;how to navigate JLCPCB's web site&quot;, I hope it demystifies the process. I know I was intimidated as this was the first board I ordered, fully assembled, from a manufacturer. The whole process was straight forward and cheap. Even if I had a problem with my layout, $50 was an acceptable amount of money I was willing to risk on the experiment.</p>
+<p>To re-emphasize, a fully assembled 105mm x 135mm board cost $4.75 in quantity 10. For quantity 30, I calculate about $3.75. I'm blown away by how cheap it is.</p>
+<p>I believe this is why the Klais-16 folks can get away with charging the low rate of $10-$15 for their boards.</p>
+<p>For comparison, I asked a domestic fabrication house and they quoted $27 for the Klais-16, or $0.20 per placed part. Doing a brief spot-check on OSH Park, the 105mm x 135mm board would run about $125 for 3, or about $40 per board.</p>
+<p>The shipping time for the sixteen segment displays ordered from JLCPCB was about 2-4 weeks.</p>
+<p>I think there's probably good reason to go through a domestic board fabrication, either for assembly or for PCB manufacture, but going through a Chinese service like JLCPCB or PCBWay is upwards of 10x cheaper for a 1x-2x decrease in shipping time, at least for this project.</p>
+<p>This project was very simple, it amounted to nothing more than two unique components, the WS2812b and a capacitor, so surely boards with higher complexity have other more subtle problems to deal with.</p>
+<p>I decided to use JLCPCB because their interface allowed me to easily choose the 'assembly' option. I tried <a href="https://www.pcbway.com/">PCBWay</a> but ran into problems. In the future, I'll probably use PCBWay for larger orders as JLCPCB looks like they max out at 30 boards for assembly.</p>
+<p>If you'd like to see the boards in their current form, <a href="https://meowcad.com/view_pcb?project=006b550f-e142-4a36-b113-f90155cf7723">check them out over at MeowCAD</a>. The boards are open source hardware, so feel free to <a href="https://meowcad.com/project?projectId=006b550f-e142-4a36-b113-f90155cf7723">download</a> and manufacture, clone, alter, use or sell to your hearts content.</p>
+<p>Feedback? Thoughts? Be sure to drop us a line in our <a href="https://meowcad.com/feedback">feedback section</a></p>
+<p>Happy hacking!</p>
+<h6 id="submitted-by-abetusk">submitted by [abetusk]</h6>
+
+      </div>
+
+      <div class='col-md-4'></div>
+
+
+    </div>
+
+    <hr />
+
+
+    <div class='row'>
+
+      <div class='col-md-8' style='text-align:left; font-size:medium;' >
+
 <h1 id="an-update-on-meowcad"><a href="/blog/2020-10-29">An Update on MeowCAD</a></h1>
 <h6 style="text-align:right"> <i class='fa fa-calendar'></i> 2020-10-29</h6>
 <p><img src="/img/blog/kitty_head_blue_p512.png" alt="" style="width:100.0%" /></p>
@@ -216,6 +336,13 @@ features that match my workflow rather than try to convince others to use MeowCA
 or to add features to a hypothetical user that doesn't exist.</p>
 <p>Feedback? Thoughts? Be sure to drop us a line in our <a href="/feedback">feedback section</a>!</p>
 <p>Happy hacking!</p>
+
+      </div>
+
+      <div class='col-md-4'></div>
+
+
+    </div>
 
     <hr />
 

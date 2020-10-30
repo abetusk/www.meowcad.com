@@ -1,13 +1,10 @@
-Board Assembly (with MeowCAD)
+Board Assembly Using JLCPCB
 ===
 
 <h6 style="text-align:right"> <i class='fa fa-calendar'></i> 2020-10-29</h6>
 
 
-| |
-|---|
-| ![test run](img/blog/seg16_diffusor_test.gif) |
-
+![test run](img/blog/seg16_diffusor_test.gif)
 
 This is a brief blog post about using JLCPCB to do board assembly.
 Though the board design was done with [MeowCAD](https://meowcad.com/project?projectId=006b550f-e142-4a36-b113-f90155cf7723), the focus will be
@@ -30,10 +27,9 @@ For small quantities, the $10-$15 prices is phenomenal but I wanted to see how c
 
 So I designed my own using WS2812b 5050 RGB LEDs:
 
-| |
-|---|
-| ![seg16 schematic](img/blog/2020-10-29-seg16-sch.jpg =400){ width=500px } |
-| ![seg16 board](img/blog/2020-10-29-seg16-brd.jpg =400){ width=500px } |
+![seg16 schematic](img/blog/2020-10-29-seg16-sch.jpg){ width=500px }
+
+![seg16 board](img/blog/2020-10-29-seg16-brd.jpg){ width=500px }
 
 
 The "5050" in the LED name refers to their size (5mmx5mm) and the `b` variant refers to the LED having four leads.
@@ -60,18 +56,14 @@ After the Gerber files were put into a ZIP archive and uploaded, I filled option
 For some reason the board dimensions don't autofill so I used my best guess, which was 105mm x 135mm,
 erring on the size of slightly larger.
 
-| |
-|---|
-| ![upload gerber](img/blog/blog-2020-10-29-jlcpcb-upload-gerber.jpg){ width=500px } |
+![upload gerber](img/blog/blog-2020-10-29-jlcpcb-upload-gerber.jpg){ width=500px }
 
 Further down the page is an 'SMT Assembly' button.
 I guess JLCPCB only allows a green soldermask and SMT assembly for quantity less than 30.
 Assuming both of those conditions are met, you can hit the toggle button and choose the appropriate side to
 place parts on.
 
-| |
-|---|
-| ![smt assembly choice](img/blog/blog-2020-10-29-jlcpcb-smt-choice.jpg){ width=500px } |
+![smt assembly choice](img/blog/blog-2020-10-29-jlcpcb-smt-choice.jpg){ width=500px }
 
 Once saved, there will be a screen to upload the BOM and CPL files.
 I generated the CPL file by filtering JSON board file and taking the center of appropriate parts.
@@ -91,21 +83,15 @@ Note that this would need to change depending on your project, as the `SMD` `gre
 
 Regardless, once the BOM and CPL files are uploaded, you can review the selected parts:
 
-| |
-|---|
-| ![review selected parts](img/blog/blog-2020-10-29-jlcpcb-select-parts.jpg){ width=500px } |
+![review selected parts](img/blog/blog-2020-10-29-jlcpcb-select-parts.jpg){ width=500px }
 
 And then review the SMT part placement:
 
-| |
-|---|
-| ![review part placement](img/blog/blog-2020-10-29-jlcpcb-bom-cpl-confirm.jpg){ width=500px } |
+![review part placement](img/blog/blog-2020-10-29-jlcpcb-bom-cpl-confirm.jpg){ width=500px }
 
 Once I was satisfied with the placement, I continued with the order:
 
-| |
-|---|
-| ![order confirm](img/blog/blog-2020-10-29-jlcpcb-checkout.jpg){ width=500px } |
+![order confirm](img/blog/blog-2020-10-29-jlcpcb-checkout.jpg){ width=500px }
 
 This was for an order of 10 boards, fully assembled.
 
@@ -114,9 +100,7 @@ That's about $4.75 for a fully assembled board.
 
 When they arrived, I soldered a header on one and put it through it's paces to test:
 
-| |
-|---|
-| ![test run](img/blog/seg16_diffusor_test.gif) |
+![test run](img/blog/seg16_diffusor_test.gif)
 
 
 Closing Remarks

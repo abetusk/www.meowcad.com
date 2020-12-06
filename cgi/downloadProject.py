@@ -83,8 +83,8 @@ def readyProjectZipfile( json_message ):
 
     # Put json data structures into files
     #
-    sch_json_uid, brd_json_fn = dumpToFile( json.dumps(json_message["board"], indent=2) )
-    brd_json_uid, sch_json_fn = dumpToFile( json.dumps(json_message["schematic"], indent=2) )
+    brd_json_uid, brd_json_fn = dumpToFile( json.dumps(json_message["board"], indent=2) )
+    sch_json_uid, sch_json_fn = dumpToFile( json.dumps(json_message["schematic"], indent=2) )
 
     log_line( "brd: " + brd_json_fn )
     log_line( "sch: " + sch_json_fn )
@@ -127,6 +127,8 @@ def readyProjectZipfile( json_message ):
                 21 : "-F_SilkS.gto",
                 22 : "-B_SolderM.gbs",
                 23 : "-F_SolderM.gts",
+                26 : "-Eco_User1.gtu",
+                27 : "-Eco_User2.gbu",
                 28 : "-Edge_Cuts.gbr" }
     gerber_files = []
     gcode_files = []
@@ -136,7 +138,7 @@ def readyProjectZipfile( json_message ):
       #
       if layer>0 and layer<15 and (layer not in layer_map): continue
 
-      grbr = sp.check_output( [brdgrb_exec, "-i", str(brd_fn), "-L", str(layer), "-F", str(font_file) ] )
+      grbr = sp.check_output([brdgrb_exec, "-I", str(brd_json_fn), "-L", str(layer), "-F", str(font_file) ] ) 
       gerber_uid, gerber_fn = dumpToFile( grbr )
       gerber_files.append( { "id": gerber_uid , "filename" : gerber_fn, "layer" : layer } )
 

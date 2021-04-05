@@ -28,11 +28,19 @@ function pretty_netname(nc) {
   return "N-0" + s_nc;
 }
 
+// Join a schematic and board into a project.
+//
 function _join_sch_brd(sch, brd, _id) {
   _id = ((typeof _id === "undefined") ? guid() : _id);
   return { "id" : _id, "json_sch" : sch, "json_brd" : brd };
 }
 
+// Merge projects, _projb into _proja.
+// The complexity comes from making sure _projb's nets
+// don't trample on _probjas, in addition to making sure
+// there are no physical collisions by initially placing _projb
+// off in a corner away from _proja's parts.
+//
 function _merge_project(_proja, _projb) {
 
   var proja = Object.assign({}, _proja);
@@ -96,25 +104,55 @@ function _merge_project(_proja, _projb) {
 
   // delta position change of schematic and board elements to be placed
   //
-  var _d = {
-    "sch" : { "x" : 2*(bbox_sch[1][0] - bbox_sch[0][0]), "y": 2*(bbox_sch[1][1] - bbox_sch[1][0])  },
-    "brd" : { "x" : 2*(bbox_brd[1][0] - bbox_brd[0][0]), "y": 2*(bbox_brd[1][1] - bbox_brd[1][1])  }
+  var _del = {
+    "sch" : { "x" : 2*(bbox_sch[0][1][0] - bbox_sch[0][0][0]), "y": 2*(bbox_sch[0][1][1] - bbox_sch[0][1][0])  },
+    "brd" : { "x" : 2*(bbox_brd[0][1][0] - bbox_brd[0][0][0]), "y": 2*(bbox_brd[0][1][1] - bbox_brd[0][1][1])  }
   };
+  //console.log(JSON.stringify(_del, null, 2));
+
+  // Update all relevant positions in the _projb to move them to the upper right.
+  //
+  var _brd_dst_ele = proj[1].json_brd.element
+  for (var ele_idx=0; ele_idx < _brd_dst_ele.length; ele_idx++) {
+    var ele = _brd_dst_ele[ele_idx];
+
+    if (!("type" in ele)) { continue; }
+
+    if ((ele.type == "track") ||
+        (ele.type == "drawsegment")) {
+      ele.x0 += _del.brd.x;
+      ele.x1 += _del.brd.x;
+      ele.y0 += _del.brd.y;
+      ele.y1 += _del.brd.y;
+    }
+
+    if (ele.type == "czone") {
+      if ("polyscorners" in ele) {
+        for (var ii=0; ii<ele.polyscorners.length; ii++) {
+          ele.polyscorners[ii].x0 += _del.brd.x;
+          ele.polyscorners[ii].y0 += _del.brd.y;
+        }
+      }
+    }
+
+    // pad and art internal positions are relative, so only need to update the
+    // module x,y positions.
+    //
+    if (ele.type == "module") {
+      if ("x" in ele) { ele.x = parseFloat(ele.x) + _del.brd.x; }
+      if ("y" in ele) { ele.y = parseFloat(ele.y) + _del.brd.y; }
+    }
+
+  }
 
   // rewire nets
   //
 
   var net_xfer = { "sch_newnet" : -10000, "sch_maxnet": -1, "sch" : {},
                    "brd_newnet" : -10000, "brd_maxnet": -1, "brd" : {} };
-  /*
-  var proj_idx = 1;
-  var _p = proj[proj_idx];
-  var _sch = _p.json_sch;
-  var _brd = _p.json_brd;
-  */
 
-  // find max
-  //var max_sch_net = -1;
+  // Find maximum schematic netcode.
+  //
   for (var proj_idx=0; proj_idx < proj.length; proj_idx++) {
     var _p = proj[proj_idx];
     var _sch = _p.json_sch;
@@ -127,7 +165,6 @@ function _merge_project(_proja, _projb) {
         if (!("netcode" in ele["pinData"][pin_key])) { continue; }
 
         var nc = parseInt(ele["pinData"][pin_key]["netcode"]);
-        //if (max_sch_net < nc) { max_sch_net = nc; }
         if (net_xfer.sch_maxnet < nc) { net_xfer.sch_maxnet = nc; }
       }
 
@@ -136,7 +173,6 @@ function _merge_project(_proja, _projb) {
 
   // use max as basis for new net mapping
   //
-  //net_xfer.sch_newnet = max_sch_net + 1;
   net_xfer.sch_newnet = parseInt(net_xfer.sch_maxnet) + 1;
 
   // net_name_map : str netname -> int netcode
@@ -144,7 +180,6 @@ function _merge_project(_proja, _projb) {
   // equipot : array of obj { net_name, net_number }
   // element : array of obj { netcode|net_number, .pad{ netcode|net_number } }
   //
-  //var max_brd_net = -1;
   for (var proj_idx=0; proj_idx<proj.length; proj_idx++) {
     var _p = proj[proj_idx];
     var _brd = _p.json_brd;
@@ -179,13 +214,11 @@ function _merge_project(_proja, _projb) {
       var ele = _brd.element[ele_idx];
       if ("netcode" in ele) {
         var nc = parseInt(ele["netcode"]);
-        //if (max_brd_net < nc) { max_brd_net = nc; }
         if (net_xfer.brd_maxnet < nc) { net_xfer.brd_maxnet = nc; }
       }
 
       if ("net_number" in ele) {
         var nc = parseInt(ele["net_number"]);
-        //if (max_brd_net < nc) { max_brd_net = nc; }
         if (net_xfer.brd_maxnet < nc) { net_xfer.brd_maxnet = nc; }
       }
 
@@ -194,7 +227,6 @@ function _merge_project(_proja, _projb) {
         var _pad = ele["pad"][pad_idx];
         if (!("net_number" in _pad)) { continue; }
         var nc = parseInt(_pad["net_number"]);
-        //if (max_brd_net < nc) { max_brd_net = nc; }
         if (net_xfer.brd_maxnet < nc) { net_xfer.brd_maxnet = nc; }
       }
 
@@ -202,7 +234,6 @@ function _merge_project(_proja, _projb) {
     }
   }
 
-  //net_xfer.brd_newnet = max_brd_net + 1;
   net_xfer.brd_newnet = parseInt(net_xfer.brd_maxnet) + 1;
 
 
@@ -214,11 +245,6 @@ function _merge_project(_proja, _projb) {
   var _p = proj[proj_idx];
   var _sch = _p.json_sch;
   var _brd = _p.json_brd;
-  //proj_idx = 1;
-  //_p = proj[proj_idx];
-  //_sch = _p.json_sch;
-  //_brd = _p.json_brd;
-
 
   // Go through each net and set up mapping information.
   // First for the schematic.
@@ -327,9 +353,6 @@ function _merge_project(_proja, _projb) {
     }
 
   }
-
-  //DEBUG
-  //console.log("net_xfer:", JSON.stringify(net_xfer, null, 2));
 
   // Once we have the data for the mapping, go through and perform
   // the mapping

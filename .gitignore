@@ -6,3 +6,6 @@ tmp
 *.log
 *.pyc
 .tmp
+node_modules
+package-lock.json
+mewgo/mewgo

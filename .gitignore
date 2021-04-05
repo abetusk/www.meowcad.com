@@ -5,3 +5,4 @@ private/*
 tmp
 *.log
 *.pyc
+.tmp

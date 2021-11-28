@@ -55,7 +55,13 @@ def process_imports():
       if line[0] == '#': continue
       line = line.rstrip()
 
-      fileId, fn, userId, portfolioId = line.split(',')
+      fn_tok = line.split(",")
+      if len(fn_tok) != 4:
+        print mew.humanTime(), "libmod_snap_d>>>> ERROR, expected 4 tokens, got " + str(len(fn_tok)) + " instead: '" + line + "'. skipping"
+        continue
+
+      #fileId, fn, userId, portfolioId = line.split(',')
+      fileId, fn, userId, portfolioId = fn_tok[0], fn_tok[1], fn_tok[2], fn_tok[3]
       try:
 
         if len(fn)==0: continue

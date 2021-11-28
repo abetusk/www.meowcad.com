@@ -92,7 +92,7 @@ db.hgetall( key, processProject_sch );
 
 
 function processProject_sch(err, obj) {
-  db.end();
+  db.end(true);
 
   if (!obj) {
     console.log("project (" + projectId + ") not found"); 
